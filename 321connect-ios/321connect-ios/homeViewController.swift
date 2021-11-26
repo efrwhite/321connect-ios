@@ -9,6 +9,23 @@ import UIKit
 
 class homeViewController: UIViewController {
 
+    @IBOutlet weak var heightButton: UIButton!
+    
+    @IBOutlet weak var weightButton: UIButton!
+    
+    @IBOutlet weak var sleepButton: UIButton!
+    
+    @IBOutlet weak var moodButton: UIButton!
+    
+    @IBOutlet weak var medicalButton: UIButton!
+    
+    @IBOutlet weak var messageButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         print("button pressed")
@@ -18,13 +35,9 @@ class homeViewController: UIViewController {
     }
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
     
-
+    
+    
     /*
     // MARK: - Navigation
 
