@@ -7,18 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< Updated upstream
 		EB359B892741C379006B4FBB /* signupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB359B882741C379006B4FBB /* signupViewController.swift */; };
 		EB359B8B2741E15B006B4FBB /* journalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB359B8A2741E15B006B4FBB /* journalViewController.swift */; };
 		EBE099B72739B43000F056A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099B62739B43000F056A0 /* AppDelegate.swift */; };
 		EBE099B92739B43000F056A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099B82739B43000F056A0 /* SceneDelegate.swift */; };
 		EBE099BB2739B43000F056A0 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099BA2739B43000F056A0 /* loginViewController.swift */; };
+=======
+		EB166C8C27A2262B005EF910 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB166C8B27A2262B005EF910 /* SignUpViewController.swift */; };
+		EBE099B72739B43000F056A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099B62739B43000F056A0 /* AppDelegate.swift */; };
+		EBE099B92739B43000F056A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099B82739B43000F056A0 /* SceneDelegate.swift */; };
+		EBE099BB2739B43000F056A0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099BA2739B43000F056A0 /* LoginViewController.swift */; };
+>>>>>>> Stashed changes
 		EBE099BE2739B43000F056A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE099BC2739B43000F056A0 /* Main.storyboard */; };
 		EBE099C02739B43100F056A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE099BF2739B43100F056A0 /* Assets.xcassets */; };
 		EBE099C32739B43100F056A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE099C12739B43100F056A0 /* LaunchScreen.storyboard */; };
 		EBE099CE2739B43100F056A0 /* _21connect_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099CD2739B43100F056A0 /* _21connect_iosTests.swift */; };
 		EBE099D82739B43100F056A0 /* _21connect_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099D72739B43100F056A0 /* _21connect_iosUITests.swift */; };
 		EBE099DA2739B43100F056A0 /* _21connect_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099D92739B43100F056A0 /* _21connect_iosUITestsLaunchTests.swift */; };
+<<<<<<< Updated upstream
 		EBE099E72739BA2000F056A0 /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099E62739BA2000F056A0 /* homeViewController.swift */; };
+=======
+		EBE099E72739BA2000F056A0 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099E62739BA2000F056A0 /* HomeScreenViewController.swift */; };
+>>>>>>> Stashed changes
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,12 +50,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+<<<<<<< Updated upstream
 		EB359B882741C379006B4FBB /* signupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signupViewController.swift; sourceTree = "<group>"; };
 		EB359B8A2741E15B006B4FBB /* journalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = journalViewController.swift; sourceTree = "<group>"; };
 		EBE099B32739B43000F056A0 /* 321connect-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "321connect-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE099B62739B43000F056A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBE099B82739B43000F056A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EBE099BA2739B43000F056A0 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+=======
+		EB166C8B27A2262B005EF910 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		EBE099B32739B43000F056A0 /* 321connect-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "321connect-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBE099B62739B43000F056A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EBE099B82739B43000F056A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EBE099BA2739B43000F056A0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		EBE099BD2739B43000F056A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBE099BF2739B43100F056A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBE099C22739B43100F056A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,7 +73,11 @@
 		EBE099D32739B43100F056A0 /* 321connect-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "321connect-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE099D72739B43100F056A0 /* _21connect_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _21connect_iosUITests.swift; sourceTree = "<group>"; };
 		EBE099D92739B43100F056A0 /* _21connect_iosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _21connect_iosUITestsLaunchTests.swift; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		EBE099E62739BA2000F056A0 /* homeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
+=======
+		EBE099E62739BA2000F056A0 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,10 +131,16 @@
 				EBE099B62739B43000F056A0 /* AppDelegate.swift */,
 				EBE099B82739B43000F056A0 /* SceneDelegate.swift */,
 				EBE099BC2739B43000F056A0 /* Main.storyboard */,
+<<<<<<< Updated upstream
 				EBE099BA2739B43000F056A0 /* loginViewController.swift */,
 				EBE099E62739BA2000F056A0 /* homeViewController.swift */,
 				EB359B882741C379006B4FBB /* signupViewController.swift */,
 				EB359B8A2741E15B006B4FBB /* journalViewController.swift */,
+=======
+				EBE099BA2739B43000F056A0 /* LoginViewController.swift */,
+				EBE099E62739BA2000F056A0 /* HomeScreenViewController.swift */,
+				EB166C8B27A2262B005EF910 /* SignUpViewController.swift */,
+>>>>>>> Stashed changes
 				EBE099BF2739B43100F056A0 /* Assets.xcassets */,
 				EBE099C12739B43100F056A0 /* LaunchScreen.storyboard */,
 				EBE099C42739B43100F056A0 /* Info.plist */,
@@ -267,12 +296,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< Updated upstream
 				EBE099BB2739B43000F056A0 /* loginViewController.swift in Sources */,
 				EBE099E72739BA2000F056A0 /* homeViewController.swift in Sources */,
 				EB359B892741C379006B4FBB /* signupViewController.swift in Sources */,
+=======
+				EBE099BB2739B43000F056A0 /* LoginViewController.swift in Sources */,
+				EBE099E72739BA2000F056A0 /* HomeScreenViewController.swift in Sources */,
+>>>>>>> Stashed changes
 				EBE099B72739B43000F056A0 /* AppDelegate.swift in Sources */,
 				EB359B8B2741E15B006B4FBB /* journalViewController.swift in Sources */,
 				EBE099B92739B43000F056A0 /* SceneDelegate.swift in Sources */,
+				EB166C8C27A2262B005EF910 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
