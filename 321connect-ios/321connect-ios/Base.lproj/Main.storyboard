@@ -203,9 +203,6 @@
                                     <backgroundConfiguration key="background" image="Rectangle 9"/>
                                     <fontDescription key="titleFontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <segue destination="gG6-7y-bqh" kind="presentation" modalPresentationStyle="fullScreen" id="abr-XO-yXW"/>
-                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 1" translatesAutoresizingMaskIntoConstraints="NO" id="XOp-gG-5qO">
                                 <rect key="frame" x="-97" y="-25" width="609" height="911"/>
@@ -252,14 +249,6 @@
                                 <rect key="frame" x="110" y="581" width="220" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HeI-eN-2ue">
-                                <rect key="frame" x="346" y="494" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="double  arrows">
-                                    <backgroundConfiguration key="background" image="Ellipse 2"/>
-                                </buttonConfiguration>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zI-op-GHQ">
                                 <rect key="frame" x="170" y="802" width="75" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -807,25 +796,73 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Head Circumference" translatesAutoresizingMaskIntoConstraints="NO" id="BKW-cJ-br6">
-                                <rect key="frame" x="53" y="514" width="158" height="48"/>
+                                <rect key="frame" x="52" y="455" width="158" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Temperature" translatesAutoresizingMaskIntoConstraints="NO" id="gbZ-kX-wtJ">
-                                <rect key="frame" x="65" y="581" width="125" height="29"/>
+                                <rect key="frame" x="65" y="535" width="125" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Visit number" translatesAutoresizingMaskIntoConstraints="NO" id="M5Z-9d-eU2">
-                                <rect key="frame" x="65" y="615" width="133" height="59"/>
+                                <rect key="frame" x="65" y="590" width="133" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Documentation" translatesAutoresizingMaskIntoConstraints="NO" id="I6e-8g-8lg">
-                                <rect key="frame" x="68" y="664" width="163" height="61"/>
+                                <rect key="frame" x="68" y="657" width="163" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Weight" translatesAutoresizingMaskIntoConstraints="NO" id="rfa-zq-FP0">
-                                <rect key="frame" x="55" y="478" width="89" height="24"/>
+                                <rect key="frame" x="55" y="391" width="89" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iau-Xd-lCr">
+                                <rect key="frame" x="189" y="131" width="160" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S85-RW-fXp">
+                                <rect key="frame" x="189" y="186" width="160" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7lY-4a-9iu">
+                                <rect key="frame" x="189" y="245" width="160" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8TG-Qc-VfU">
+                                <rect key="frame" x="255" y="386" width="139" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hll-3g-Xyb">
+                                <rect key="frame" x="255" y="462" width="139" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t8F-ER-2dN">
+                                <rect key="frame" x="255" y="532" width="139" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GhS-bY-PFP">
+                                <rect key="frame" x="255" y="602" width="139" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ATE-dH-E3K">
+                                <rect key="frame" x="255" y="670" width="139" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ETX-Tn-n3o"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -833,7 +870,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmt-Qi-7Ih" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2571" y="-109"/>
+            <point key="canvasLocation" x="2569.5652173913045" y="-109.15178571428571"/>
         </scene>
         <!--Development View Controller-->
         <scene sceneID="YXI-7E-0Pt">
@@ -857,16 +894,8 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow" title=""/>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 26" translatesAutoresizingMaskIntoConstraints="NO" id="bwi-mn-6M9">
-                                <rect key="frame" x="20" y="451" width="203" height="116"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 25" translatesAutoresizingMaskIntoConstraints="NO" id="qQc-mZ-6g4">
                                 <rect key="frame" x="-36" y="127" width="326" height="380"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 28" translatesAutoresizingMaskIntoConstraints="NO" id="viu-s6-WkK">
-                                <rect key="frame" x="183" y="926" width="220" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 27" translatesAutoresizingMaskIntoConstraints="NO" id="nNU-O4-LP0">
@@ -917,6 +946,22 @@
                                 <rect key="frame" x="249" y="966" width="89" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xu2-21-XiG">
+                                <rect key="frame" x="20" y="495" width="203" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Update">
+                                    <fontDescription key="titleFontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="18"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3Q-Ji-uzQ">
+                                <rect key="frame" x="183" y="968" width="220" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Update">
+                                    <fontDescription key="titleFontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="18"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="U3S-wi-NaZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -925,7 +970,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idJ-rH-HFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="572" y="735"/>
+            <point key="canvasLocation" x="571.01449275362324" y="734.59821428571422"/>
         </scene>
         <!--Child Information View Controller-->
         <scene sceneID="3cB-uL-k7v">
@@ -1121,10 +1166,6 @@
                                 <rect key="frame" x="30" y="186" width="75" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 78" translatesAutoresizingMaskIntoConstraints="NO" id="a9d-gN-Cmw">
-                                <rect key="frame" x="38" y="207" width="339" height="166"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ate" translatesAutoresizingMaskIntoConstraints="NO" id="knN-FM-FJm">
                                 <rect key="frame" x="30" y="381" width="67" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1165,6 +1206,13 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save"/>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7y0-zp-siv">
+                                <rect key="frame" x="49" y="232" width="345" height="127"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KhC-zs-84r"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1172,7 +1220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xeg-Bf-hGN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-752" y="-109"/>
+            <point key="canvasLocation" x="-752.17391304347836" y="-109.15178571428571"/>
         </scene>
         <!--Feed2 View Controller-->
         <scene sceneID="rLr-dh-eSQ">
@@ -1208,12 +1256,8 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="Solid" title=""/>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 78" translatesAutoresizingMaskIntoConstraints="NO" id="xN4-xT-s9M">
-                                <rect key="frame" x="20" y="169" width="374" height="217"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Notes" translatesAutoresizingMaskIntoConstraints="NO" id="lNx-aY-gIN">
-                                <rect key="frame" x="32" y="191" width="75" height="66"/>
+                                <rect key="frame" x="32" y="174" width="75" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ate" translatesAutoresizingMaskIntoConstraints="NO" id="ZQO-xe-Ozz">
@@ -1262,6 +1306,13 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save"/>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q4s-Iw-sjC">
+                                <rect key="frame" x="49" y="228" width="345" height="134"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bjr-pA-8hx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1269,7 +1320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gaI-69-MjE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-142" y="-109"/>
+            <point key="canvasLocation" x="-142.02898550724638" y="-109.15178571428571"/>
         </scene>
         <!--Journal View Controller-->
         <scene sceneID="VJx-qC-vsa">
@@ -1349,10 +1400,6 @@
                                 <rect key="frame" x="-636" y="0.0" width="1686" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 22" translatesAutoresizingMaskIntoConstraints="NO" id="RMI-BT-FAQ">
-                                <rect key="frame" x="9" y="199" width="396" height="210"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Notes" translatesAutoresizingMaskIntoConstraints="NO" id="Uk2-5A-rhc">
                                 <rect key="frame" x="20" y="147" width="82" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1367,10 +1414,6 @@
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Duration" translatesAutoresizingMaskIntoConstraints="NO" id="ZPr-ux-Akw">
                                 <rect key="frame" x="20" y="626" width="100" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 23" translatesAutoresizingMaskIntoConstraints="NO" id="TgP-yB-i9C">
-                                <rect key="frame" x="24" y="677" width="146" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pfh-G7-bYj">
@@ -1389,6 +1432,19 @@
                                 <rect key="frame" x="149" y="25" width="116" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vhF-Rs-Rp3">
+                                <rect key="frame" x="24" y="691" width="146" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7j6-Rk-g06">
+                                <rect key="frame" x="20" y="235" width="370" height="266"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="q8a-Qq-rpv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1396,7 +1452,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDz-4e-1vU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1245" y="-109"/>
+            <point key="canvasLocation" x="1244.9275362318842" y="-109.15178571428571"/>
         </scene>
         <!--Bathroom1 View Controller-->
         <scene sceneID="fN5-e1-ExQ">
@@ -1422,10 +1478,6 @@
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Diaper" translatesAutoresizingMaskIntoConstraints="NO" id="nI5-zg-dCQ">
                                 <rect key="frame" x="20" y="122" width="154" height="82"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 45" translatesAutoresizingMaskIntoConstraints="NO" id="Pc8-Aw-zIW">
-                                <rect key="frame" x="-5" y="260" width="424" height="224"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Notes" translatesAutoresizingMaskIntoConstraints="NO" id="KgX-dq-TjE">
@@ -1470,6 +1522,13 @@
                                 <rect key="frame" x="254" y="700" width="140" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EcX-Nl-Doh">
+                                <rect key="frame" x="20" y="271" width="374" height="226"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MRc-Tq-aIk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1477,7 +1536,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QaF-To-UYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-752" y="1590"/>
+            <point key="canvasLocation" x="-752.17391304347836" y="1589.7321428571429"/>
         </scene>
         <!--Bathroom2 View Controller-->
         <scene sceneID="39T-mb-9PC">
@@ -1501,10 +1560,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow" title=""/>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 45" translatesAutoresizingMaskIntoConstraints="NO" id="Ghd-TB-Dj4">
-                                <rect key="frame" x="-9" y="259" width="432" height="228"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Notes" translatesAutoresizingMaskIntoConstraints="NO" id="5kX-gv-nE7">
                                 <rect key="frame" x="20" y="217" width="90" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1535,6 +1590,13 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save"/>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qW2-PV-vO4">
+                                <rect key="frame" x="20" y="265" width="374" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7C8-vp-MN0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1542,7 +1604,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Azk-3W-GKA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-88" y="1590"/>
+            <point key="canvasLocation" x="-88.405797101449281" y="1589.7321428571429"/>
         </scene>
         <!--Bathroom3 View Controller-->
         <scene sceneID="LPa-LN-Z7B">
@@ -1558,10 +1620,6 @@
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Bathroom" translatesAutoresizingMaskIntoConstraints="NO" id="9PH-zW-Vkw">
                                 <rect key="frame" x="138" y="21" width="138" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 45" translatesAutoresizingMaskIntoConstraints="NO" id="Rgh-CJ-Cul">
-                                <rect key="frame" x="-12" y="259" width="438" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Date of Last Stool" translatesAutoresizingMaskIntoConstraints="NO" id="4Tz-7O-DfB">
@@ -1590,6 +1648,13 @@
                                 <rect key="frame" x="20" y="214" width="100" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ow2-bf-wkd">
+                                <rect key="frame" x="20" y="265" width="374" height="248"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VRD-0t-Qye"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1597,7 +1662,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p0Q-tP-9O5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="572" y="1590"/>
+            <point key="canvasLocation" x="571.01449275362324" y="1589.7321428571429"/>
         </scene>
         <!--Message View Controller-->
         <scene sceneID="pv4-EF-Jxe">
@@ -1609,10 +1674,6 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 99" translatesAutoresizingMaskIntoConstraints="NO" id="Eru-cQ-dSf">
                                 <rect key="frame" x="-634" y="0.0" width="1682" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 22" translatesAutoresizingMaskIntoConstraints="NO" id="5NM-Ut-lfD">
-                                <rect key="frame" x="-38" y="201" width="490" height="262"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYF-3C-Ync">
@@ -1635,6 +1696,13 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow" title=""/>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4B7-KQ-jYg">
+                                <rect key="frame" x="20" y="201" width="374" height="262"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oYE-qp-hq3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1642,7 +1710,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DN9-VY-2UW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1246" y="836"/>
+            <point key="canvasLocation" x="1244.9275362318842" y="835.71428571428567"/>
         </scene>
         <!--Mood View Controller-->
         <scene sceneID="lQn-86-NHO">
@@ -1666,20 +1734,12 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow" title=""/>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 22" translatesAutoresizingMaskIntoConstraints="NO" id="ads-vH-beP">
-                                <rect key="frame" x="-44" y="241" width="502" height="266"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Notes" translatesAutoresizingMaskIntoConstraints="NO" id="pbl-Co-s2W">
                                 <rect key="frame" x="20" y="196" width="88" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 11" translatesAutoresizingMaskIntoConstraints="NO" id="xl8-xZ-iS0">
                                 <rect key="frame" x="-7" y="577" width="421" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 23" translatesAutoresizingMaskIntoConstraints="NO" id="IjG-ea-WNg">
-                                <rect key="frame" x="19" y="673" width="158" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Duration" translatesAutoresizingMaskIntoConstraints="NO" id="Ztw-JQ-eJj">
@@ -1696,6 +1756,19 @@
                                 <rect key="frame" x="36" y="584" width="99" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eue-i4-MzJ">
+                                <rect key="frame" x="23" y="241" width="371" height="266"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aeo-AO-PyE">
+                                <rect key="frame" x="19" y="697" width="158" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ujK-6l-I9J"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1703,7 +1776,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hqp-zV-Yvm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="570" y="-109"/>
+            <point key="canvasLocation" x="569.56521739130437" y="-109.15178571428571"/>
         </scene>
         <!--Sleep View Controller-->
         <scene sceneID="fi4-bH-6Wk">
@@ -1729,10 +1802,6 @@
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Went to sleep" translatesAutoresizingMaskIntoConstraints="NO" id="1I2-MO-r8x">
                                 <rect key="frame" x="20" y="156" width="178" height="94"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 91" translatesAutoresizingMaskIntoConstraints="NO" id="Fei-Bj-l7d">
-                                <rect key="frame" x="266" y="165" width="128" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Duration" translatesAutoresizingMaskIntoConstraints="NO" id="5xo-Rk-Hud">
@@ -1767,10 +1836,19 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save"/>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 22" translatesAutoresizingMaskIntoConstraints="NO" id="nCW-np-JwF">
-                                <rect key="frame" x="32" y="479" width="350" height="120"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W1m-mW-upI">
+                                <rect key="frame" x="20" y="457" width="374" height="209"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WQY-xf-VuO">
+                                <rect key="frame" x="246" y="186" width="148" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XNc-eK-sfd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1778,7 +1856,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Kd-ru-Z7Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="-109"/>
+            <point key="canvasLocation" x="1915.9420289855075" y="-109.15178571428571"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kFF-5S-bqL">
@@ -1811,7 +1889,7 @@
         <image name="Allergies" width="93" height="28"/>
         <image name="Amount of Fluid" width="149" height="24"/>
         <image name="Ate" width="38" height="24"/>
-        <image name="Bathroom" width="88" height="24"/>
+        <image name="Bathroom" width="102" height="28"/>
         <image name="Birthday" width="88" height="28"/>
         <image name="Blood Type" width="120" height="28"/>
         <image name="Boy" width="39" height="28"/>
@@ -1833,7 +1911,6 @@
         <image name="Due Date" width="95" height="28"/>
         <image name="Duration" width="91" height="28"/>
         <image name="Ellipse 1" width="90" height="90"/>
-        <image name="Ellipse 2" width="24" height="24"/>
         <image name="Ellipse 3" width="300" height="300"/>
         <image name="Ellipse 5" width="26" height="26"/>
         <image name="Ellipse 6" width="69" height="69"/>
@@ -1851,11 +1928,11 @@
         <image name="Line 22" width="316" height="10"/>
         <image name="Line 33" width="99" height="1"/>
         <image name="Login" width="58" height="28"/>
-        <image name="Message" width="76" height="24"/>
+        <image name="Message" width="105" height="33"/>
         <image name="Message-1" width="95" height="28"/>
         <image name="Mode of Eating" width="137" height="24"/>
         <image name="Mood" width="50" height="24"/>
-        <image name="Notes" width="59" height="24"/>
+        <image name="Notes" width="69" height="28"/>
         <image name="Open Air Accident" width="189" height="28"/>
         <image name="Parents-Caregivers" width="199" height="28"/>
         <image name="Path 1" width="537.5" height="435"/>
@@ -1883,29 +1960,22 @@
         <image name="Rectangle 19" width="262" height="94"/>
         <image name="Rectangle 20" width="160" height="94"/>
         <image name="Rectangle 21" width="337" height="241"/>
-        <image name="Rectangle 22" width="337" height="241"/>
-        <image name="Rectangle 23" width="117" height="39"/>
         <image name="Rectangle 24" width="368" height="478"/>
         <image name="Rectangle 25" width="291" height="342"/>
-        <image name="Rectangle 26" width="167" height="53"/>
         <image name="Rectangle 27" width="291" height="362"/>
-        <image name="Rectangle 28" width="167" height="53"/>
-        <image name="Rectangle 45" width="337" height="204"/>
         <image name="Rectangle 46" width="142" height="32"/>
         <image name="Rectangle 47" width="142" height="32"/>
         <image name="Rectangle 53" width="373" height="191"/>
         <image name="Rectangle 54" width="381" height="347"/>
         <image name="Rectangle 69" width="402" height="777"/>
-        <image name="Rectangle 78" width="323" height="131"/>
         <image name="Rectangle 79" width="15" height="15"/>
         <image name="Rectangle 80" width="15" height="15"/>
         <image name="Rectangle 81" width="15" height="15"/>
         <image name="Rectangle 9" width="190" height="57"/>
-        <image name="Rectangle 91" width="90" height="39"/>
         <image name="Rectangle 92" width="76" height="39"/>
         <image name="Rectangle 99" width="375" height="812"/>
         <image name="SIGN IN" width="77" height="26"/>
-        <image name="Select" width="63" height="28"/>
+        <image name="Select" width="54" height="24"/>
         <image name="Sign Up-1" width="76" height="26"/>
         <image name="Sleep" width="48" height="24"/>
         <image name="Social" width="61" height="28"/>
@@ -1921,7 +1991,6 @@
         <image name="arrow" width="34" height="26"/>
         <image name="arrow-2" width="17" height="13"/>
         <image name="cool rectangle" width="333" height="277"/>
-        <image name="double  arrows" width="18.5" height="16.5"/>
         <image name="email1@email.com" width="189" height="28"/>
         <image name="email2@email.com" width="191" height="28"/>
         <image name="radial grad 321 logo idea png" width="355.5" height="355.5"/>
