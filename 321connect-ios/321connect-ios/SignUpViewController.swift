@@ -8,11 +8,16 @@
 import Foundation
 import UIKit
 
-class SignUpViewController: UIViewController{
+class SignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+ 
+    // account table iboutlet variable declaration
+    @IBOutlet weak var accountTable: UITableView!
     
-    // sign up table view
-    @IBOutlet weak var signupTableView: UITableView!
+    let cellReuseIdentifier = "cell"
     
+    var db:DBHelper = DBHelper()
+    
+    var accounts:[Account] = []
     
     // signup vc local variables
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -22,12 +27,35 @@ class SignUpViewController: UIViewController{
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        accountTable.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        accountTable.delegate = self
+        accountTable.dataSource = self
+    
+        
     }
     
-    @IBAction func signupPressed(_ sender: Any) {
-        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return accounts.count
+    }
+    
+    //***************************************************************************check here
+    // output used to check input
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)!
+               cell.textLabel?.text = "Name: " + accounts[indexPath.row].firstName + " " + accounts[indexPath.row].lastName + ", " + "User: " + String(accounts[indexPath.row].userName)
+
+               return cell
+    }
+    //***************************************************************************
+    
+    // signup pressed confirm account information insertion
+    @IBAction func signupPressed(_ sender: UIButton) {
+        db.accountInsert(accountHolderID: 1, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, userName: usernameTextField.text!, passWord: passwordTextField.text!, confirmPassword: confirmPasswordTextField.text!,  phone: phoneNumberTextField.text!)
     }
     
     @IBAction func cancelPressed(_ sender: Any) {
@@ -35,5 +63,4 @@ class SignUpViewController: UIViewController{
         // return to login view controller (signup cancel button)
         dismiss(animated: true, completion: nil)
     }
-    
 }

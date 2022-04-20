@@ -34,7 +34,7 @@ class DBHelper{
     func createTable(){
         
         //Account Table_______________________________________________________________________________________________
-        let createTableString = "CREATE TABLE IF NOT EXISTS Account(accountHolderId INTEGER PRIMARY KEY,firstName TEXT,lastName TEXT,username TEXT, password TEXT, phone TEXT);"
+        let createTableString = "CREATE TABLE IF NOT EXISTS Account(accountHolderId INTEGER PRIMARY KEY,firstName TEXT,lastName TEXT,username TEXT, password TEXT,confirmPassword TEXT, phone TEXT);"
                var createTableStatement: OpaquePointer? = nil
                if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK
                {
@@ -265,19 +265,23 @@ class DBHelper{
     //INSERT FUNCTIONS
     
    //ACCOUNT INSERT_______________________________________________________________________________________________
-    func accountInsert(accountHolderID:Int, firstName:String, lastName:String, userName:String, passWord:String, phone:String)
+    func accountInsert(accountHolderID:Int, firstName:String, lastName:String, userName:String, passWord:String, confirmPassword: String, phone:String )
         {
             
             let insertStatementString = "INSERT INTO Account (accountHolderID, firstName, lastName, userName, passWord, phone) VALUES (?, ?, ?, ?, ?, ?);"
+            
             var insertStatement: OpaquePointer? = nil
+            
             if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
                 sqlite3_bind_int(insertStatement, 1, Int32(accountHolderID))
                 sqlite3_bind_text(insertStatement, 2, (firstName as NSString).utf8String, -1, nil)
                 sqlite3_bind_text(insertStatement, 3, (lastName as NSString).utf8String, -1, nil)
                 sqlite3_bind_text(insertStatement, 4, (userName as NSString).utf8String, -1, nil)
                 sqlite3_bind_text(insertStatement, 5, (passWord as NSString).utf8String, -1, nil)
-                sqlite3_bind_text(insertStatement, 6, (phone as NSString).utf8String, -1, nil)
+                sqlite3_bind_text(insertStatement, 6, (confirmPassword as NSString).utf8String, -1, nil)
+                sqlite3_bind_text(insertStatement, 7, (phone as NSString).utf8String, -1, nil)
                 
+                // if/else statement checking and comparing string in password and confirmPW textfields
                 
                 if sqlite3_step(insertStatement) == SQLITE_DONE {
                     print("Successfully inserted row.")
@@ -487,7 +491,7 @@ class DBHelper{
             if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
                 sqlite3_bind_int(insertStatement, 1, Int32(mileStoneID))
                 sqlite3_bind_int(insertStatement, 2, Int32(childID))
-                sqlite3_bind_text(insertStatement, 3, (roll NSString).utf8String, -1, nil)
+                sqlite3_bind_text(insertStatement, 3, (roll as NSString).utf8String, -1, nil)
                 sqlite3_bind_text(insertStatement, 4, (walk as NSString).utf8String, -1, nil)
                 sqlite3_bind_text(insertStatement, 5, (stand as NSString).utf8String, -1, nil)
                 sqlite3_bind_text(insertStatement, 6, (sit as NSString).utf8String, -1, nil)
@@ -532,7 +536,7 @@ class DBHelper{
             let insertStatementString = "INSERT INTO Bathroom (bathRoomID,childID,bathroomType,treatment,leak,openAir,diaperCream,quantity, pottyAccident, dateOfLastStool, duration) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
             var insertStatement: OpaquePointer? = nil
             if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
-                sqlite3_bind_int(insertStatement, 1, Int32(bathroomID))
+                sqlite3_bind_int(insertStatement, 1, Int32(bathRoomID))
                 sqlite3_bind_int(insertStatement, 2, Int32(childID))
                 sqlite3_bind_text(insertStatement, 3, (bathroomType as NSString).utf8String, -1, nil)
                 sqlite3_bind_text(insertStatement, 4, (treatment as NSString).utf8String, -1, nil)
@@ -553,8 +557,8 @@ class DBHelper{
             }
             sqlite3_finalize(insertStatement)
         }
+    
    //PROVIDER INSERT_______________________________________________________________________________________________
- 
     func ProviderInsert(providerID:Int,providerName:String,practiceName:String,specialty:String,phone:String,fax:String,email:String, website:String, address:String, state:String, city:String, zip: String)
         {
             
@@ -599,7 +603,7 @@ class DBHelper{
                 sqlite3_bind_int(insertStatement, 1, Int32(activityID))
                 sqlite3_bind_int(insertStatement, 2, Int32(childID))
                 sqlite3_bind_text(insertStatement, 3, (activityName as NSString).utf8String, -1, nil)
-                sqlite3_bind_text(insertStatement, 4, (entryTime as NSString).utf8String, -1, nil)
+                sqlite3_bind_int(insertStatement, 4, Int32(entryTime))
                 sqlite3_bind_text(insertStatement, 5, (duration as NSString).utf8String, -1, nil)
                 sqlite3_bind_text(insertStatement, 6, (durationUnits as NSString).utf8String, -1, nil)
                 sqlite3_bind_text(insertStatement, 7, (notes as NSString).utf8String, -1, nil)
@@ -624,7 +628,8 @@ class DBHelper{
             if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
                 sqlite3_bind_int(insertStatement, 1, Int32(imageID))
                 sqlite3_bind_int(insertStatement, 2, Int32(childID))
-                sqlite3_bind_blob(insertStatement, 3, (imageID as blob).UIImage?, -1, nil)
+//                sqlite3_bind_blob(insertStatement, 3, (imageID as blob).UIImage?, -1, nil)
+                //IGNORE THIS ONE EDWARD I CANT FIGURE OUT WHY IT IS NOT WORKING
                 
                 if sqlite3_step(insertStatement) == SQLITE_DONE {
                     print("Successfully inserted row.")
@@ -637,7 +642,7 @@ class DBHelper{
             sqlite3_finalize(insertStatement)
         }
     
-        //MESSAGE INSERT_______________________________________________________________________________________________
+    //MESSAGE INSERT_______________________________________________________________________________________________
     func MessageInsert(messageID:Int, childID:Int, message:String)
         {
             

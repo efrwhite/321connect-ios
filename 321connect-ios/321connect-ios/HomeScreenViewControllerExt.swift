@@ -35,7 +35,7 @@ class HomeScreenViewControllerExt: UIViewController {
     // all 12 buttons linked to ibaction
     @IBAction func buttonPressed(_ sender: UIButton) {
         
-        // switch to case (storyboard)
+        // switch to case to corresponding (storyboard)
         
     }
     
