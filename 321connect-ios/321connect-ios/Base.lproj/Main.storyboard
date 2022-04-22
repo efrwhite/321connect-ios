@@ -1883,7 +1883,7 @@
         <image name="321 Connect" width="216" height="47"/>
         <image name="Accident" width="91" height="28"/>
         <image name="Active Profile" width="140" height="28"/>
-        <image name="Activity" width="71" height="24"/>
+        <image name="Activity" width="82" height="28"/>
         <image name="Add Photo" width="94" height="24"/>
         <image name="Age" width="42" height="28"/>
         <image name="Allergies" width="93" height="28"/>
@@ -1900,10 +1900,10 @@
         <image name="Child first scribbles" width="132" height="18"/>
         <image name="Child first shows affection" width="179" height="18"/>
         <image name="Child first shows emotion" width="174" height="18"/>
-        <image name="Date" width="42" height="24"/>
+        <image name="Date" width="49" height="28"/>
         <image name="Date of Last Stool" width="182" height="28"/>
         <image name="Development" width="137" height="28"/>
-        <image name="Diaper" width="130" height="52"/>
+        <image name="Diaper" width="181" height="73"/>
         <image name="Diaper Cream" width="140" height="28"/>
         <image name="Diaper Leak" width="122" height="28"/>
         <image name="Doctor’s Visit" width="163" height="33"/>
@@ -1919,7 +1919,7 @@
         <image name="Girl" width="38" height="28"/>
         <image name="Head Circumference" width="157" height="56"/>
         <image name="Hello, Name" width="108" height="24"/>
-        <image name="Journal" width="75" height="28"/>
+        <image name="Journal" width="65" height="24"/>
         <image name="Line 17" width="1" height="26"/>
         <image name="Line 18" width="316" height="10"/>
         <image name="Line 19" width="316" height="10"/>
@@ -1928,7 +1928,7 @@
         <image name="Line 22" width="316" height="10"/>
         <image name="Line 33" width="99" height="1"/>
         <image name="Login" width="58" height="28"/>
-        <image name="Message" width="105" height="33"/>
+        <image name="Message" width="76" height="24"/>
         <image name="Message-1" width="95" height="28"/>
         <image name="Mode of Eating" width="137" height="24"/>
         <image name="Mood" width="50" height="24"/>
@@ -1964,7 +1964,7 @@
         <image name="Rectangle 25" width="291" height="342"/>
         <image name="Rectangle 27" width="291" height="362"/>
         <image name="Rectangle 46" width="142" height="32"/>
-        <image name="Rectangle 47" width="142" height="32"/>
+        <image name="Rectangle 47" width="71" height="32"/>
         <image name="Rectangle 53" width="373" height="191"/>
         <image name="Rectangle 54" width="381" height="347"/>
         <image name="Rectangle 69" width="402" height="777"/>
@@ -1975,7 +1975,7 @@
         <image name="Rectangle 92" width="76" height="39"/>
         <image name="Rectangle 99" width="375" height="812"/>
         <image name="SIGN IN" width="77" height="26"/>
-        <image name="Select" width="54" height="24"/>
+        <image name="Select" width="63" height="28"/>
         <image name="Sign Up-1" width="76" height="26"/>
         <image name="Sleep" width="48" height="24"/>
         <image name="Social" width="61" height="28"/>
