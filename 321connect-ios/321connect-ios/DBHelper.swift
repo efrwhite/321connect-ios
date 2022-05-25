@@ -34,7 +34,7 @@ class DBHelper{
     func createTable(){
         
         //Account Table_______________________________________________________________________________________________
-        let createTableString = "CREATE TABLE IF NOT EXISTS Account(accountHolderId INTEGER PRIMARY KEY,firstName TEXT,lastName TEXT,username TEXT, password TEXT,confirmPassword TEXT, phone TEXT);"
+        let createTableString = "CREATE TABLE IF NOT EXISTS Account(accountHolderId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,firstName TEXT,lastName TEXT,username TEXT, password TEXT,confirmPassword TEXT, phone TEXT);"
                var createTableStatement: OpaquePointer? = nil
                if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK
                {

@@ -13,14 +13,14 @@ class Account{
     var userName:String = ""
     var passWord:String = ""
     var confirmPassword:String = ""
-    var accountHolderID: Int = 0
+    var accountHolderID: Int = Primary Key AUTOINCREMENT // here
     var phone :String = ""
     
  
-    init (accountHolderID:Int, firstName:String, lastName:String,
+    init (firstName:String, lastName:String,
           userName:String, passWord:String, confirmPassword:String, phone:String){
         
-    self.accountHolderID = accountHolderID
+    self.accountHolderID += 1;
     self.firstName = firstName
     self.lastName  = lastName
     self.userName = userName
