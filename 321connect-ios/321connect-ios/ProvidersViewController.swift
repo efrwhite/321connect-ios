@@ -10,7 +10,56 @@ import UIKit
 
 class ProvidersViewController: UIViewController{
     
+    // db helper instance
+    var db:DBHelper = DBHelper()
+    
+    @IBOutlet weak var providerNameTextField: UITextField!
+    @IBOutlet weak var practiceNameTextField: UITextField!
+    @IBOutlet weak var specialtyTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var faxTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var websiteTextField: UITextField!
+    
+    // provider address
+    @IBOutlet weak var address1TextField: UITextField!
+    @IBOutlet weak var address2TextField: UITextField!
+    @IBOutlet weak var stateTextField: UITextField!
+    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var zipCodeTextField: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        providerNameTextField.delegate = self
+        practiceNameTextField.delegate = self
+        specialtyTextField.delegate = self
+        phoneTextField.delegate = self
+        faxTextField.delegate = self
+        emailTextField.delegate = self
+        websiteTextField.delegate = self
+        
+    }
+    
+    // intialize provider data to database
+    @IBAction func saveTapped(_ sender: UIButton) {
+        db.ProviderInsert(providerID: /*CHANGE*/1, providerName: providerNameTextField.text!, practiceName: practiceNameTextField.text!, specialty: specialtyTextField.text!, phone: phoneTextField.text!, fax: faxTextField.text!, email: emailTextField.text!, website: websiteTextField.text!, address: address1TextField.text!, /* ? address2 ? */ state: stateTextField.text!, city: cityTextField.text!, zip: zipCodeTextField.text!)
+    }
+    
+    // override function: touches outside of NUMBER keyboard will dismiss it
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        phoneTextField.resignFirstResponder()
+        
+    }
+}
+
+extension ProvidersViewController : UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true
     }
 }
