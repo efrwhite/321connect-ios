@@ -179,6 +179,47 @@
             </objects>
             <point key="canvasLocation" x="-2450.7246376811595" y="835.71428571428567"/>
         </scene>
+        <!--Profiles View Controller-->
+        <scene sceneID="9YN-Ks-uxU">
+            <objects>
+                <viewController id="NgR-07-Gpy" customClass="ProfilesViewController" customModule="_21connect_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HQ7-SM-4CX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sid-2E-Rkd">
+                                <rect key="frame" x="0.0" y="44" width="414" height="798"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="YIk-UY-3bx">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YIk-UY-3bx" id="6c6-gd-7RL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="NgR-07-Gpy" id="9df-MS-MHj"/>
+                                    <outlet property="delegate" destination="NgR-07-Gpy" id="v7Q-ee-NmU"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ui3-Ku-rQJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ui3-Ku-rQJ" firstAttribute="bottom" secondItem="sid-2E-Rkd" secondAttribute="bottom" id="Igk-iY-fK3"/>
+                            <constraint firstItem="sid-2E-Rkd" firstAttribute="top" secondItem="ui3-Ku-rQJ" secondAttribute="top" id="Khl-fQ-8cu"/>
+                            <constraint firstItem="sid-2E-Rkd" firstAttribute="leading" secondItem="ui3-Ku-rQJ" secondAttribute="leading" id="aM2-nZ-qAO"/>
+                            <constraint firstItem="ui3-Ku-rQJ" firstAttribute="trailing" secondItem="sid-2E-Rkd" secondAttribute="trailing" id="ncx-UB-BbN"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f6E-MF-e7u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1720" y="-656"/>
+        </scene>
         <!--Home Screen View Controller-->
         <scene sceneID="ymd-8u-wz6">
             <objects>
@@ -238,28 +279,8 @@
                                     <backgroundConfiguration key="background" image="Ellipse 1"/>
                                 </buttonConfiguration>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Mood" translatesAutoresizingMaskIntoConstraints="NO" id="ZwZ-Ql-RDx">
-                                <rect key="frame" x="89" y="451" width="61" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Medical" translatesAutoresizingMaskIntoConstraints="NO" id="pUh-ho-kU0">
-                                <rect key="frame" x="177" y="451" width="61" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Message" translatesAutoresizingMaskIntoConstraints="NO" id="ywC-qw-GI1">
-                                <rect key="frame" x="269" y="451" width="61" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Sleep" translatesAutoresizingMaskIntoConstraints="NO" id="3TJ-FH-jsJ">
                                 <rect key="frame" x="269" y="330" width="61" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Weight" translatesAutoresizingMaskIntoConstraints="NO" id="D9q-Ko-NYq">
-                                <rect key="frame" x="177" y="330" width="61" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Height" translatesAutoresizingMaskIntoConstraints="NO" id="WZY-eJ-Nwk">
-                                <rect key="frame" x="89" y="330" width="61" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmy-P7-1Pq">
@@ -296,6 +317,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="3 lines" title="">
                                     <backgroundConfiguration key="background" image="Ellipse 6"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="NgR-07-Gpy" kind="presentation" id="1Nz-I2-2XY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3er-FQ-ANv">
                                 <rect key="frame" x="174" y="401" width="67" height="31"/>
@@ -337,6 +361,9 @@
                         <viewLayoutGuide key="safeArea" id="EnQ-GX-kez"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="profilesButton" destination="7zI-op-GHQ" id="Dih-aK-jp1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="waf-mc-tWL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -474,6 +501,17 @@
                                     <action selector="buttonPressed:" destination="gG6-7y-bqh" eventType="touchUpInside" id="2UW-Ub-08x"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeg-oh-gDi">
+                                <rect key="frame" x="330" y="737" width="43" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="double  arrows">
+                                    <backgroundConfiguration key="background" image="Ellipse 2"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="J0y-wH-mks" kind="unwind" unwindAction="unwindToHomeScreenVCWithSegue:" id="3vo-eT-oFV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MTE-a6-Uwq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -495,8 +533,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="97S-tI-OSO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="J0y-wH-mks" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1720" y="836"/>
+            <point key="canvasLocation" x="-1720.289855072464" y="835.71428571428567"/>
         </scene>
         <!--Providers View Controller-->
         <scene sceneID="aaJ-al-Sr2">
@@ -1735,7 +1774,7 @@
         <image name="321 Connect" width="216" height="47"/>
         <image name="Accident" width="91" height="28"/>
         <image name="Active Profile" width="140" height="28"/>
-        <image name="Activity" width="71" height="24"/>
+        <image name="Activity" width="82" height="28"/>
         <image name="Add Photo" width="94" height="24"/>
         <image name="Address 1" width="87" height="24"/>
         <image name="Address 2" width="88" height="24"/>
@@ -1777,9 +1816,8 @@
         <image name="Fluid" width="51" height="28"/>
         <image name="Girl" width="38" height="28"/>
         <image name="Head Circumference" width="157" height="56"/>
-        <image name="Height" width="77" height="28"/>
         <image name="Hello, Name" width="108" height="24"/>
-        <image name="Journal" width="65" height="24"/>
+        <image name="Journal" width="75" height="28"/>
         <image name="Line 17" width="1" height="26"/>
         <image name="Line 18" width="316" height="10"/>
         <image name="Line 19" width="316" height="10"/>
@@ -1788,8 +1826,7 @@
         <image name="Line 22" width="316" height="10"/>
         <image name="Line 33" width="99" height="1"/>
         <image name="Login" width="58" height="28"/>
-        <image name="Medical" width="68" height="24"/>
-        <image name="Message" width="76" height="24"/>
+        <image name="Message" width="105" height="33"/>
         <image name="Message-1" width="95" height="28"/>
         <image name="Mode of Eating" width="137" height="24"/>
         <image name="Mood" width="50" height="24"/>
@@ -1805,7 +1842,7 @@
         <image name="Person 1" width="87" height="28"/>
         <image name="Person 2" width="89" height="28"/>
         <image name="Phone List" width="108" height="28"/>
-        <image name="Phone Number" width="146" height="26"/>
+        <image name="Phone Number" width="131" height="24"/>
         <image name="Please list any vitamins or supplements given with this feeding" width="335" height="38"/>
         <image name="Practice Name" width="127" height="24"/>
         <image name="Previous Entries" width="195" height="30"/>
@@ -1828,7 +1865,7 @@
         <image name="Rectangle 19" width="262" height="94"/>
         <image name="Rectangle 20" width="160" height="94"/>
         <image name="Rectangle 21" width="337" height="241"/>
-        <image name="Rectangle 22" width="337" height="123"/>
+        <image name="Rectangle 22" width="337" height="241"/>
         <image name="Rectangle 23" width="117" height="39"/>
         <image name="Rectangle 24" width="368" height="478"/>
         <image name="Rectangle 25" width="291" height="342"/>
@@ -1840,7 +1877,7 @@
         <image name="Rectangle 46" width="142" height="32"/>
         <image name="Rectangle 47" width="142" height="32"/>
         <image name="Rectangle 53" width="373" height="191"/>
-        <image name="Rectangle 54" width="381" height="347"/>
+        <image name="Rectangle 54" width="416" height="378"/>
         <image name="Rectangle 69" width="402" height="777"/>
         <image name="Rectangle 78" width="323" height="131"/>
         <image name="Rectangle 79" width="15" height="15"/>
@@ -1867,7 +1904,7 @@
         <image name="Verbal" width="67" height="28"/>
         <image name="Visit number" width="140" height="28"/>
         <image name="Website" width="72" height="24"/>
-        <image name="Weight" width="82" height="28"/>
+        <image name="Weight" width="64" height="24"/>
         <image name="Went to sleep" width="121" height="24"/>
         <image name="Zip Code" width="78" height="24"/>
         <image name="arrow" width="34" height="26"/>

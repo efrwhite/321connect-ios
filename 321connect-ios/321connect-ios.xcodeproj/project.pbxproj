@@ -27,6 +27,7 @@
 		EB3A328D27A362CC00B96417 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A328C27A362CC00B96417 /* SignUpViewController.swift */; };
 		EB51422927B76FDE0030EDB3 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB51422827B76FDE0030EDB3 /* HomeScreenViewController.swift */; };
 		EB6A17AE27AB645D0069428E /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A17AD27AB645D0069428E /* JournalViewController.swift */; };
+		EB7978182852D01800154969 /* ProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7978172852D01800154969 /* ProfilesViewController.swift */; };
 		EBBD569727ADEA42005121C8 /* ProvidersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */; };
 		EBBD569927ADEAE4005121C8 /* DevelopmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */; };
 		EBBD569B27ADFE2F005121C8 /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBD569A27ADFE2F005121C8 /* SleepViewController.swift */; };
@@ -81,6 +82,7 @@
 		EB3A328C27A362CC00B96417 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EB51422827B76FDE0030EDB3 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		EB6A17AD27AB645D0069428E /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
+		EB7978172852D01800154969 /* ProfilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesViewController.swift; sourceTree = "<group>"; };
 		EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidersViewController.swift; sourceTree = "<group>"; };
 		EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentViewController.swift; sourceTree = "<group>"; };
 		EBBD569A27ADFE2F005121C8 /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				EB3A328C27A362CC00B96417 /* SignUpViewController.swift */,
 				EB51422827B76FDE0030EDB3 /* HomeScreenViewController.swift */,
 				EBE099E62739BA2000F056A0 /* HomeScreenViewControllerExt.swift */,
+				EB7978172852D01800154969 /* ProfilesViewController.swift */,
 				EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */,
 				EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */,
 				EBBD569A27ADFE2F005121C8 /* SleepViewController.swift */,
@@ -346,6 +349,7 @@
 				EB35917727C83B1300FE651D /* Medical.swift in Sources */,
 				EB35918127C83B5400FE651D /* Image.swift in Sources */,
 				EB35918C27C9A14A00FE651D /* ChildInformationViewController.swift in Sources */,
+				EB7978182852D01800154969 /* ProfilesViewController.swift in Sources */,
 				EB35918927C83B9000FE651D /* DBHelper.swift in Sources */,
 				EB35917527C83AAE00FE651D /* Entry.swift in Sources */,
 				EBE099E72739BA2000F056A0 /* HomeScreenViewControllerExt.swift in Sources */,
