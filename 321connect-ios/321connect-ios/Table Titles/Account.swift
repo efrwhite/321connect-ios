@@ -13,7 +13,7 @@ class Account{
     var userName:String = ""
     var passWord:String = ""
     var confirmPassword:String = ""
-    var accountHolderID: Int = Primary Key AUTOINCREMENT // here
+    var accountHolderID: Int = 1 // here
     var phone :String = ""
     
  

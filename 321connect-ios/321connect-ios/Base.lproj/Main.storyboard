@@ -41,7 +41,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="enterPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RR3-Ou-pPh"/>
-                                    <segue destination="RMH-4o-CjA" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="bGp-15-ulQ"/>
+                                    <segue destination="mo8-27-eDf" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="bGp-15-ulQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZx-c8-JP1">
@@ -179,6 +179,59 @@
             </objects>
             <point key="canvasLocation" x="-2450.7246376811595" y="835.71428571428567"/>
         </scene>
+        <!--Profiles View Controller-->
+        <scene sceneID="9YN-Ks-uxU">
+            <objects>
+                <viewController id="NgR-07-Gpy" customClass="ProfilesViewController" customModule="_21connect_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HQ7-SM-4CX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sid-2E-Rkd" customClass="profilesTableView" customModule="_21connect_ios" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="Qot-4p-EAD" style="IBUITableViewCellStyleDefault" id="YIk-UY-3bx">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YIk-UY-3bx" id="6c6-gd-7RL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qot-4p-EAD">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="NgR-07-Gpy" id="9df-MS-MHj"/>
+                                    <outlet property="delegate" destination="NgR-07-Gpy" id="v7Q-ee-NmU"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ui3-Ku-rQJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ui3-Ku-rQJ" firstAttribute="bottom" secondItem="sid-2E-Rkd" secondAttribute="bottom" id="Igk-iY-fK3"/>
+                            <constraint firstItem="sid-2E-Rkd" firstAttribute="top" secondItem="ui3-Ku-rQJ" secondAttribute="top" id="Khl-fQ-8cu"/>
+                            <constraint firstItem="sid-2E-Rkd" firstAttribute="leading" secondItem="ui3-Ku-rQJ" secondAttribute="leading" id="aM2-nZ-qAO"/>
+                            <constraint firstItem="ui3-Ku-rQJ" firstAttribute="trailing" secondItem="sid-2E-Rkd" secondAttribute="trailing" id="ncx-UB-BbN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="profilesTableView" destination="sid-2E-Rkd" id="rwp-ez-BOk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f6E-MF-e7u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1720" y="-656"/>
+        </scene>
         <!--Home Screen View Controller-->
         <scene sceneID="ymd-8u-wz6">
             <objects>
@@ -202,9 +255,6 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
-                                <connections>
-                                    <segue destination="gG6-7y-bqh" kind="presentation" modalPresentationStyle="fullScreen" id="abr-XO-yXW"/>
-                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 1" translatesAutoresizingMaskIntoConstraints="NO" id="XOp-gG-5qO">
                                 <rect key="frame" x="-97" y="-25" width="609" height="911"/>
@@ -238,28 +288,8 @@
                                     <backgroundConfiguration key="background" image="Ellipse 1"/>
                                 </buttonConfiguration>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Mood" translatesAutoresizingMaskIntoConstraints="NO" id="ZwZ-Ql-RDx">
-                                <rect key="frame" x="89" y="451" width="61" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Medical" translatesAutoresizingMaskIntoConstraints="NO" id="pUh-ho-kU0">
-                                <rect key="frame" x="177" y="451" width="61" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Message" translatesAutoresizingMaskIntoConstraints="NO" id="ywC-qw-GI1">
-                                <rect key="frame" x="269" y="451" width="61" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Sleep" translatesAutoresizingMaskIntoConstraints="NO" id="3TJ-FH-jsJ">
                                 <rect key="frame" x="269" y="330" width="61" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Weight" translatesAutoresizingMaskIntoConstraints="NO" id="D9q-Ko-NYq">
-                                <rect key="frame" x="177" y="330" width="61" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Height" translatesAutoresizingMaskIntoConstraints="NO" id="WZY-eJ-Nwk">
-                                <rect key="frame" x="89" y="330" width="61" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmy-P7-1Pq">
@@ -288,6 +318,10 @@
                                 <buttonConfiguration key="configuration" style="plain" image="double  arrows">
                                     <backgroundConfiguration key="background" image="Ellipse 2"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="extentionButton:" destination="RMH-4o-CjA" eventType="touchUpInside" id="dY2-ha-Ycg"/>
+                                    <segue destination="gG6-7y-bqh" kind="presentation" id="kmx-VK-C5K"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zI-op-GHQ">
                                 <rect key="frame" x="170" y="725" width="75" height="83"/>
@@ -296,58 +330,95 @@
                                 <buttonConfiguration key="configuration" style="plain" image="3 lines" title="">
                                     <backgroundConfiguration key="background" image="Ellipse 6"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="NgR-07-Gpy" kind="presentation" modalPresentationStyle="fullScreen" id="99C-RL-JjJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3er-FQ-ANv">
-                                <rect key="frame" x="174" y="401" width="67" height="31"/>
+                                <rect key="frame" x="164" y="401" width="88" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="resources"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WjY-ah-myD">
-                                <rect key="frame" x="174" y="286" width="67" height="31"/>
+                                <rect key="frame" x="172" y="286" width="71" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="activity"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbu-2n-SO6">
-                                <rect key="frame" x="86" y="286" width="67" height="31"/>
+                                <rect key="frame" x="93" y="286" width="53" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="feed"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iI5-O4-fpj">
-                                <rect key="frame" x="266" y="401" width="67" height="31"/>
+                                <rect key="frame" x="263" y="401" width="75" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="medical"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZU-a5-KbE">
-                                <rect key="frame" x="266" y="286" width="67" height="31"/>
+                                <rect key="frame" x="270" y="286" width="59" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="sleep"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qjh-vh-Jtn">
-                                <rect key="frame" x="86" y="401" width="67" height="31"/>
+                                <rect key="frame" x="80" y="401" width="80" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="behavior"/>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Activity" translatesAutoresizingMaskIntoConstraints="NO" id="AC5-Ub-ZKs">
+                                <rect key="frame" x="162" y="317" width="88" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xUq-Ea-n0w">
+                                <rect key="frame" x="42" y="658" width="318" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Recent Entries"/>
+                                    <segment title="Summary"/>
+                                </segments>
+                            </segmentedControl>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Resources" translatesAutoresizingMaskIntoConstraints="NO" id="Ha0-4s-t7N">
+                                <rect key="frame" x="163" y="428" width="92" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Medical" translatesAutoresizingMaskIntoConstraints="NO" id="afM-Iq-IYV">
+                                <rect key="frame" x="266" y="434" width="68" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Feed" translatesAutoresizingMaskIntoConstraints="NO" id="lt0-ii-fMk">
+                                <rect key="frame" x="89" y="331" width="58" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EnQ-GX-kez"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="jCi-GS-WHK"/>
+                    <connections>
+                        <outlet property="activityButton" destination="WjY-ah-myD" id="1cI-FI-DNe"/>
+                        <outlet property="behaviorButton" destination="Qjh-vh-Jtn" id="QY7-cS-oqc"/>
+                        <outlet property="feedButton" destination="Lbu-2n-SO6" id="L1T-C8-IfC"/>
+                        <outlet property="medicalButton" destination="iI5-O4-fpj" id="sZY-OG-NLj"/>
+                        <outlet property="profilesButton" destination="7zI-op-GHQ" id="Dih-aK-jp1"/>
+                        <outlet property="resourcesButton" destination="3er-FQ-ANv" id="RNc-SG-PEa"/>
+                        <outlet property="sleepButton" destination="qZU-a5-KbE" id="7n2-bK-fsQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="waf-mc-tWL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1720" y="110"/>
+            <point key="canvasLocation" x="-810.14492753623199" y="109.82142857142857"/>
         </scene>
         <!--Home Screen View Controller Ext-->
         <scene sceneID="SMx-yh-hbk">
             <objects>
                 <viewController storyboardIdentifier="HomeScreenViewControllerExt" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gG6-7y-bqh" customClass="HomeScreenViewControllerExt" customModule="_21connect_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WdF-4W-5Kd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 1" translatesAutoresizingMaskIntoConstraints="NO" id="5PE-pw-LQa">
@@ -376,7 +447,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTf-OI-mZQ">
-                                <rect key="frame" x="167" y="354" width="88" height="31"/>
+                                <rect key="frame" x="168" y="354" width="88" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="resources"/>
@@ -403,46 +474,46 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9b-6r-KJD">
-                                <rect key="frame" x="66" y="354" width="61" height="31"/>
+                                <rect key="frame" x="57" y="354" width="80" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="mood"/>
+                                <buttonConfiguration key="configuration" style="filled" title="behavior"/>
                                 <connections>
                                     <action selector="buttonPressed:" destination="gG6-7y-bqh" eventType="touchUpInside" id="4zD-4o-2Yt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bbe-kl-j5x">
-                                <rect key="frame" x="278" y="354" width="82" height="31"/>
+                                <rect key="frame" x="282" y="354" width="75" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="message"/>
+                                <buttonConfiguration key="configuration" style="filled" title="medical"/>
                                 <connections>
                                     <action selector="buttonPressed:" destination="gG6-7y-bqh" eventType="touchUpInside" id="NGb-Td-LW8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMl-5n-2np">
-                                <rect key="frame" x="54" y="488" width="87" height="31"/>
+                                <rect key="frame" x="57" y="488" width="82" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="bathroom"/>
+                                <buttonConfiguration key="configuration" style="filled" title="message"/>
                                 <connections>
                                     <action selector="buttonPressed:" destination="gG6-7y-bqh" eventType="touchUpInside" id="a1r-5k-05a"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2bz-au-fOR">
-                                <rect key="frame" x="172" y="488" width="75" height="31"/>
+                                <rect key="frame" x="156" y="488" width="108" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="medical"/>
+                                <buttonConfiguration key="configuration" style="filled" title="development"/>
                                 <connections>
                                     <action selector="buttonPressed:" destination="gG6-7y-bqh" eventType="touchUpInside" id="D7J-Ke-3iS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIN-Sb-O07">
-                                <rect key="frame" x="265" y="488" width="108" height="31"/>
+                                <rect key="frame" x="276" y="488" width="87" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="development"/>
+                                <buttonConfiguration key="configuration" style="filled" title="bathroom"/>
                                 <connections>
                                     <action selector="buttonPressed:" destination="gG6-7y-bqh" eventType="touchUpInside" id="uYH-Ie-1OO"/>
                                 </connections>
@@ -457,21 +528,32 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbH-Dw-Bqj">
-                                <rect key="frame" x="66" y="631" width="62" height="31"/>
+                                <rect key="frame" x="63" y="631" width="68" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="photo"/>
+                                <buttonConfiguration key="configuration" style="filled" title="journal"/>
                                 <connections>
                                     <action selector="buttonPressed:" destination="gG6-7y-bqh" eventType="touchUpInside" id="AUQ-oc-NcL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sfr-2d-dMZ">
-                                <rect key="frame" x="175" y="631" width="68" height="31"/>
+                                <rect key="frame" x="161" y="631" width="96" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="journal"/>
+                                <buttonConfiguration key="configuration" style="filled" title="medication"/>
                                 <connections>
                                     <action selector="buttonPressed:" destination="gG6-7y-bqh" eventType="touchUpInside" id="2UW-Ub-08x"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeg-oh-gDi">
+                                <rect key="frame" x="330" y="737" width="43" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="double  arrows">
+                                    <backgroundConfiguration key="background" image="Ellipse 2"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="J0y-wH-mks" kind="unwind" unwindAction="unwindToHomeScreenVCWithSegue:" id="3vo-eT-oFV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -481,22 +563,23 @@
                     <navigationItem key="navigationItem" id="HTT-Fu-Vea"/>
                     <connections>
                         <outlet property="activityButton" destination="5wU-X1-vwL" id="Vbp-JK-JBM"/>
-                        <outlet property="bathroomButton" destination="UMl-5n-2np" id="GI5-sN-b9q"/>
-                        <outlet property="developmentButton" destination="HIN-Sb-O07" id="TTs-mF-RkX"/>
-                        <outlet property="feedButton" destination="Ulr-UQ-fIG" id="dUg-QC-xa7"/>
-                        <outlet property="journalButton" destination="Sfr-2d-dMZ" id="Q84-64-1cs"/>
-                        <outlet property="medicalButton" destination="2bz-au-fOR" id="Ff5-jh-a2F"/>
-                        <outlet property="messageButton" destination="Bbe-kl-j5x" id="bDP-Dx-QIf"/>
-                        <outlet property="moodButton" destination="Q9b-6r-KJD" id="SIN-hY-spn"/>
-                        <outlet property="photoButton" destination="TbH-Dw-Bqj" id="Chk-yr-Po6"/>
+                        <outlet property="bathroomButton" destination="HIN-Sb-O07" id="DyR-y5-YPX"/>
+                        <outlet property="behaviorButton" destination="Q9b-6r-KJD" id="ThS-XB-fDn"/>
+                        <outlet property="developmentButton" destination="2bz-au-fOR" id="uUn-0O-z5t"/>
+                        <outlet property="feedButton" destination="Ulr-UQ-fIG" id="ERt-Yq-I6f"/>
+                        <outlet property="journalButton" destination="TbH-Dw-Bqj" id="6m6-0H-pkg"/>
+                        <outlet property="medicalButton" destination="Bbe-kl-j5x" id="w7W-Rw-lu4"/>
+                        <outlet property="medicationButton" destination="Sfr-2d-dMZ" id="NNA-ff-b7N"/>
+                        <outlet property="messageButton" destination="UMl-5n-2np" id="UBJ-me-DOZ"/>
                         <outlet property="resourcesButton" destination="XTf-OI-mZQ" id="JwJ-1F-XrT"/>
                         <outlet property="signInOutButton" destination="deL-J6-vml" id="CSO-2D-CPb"/>
                         <outlet property="sleepButton" destination="eVh-1b-Vsm" id="uc2-tH-8lb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="97S-tI-OSO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="J0y-wH-mks" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1720" y="836"/>
+            <point key="canvasLocation" x="-1720.289855072464" y="835.71428571428567"/>
         </scene>
         <!--Providers View Controller-->
         <scene sceneID="aaJ-al-Sr2">
@@ -787,7 +870,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmt-Qi-7Ih" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2571" y="-109"/>
+            <point key="canvasLocation" x="3479.7101449275365" y="-109.15178571428571"/>
         </scene>
         <!--Development View Controller-->
         <scene sceneID="YXI-7E-0Pt">
@@ -879,7 +962,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idJ-rH-HFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="572" y="735"/>
+            <point key="canvasLocation" x="2099" y="798"/>
         </scene>
         <!--Child Information View Controller-->
         <scene sceneID="3cB-uL-k7v">
@@ -1102,7 +1185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xeg-Bf-hGN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-752" y="-109"/>
+            <point key="canvasLocation" x="157.97101449275362" y="-109.15178571428571"/>
         </scene>
         <!--Feed Solid View Controller-->
         <scene sceneID="rLr-dh-eSQ">
@@ -1199,7 +1282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gaI-69-MjE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-142" y="-109"/>
+            <point key="canvasLocation" x="768.11594202898561" y="-109.15178571428571"/>
         </scene>
         <!--Journal View Controller-->
         <scene sceneID="VJx-qC-vsa">
@@ -1326,7 +1409,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDz-4e-1vU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1245" y="-109"/>
+            <point key="canvasLocation" x="2155.072463768116" y="-109.15178571428571"/>
         </scene>
         <!--Bathroom1 View Controller-->
         <scene sceneID="fN5-e1-ExQ">
@@ -1633,7 +1716,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hqp-zV-Yvm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="570" y="-109"/>
+            <point key="canvasLocation" x="1479.7101449275362" y="-109.15178571428571"/>
         </scene>
         <!--Sleep View Controller-->
         <scene sceneID="fi4-bH-6Wk">
@@ -1708,7 +1791,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Kd-ru-Z7Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="-109"/>
+            <point key="canvasLocation" x="2826.0869565217395" y="-109.15178571428571"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kFF-5S-bqL">
@@ -1728,6 +1811,24 @@
             </objects>
             <point key="canvasLocation" x="-3938" y="110"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3AB-Gy-Bgl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mo8-27-eDf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="age-Rv-BOq">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RMH-4o-CjA" kind="relationship" relationship="rootViewController" id="uER-kj-w20"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DEu-wj-ri6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1720.289855072464" y="109.82142857142857"/>
+        </scene>
     </scenes>
     <resources>
         <image name="(000) 000-0" width="165" height="28"/>
@@ -1735,7 +1836,7 @@
         <image name="321 Connect" width="216" height="47"/>
         <image name="Accident" width="91" height="28"/>
         <image name="Active Profile" width="140" height="28"/>
-        <image name="Activity" width="71" height="24"/>
+        <image name="Activity" width="82" height="28"/>
         <image name="Add Photo" width="94" height="24"/>
         <image name="Address 1" width="87" height="24"/>
         <image name="Address 2" width="88" height="24"/>
@@ -1777,9 +1878,8 @@
         <image name="Fluid" width="51" height="28"/>
         <image name="Girl" width="38" height="28"/>
         <image name="Head Circumference" width="157" height="56"/>
-        <image name="Height" width="77" height="28"/>
         <image name="Hello, Name" width="108" height="24"/>
-        <image name="Journal" width="65" height="24"/>
+        <image name="Journal" width="75" height="28"/>
         <image name="Line 17" width="1" height="26"/>
         <image name="Line 18" width="316" height="10"/>
         <image name="Line 19" width="316" height="10"/>
@@ -1789,7 +1889,7 @@
         <image name="Line 33" width="99" height="1"/>
         <image name="Login" width="58" height="28"/>
         <image name="Medical" width="68" height="24"/>
-        <image name="Message" width="76" height="24"/>
+        <image name="Message" width="105" height="33"/>
         <image name="Message-1" width="95" height="28"/>
         <image name="Mode of Eating" width="137" height="24"/>
         <image name="Mood" width="50" height="24"/>
@@ -1805,7 +1905,7 @@
         <image name="Person 1" width="87" height="28"/>
         <image name="Person 2" width="89" height="28"/>
         <image name="Phone List" width="108" height="28"/>
-        <image name="Phone Number" width="146" height="26"/>
+        <image name="Phone Number" width="131" height="24"/>
         <image name="Please list any vitamins or supplements given with this feeding" width="335" height="38"/>
         <image name="Practice Name" width="127" height="24"/>
         <image name="Previous Entries" width="195" height="30"/>
@@ -1828,7 +1928,7 @@
         <image name="Rectangle 19" width="262" height="94"/>
         <image name="Rectangle 20" width="160" height="94"/>
         <image name="Rectangle 21" width="337" height="241"/>
-        <image name="Rectangle 22" width="337" height="123"/>
+        <image name="Rectangle 22" width="337" height="241"/>
         <image name="Rectangle 23" width="117" height="39"/>
         <image name="Rectangle 24" width="368" height="478"/>
         <image name="Rectangle 25" width="291" height="342"/>
@@ -1840,7 +1940,7 @@
         <image name="Rectangle 46" width="142" height="32"/>
         <image name="Rectangle 47" width="142" height="32"/>
         <image name="Rectangle 53" width="373" height="191"/>
-        <image name="Rectangle 54" width="381" height="347"/>
+        <image name="Rectangle 54" width="416" height="378"/>
         <image name="Rectangle 69" width="402" height="777"/>
         <image name="Rectangle 78" width="323" height="131"/>
         <image name="Rectangle 79" width="15" height="15"/>
@@ -1850,6 +1950,7 @@
         <image name="Rectangle 91" width="90" height="39"/>
         <image name="Rectangle 92" width="76" height="39"/>
         <image name="Rectangle 99" width="375" height="812"/>
+        <image name="Resources" width="90" height="24"/>
         <image name="SIGN IN" width="77" height="26"/>
         <image name="Select" width="54" height="24"/>
         <image name="Sign Up-1" width="76" height="26"/>
@@ -1867,7 +1968,7 @@
         <image name="Verbal" width="67" height="28"/>
         <image name="Visit number" width="140" height="28"/>
         <image name="Website" width="72" height="24"/>
-        <image name="Weight" width="82" height="28"/>
+        <image name="Weight" width="64" height="24"/>
         <image name="Went to sleep" width="121" height="24"/>
         <image name="Zip Code" width="78" height="24"/>
         <image name="arrow" width="34" height="26"/>

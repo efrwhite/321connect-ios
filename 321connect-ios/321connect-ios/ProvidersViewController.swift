@@ -43,7 +43,35 @@ class ProvidersViewController: UIViewController{
     
     // intialize provider data to database
     @IBAction func saveTapped(_ sender: UIButton) {
-        db.ProviderInsert(providerID: /*CHANGE*/1, providerName: providerNameTextField.text!, practiceName: practiceNameTextField.text!, specialty: specialtyTextField.text!, phone: phoneTextField.text!, fax: faxTextField.text!, email: emailTextField.text!, website: websiteTextField.text!, address: address1TextField.text!, /* ? address2 ? */ state: stateTextField.text!, city: cityTextField.text!, zip: zipCodeTextField.text!)
+        
+        let provider = providerNameTextField.text!
+        let practice = practiceNameTextField.text!
+        let specialty = specialtyTextField.text!
+        let phone = phoneTextField.text!
+        let fax = faxTextField.text!
+        let email = emailTextField.text!
+        let website = websiteTextField.text!
+        let address = address1TextField.text!
+        let state = stateTextField.text!
+        let city = cityTextField.text!
+        let zip = zipCodeTextField.text!
+        
+        /* debug check: verify correct data catch */
+        print("NAME: \(provider)")
+        print("PRACTICE: \(practice)")
+        print("SPECIALTY: \(specialty)")
+        print("PHONE: \(phone)")
+        print("FAX: \(fax)")
+        print("EMAIL: \(email)")
+        print("WEBSITE: \(website)")
+        print("*** ADDRESS ***")
+        print("\(address)")
+        print("\(state)")
+        print("\(city)")
+        print("\(zip)")
+
+        // use variables to input into database
+//        db.ProviderInsert(providerID: /*CHANGE*/1, providerName: providerNameTextField.text!, practiceName: practiceNameTextField.text!, specialty: specialtyTextField.text!, phone: phoneTextField.text!, fax: faxTextField.text!, email: emailTextField.text!, website: websiteTextField.text!, address: address1TextField.text!, /* ? address2 ? */ state: stateTextField.text!, city: cityTextField.text!, zip: zipCodeTextField.text!)
     }
     
     // override function: touches outside of NUMBER keyboard will dismiss it

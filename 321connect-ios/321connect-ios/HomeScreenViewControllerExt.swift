@@ -10,18 +10,18 @@ import UIKit
 
 class HomeScreenViewControllerExt: UIViewController {
 
-    // homescreen vc local variables
+    // homescreen(ext) vc local variables
     @IBOutlet weak var feedButton: UIButton!
     @IBOutlet weak var activityButton: UIButton!
     @IBOutlet weak var sleepButton: UIButton!
-    @IBOutlet weak var moodButton: UIButton!
+    @IBOutlet weak var behaviorButton: UIButton!
     @IBOutlet weak var resourcesButton: UIButton!
-    @IBOutlet weak var messageButton: UIButton!
-    @IBOutlet weak var bathroomButton: UIButton!
     @IBOutlet weak var medicalButton: UIButton!
+    @IBOutlet weak var messageButton: UIButton!
     @IBOutlet weak var developmentButton: UIButton!
-    @IBOutlet weak var photoButton: UIButton!
+    @IBOutlet weak var bathroomButton: UIButton!
     @IBOutlet weak var journalButton: UIButton!
+    @IBOutlet weak var medicationButton: UIButton!
     @IBOutlet weak var signInOutButton: UIButton!
     
     
@@ -35,9 +35,11 @@ class HomeScreenViewControllerExt: UIViewController {
     // all 12 buttons linked to ibaction
     @IBAction func buttonPressed(_ sender: UIButton) {
         
-        // switch to case to corresponding (storyboard)
+        /* switch to case to corresponding (storyboard)
+            manual segues used */
         
     }
+    
     
 
     /*
