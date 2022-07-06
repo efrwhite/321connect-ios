@@ -206,6 +206,7 @@
 				EB35918B27C9A14A00FE651D /* ChildInformationViewController.swift */,
 				EB6A17AD27AB645D0069428E /* JournalViewController.swift */,
 				EB35918827C83B9000FE651D /* DBHelper.swift */,
+				FEC1588B28654A6600A46593 /* MessageView.swift */,
 				EB35918A27C8407B00FE651D /* Table Titles */,
 				EBE099BF2739B43100F056A0 /* Assets.xcassets */,
 				EBE099C12739B43100F056A0 /* LaunchScreen.storyboard */,
@@ -392,6 +393,7 @@
 				EB24C860285BE06600D7922A /* FeedViewController.swift in Sources */,
 				EB35917D27C83B3C00FE651D /* Provider.swift in Sources */,
 				EBBD569B27ADFE2F005121C8 /* SleepViewController.swift in Sources */,
+				FEC1588C28654A6600A46593 /* MessageView.swift in Sources */,
 				EB6A17AE27AB645D0069428E /* JournalViewController.swift in Sources */,
 				EB3A328D27A362CC00B96417 /* SignUpViewController.swift in Sources */,
 				EB35918327C83B6000FE651D /* Message.swift in Sources */,
@@ -573,9 +575,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HJ578KXY67;
+				DEVELOPMENT_TEAM = AJ84Q69AHZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "321connect-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -588,8 +591,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ladiaeg.-21connect-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "Brianna-321connectIdentifier";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -601,9 +605,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HJ578KXY67;
+				DEVELOPMENT_TEAM = AJ84Q69AHZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "321connect-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -616,8 +621,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ladiaeg.-21connect-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "Brianna-321connectIdentifier";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
