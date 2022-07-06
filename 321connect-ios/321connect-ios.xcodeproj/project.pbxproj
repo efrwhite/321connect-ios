@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB24C860285BE06600D7922A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C85F285BE06600D7922A /* FeedViewController.swift */; };
+		EB24C866285D061700D7922A /* FluidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C865285D061700D7922A /* FluidView.swift */; };
+		EB24C868285D309700D7922A /* SolidFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C867285D309700D7922A /* SolidFeedViewController.swift */; };
+		EB24C86A285D30CC00D7922A /* FluidFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C869285D30CC00D7922A /* FluidFeedViewController.swift */; };
+		EB24C86C286656C200D7922A /* MoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C86B286656C100D7922A /* MoodViewController.swift */; };
 		EB35916B27C839A000FE651D /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35916A27C839A000FE651D /* Account.swift */; };
 		EB35916D27C839EC00FE651D /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35916C27C839EC00FE651D /* Child.swift */; };
 		EB35916F27C83A3E00FE651D /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35916E27C83A3E00FE651D /* Feed.swift */; };
@@ -42,7 +47,7 @@
 		EBE099D82739B43100F056A0 /* _21connect_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099D72739B43100F056A0 /* _21connect_iosUITests.swift */; };
 		EBE099DA2739B43100F056A0 /* _21connect_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099D92739B43100F056A0 /* _21connect_iosUITestsLaunchTests.swift */; };
 		EBE099E72739BA2000F056A0 /* HomeScreenViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099E62739BA2000F056A0 /* HomeScreenViewControllerExt.swift */; };
-		FEC1588C28654A6600A46593 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC1588B28654A6600A46593 /* MessageView.swift */; };
+		EBE1EF1C287248BA00605F93 /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1EF1B287248BA00605F93 /* ResourcesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +68,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EB24C85F285BE06600D7922A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		EB24C865285D061700D7922A /* FluidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluidView.swift; sourceTree = "<group>"; };
+		EB24C867285D309700D7922A /* SolidFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidFeedViewController.swift; sourceTree = "<group>"; };
+		EB24C869285D30CC00D7922A /* FluidFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluidFeedViewController.swift; sourceTree = "<group>"; };
+		EB24C86B286656C100D7922A /* MoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewController.swift; sourceTree = "<group>"; };
 		EB35916A27C839A000FE651D /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		EB35916C27C839EC00FE651D /* Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child.swift; sourceTree = "<group>"; };
 		EB35916E27C83A3E00FE651D /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
@@ -102,7 +112,7 @@
 		EBE099D72739B43100F056A0 /* _21connect_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _21connect_iosUITests.swift; sourceTree = "<group>"; };
 		EBE099D92739B43100F056A0 /* _21connect_iosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _21connect_iosUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EBE099E62739BA2000F056A0 /* HomeScreenViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewControllerExt.swift; sourceTree = "<group>"; };
-		FEC1588B28654A6600A46593 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		EBE1EF1B287248BA00605F93 /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +191,12 @@
 				EBE099BA2739B43000F056A0 /* LoginViewController.swift */,
 				EB3A328C27A362CC00B96417 /* SignUpViewController.swift */,
 				EB51422827B76FDE0030EDB3 /* HomeScreenViewController.swift */,
+				EBE1EF1B287248BA00605F93 /* ResourcesViewController.swift */,
+				EB24C85F285BE06600D7922A /* FeedViewController.swift */,
+				EB24C869285D30CC00D7922A /* FluidFeedViewController.swift */,
+				EB24C867285D309700D7922A /* SolidFeedViewController.swift */,
+				EB24C865285D061700D7922A /* FluidView.swift */,
+				EB24C86B286656C100D7922A /* MoodViewController.swift */,
 				EBE099E62739BA2000F056A0 /* HomeScreenViewControllerExt.swift */,
 				EB7978172852D01800154969 /* ProfilesViewController.swift */,
 				EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */,
@@ -353,9 +369,11 @@
 				EB35918127C83B5400FE651D /* Image.swift in Sources */,
 				EB35918C27C9A14A00FE651D /* ChildInformationViewController.swift in Sources */,
 				EB7978182852D01800154969 /* ProfilesViewController.swift in Sources */,
+				EB24C868285D309700D7922A /* SolidFeedViewController.swift in Sources */,
 				EB35918927C83B9000FE651D /* DBHelper.swift in Sources */,
 				EB35917527C83AAE00FE651D /* Entry.swift in Sources */,
 				EBE099E72739BA2000F056A0 /* HomeScreenViewControllerExt.swift in Sources */,
+				EBE1EF1C287248BA00605F93 /* ResourcesViewController.swift in Sources */,
 				EBE099B72739B43000F056A0 /* AppDelegate.swift in Sources */,
 				EB35916F27C83A3E00FE651D /* Feed.swift in Sources */,
 				EBBD569D27AE034B005121C8 /* ActivityViewController.swift in Sources */,
@@ -364,11 +382,15 @@
 				EB35917927C83B2200FE651D /* Milestone.swift in Sources */,
 				EB51422927B76FDE0030EDB3 /* HomeScreenViewController.swift in Sources */,
 				EBBD569927ADEAE4005121C8 /* DevelopmentViewController.swift in Sources */,
+				EB24C866285D061700D7922A /* FluidView.swift in Sources */,
+				EB24C86A285D30CC00D7922A /* FluidFeedViewController.swift in Sources */,
 				EBE099B92739B43000F056A0 /* SceneDelegate.swift in Sources */,
+				EB24C86C286656C200D7922A /* MoodViewController.swift in Sources */,
 				EB35917B27C83B2F00FE651D /* Bathroom.swift in Sources */,
 				EB35918727C83B8200FE651D /* Medication.swift in Sources */,
 				EB35917127C83A7800FE651D /* Mood.swift in Sources */,
 				EB35916D27C839EC00FE651D /* Child.swift in Sources */,
+				EB24C860285BE06600D7922A /* FeedViewController.swift in Sources */,
 				EB35917D27C83B3C00FE651D /* Provider.swift in Sources */,
 				EBBD569B27ADFE2F005121C8 /* SleepViewController.swift in Sources */,
 				FEC1588C28654A6600A46593 /* MessageView.swift in Sources */,
