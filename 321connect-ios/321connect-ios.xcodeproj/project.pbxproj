@@ -48,6 +48,7 @@
 		EBE099DA2739B43100F056A0 /* _21connect_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099D92739B43100F056A0 /* _21connect_iosUITestsLaunchTests.swift */; };
 		EBE099E72739BA2000F056A0 /* HomeScreenViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099E62739BA2000F056A0 /* HomeScreenViewControllerExt.swift */; };
 		EBE1EF1C287248BA00605F93 /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1EF1B287248BA00605F93 /* ResourcesViewController.swift */; };
+		EBE1EF5A287CCDF700605F93 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1EF59287CCDF700605F93 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		EBE099D92739B43100F056A0 /* _21connect_iosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _21connect_iosUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EBE099E62739BA2000F056A0 /* HomeScreenViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewControllerExt.swift; sourceTree = "<group>"; };
 		EBE1EF1B287248BA00605F93 /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
+		EBE1EF59287CCDF700605F93 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,13 +193,14 @@
 				EBE099BA2739B43000F056A0 /* LoginViewController.swift */,
 				EB3A328C27A362CC00B96417 /* SignUpViewController.swift */,
 				EB51422827B76FDE0030EDB3 /* HomeScreenViewController.swift */,
+				EBE099E62739BA2000F056A0 /* HomeScreenViewControllerExt.swift */,
 				EBE1EF1B287248BA00605F93 /* ResourcesViewController.swift */,
+				EBE1EF59287CCDF700605F93 /* WebViewController.swift */,
 				EB24C85F285BE06600D7922A /* FeedViewController.swift */,
 				EB24C869285D30CC00D7922A /* FluidFeedViewController.swift */,
 				EB24C867285D309700D7922A /* SolidFeedViewController.swift */,
 				EB24C865285D061700D7922A /* FluidView.swift */,
 				EB24C86B286656C100D7922A /* MoodViewController.swift */,
-				EBE099E62739BA2000F056A0 /* HomeScreenViewControllerExt.swift */,
 				EB7978172852D01800154969 /* ProfilesViewController.swift */,
 				EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */,
 				EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */,
@@ -206,7 +209,6 @@
 				EB35918B27C9A14A00FE651D /* ChildInformationViewController.swift */,
 				EB6A17AD27AB645D0069428E /* JournalViewController.swift */,
 				EB35918827C83B9000FE651D /* DBHelper.swift */,
-				FEC1588B28654A6600A46593 /* MessageView.swift */,
 				EB35918A27C8407B00FE651D /* Table Titles */,
 				EBE099BF2739B43100F056A0 /* Assets.xcassets */,
 				EBE099C12739B43100F056A0 /* LaunchScreen.storyboard */,
@@ -382,6 +384,7 @@
 				EB35917927C83B2200FE651D /* Milestone.swift in Sources */,
 				EB51422927B76FDE0030EDB3 /* HomeScreenViewController.swift in Sources */,
 				EBBD569927ADEAE4005121C8 /* DevelopmentViewController.swift in Sources */,
+				EBE1EF5A287CCDF700605F93 /* WebViewController.swift in Sources */,
 				EB24C866285D061700D7922A /* FluidView.swift in Sources */,
 				EB24C86A285D30CC00D7922A /* FluidFeedViewController.swift in Sources */,
 				EBE099B92739B43000F056A0 /* SceneDelegate.swift in Sources */,
@@ -393,7 +396,6 @@
 				EB24C860285BE06600D7922A /* FeedViewController.swift in Sources */,
 				EB35917D27C83B3C00FE651D /* Provider.swift in Sources */,
 				EBBD569B27ADFE2F005121C8 /* SleepViewController.swift in Sources */,
-				FEC1588C28654A6600A46593 /* MessageView.swift in Sources */,
 				EB6A17AE27AB645D0069428E /* JournalViewController.swift in Sources */,
 				EB3A328D27A362CC00B96417 /* SignUpViewController.swift in Sources */,
 				EB35918327C83B6000FE651D /* Message.swift in Sources */,
