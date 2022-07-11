@@ -14,16 +14,18 @@ class MoodViewController: UIViewController {
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var moodDropButton: UIButton!
     @IBOutlet weak var moodTableView: UITableView!
-    @IBOutlet weak var durationPicker: UIPickerView!
+    @IBOutlet weak var durationPicker: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var historyButton: UIButton! // need history
     
+    /* mood selection options */
     var moods = ["Happy", "Smiling", "Laughing", "Playful", "Cooling", "Fussy", "Staring", "Curious", "Sad", "Crying", "Sleepy"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        moodTableView.isHidden = true   // load tableView hidden
+        
         // Do any additional setup after loading the view.
+        moodTableView.isHidden = true       // load tableView as hidden
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,15 +33,16 @@ class MoodViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
     @IBAction func saveTapped(_ sender: UIButton) {
         let notesText = notesTextView.text!
         let moodType = moodDropButton.title(for: .normal)
-//        let duration =
+        let duration = durationPicker.countDownDuration
         
-        // ********** print to conole ****************
+        // ********** print to console ****************
         print("NOTES: \(notesText)")
-        print("MOOD: \(moodType)")
-//        print("DURATION: \(BD)")
+        print("MOOD: \(moodType ?? "N/A")")    // fix for required selection?
+        print("DURATION: \(duration)")
     }
     
     // animation toggle helper function
@@ -62,6 +65,7 @@ class MoodViewController: UIViewController {
             }
         }
     }
+    
     /*
     // MARK: - Navigation
 
