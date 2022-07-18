@@ -10,39 +10,67 @@ import UIKit
 
 class ActivityViewController: UIViewController {
     
-    @IBOutlet weak var TimePicker: UITextField!
+
+    @IBOutlet weak var ActivityDuration: UIDatePicker!
+    @IBOutlet weak var TableActivity: UITableView!
     
-    
+    @IBOutlet weak var ActivityButton: UIButton!
+    var Activities = ["Playing Alone",
+    "Playing with Others",
+    "Crawling",
+    "Rolling Over",
+    "Sitting",
+    "Standing",
+    "Out for a walk",
+    "Listening to a story",
+    "Having a bath",
+    "Brushing Teeth"]
     @IBOutlet weak var Note: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let time = Date()
-        let formatter = DateFormatter()
-        //myDatePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
-//        formatter.locale =  Locale(identifier: "en_GB")
-        formatter.locale = Locale.init(identifier: "en_GB")
-//        formatter.locale = NSLocale(localeIdentifier: "en_GB") as Locale
-        formatter.dateFormat = "HH:mm"
-        TimePicker.text = formatter.string(from: time)
-        
-        let newtime = UIDatePicker()
-        newtime.datePickerMode = .time
-        newtime.addTarget(self, action: #selector(ChangeTime(sender:)), for: UIControl.Event.valueChanged)
-        newtime.frame.size = CGSize(width: 0, height: 250)
-        TimePicker.inputView = newtime
+ 
     }
     @IBAction func SaveButton(_ sender: Any) {
         let notes = Note.text
-        print("Notes: \(notes ?? "Something went wrong")")
+        let ActivityDuration = ActivityDuration.countDownDuration
+        print("Notes: \(notes ?? "Something went wrong with notes")")
+        print("Duration: \(ActivityDuration )")
     }
-    @objc func ChangeTime(sender: UIDatePicker){
-        let formatter = DateFormatter()
-        formatter.locale = Locale.init(identifier: "en_GB")
-//        formatter.locale = NSLocale(localeIdentifier: "en_GB") as Locale
-        formatter.dateFormat = "HH:mm"
-        TimePicker.text = formatter.string(from: sender.date)
+    @IBAction func dropButtonTouched(_ sender: Any) {
+            if TableActivity.isHidden {
+                animate(toggle: true)       // if hidden, show
+            } else {
+                animate(toggle: false)      // else hide
+            }
+        }
         
-        
+        func animate(toggle: Bool) {
+            if toggle {
+                UIView.animate(withDuration: 0.4) {
+                    self.TableActivity.isHidden = false
+                }
+            } else {
+                UIView.animate(withDuration: 0.4) {
+                    self.TableActivity.isHidden = true
+                }
+            }
+        }
+}
+
+
+extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        Activities.count
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = Activities[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView:UITableView, didSelectRowAt indexPath: IndexPath) {
+        ActivityButton.setTitle("\(Activities[indexPath.row])", for: .normal)
+        animate(toggle: false)
+    }
 }
