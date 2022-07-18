@@ -9,6 +9,13 @@ import UIKit
 
 class SolidFeedViewController: UIViewController {
 
+    @IBOutlet weak var notesTextField: UITextView!
+    @IBOutlet weak var foodConsumedButton: UIButton!
+    @IBOutlet weak var solidAmountTextField: UITextField!
+    @IBOutlet weak var solidAmountButton: UIButton!
+    @IBOutlet weak var feedModeButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

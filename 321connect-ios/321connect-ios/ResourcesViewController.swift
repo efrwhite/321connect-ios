@@ -86,14 +86,14 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showLinks" {
-            if let indexPath = ResourcesTableView.indexPathForSelectedRow {
-                let destination = segue.destination as? ResourcesViewController
-                destination?.links = links[indexPath.row]
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showLinks" {
+//            if let indexPath = ResourcesTableView.indexPathForSelectedRow {
+//                let destination = segue.destination as? ResourcesViewController
+//                destination?.links = links[indexPath.row]
+//            }
+//        }
+//    }
     
     /*
     // MARK: - Navigation
