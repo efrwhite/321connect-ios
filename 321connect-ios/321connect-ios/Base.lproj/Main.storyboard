@@ -2849,7 +2849,8 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFe-rN-BnQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3433" y="453"/>
-        <!--Diaper-->
+        </scene>
+            <!--Diaper-->
         <scene sceneID="bi0-zR-DAU">
             <objects>
                 <viewController title="Diaper" id="rRg-dZ-51Y" customClass="DiaperViewController" customModule="_21connect_ios" customModuleProvider="target" sceneMemberID="viewController">
