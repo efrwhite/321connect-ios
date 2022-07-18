@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		EB24C860285BE06600D7922A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C85F285BE06600D7922A /* FeedViewController.swift */; };
-		EB24C866285D061700D7922A /* FluidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C865285D061700D7922A /* FluidView.swift */; };
 		EB24C868285D309700D7922A /* SolidFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C867285D309700D7922A /* SolidFeedViewController.swift */; };
 		EB24C86A285D30CC00D7922A /* FluidFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C869285D30CC00D7922A /* FluidFeedViewController.swift */; };
 		EB24C86C286656C200D7922A /* MoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C86B286656C100D7922A /* MoodViewController.swift */; };
@@ -70,7 +69,6 @@
 
 /* Begin PBXFileReference section */
 		EB24C85F285BE06600D7922A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		EB24C865285D061700D7922A /* FluidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluidView.swift; sourceTree = "<group>"; };
 		EB24C867285D309700D7922A /* SolidFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidFeedViewController.swift; sourceTree = "<group>"; };
 		EB24C869285D30CC00D7922A /* FluidFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluidFeedViewController.swift; sourceTree = "<group>"; };
 		EB24C86B286656C100D7922A /* MoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewController.swift; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 				EB24C85F285BE06600D7922A /* FeedViewController.swift */,
 				EB24C869285D30CC00D7922A /* FluidFeedViewController.swift */,
 				EB24C867285D309700D7922A /* SolidFeedViewController.swift */,
-				EB24C865285D061700D7922A /* FluidView.swift */,
 				EB24C86B286656C100D7922A /* MoodViewController.swift */,
 				EB7978172852D01800154969 /* ProfilesViewController.swift */,
 				EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */,
@@ -385,7 +382,6 @@
 				EB51422927B76FDE0030EDB3 /* HomeScreenViewController.swift in Sources */,
 				EBBD569927ADEAE4005121C8 /* DevelopmentViewController.swift in Sources */,
 				EBE1EF5A287CCDF700605F93 /* WebViewController.swift in Sources */,
-				EB24C866285D061700D7922A /* FluidView.swift in Sources */,
 				EB24C86A285D30CC00D7922A /* FluidFeedViewController.swift in Sources */,
 				EBE099B92739B43000F056A0 /* SceneDelegate.swift in Sources */,
 				EB24C86C286656C200D7922A /* MoodViewController.swift in Sources */,
