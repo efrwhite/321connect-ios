@@ -32,6 +32,7 @@ class FluidFeedViewController: UIViewController {
 
         // table views load as hidden
         measureOptionsTableView.isHidden = true
+        modeOptionsTableView.isHidden = true
         
         // Do any additional setup after loading the view.
     }
@@ -42,7 +43,9 @@ class FluidFeedViewController: UIViewController {
     
     @IBAction func measureButtonTouched(_ sender: UIButton) {
         /* hide all table views */
-        modeOptionsTableView.isHidden = true
+        if modeOptionsTableView.isHidden == false{
+            modeOptionsTableView.isHidden = true
+        }
         
         if measureOptionsTableView.isHidden {
             animate(toggle: true)
@@ -53,7 +56,9 @@ class FluidFeedViewController: UIViewController {
     
     @IBAction func modeButtonTouched(_ sender: UIButton) {
         /* hide all table views */
-        measureOptionsTableView.isHidden = true
+        if measureOptionsTableView.isHidden == false{
+            measureOptionsTableView.isHidden = true
+        }
         
         if modeOptionsTableView.isHidden {
             animate(toggle: true)
@@ -98,7 +103,6 @@ class FluidFeedViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 // extension for UITableView functions

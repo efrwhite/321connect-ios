@@ -1,5 +1,5 @@
 //
-//  MoodViewController.swift
+//  BehaviorViewController.swift
 //  321connect-ios
 //
 //  Created by Edward Ladia on 6/24/22.
@@ -8,9 +8,8 @@
 import Foundation
 import UIKit
 
-class MoodViewController: UIViewController {
+class BehaviorViewController: UIViewController {
 
-    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var moodDropButton: UIButton!
     @IBOutlet weak var moodTableView: UITableView!
@@ -19,17 +18,30 @@ class MoodViewController: UIViewController {
     @IBOutlet weak var historyButton: UIButton! // need history
     
     /* mood selection options */
-    var moods = ["Happy", "Smiling", "Laughing", "Playful", "Cooling", "Fussy", "Staring", "Curious", "Sad", "Crying", "Sleepy"]
+    var moods = ["Happy",
+                 "Smiling",
+                 "Laughing",
+                 "Playful",
+                 "Cooling",
+                 "Fussy",
+                 "Staring",
+                 "Curious",
+                 "Sad",
+                 "Crying",
+                 "Sleepy"
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
         moodTableView.isHidden = true       // load tableView as hidden
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
     }
     
@@ -65,20 +77,10 @@ class MoodViewController: UIViewController {
             }
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 // extension for UITableView functions
-extension MoodViewController: UITableViewDelegate, UITableViewDataSource {
+extension BehaviorViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         moods.count
     }
@@ -86,6 +88,7 @@ extension MoodViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = moods[indexPath.row]
+       
         return cell
     }
     
@@ -95,6 +98,3 @@ extension MoodViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-//extension MoodViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-//    var pickerData = [["1", "2", "3"]]
-//}

@@ -10,7 +10,7 @@
 		EB24C860285BE06600D7922A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C85F285BE06600D7922A /* FeedViewController.swift */; };
 		EB24C868285D309700D7922A /* SolidFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C867285D309700D7922A /* SolidFeedViewController.swift */; };
 		EB24C86A285D30CC00D7922A /* FluidFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C869285D30CC00D7922A /* FluidFeedViewController.swift */; };
-		EB24C86C286656C200D7922A /* MoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C86B286656C100D7922A /* MoodViewController.swift */; };
+		EB24C86C286656C200D7922A /* BehaviorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C86B286656C100D7922A /* BehaviorViewController.swift */; };
 		EB35916B27C839A000FE651D /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35916A27C839A000FE651D /* Account.swift */; };
 		EB35916D27C839EC00FE651D /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35916C27C839EC00FE651D /* Child.swift */; };
 		EB35916F27C83A3E00FE651D /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35916E27C83A3E00FE651D /* Feed.swift */; };
@@ -31,6 +31,8 @@
 		EB3A328D27A362CC00B96417 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A328C27A362CC00B96417 /* SignUpViewController.swift */; };
 		EB51422927B76FDE0030EDB3 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB51422827B76FDE0030EDB3 /* HomeScreenViewController.swift */; };
 		EB6A17AE27AB645D0069428E /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A17AD27AB645D0069428E /* JournalViewController.swift */; };
+		EB70C94F288A2123005E216C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70C94E288A2123005E216C /* CustomTableViewCell.swift */; };
+		EB70C951288C788C005E216C /* UserResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70C950288C788C005E216C /* UserResourceCell.swift */; };
 		EB7978182852D01800154969 /* ProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7978172852D01800154969 /* ProfilesViewController.swift */; };
 		EBBD569727ADEA42005121C8 /* ProvidersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */; };
 		EBBD569927ADEAE4005121C8 /* DevelopmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */; };
@@ -71,7 +73,7 @@
 		EB24C85F285BE06600D7922A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		EB24C867285D309700D7922A /* SolidFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidFeedViewController.swift; sourceTree = "<group>"; };
 		EB24C869285D30CC00D7922A /* FluidFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluidFeedViewController.swift; sourceTree = "<group>"; };
-		EB24C86B286656C100D7922A /* MoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewController.swift; sourceTree = "<group>"; };
+		EB24C86B286656C100D7922A /* BehaviorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorViewController.swift; sourceTree = "<group>"; };
 		EB35916A27C839A000FE651D /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		EB35916C27C839EC00FE651D /* Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child.swift; sourceTree = "<group>"; };
 		EB35916E27C83A3E00FE651D /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
@@ -92,6 +94,8 @@
 		EB3A328C27A362CC00B96417 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EB51422827B76FDE0030EDB3 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		EB6A17AD27AB645D0069428E /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
+		EB70C94E288A2123005E216C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		EB70C950288C788C005E216C /* UserResourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResourceCell.swift; sourceTree = "<group>"; };
 		EB7978172852D01800154969 /* ProfilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesViewController.swift; sourceTree = "<group>"; };
 		EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidersViewController.swift; sourceTree = "<group>"; };
 		EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentViewController.swift; sourceTree = "<group>"; };
@@ -197,7 +201,7 @@
 				EB24C85F285BE06600D7922A /* FeedViewController.swift */,
 				EB24C869285D30CC00D7922A /* FluidFeedViewController.swift */,
 				EB24C867285D309700D7922A /* SolidFeedViewController.swift */,
-				EB24C86B286656C100D7922A /* MoodViewController.swift */,
+				EB24C86B286656C100D7922A /* BehaviorViewController.swift */,
 				EB7978172852D01800154969 /* ProfilesViewController.swift */,
 				EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */,
 				EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */,
@@ -210,6 +214,8 @@
 				EBE099BF2739B43100F056A0 /* Assets.xcassets */,
 				EBE099C12739B43100F056A0 /* LaunchScreen.storyboard */,
 				EBE099C42739B43100F056A0 /* Info.plist */,
+				EB70C950288C788C005E216C /* UserResourceCell.swift */,
+				EB70C94E288A2123005E216C /* CustomTableViewCell.swift */,
 			);
 			path = "321connect-ios";
 			sourceTree = "<group>";
@@ -366,6 +372,7 @@
 				EB35918527C83B6E00FE651D /* Journal.swift in Sources */,
 				EB35917727C83B1300FE651D /* Medical.swift in Sources */,
 				EB35918127C83B5400FE651D /* Image.swift in Sources */,
+				EB70C951288C788C005E216C /* UserResourceCell.swift in Sources */,
 				EB35918C27C9A14A00FE651D /* ChildInformationViewController.swift in Sources */,
 				EB7978182852D01800154969 /* ProfilesViewController.swift in Sources */,
 				EB24C868285D309700D7922A /* SolidFeedViewController.swift in Sources */,
@@ -380,11 +387,12 @@
 				EB35916B27C839A000FE651D /* Account.swift in Sources */,
 				EB35917927C83B2200FE651D /* Milestone.swift in Sources */,
 				EB51422927B76FDE0030EDB3 /* HomeScreenViewController.swift in Sources */,
+				EB70C94F288A2123005E216C /* CustomTableViewCell.swift in Sources */,
 				EBBD569927ADEAE4005121C8 /* DevelopmentViewController.swift in Sources */,
 				EBE1EF5A287CCDF700605F93 /* WebViewController.swift in Sources */,
 				EB24C86A285D30CC00D7922A /* FluidFeedViewController.swift in Sources */,
 				EBE099B92739B43000F056A0 /* SceneDelegate.swift in Sources */,
-				EB24C86C286656C200D7922A /* MoodViewController.swift in Sources */,
+				EB24C86C286656C200D7922A /* BehaviorViewController.swift in Sources */,
 				EB35917B27C83B2F00FE651D /* Bathroom.swift in Sources */,
 				EB35918727C83B8200FE651D /* Medication.swift in Sources */,
 				EB35917127C83A7800FE651D /* Mood.swift in Sources */,
