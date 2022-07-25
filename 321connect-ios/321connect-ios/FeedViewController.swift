@@ -12,7 +12,6 @@ class FeedViewController: UIViewController {
     
     @IBOutlet weak var FluidView: UIView!
     @IBOutlet weak var SolidView: UIView!
-    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {

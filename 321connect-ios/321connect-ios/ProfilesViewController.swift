@@ -18,7 +18,7 @@ class ProfileType {
     }
 }
 
-class ProfilesViewController: UIViewController /*UIViewController, UITableViewDelegate, UITableViewDataSource*/ {
+class ProfilesViewController: UIViewController {
     
     @IBOutlet weak var profilesTableView: UITableView!
     
@@ -26,115 +26,62 @@ class ProfilesViewController: UIViewController /*UIViewController, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         
-        // hard code for debug ************************************************************
+        // Set Background image view
+//        profilesTableView.backgroundView = UIImageView(image: UIImage(named: "Rectangle 99"))
+        
+        // ******************************** hard code for debug ********************************
         profileType.append(ProfileType.init(profile: "Children", name: ["Edward", "Dallas"]))
         profileType.append(ProfileType.init(profile: "Parents/Caregivers", name: ["Jackson", "Charlotte"]))
         profileType.append(ProfileType.init(profile: "Providers", name: ["Brianna"]))
-        // hard code for debug ************************************************************
+        // ******************************** hard code for debug ********************************
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Make the navigation bar background clear
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // Restore the navigation bar to default
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
     }
 }
     
 extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
+       
         return profileType.count
     }
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       
         return profileType[section].name?.count ?? 0
         
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = profilesTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = profileType[indexPath.section].name?[indexPath.row]
+        let cell = profilesTableView.dequeueReusableCell(withIdentifier: "customCell") as! CustomTableViewCell
+        
+        cell.nameLabel.text = profileType[indexPath.section].name?[indexPath.row]
+        
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return profileType[section].profile
-//    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: profilesTableView.frame.width, height: 35))
-        view.backgroundColor = .blue
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        // header titles (for profile type)
-        let label = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.width - 15, height: 35))
-        label.text = profileType[section].profile
-        view.addSubview(label)
-        
-        return view
+        return profileType[section].profile
     }
-    
 }
     
-    /* * * * * * * * * * * * * * * * hard code * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view, typically from a nib.
-//
-//        self.profilesTableView.delegate = self
-//        self.profilesTableView.dataSource = self
-//
-//        self.profilesTableView.tableHeaderView = self.headerView()
-//    }
-//
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 5
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let cell = UITableViewCell()
-//        cell.textLabel?.text = "Something"
-//        return cell
-//    }
-//
-//    private func headerView() -> UIView{
-//        let view = UIView(frame: CGRect(x: 0,
-//                                        y: 0,
-//                                        width: self.profilesTableView.frame.width,
-//                                        height: 50))
-//        view.backgroundColor = .red
-//
-//        return view
-//    }
-//
-//    private func footerView() -> UIView{
-//        let view = UIView(frame: CGRect(x: 0,
-//                                        y: 0,
-//                                        width: self.profilesTableView.frame.width,
-//                                        height: 50))
-//        view.backgroundColor = .green
-//
-//        return view
-//    }
-//}
-/* * * * * * * * * * * * * * * * hard code * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-
-/* * * * * * * * * * * * * * * * UI Builder * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-//
-//extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
-//
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        <#code#>
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//
-//}
-/* * * * * * * * * * * * * * * * UI Builder * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-

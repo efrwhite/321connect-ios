@@ -13,13 +13,13 @@ class WebViewController: UIViewController {
     var links: String = ""
     
     @IBOutlet weak var webView: WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Do any additional setup after loading the view, typicall from a nib.
         let url = URL (string: links)
         let request = URLRequest(url: url!)
         webView.load(request)
     }
-
-
 }
