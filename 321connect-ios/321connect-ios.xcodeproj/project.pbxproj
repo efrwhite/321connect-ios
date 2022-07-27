@@ -50,6 +50,11 @@
 		EBE099E72739BA2000F056A0 /* HomeScreenViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099E62739BA2000F056A0 /* HomeScreenViewControllerExt.swift */; };
 		EBE1EF1C287248BA00605F93 /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1EF1B287248BA00605F93 /* ResourcesViewController.swift */; };
 		EBE1EF5A287CCDF700605F93 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1EF59287CCDF700605F93 /* WebViewController.swift */; };
+		FE19E60F288F7E850020A0DD /* BathroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19E60E288F7E850020A0DD /* BathroomViewController.swift */; };
+		FE19E611288F7E940020A0DD /* DiaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19E610288F7E940020A0DD /* DiaperViewController.swift */; };
+		FE19E613288F7EA40020A0DD /* ConstipationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19E612288F7EA40020A0DD /* ConstipationViewController.swift */; };
+		FE19E615288F7EB10020A0DD /* PottyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19E614288F7EB10020A0DD /* PottyViewController.swift */; };
+		FE19E6172891DD4C0020A0DD /* Parent_Caregiver_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19E6162891DD4C0020A0DD /* Parent_Caregiver_ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +122,11 @@
 		EBE099E62739BA2000F056A0 /* HomeScreenViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewControllerExt.swift; sourceTree = "<group>"; };
 		EBE1EF1B287248BA00605F93 /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
 		EBE1EF59287CCDF700605F93 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		FE19E60E288F7E850020A0DD /* BathroomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BathroomViewController.swift; sourceTree = "<group>"; };
+		FE19E610288F7E940020A0DD /* DiaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaperViewController.swift; sourceTree = "<group>"; };
+		FE19E612288F7EA40020A0DD /* ConstipationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstipationViewController.swift; sourceTree = "<group>"; };
+		FE19E614288F7EB10020A0DD /* PottyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PottyViewController.swift; sourceTree = "<group>"; };
+		FE19E6162891DD4C0020A0DD /* Parent_Caregiver_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parent_Caregiver_ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +202,10 @@
 				EBE099B62739B43000F056A0 /* AppDelegate.swift */,
 				EBE099B82739B43000F056A0 /* SceneDelegate.swift */,
 				EBE099BC2739B43000F056A0 /* Main.storyboard */,
+				FE19E60E288F7E850020A0DD /* BathroomViewController.swift */,
+				FE19E614288F7EB10020A0DD /* PottyViewController.swift */,
+				FE19E612288F7EA40020A0DD /* ConstipationViewController.swift */,
+				FE19E610288F7E940020A0DD /* DiaperViewController.swift */,
 				EBE099BA2739B43000F056A0 /* LoginViewController.swift */,
 				EB3A328C27A362CC00B96417 /* SignUpViewController.swift */,
 				EB51422827B76FDE0030EDB3 /* HomeScreenViewController.swift */,
@@ -216,6 +230,7 @@
 				EBE099C42739B43100F056A0 /* Info.plist */,
 				EB70C950288C788C005E216C /* UserResourceCell.swift */,
 				EB70C94E288A2123005E216C /* CustomTableViewCell.swift */,
+				FE19E6162891DD4C0020A0DD /* Parent_Caregiver_ViewController.swift */,
 			);
 			path = "321connect-ios";
 			sourceTree = "<group>";
@@ -386,10 +401,14 @@
 				EBBD569727ADEA42005121C8 /* ProvidersViewController.swift in Sources */,
 				EB35916B27C839A000FE651D /* Account.swift in Sources */,
 				EB35917927C83B2200FE651D /* Milestone.swift in Sources */,
+				FE19E613288F7EA40020A0DD /* ConstipationViewController.swift in Sources */,
+				FE19E6172891DD4C0020A0DD /* Parent_Caregiver_ViewController.swift in Sources */,
 				EB51422927B76FDE0030EDB3 /* HomeScreenViewController.swift in Sources */,
 				EB70C94F288A2123005E216C /* CustomTableViewCell.swift in Sources */,
 				EBBD569927ADEAE4005121C8 /* DevelopmentViewController.swift in Sources */,
+				FE19E615288F7EB10020A0DD /* PottyViewController.swift in Sources */,
 				EBE1EF5A287CCDF700605F93 /* WebViewController.swift in Sources */,
+				FE19E611288F7E940020A0DD /* DiaperViewController.swift in Sources */,
 				EB24C86A285D30CC00D7922A /* FluidFeedViewController.swift in Sources */,
 				EBE099B92739B43000F056A0 /* SceneDelegate.swift in Sources */,
 				EB24C86C286656C200D7922A /* BehaviorViewController.swift in Sources */,
@@ -400,6 +419,7 @@
 				EB24C860285BE06600D7922A /* FeedViewController.swift in Sources */,
 				EB35917D27C83B3C00FE651D /* Provider.swift in Sources */,
 				EBBD569B27ADFE2F005121C8 /* SleepViewController.swift in Sources */,
+				FE19E60F288F7E850020A0DD /* BathroomViewController.swift in Sources */,
 				EB6A17AE27AB645D0069428E /* JournalViewController.swift in Sources */,
 				EB3A328D27A362CC00B96417 /* SignUpViewController.swift in Sources */,
 				EB35918327C83B6000FE651D /* Message.swift in Sources */,
