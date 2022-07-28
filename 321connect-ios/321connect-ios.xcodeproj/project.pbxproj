@@ -33,9 +33,9 @@
 		EB4335A428905DE30037CDEF /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB4335A228905DE30037CDEF /* ProfileHeaderView.xib */; };
 		EB51422927B76FDE0030EDB3 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB51422827B76FDE0030EDB3 /* HomeScreenViewController.swift */; };
 		EB5EF2EF2890702700711E39 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EF2EE2890702700711E39 /* HistoryTableViewController.swift */; };
+		EB5EF2F32892132F00711E39 /* UserResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EF2F22892132F00711E39 /* UserResourceCell.swift */; };
+		EB5EF2F52892135100711E39 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EF2F42892135100711E39 /* CustomTableViewCell.swift */; };
 		EB6A17AE27AB645D0069428E /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A17AD27AB645D0069428E /* JournalViewController.swift */; };
-		EB70C94F288A2123005E216C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70C94E288A2123005E216C /* CustomTableViewCell.swift */; };
-		EB70C951288C788C005E216C /* UserResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70C950288C788C005E216C /* UserResourceCell.swift */; };
 		EB7978182852D01800154969 /* ProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7978172852D01800154969 /* ProfilesViewController.swift */; };
 		EBBD569727ADEA42005121C8 /* ProvidersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */; };
 		EBBD569927ADEAE4005121C8 /* DevelopmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */; };
@@ -104,9 +104,9 @@
 		EB4335A228905DE30037CDEF /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		EB51422827B76FDE0030EDB3 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		EB5EF2EE2890702700711E39 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		EB5EF2F22892132F00711E39 /* UserResourceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserResourceCell.swift; path = "Custom Cells/UserResourceCell.swift"; sourceTree = "<group>"; };
+		EB5EF2F42892135100711E39 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = "Custom Cells/CustomTableViewCell.swift"; sourceTree = "<group>"; };
 		EB6A17AD27AB645D0069428E /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
-		EB70C94E288A2123005E216C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		EB70C950288C788C005E216C /* UserResourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResourceCell.swift; sourceTree = "<group>"; };
 		EB7978172852D01800154969 /* ProfilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesViewController.swift; sourceTree = "<group>"; };
 		EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidersViewController.swift; sourceTree = "<group>"; };
 		EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentViewController.swift; sourceTree = "<group>"; };
@@ -187,8 +187,6 @@
 			children = (
 				EB4335A128905DE30037CDEF /* ProfileHeaderView.swift */,
 				EB4335A228905DE30037CDEF /* ProfileHeaderView.xib */,
-				EB70C950288C788C005E216C /* UserResourceCell.swift */,
-				EB70C94E288A2123005E216C /* CustomTableViewCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -247,8 +245,8 @@
 				EBE099BF2739B43100F056A0 /* Assets.xcassets */,
 				EBE099C12739B43100F056A0 /* LaunchScreen.storyboard */,
 				EBE099C42739B43100F056A0 /* Info.plist */,
-				EB70C950288C788C005E216C /* UserResourceCell.swift */,
-				EB70C94E288A2123005E216C /* CustomTableViewCell.swift */,
+				EB5EF2F22892132F00711E39 /* UserResourceCell.swift */,
+				EB5EF2F42892135100711E39 /* CustomTableViewCell.swift */,
 				FE19E6162891DD4C0020A0DD /* Parent_Caregiver_ViewController.swift */,
 			);
 			path = "321connect-ios";
@@ -407,7 +405,6 @@
 				EB35918527C83B6E00FE651D /* Journal.swift in Sources */,
 				EB35917727C83B1300FE651D /* Medical.swift in Sources */,
 				EB35918127C83B5400FE651D /* Image.swift in Sources */,
-				EB70C951288C788C005E216C /* UserResourceCell.swift in Sources */,
 				EB35918C27C9A14A00FE651D /* ChildInformationViewController.swift in Sources */,
 				EB7978182852D01800154969 /* ProfilesViewController.swift in Sources */,
 				EB24C868285D309700D7922A /* SolidFeedViewController.swift in Sources */,
@@ -424,7 +421,6 @@
 				FE19E613288F7EA40020A0DD /* ConstipationViewController.swift in Sources */,
 				FE19E6172891DD4C0020A0DD /* Parent_Caregiver_ViewController.swift in Sources */,
 				EB51422927B76FDE0030EDB3 /* HomeScreenViewController.swift in Sources */,
-				EB70C94F288A2123005E216C /* CustomTableViewCell.swift in Sources */,
 				EBBD569927ADEAE4005121C8 /* DevelopmentViewController.swift in Sources */,
 				FE19E615288F7EB10020A0DD /* PottyViewController.swift in Sources */,
 				EBE1EF5A287CCDF700605F93 /* WebViewController.swift in Sources */,
@@ -433,8 +429,10 @@
 				EBE099B92739B43000F056A0 /* SceneDelegate.swift in Sources */,
 				EB24C86C286656C200D7922A /* BehaviorViewController.swift in Sources */,
 				EB35917B27C83B2F00FE651D /* Bathroom.swift in Sources */,
+				EB5EF2F52892135100711E39 /* CustomTableViewCell.swift in Sources */,
 				EB35918727C83B8200FE651D /* Medication.swift in Sources */,
 				EB35917127C83A7800FE651D /* Mood.swift in Sources */,
+				EB5EF2F32892132F00711E39 /* UserResourceCell.swift in Sources */,
 				EB35916D27C839EC00FE651D /* Child.swift in Sources */,
 				EB4335A328905DE30037CDEF /* ProfileHeaderView.swift in Sources */,
 				EB24C860285BE06600D7922A /* FeedViewController.swift in Sources */,

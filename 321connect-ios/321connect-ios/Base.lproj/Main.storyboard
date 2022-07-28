@@ -7197,7 +7197,7 @@
         <image name="Age" width="42" height="28"/>
         <image name="Allergies" width="93" height="28"/>
         <image name="Amount of Fluid" width="149" height="24"/>
-        <image name="Bathroom" width="88" height="24"/>
+        <image name="Bathroom" width="102" height="28"/>
         <image name="Birthday" width="88" height="28"/>
         <image name="Blood Type" width="120" height="28"/>
         <image name="Boy" width="39" height="28"/>
@@ -7218,7 +7218,7 @@
         <image name="Doctor’s Visit" width="163" height="33"/>
         <image name="Documentation" width="166" height="28"/>
         <image name="Due Date" width="95" height="28"/>
-        <image name="Duration" width="91" height="28"/>
+        <image name="Duration" width="78" height="24"/>
         <image name="Ellipse 1" width="90" height="90"/>
         <image name="Ellipse 2" width="24" height="24"/>
         <image name="Ellipse 3" width="300" height="300"/>
@@ -7227,7 +7227,7 @@
         <image name="Email" width="48" height="24"/>
         <image name="Enter" width="48" height="24"/>
         <image name="Fax" width="30" height="24"/>
-        <image name="Feed" width="42" height="24"/>
+        <image name="Feed" width="58" height="33"/>
         <image name="Fluid" width="51" height="28"/>
         <image name="Girl" width="38" height="28"/>
         <image name="Head Circumference" width="157" height="56"/>
@@ -7281,13 +7281,11 @@
         <image name="Rectangle 32" width="130" height="65"/>
         <image name="Rectangle 45" width="337" height="204"/>
         <image name="Rectangle 46" width="142" height="32"/>
-        <image name="Rectangle 47" width="142" height="32"/>
+        <image name="Rectangle 47" width="71" height="32"/>
         <image name="Rectangle 53" width="373" height="191"/>
-        <image name="Rectangle 54" width="416" height="378"/>
+        <image name="Rectangle 54" width="381" height="347"/>
         <image name="Rectangle 69" width="402" height="777"/>
         <image name="Rectangle 79" width="15" height="15"/>
-        <image name="Rectangle 80" width="15" height="15"/>
-        <image name="Rectangle 81" width="15" height="15"/>
         <image name="Rectangle 9" width="190" height="57"/>
         <image name="Rectangle 99" width="375" height="812"/>
         <image name="Resources" width="90" height="24"/>
@@ -7332,7 +7330,6 @@
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
