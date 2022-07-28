@@ -10,16 +10,20 @@ import WebKit
 
 class ResourcesTableViewController: UITableViewController {
         
+    /* Table view arrays data */
     var sections = ["National Support Groups", "Your Resources"]
     
-    var name = [
-        ["National Down Syndrome Congress",
-         "National Down Syndrome Society",
-         "Down Syndrome Diagnosis Network"],
-        ["Google",
-         "Arizona/Sonora Desert Museum"]
-        ]
-    var groups = [
+    /* section 1: National Support Groups */
+    var groups = ["National Down Syndrome Congress",
+                "National Down Syndrome Society",
+                "Down Syndrome Diagnosis Network"]
+    
+    /* section 2: User Provided Resouces (will change with database) */
+    var userResources = ["Google",
+                         "Arizona/Sonora Desert Museum"]
+    
+    /* URL arrays for navigation segues */
+    var groupLinks = [
         "http://www.ndsccenter.org",
         "http://www.ndss.org",
         "http://www.dsdiagnosisnetwork.org"
@@ -30,13 +34,61 @@ class ResourcesTableViewController: UITableViewController {
         "https://www.desertmuseum.org/"
         ]
     
+    @IBOutlet weak var resourceAddButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // set background for table view
         tableView.backgroundView = UIImageView(image: UIImage(named: "Rectangle 1"))
         
         navigationItem.rightBarButtonItem = editButtonItem
 
+    }
+    
+    @IBAction func addTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Add A Resource", message: nil, preferredStyle: .alert)
+        
+        // create resource title text field
+        alertController.addTextField(configurationHandler: {(_ textField: UITextField) -> Void in
+            textField.placeholder = "Resource Title:"
+        })
+
+        // create resource path text field
+        alertController.addTextField(configurationHandler: {(_ textField: UITextField) -> Void in
+            textField.placeholder = "Resource URL:"
+        })
+
+        // Alert action confirm
+        let confirmAction = UIAlertAction(title: "Add", style: .default, handler: {(_ action: UIAlertAction) -> Void in
+            print("Resource Title: \(String(describing: alertController.textFields?[0].text))")
+            let resource = alertController.textFields?[0].text
+            print("Resource URL: \(String(describing: alertController.textFields?[1].text))")
+            let urlPath = alertController.textFields?[1].text
+            
+            // include in array data source
+            self.add(resource ?? "Default", urlPath!)           /* here might need to fix for input error checking */
+        })
+        alertController.addAction(confirmAction)
+
+        // Alert action cancel
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+            print("Cancelled")
+        })
+        alertController.addAction(cancelAction)
+
+       // Present alert controller
+       present(alertController, animated: true, completion: nil)
+    }
+    
+    func add(_ resource: String,_ urlPath: String) {
+        let index = 0
+        userResources.insert(contentsOf: [resource], at: index)
+        userLinks.insert(contentsOf: [urlPath], at: index)
+        
+        let resourceIndexPath = IndexPath(row: index, section: 1)
+        tableView.insertRows(at: [resourceIndexPath], with: .left)
+        
     }
     
     // MARK: - Table view data source
@@ -51,7 +103,10 @@ class ResourcesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return name[section].count
+        if section == 0 {
+            return self.groups.count
+        }
+        return self.userResources.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,17 +114,18 @@ class ResourcesTableViewController: UITableViewController {
         /* If NSG section, use basic cell */
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = name[indexPath.section][indexPath.row]
+            cell.textLabel?.text = groups[indexPath.row]
             return cell
             
         } else {
             /* Else use custom resource cell */
             let cell = tableView.dequeueReusableCell(withIdentifier: "userResourceCell", for: indexPath) as! UserResourceCell
             /* user resource cells change title label */
-            cell.resourceTitleLabel.text = name[indexPath.section][indexPath.row]
+            cell.resourceTitleLabel.text = userResources[indexPath.row]
             return cell
         }
     }
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if indexPath.section == 0 {
             return false
@@ -83,7 +139,7 @@ class ResourcesTableViewController: UITableViewController {
             tableView.beginUpdates()
             
             // delete row from data source
-            name.remove(at: indexPath.row)
+            userResources.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
             tableView.endUpdates()
@@ -99,7 +155,7 @@ class ResourcesTableViewController: UITableViewController {
         if segue.identifier == "showGroups" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destination = segue.destination as? WebViewController
-                destination?.links = groups[indexPath.row]
+                destination?.links = groupLinks[indexPath.row]
                 }
             }
         // segue for Your Resources section custom cells

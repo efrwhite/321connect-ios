@@ -29,9 +29,6 @@ class ProfilesViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
         
-        // Set Background image view
-//        profilesTableView.backgroundView = UIImageView(image: UIImage(named: "Rectangle 99"))
-        
         // ******************************** hard code for debug ********************************
         profileType.append(ProfileType.init(profile: "Children", name: ["Edward", "Dallas"]))
         profileType.append(ProfileType.init(profile: "Parents/Caregivers", name: ["Jackson", "Charlotte"]))
@@ -61,7 +58,7 @@ class ProfilesViewController: UIViewController {
 extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-       
+        // # 3 sections
         return profileType.count
     }
    
@@ -82,6 +79,14 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         return profileType[section].profile
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = Bundle.main.loadNibNamed("ProfileHeaderView", owner: self, options: nil)?.first as! ProfileHeaderView
+        
+        headerView.profileTitle.text = profileType[section].profile
+        
+        return headerView
     }
 }
     
