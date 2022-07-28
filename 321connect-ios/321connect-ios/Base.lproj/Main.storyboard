@@ -444,6 +444,35 @@
             </objects>
             <point key="canvasLocation" x="-810.14492753623199" y="109.82142857142857"/>
         </scene>
+        <!--History Table View Controller-->
+        <scene sceneID="9wQ-b2-TJg">
+            <objects>
+                <tableViewController storyboardIdentifier="HistoryTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VZC-C4-Y8Y" customClass="HistoryTableViewController" customModule="_21connect_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="q3s-lB-6CQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2CG-af-A7C">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2CG-af-A7C" id="Nbc-SO-z0d">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VZC-C4-Y8Y" id="EFv-KY-M7N"/>
+                            <outlet property="delegate" destination="VZC-C4-Y8Y" id="OaO-VN-37o"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="4j3-IL-sUb"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Nw-ta-mpp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2451" y="-1072"/>
+        </scene>
         <!--Home Screen View Controller Ext-->
         <scene sceneID="SMx-yh-hbk">
             <objects>
@@ -1254,7 +1283,7 @@
                         <viewLayoutGuide key="safeArea" id="5FK-d7-E3g"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="nKR-Vu-uhV"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="nKR-Vu-uhV"/>
                     <connections>
                         <outlet property="FluidView" destination="Vaa-Ds-YkC" id="8D9-Z6-Rxa"/>
                         <outlet property="SolidView" destination="Wk0-GU-Kjg" id="5f5-Qt-zwE"/>
@@ -1897,10 +1926,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Sleep" translatesAutoresizingMaskIntoConstraints="NO" id="v8j-Ei-tZ9">
-                                <rect key="frame" x="163" y="39" width="88" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Duration" translatesAutoresizingMaskIntoConstraints="NO" id="5xo-Rk-Hud">
                                 <rect key="frame" x="20" y="258" width="98" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1938,7 +1963,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvC-AN-SZD">
-                                <rect key="frame" x="284" y="39" width="110" height="51"/>
+                                <rect key="frame" x="294" y="44" width="110" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Sleep Cycle"/>
@@ -1994,11 +2019,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Sleep" translatesAutoresizingMaskIntoConstraints="NO" id="v8j-Ei-tZ9">
+                                <rect key="frame" x="163" y="46" width="88" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XNc-eK-sfd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="MJb-z0-4r1"/>
                     <connections>
                         <outlet property="dateLabel" destination="cvP-sQ-gZb" id="Ydr-xb-LR1"/>
                         <outlet property="dateTimePicker" destination="lZe-9D-kds" id="yZW-hP-59h"/>
@@ -2355,7 +2383,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="748"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 103" translatesAutoresizingMaskIntoConstraints="NO" id="WsJ-tv-3KE">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 103" translatesAutoresizingMaskIntoConstraints="NO" id="s4Y-S1-I3f">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="748"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -2375,23 +2403,39 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFR-Nd-6Wh">
-                                <rect key="frame" x="205" y="546" width="189" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFR-Nd-6Wh">
+                                <rect key="frame" x="212" y="553" width="159" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 81" title="Multivitamin"/>
+                                <buttonConfiguration key="configuration" style="gray" cornerStyle="capsule">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Multivitamin"/>
+                                    </attributedString>
+                                </buttonConfiguration>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWf-Tb-Jsk">
-                                <rect key="frame" x="44" y="602" width="171" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SWf-Tb-Jsk">
+                                <rect key="frame" x="51" y="609" width="142" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 80" title="Other"/>
+                                <buttonConfiguration key="configuration" style="gray" cornerStyle="capsule">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Other">
+                                            <attributes>
+                                                <font key="NSFont" size="12" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GdF-fn-2or">
-                                <rect key="frame" x="44" y="546" width="171" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GdF-fn-2or">
+                                <rect key="frame" x="51" y="553" width="142" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79" title="Iron"/>
+                                <buttonConfiguration key="configuration" style="gray" cornerStyle="capsule">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Iron"/>
+                                    </attributedString>
+                                </buttonConfiguration>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Please list any vitamins or supplements given with this feeding" translatesAutoresizingMaskIntoConstraints="NO" id="76g-Mw-qom">
                                 <rect key="frame" x="20" y="481" width="383" height="49"/>
@@ -2405,7 +2449,7 @@
                                 <rect key="frame" x="20" y="413" width="166" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCi-I3-C1U">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCi-I3-C1U">
                                 <rect key="frame" x="205" y="375" width="89" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2425,93 +2469,60 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Keq-8e-9gN">
-                                <rect key="frame" x="153" y="657" width="109" height="31"/>
+                                <rect key="frame" x="131" y="665" width="148" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Save"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Save" cornerStyle="large">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="saveTapped:" destination="YNM-UO-XM1" eventType="touchUpInside" id="k9V-Qn-j1a"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9G-9V-Ne5">
-                                <rect key="frame" x="302" y="377" width="92" height="31"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please indicate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9c8-YS-BhL">
+                                <rect key="frame" x="213" y="606" width="158" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Select" titleAlignment="leading">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </backgroundConfiguration>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="measureButtonTouched:" destination="YNM-UO-XM1" eventType="touchUpInside" id="5Vk-OJ-LA3"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9c8-YS-BhL">
-                                <rect key="frame" x="218" y="599" width="158" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fm5-Ko-enT">
-                                <rect key="frame" x="205" y="428" width="194" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jRg-4n-0T3">
+                                <rect key="frame" x="205" y="423" width="189" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <menu key="menu" id="Asg-Yy-XrL">
+                                    <children>
+                                        <command title="Bottle" id="vil-MN-F3H"/>
+                                        <command title="Cup" id="vIc-Iu-Jg8"/>
+                                        <command title="Nursing" id="SrH-H9-KDk"/>
+                                        <command title="G Tube" id="4ra-lH-hYU"/>
+                                        <command title="NG Tube" id="9tX-dA-wz7"/>
+                                    </children>
+                                </menu>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Select"/>
-                                <connections>
-                                    <action selector="modeButtonTouched:" destination="YNM-UO-XM1" eventType="touchUpInside" id="pUW-Gh-Vxc"/>
-                                </connections>
+                                <buttonConfiguration key="configuration" style="tinted" title="Button"/>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ikp-IO-Kcl">
-                                <rect key="frame" x="302" y="406" width="92" height="82"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Ot-b6-wzf">
+                                <rect key="frame" x="302" y="375" width="92" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="PQT-mk-VvJ">
-                                        <rect key="frame" x="0.0" y="44.5" width="92" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PQT-mk-VvJ" id="Giz-iS-Mgg">
-                                            <rect key="frame" x="0.0" y="0.0" width="92" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="YNM-UO-XM1" id="h6i-bP-Oi2"/>
-                                    <outlet property="delegate" destination="YNM-UO-XM1" id="d7l-JM-EGa"/>
-                                </connections>
-                            </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8xC-p2-5pN">
-                                <rect key="frame" x="205" y="456" width="194" height="138"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="K6D-fL-UXg">
-                                        <rect key="frame" x="0.0" y="44.5" width="194" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K6D-fL-UXg" id="fs1-bn-WcD">
-                                            <rect key="frame" x="0.0" y="0.0" width="194" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="YNM-UO-XM1" id="jIe-Eh-d6a"/>
-                                    <outlet property="delegate" destination="YNM-UO-XM1" id="wJg-ak-wkJ"/>
-                                </connections>
-                            </tableView>
+                                <menu key="menu" id="rZd-9h-ayL">
+                                    <children>
+                                        <command title="milliliters" id="NGm-f9-go5"/>
+                                        <command title="ounces" id="1BO-1G-XC7"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Select"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Select"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="C5u-u2-FEn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="feedMeasureButton" destination="8Ot-b6-wzf" id="fO2-et-k0C"/>
+                        <outlet property="feedModeButton" destination="jRg-4n-0T3" id="Afl-Hk-INo"/>
                         <outlet property="fluidAmountTextField" destination="rCi-I3-C1U" id="X7b-Bf-WFe"/>
-                        <outlet property="fluidMeasureButton" destination="S9G-9V-Ne5" id="Yha-d2-3bN"/>
-                        <outlet property="fluidModeButton" destination="fm5-Ko-enT" id="Nvk-Px-h5h"/>
                         <outlet property="fluidTypeTextField" destination="w4M-uD-dZJ" id="4b9-dK-NdU"/>
                         <outlet property="ironRadio" destination="GdF-fn-2or" id="uKl-OP-vCX"/>
-                        <outlet property="measureOptionsTableView" destination="ikp-IO-Kcl" id="YXL-fD-naF"/>
-                        <outlet property="modeOptionsTableView" destination="8xC-p2-5pN" id="VEf-xq-lnG"/>
                         <outlet property="multiVitaminRadio" destination="lFR-Nd-6Wh" id="0TU-41-Zpz"/>
                         <outlet property="notesTextField" destination="IfF-Yo-1n3" id="fG7-CQ-dHA"/>
                         <outlet property="otherRadio" destination="SWf-Tb-Jsk" id="zi4-Er-OkE"/>
@@ -2520,7 +2531,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CZ8-jg-xyr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3733" y="-800"/>
+            <point key="canvasLocation" x="3731.884057971015" y="-800.22321428571422"/>
         </scene>
         <!--Solid View-->
         <scene sceneID="lxw-jL-HMW">
@@ -2534,36 +2545,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="748"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1I-j3-9jq">
-                                <rect key="frame" x="200" y="420" width="194" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Select"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYY-A7-ghr">
-                                <rect key="frame" x="221" y="539" width="173" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 81" title="Multivitamin"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7e9-Mb-QIx">
-                                <rect key="frame" x="59" y="595" width="170" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 80" title="Other"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOQ-YW-bnf">
-                                <rect key="frame" x="59" y="539" width="170" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79" title="Iron"/>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Please list any vitamins or supplements given with this feeding" translatesAutoresizingMaskIntoConstraints="NO" id="EIq-2o-5CX">
                                 <rect key="frame" x="16" y="473" width="383" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="amount" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ela-2i-mLz">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ela-2i-mLz">
                                 <rect key="frame" x="200" y="370" width="99" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" systemColor="opaqueSeparatorColor"/>
@@ -2588,19 +2574,6 @@
                                 <color key="textColor" red="1" green="0.97256815549999998" blue="0.98063360369999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOD-ga-ck6">
-                                <rect key="frame" x="153" y="659" width="109" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Save"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLA-qT-b7c">
-                                <rect key="frame" x="200" y="330" width="194" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Select"/>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="e12-r3-HUp">
                                 <rect key="frame" x="20" y="30" width="69" height="28"/>
                                 <subviews>
@@ -2609,12 +2582,6 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BeO-Ao-222">
-                                <rect key="frame" x="231" y="593" width="152" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PBY-EM-kVa">
                                 <rect key="frame" x="22" y="66" width="377" height="245"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2623,28 +2590,116 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1o-im-hgP">
-                                <rect key="frame" x="302" y="372" width="92" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dfo-q2-9Jw">
+                                <rect key="frame" x="208" y="553" width="159" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Select"/>
+                                <buttonConfiguration key="configuration" style="gray" cornerStyle="capsule">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Multivitamin"/>
+                                    </attributedString>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9g-S5-G5C">
+                                <rect key="frame" x="47" y="609" width="142" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" cornerStyle="capsule">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Other">
+                                            <attributes>
+                                                <font key="NSFont" size="12" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Maf-jf-wrC">
+                                <rect key="frame" x="47" y="553" width="142" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" cornerStyle="capsule">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Iron"/>
+                                    </attributedString>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bML-0R-Zee">
+                                <rect key="frame" x="127" y="665" width="148" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Save" cornerStyle="large">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveTapped:" destination="YNM-UO-XM1" eventType="touchUpInside" id="NDA-8T-hSg"/>
+                                    <action selector="saveTapped:" destination="Ij7-O0-eKT" eventType="touchUpInside" id="ukJ-X4-Zyl"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please indicate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iws-H1-atT">
+                                <rect key="frame" x="209" y="606" width="158" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VN2-HN-jdX">
+                                <rect key="frame" x="200" y="326" width="199" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <menu key="menu" id="OMw-lS-F6s">
+                                    <children>
+                                        <command title="Food" id="4hN-Ax-O1d"/>
+                                        <command title="Snack" id="qhv-kZ-5m6"/>
+                                        <command title="Refused Food" id="sIf-HR-wnf"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L7g-Jb-GV1">
+                                <rect key="frame" x="307" y="370" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <menu key="menu" id="QWi-Eu-PdT">
+                                    <children>
+                                        <command title="cups" id="fIk-LC-eQU"/>
+                                        <command title="ounces" id="dZ0-dn-I3y"/>
+                                        <command title="grams" id="Ybg-ap-1uz"/>
+                                        <command title="pieces" id="zPz-aO-cre"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Select"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Select"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FlT-TT-Pud">
+                                <rect key="frame" x="200" y="418" width="199" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <menu key="menu" id="bUS-tB-AKO">
+                                    <children>
+                                        <command title="Self-fed utensils" id="R8Q-fq-3y4"/>
+                                        <command title="Other-fed utensils" id="RET-03-8Wo"/>
+                                        <command title="G Tube" id="ZHn-4g-BAm"/>
+                                        <command title="NG Tube" id="YSH-pH-gbE"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Button"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UXP-bq-d0M"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="feedModeButton" destination="l1I-j3-9jq" id="4EK-qg-JSS"/>
-                        <outlet property="foodConsumedButton" destination="HLA-qT-b7c" id="Rg6-av-4IA"/>
+                        <outlet property="feedMeasureButton" destination="L7g-Jb-GV1" id="amS-VH-nLg"/>
+                        <outlet property="feedModeButton" destination="FlT-TT-Pud" id="Bha-AP-gGk"/>
+                        <outlet property="foodConsumedButton" destination="VN2-HN-jdX" id="dko-zJ-Tg9"/>
                         <outlet property="notesTextField" destination="PBY-EM-kVa" id="JMh-t2-jiK"/>
-                        <outlet property="solidAmountButton" destination="z1o-im-hgP" id="FEL-Qg-fuB"/>
+                        <outlet property="saveButton" destination="bML-0R-Zee" id="jNT-DQ-uKx"/>
                         <outlet property="solidAmountTextField" destination="ela-2i-mLz" id="xDT-Hw-ysu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gml-zL-rIN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4562" y="-800"/>
+            <point key="canvasLocation" x="4560.8695652173919" y="-800.22321428571422"/>
         </scene>
         <!--Sleep Reports View Controller-->
         <scene sceneID="Uri-YB-NfG">
@@ -2666,7 +2721,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Yes" image="Rectangle 79"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79" imagePadding="0.0">
+                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79" imagePadding="5">
                                     <attributedString key="attributedTitle"/>
                                     <attributedString key="attributedSubtitle">
                                         <fragment content="Yes">
@@ -2682,7 +2737,7 @@
                                 <rect key="frame" x="153" y="54" width="96" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79">
+                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79" imagePadding="5">
                                     <attributedString key="attributedTitle"/>
                                     <attributedString key="attributedSubtitle">
                                         <fragment content="No">
@@ -2713,7 +2768,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Yes" image="Rectangle 79"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79">
+                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79" imagePadding="5">
                                     <attributedString key="attributedTitle"/>
                                     <attributedString key="attributedSubtitle">
                                         <fragment content="Medication (detailed in Medicine area)">
@@ -2730,7 +2785,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Yes" image="Rectangle 79"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79" imagePadding="0.0">
+                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79" imagePadding="5">
                                     <attributedString key="attributedTitle"/>
                                     <attributedString key="attributedSubtitle">
                                         <fragment content="Supplements (ex: Melatonin)">
@@ -2747,7 +2802,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Yes" image="Rectangle 79"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79">
+                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79" imagePadding="5">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                     <attributedString key="attributedTitle"/>
                                     <attributedString key="attributedSubtitle">
@@ -2765,7 +2820,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Yes" image="Rectangle 79"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79">
+                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79" imagePadding="5">
                                     <attributedString key="attributedTitle"/>
                                     <attributedString key="attributedSubtitle">
                                         <fragment content="Other">
@@ -2795,7 +2850,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Yes" image="Rectangle 79"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79" imagePadding="0.0">
+                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79" imagePadding="5">
                                     <attributedString key="attributedTitle"/>
                                     <attributedString key="attributedSubtitle">
                                         <fragment content="Yes">
@@ -2811,7 +2866,7 @@
                                 <rect key="frame" x="155" y="336" width="96" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79">
+                                <buttonConfiguration key="configuration" style="plain" image="Rectangle 79" imagePadding="5">
                                     <attributedString key="attributedTitle"/>
                                     <attributedString key="attributedSubtitle">
                                         <fragment content="No">
@@ -3099,6 +3154,9 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="gray" title="Add"/>
+                            <connections>
+                                <action selector="addTapped:" destination="lrf-cG-0QX" eventType="touchUpInside" id="Zr3-cG-rTb"/>
+                            </connections>
                         </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="Fz7-2k-bdk" imageView="uOf-Fx-SXI" style="IBUITableViewCellStyleDefault" id="yfv-kJ-MuX">
@@ -3159,6 +3217,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Resources" largeTitleDisplayMode="always" id="b0u-80-qV3"/>
+                    <connections>
+                        <outlet property="resourceAddButton" destination="aFs-3M-77u" id="3YU-Dy-mPN"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0F-nC-1lS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -7271,6 +7332,7 @@
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

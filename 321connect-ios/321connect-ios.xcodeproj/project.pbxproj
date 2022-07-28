@@ -29,7 +29,10 @@
 		EB35918927C83B9000FE651D /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35918827C83B9000FE651D /* DBHelper.swift */; };
 		EB35918C27C9A14A00FE651D /* ChildInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35918B27C9A14A00FE651D /* ChildInformationViewController.swift */; };
 		EB3A328D27A362CC00B96417 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A328C27A362CC00B96417 /* SignUpViewController.swift */; };
+		EB4335A328905DE30037CDEF /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4335A128905DE30037CDEF /* ProfileHeaderView.swift */; };
+		EB4335A428905DE30037CDEF /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB4335A228905DE30037CDEF /* ProfileHeaderView.xib */; };
 		EB51422927B76FDE0030EDB3 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB51422827B76FDE0030EDB3 /* HomeScreenViewController.swift */; };
+		EB5EF2EF2890702700711E39 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EF2EE2890702700711E39 /* HistoryTableViewController.swift */; };
 		EB6A17AE27AB645D0069428E /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A17AD27AB645D0069428E /* JournalViewController.swift */; };
 		EB70C94F288A2123005E216C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70C94E288A2123005E216C /* CustomTableViewCell.swift */; };
 		EB70C951288C788C005E216C /* UserResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70C950288C788C005E216C /* UserResourceCell.swift */; };
@@ -97,7 +100,10 @@
 		EB35918827C83B9000FE651D /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		EB35918B27C9A14A00FE651D /* ChildInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildInformationViewController.swift; sourceTree = "<group>"; };
 		EB3A328C27A362CC00B96417 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		EB4335A128905DE30037CDEF /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		EB4335A228905DE30037CDEF /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		EB51422827B76FDE0030EDB3 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		EB5EF2EE2890702700711E39 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		EB6A17AD27AB645D0069428E /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		EB70C94E288A2123005E216C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		EB70C950288C788C005E216C /* UserResourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResourceCell.swift; sourceTree = "<group>"; };
@@ -176,6 +182,17 @@
 			path = "Table Titles";
 			sourceTree = "<group>";
 		};
+		EB4335A528905E340037CDEF /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EB4335A128905DE30037CDEF /* ProfileHeaderView.swift */,
+				EB4335A228905DE30037CDEF /* ProfileHeaderView.xib */,
+				EB70C950288C788C005E216C /* UserResourceCell.swift */,
+				EB70C94E288A2123005E216C /* CustomTableViewCell.swift */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
 		EBE099AA2739B43000F056A0 = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +229,7 @@
 				EBE099E62739BA2000F056A0 /* HomeScreenViewControllerExt.swift */,
 				EBE1EF1B287248BA00605F93 /* ResourcesViewController.swift */,
 				EBE1EF59287CCDF700605F93 /* WebViewController.swift */,
+				EB5EF2EE2890702700711E39 /* HistoryTableViewController.swift */,
 				EB24C85F285BE06600D7922A /* FeedViewController.swift */,
 				EB24C869285D30CC00D7922A /* FluidFeedViewController.swift */,
 				EB24C867285D309700D7922A /* SolidFeedViewController.swift */,
@@ -224,6 +242,7 @@
 				EB35918B27C9A14A00FE651D /* ChildInformationViewController.swift */,
 				EB6A17AD27AB645D0069428E /* JournalViewController.swift */,
 				EB35918827C83B9000FE651D /* DBHelper.swift */,
+				EB4335A528905E340037CDEF /* Custom Cells */,
 				EB35918A27C8407B00FE651D /* Table Titles */,
 				EBE099BF2739B43100F056A0 /* Assets.xcassets */,
 				EBE099C12739B43100F056A0 /* LaunchScreen.storyboard */,
@@ -359,6 +378,7 @@
 				EBE099C32739B43100F056A0 /* LaunchScreen.storyboard in Resources */,
 				EBE099C02739B43100F056A0 /* Assets.xcassets in Resources */,
 				EBE099BE2739B43000F056A0 /* Main.storyboard in Resources */,
+				EB4335A428905DE30037CDEF /* ProfileHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +436,7 @@
 				EB35918727C83B8200FE651D /* Medication.swift in Sources */,
 				EB35917127C83A7800FE651D /* Mood.swift in Sources */,
 				EB35916D27C839EC00FE651D /* Child.swift in Sources */,
+				EB4335A328905DE30037CDEF /* ProfileHeaderView.swift in Sources */,
 				EB24C860285BE06600D7922A /* FeedViewController.swift in Sources */,
 				EB35917D27C83B3C00FE651D /* Provider.swift in Sources */,
 				EBBD569B27ADFE2F005121C8 /* SleepViewController.swift in Sources */,
@@ -425,6 +446,7 @@
 				EB35918327C83B6000FE651D /* Message.swift in Sources */,
 				EB35917F27C83B4700FE651D /* Activity.swift in Sources */,
 				EB35917327C83A8600FE651D /* Sleep.swift in Sources */,
+				EB5EF2EF2890702700711E39 /* HistoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

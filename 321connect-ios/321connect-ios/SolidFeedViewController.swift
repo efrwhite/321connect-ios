@@ -10,20 +10,90 @@ import UIKit
 class SolidFeedViewController: UIViewController {
 
     @IBOutlet weak var notesTextField: UITextView!
-    @IBOutlet weak var foodConsumedButton: UIButton!
     @IBOutlet weak var solidAmountTextField: UITextField!
-    @IBOutlet weak var solidAmountButton: UIButton!
+    @IBOutlet weak var foodConsumedButton: UIButton!
+    @IBOutlet weak var feedMeasureButton: UIButton!
     @IBOutlet weak var feedModeButton: UIButton!
-    
+    @IBOutlet weak var saveButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // assign numeric key pad for amount text field
+        solidAmountTextField.keyboardType = UIKeyboardType.numberPad
+        
+        setFoodButton()
+        setMeasureButton()
+        setModeButton()
+        
         // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: Button functions
+    
+    func setFoodButton() {
+        
+        let optionClosure = {(action : UIAction) in
+            print(action.title)
+        }
+        
+        foodConsumedButton.menu = UIMenu(children : [
+            UIAction(title : "Food", state : .on, handler: optionClosure),
+            UIAction(title : "Snack", handler: optionClosure),
+            UIAction(title : "Refused Food", handler: optionClosure)])
+        
+        foodConsumedButton.showsMenuAsPrimaryAction = true
+        foodConsumedButton.changesSelectionAsPrimaryAction = true
+    }
+    
+    func setMeasureButton() {
+        
+        let optionClosure = {(action : UIAction) in
+            print(action.title)
+        }
+        
+        feedMeasureButton.menu = UIMenu(children : [
+            UIAction(title : "cups", state : .on, handler: optionClosure),
+            UIAction(title : "ounces", handler: optionClosure),
+            UIAction(title : "grams", handler: optionClosure),
+            UIAction(title : "pieces", handler: optionClosure)])
+        
+        feedMeasureButton.showsMenuAsPrimaryAction = true
+        feedMeasureButton.changesSelectionAsPrimaryAction = true
+    }
+    
+    func setModeButton() {
+        
+        let optionClosure = {(action : UIAction) in
+            print(action.title)
+        }
+        
+        feedModeButton.menu = UIMenu(children : [
+            UIAction(title : "Self-fed Utensils", state : .on, handler: optionClosure),
+            UIAction(title : "Other-fed Utensils", handler: optionClosure),
+            UIAction(title : "G Tube", handler: optionClosure),
+            UIAction(title : "NG Tube", handler: optionClosure)])
+        
+        feedModeButton.showsMenuAsPrimaryAction = true
+        feedModeButton.changesSelectionAsPrimaryAction = true
+    }
+    
+    @IBAction func saveTapped(_ sender: Any) {
+        let notesText = notesTextField.text!
+        let foodType = foodConsumedButton.title(for: .normal)!
+        let quantity = solidAmountTextField.text! + " " + feedMeasureButton.title(for: .normal)!
+        let feedMode = feedModeButton.title(for: .normal)!
+        
+        // ********** print to console ****************
+        print("NOTES: \(notesText)")
+        print("FOOD CONSUMED: \(foodType)")
+        print("QUANTITY: \(quantity)")
+        print("MODE OF EATING: \(feedMode)")
+        // need to capture and print supplements
     }
     
     /*

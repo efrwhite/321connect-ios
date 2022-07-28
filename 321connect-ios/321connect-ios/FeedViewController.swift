@@ -17,7 +17,9 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view, typicall from a nib.
+        // Do any additional setup after loading the view, typically from a nib.
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+//hereherehereherehere
     }
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {

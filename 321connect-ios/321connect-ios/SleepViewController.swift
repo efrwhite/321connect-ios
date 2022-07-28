@@ -53,6 +53,10 @@ class SleepViewController: UIViewController {
 
     }
     
+    @IBAction func sleepCycleTapped(_ sender: Any) {
+        print("Sleep Cycle Button Tapped") //debug
+    }
+    
     // animation toggle helper function
     @IBAction func reportsButtonTouched(_ sender: Any) {
         if sleepReportScrollView.isHidden {
