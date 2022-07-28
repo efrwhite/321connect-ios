@@ -96,16 +96,20 @@ class ChildView: UIViewController {
         let BD = Birthday.text!
         let Al = Allergies.text!
         let MD = Medications.text!
-      //  let Sl: () = Slider(OnOff)
+        // this will need to be put in a if else statement
+        let boyslider = OnOff.titleForSegment(at: 0)
+        let girlslider = OnOff.titleForSegment(at: 1)
+    
         
         
         print("This is the firstName: \(FN)")
         print("This is the firstName: \(LN)")
         print("This is the Birthdate: \(BD)")
         print("This is the DueDate: \(DD)")
-       // print("this is the Slider: \(Sl))")
         print("This is the Allergies: \(Al)")
         print("This is the Medications: \(MD)")
+        print("This is the slider for boy: \(boyslider)")
+        print("This is the slider for girl: \(girlslider)")
       
     }
 
