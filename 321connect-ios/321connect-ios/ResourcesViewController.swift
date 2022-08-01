@@ -126,6 +126,7 @@ class ResourcesTableViewController: UITableViewController {
         }
     }
     
+    // disable editing for section 0: Support Groups
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if indexPath.section == 0 {
             return false
@@ -134,12 +135,15 @@ class ResourcesTableViewController: UITableViewController {
         }
     }
 
+    // tableview editing styles
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
             
-            // delete row from data source
+            // delete row from data source(s)
             userResources.remove(at: indexPath.row)
+            userLinks.remove(at: indexPath.row)
+            // delete row from tableview
             tableView.deleteRows(at: [indexPath], with: .fade)
             
             tableView.endUpdates()

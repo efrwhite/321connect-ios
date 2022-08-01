@@ -37,6 +37,7 @@
 		EB5EF2F52892135100711E39 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EF2F42892135100711E39 /* CustomTableViewCell.swift */; };
 		EB6A17AE27AB645D0069428E /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A17AD27AB645D0069428E /* JournalViewController.swift */; };
 		EB7978182852D01800154969 /* ProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7978172852D01800154969 /* ProfilesViewController.swift */; };
+		EB7FF6E628986A6600FF87D3 /* SleepReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7FF6E528986A6600FF87D3 /* SleepReportsViewController.swift */; };
 		EBBD569727ADEA42005121C8 /* ProvidersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */; };
 		EBBD569927ADEAE4005121C8 /* DevelopmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */; };
 		EBBD569B27ADFE2F005121C8 /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBD569A27ADFE2F005121C8 /* SleepViewController.swift */; };
@@ -108,6 +109,7 @@
 		EB5EF2F42892135100711E39 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = "Custom Cells/CustomTableViewCell.swift"; sourceTree = "<group>"; };
 		EB6A17AD27AB645D0069428E /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		EB7978172852D01800154969 /* ProfilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesViewController.swift; sourceTree = "<group>"; };
+		EB7FF6E528986A6600FF87D3 /* SleepReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepReportsViewController.swift; sourceTree = "<group>"; };
 		EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidersViewController.swift; sourceTree = "<group>"; };
 		EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentViewController.swift; sourceTree = "<group>"; };
 		EBBD569A27ADFE2F005121C8 /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */,
 				EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */,
 				EBBD569A27ADFE2F005121C8 /* SleepViewController.swift */,
+				EB7FF6E528986A6600FF87D3 /* SleepReportsViewController.swift */,
 				EBBD569C27AE034B005121C8 /* ActivityViewController.swift */,
 				EB35918B27C9A14A00FE651D /* ChildInformationViewController.swift */,
 				EB6A17AD27AB645D0069428E /* JournalViewController.swift */,
@@ -408,6 +411,7 @@
 				EB35918C27C9A14A00FE651D /* ChildInformationViewController.swift in Sources */,
 				EB7978182852D01800154969 /* ProfilesViewController.swift in Sources */,
 				EB24C868285D309700D7922A /* SolidFeedViewController.swift in Sources */,
+				EB7FF6E628986A6600FF87D3 /* SleepReportsViewController.swift in Sources */,
 				EB35918927C83B9000FE651D /* DBHelper.swift in Sources */,
 				EB35917527C83AAE00FE651D /* Entry.swift in Sources */,
 				EBE099E72739BA2000F056A0 /* HomeScreenViewControllerExt.swift in Sources */,
@@ -624,7 +628,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AJ84Q69AHZ;
+				DEVELOPMENT_TEAM = HJ578KXY67;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "321connect-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -654,7 +658,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AJ84Q69AHZ;
+				DEVELOPMENT_TEAM = HJ578KXY67;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "321connect-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

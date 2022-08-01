@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
@@ -471,7 +472,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Nw-ta-mpp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2451" y="-1072"/>
+            <point key="canvasLocation" x="-3091" y="-1072"/>
         </scene>
         <!--Home Screen View Controller Ext-->
         <scene sceneID="SMx-yh-hbk">
@@ -920,6 +921,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmt-Qi-7Ih" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5298.5507246376819" y="-109.15178571428571"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qTh-iL-Cv5">
+            <objects>
+                <viewController id="D2e-ca-NoJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uo4-1h-0ZR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 99" translatesAutoresizingMaskIntoConstraints="NO" id="YlU-Ck-7Vz">
+                                <rect key="frame" x="0.0" y="-54" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="24-Hour Sleep Cycle Calculation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuJ-6Q-8Qk">
+                                <rect key="frame" x="34" y="9" width="346" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Sleep Cycle Date:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vrh-cV-5Fd">
+                                <rect key="frame" x="7" y="147" width="228" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Sleep:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPm-aJ-Fdq">
+                                <rect key="frame" x="93" y="262" width="228" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="3bH-az-DKM">
+                                <rect key="frame" x="230" y="138" width="121" height="39"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1sr-jv-wFU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6jX-bk-EZ8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4989.8550724637689" y="592.63392857142856"/>
         </scene>
         <!--Development View Controller-->
         <scene sceneID="YXI-7E-0Pt">
@@ -1962,12 +2009,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvC-AN-SZD">
-                                <rect key="frame" x="294" y="44" width="110" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Sleep Cycle"/>
-                            </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="lZe-9D-kds">
                                 <rect key="frame" x="176" y="203" width="191" height="42"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -2023,6 +2064,18 @@
                                 <rect key="frame" x="163" y="46" width="88" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="gvM-6B-zRx">
+                                <rect key="frame" x="275" y="125" width="103" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Sleep Cycle"/>
+                                <connections>
+                                    <action selector="sleepCycleTapped:" destination="nn2-UD-luL" eventType="touchUpInside" id="LvF-bH-oFx"/>
+                                    <segue destination="D2e-ca-NoJ" kind="popoverPresentation" popoverAnchorView="gvM-6B-zRx" id="eWA-QJ-ElN">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XNc-eK-sfd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2426,6 +2479,9 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="otherTapped:" destination="YNM-UO-XM1" eventType="touchUpInside" id="Elc-Yf-I9z"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GdF-fn-2or">
                                 <rect key="frame" x="51" y="553" width="142" height="31"/>
@@ -2522,6 +2578,7 @@
                         <outlet property="feedModeButton" destination="jRg-4n-0T3" id="Afl-Hk-INo"/>
                         <outlet property="fluidAmountTextField" destination="rCi-I3-C1U" id="X7b-Bf-WFe"/>
                         <outlet property="fluidTypeTextField" destination="w4M-uD-dZJ" id="4b9-dK-NdU"/>
+                        <outlet property="indicateTextField" destination="9c8-YS-BhL" id="73C-2B-Zyl"/>
                         <outlet property="ironRadio" destination="GdF-fn-2or" id="uKl-OP-vCX"/>
                         <outlet property="multiVitaminRadio" destination="lFR-Nd-6Wh" id="0TU-41-Zpz"/>
                         <outlet property="notesTextField" destination="IfF-Yo-1n3" id="fG7-CQ-dHA"/>
@@ -2613,6 +2670,9 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="otherTapped:" destination="Ij7-O0-eKT" eventType="touchUpInside" id="2dU-cr-uu3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Maf-jf-wrC">
                                 <rect key="frame" x="47" y="553" width="142" height="31"/>
@@ -2692,7 +2752,11 @@
                         <outlet property="feedMeasureButton" destination="L7g-Jb-GV1" id="amS-VH-nLg"/>
                         <outlet property="feedModeButton" destination="FlT-TT-Pud" id="Bha-AP-gGk"/>
                         <outlet property="foodConsumedButton" destination="VN2-HN-jdX" id="dko-zJ-Tg9"/>
+                        <outlet property="indicateTextField" destination="iws-H1-atT" id="y95-HP-ajX"/>
+                        <outlet property="ironRadio" destination="Maf-jf-wrC" id="xTb-2T-Naq"/>
+                        <outlet property="multiVitaminRadio" destination="dfo-q2-9Jw" id="0Uz-kP-lg5"/>
                         <outlet property="notesTextField" destination="PBY-EM-kVa" id="JMh-t2-jiK"/>
+                        <outlet property="otherRadio" destination="V9g-S5-G5C" id="yqX-o1-Evc"/>
                         <outlet property="saveButton" destination="bML-0R-Zee" id="jNT-DQ-uKx"/>
                         <outlet property="solidAmountTextField" destination="ela-2i-mLz" id="xDT-Hw-ysu"/>
                     </connections>
@@ -2838,15 +2902,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Did the child have a sleep study conducted before age 4?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ak3-I7-GWa">
-                                <rect key="frame" x="21" y="313" width="326" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Did the child have a sleep study conducted " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ak3-I7-GWa">
+                                <rect key="frame" x="21" y="300" width="337" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsv-oq-kix">
-                                <rect key="frame" x="21" y="336" width="102" height="29"/>
+                                <rect key="frame" x="21" y="357" width="102" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Yes" image="Rectangle 79"/>
@@ -2863,7 +2927,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8D-fQ-0C5">
-                                <rect key="frame" x="155" y="336" width="96" height="29"/>
+                                <rect key="frame" x="155" y="357" width="96" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="Rectangle 79" imagePadding="5">
@@ -2878,14 +2942,35 @@
                                     </attributedString>
                                 </buttonConfiguration>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36p-dO-v3U">
+                                <rect key="frame" x="300" y="18" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="onTintColor" name="AccentColor"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="before age 4?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5l-mK-r2f">
+                                <rect key="frame" x="21" y="321" width="337" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x2S-Z0-NBO">
+                                <rect key="frame" x="300" y="305" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="onTintColor" name="AccentColor"/>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uv2-w9-iNX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="sleepStudySwitch" destination="x2S-Z0-NBO" id="n1J-a7-phy"/>
+                        <outlet property="snoreSwitch" destination="36p-dO-v3U" id="9aT-4Z-Xch"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFe-rN-BnQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4343" y="455"/>
+            <point key="canvasLocation" x="4342.0289855072469" y="454.6875"/>
         </scene>
         <!--Diaper-->
         <scene sceneID="bi0-zR-DAU">
@@ -7218,7 +7303,7 @@
         <image name="Doctor’s Visit" width="163" height="33"/>
         <image name="Documentation" width="166" height="28"/>
         <image name="Due Date" width="95" height="28"/>
-        <image name="Duration" width="78" height="24"/>
+        <image name="Duration" width="91" height="28"/>
         <image name="Ellipse 1" width="90" height="90"/>
         <image name="Ellipse 2" width="24" height="24"/>
         <image name="Ellipse 3" width="300" height="300"/>
@@ -7232,7 +7317,7 @@
         <image name="Girl" width="38" height="28"/>
         <image name="Head Circumference" width="157" height="56"/>
         <image name="Hello, Name" width="108" height="24"/>
-        <image name="Journal" width="65" height="24"/>
+        <image name="Journal" width="75" height="28"/>
         <image name="Line 17" width="1" height="26"/>
         <image name="Login" width="58" height="28"/>
         <image name="Medical" width="68" height="24"/>
@@ -7281,9 +7366,9 @@
         <image name="Rectangle 32" width="130" height="65"/>
         <image name="Rectangle 45" width="337" height="204"/>
         <image name="Rectangle 46" width="142" height="32"/>
-        <image name="Rectangle 47" width="71" height="32"/>
+        <image name="Rectangle 47" width="142" height="32"/>
         <image name="Rectangle 53" width="373" height="191"/>
-        <image name="Rectangle 54" width="381" height="347"/>
+        <image name="Rectangle 54" width="416" height="378"/>
         <image name="Rectangle 69" width="402" height="777"/>
         <image name="Rectangle 79" width="15" height="15"/>
         <image name="Rectangle 9" width="190" height="57"/>
@@ -7305,7 +7390,7 @@
         <image name="Verbal" width="67" height="28"/>
         <image name="Visit number" width="140" height="28"/>
         <image name="Website" width="72" height="24"/>
-        <image name="Weight" width="64" height="24"/>
+        <image name="Weight" width="82" height="28"/>
         <image name="Went to sleep" width="121" height="24"/>
         <image name="Zip Code" width="78" height="24"/>
         <image name="arrow" width="34" height="26"/>
@@ -7316,6 +7401,9 @@
         <image name="email2@email.com" width="191" height="28"/>
         <image name="globe" catalog="system" width="128" height="121"/>
         <image name="radial grad 321 logo idea png" width="355.5" height="355.5"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
