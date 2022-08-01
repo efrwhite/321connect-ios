@@ -11,23 +11,14 @@ class FluidFeedViewController: UIViewController {
 
     @IBOutlet weak var fluidTypeTextField: UITextField!
     @IBOutlet weak var fluidAmountTextField: UITextField!
-//    @IBOutlet weak var fluidMeasureButton: UIButton!
-    //    @IBOutlet weak var measureOptionsTableView: UITableView!
     @IBOutlet weak var feedMeasureButton: UIButton!
     @IBOutlet weak var feedModeButton: UIButton!
-    //    @IBOutlet weak var fluidModeButton: UIButton!
-//    @IBOutlet weak var modeOptionsTableView: UITableView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var notesTextField: UITextView!
     @IBOutlet weak var ironRadio: UIButton!
     @IBOutlet weak var multiVitaminRadio: UIButton!
     @IBOutlet weak var otherRadio: UIButton!
-    
-    /* fluid measuring options */
-    var fluidMeasure = ["mL", "oz"]
-    
-    /* fluid intake modes */
-    var intakeModes = ["Bottle", "Cup", "Nursing", "G tube", "NG tube"]
+    @IBOutlet weak var indicateTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +26,6 @@ class FluidFeedViewController: UIViewController {
 
         // assign numeric key pad for amount text field
         fluidAmountTextField.keyboardType = UIKeyboardType.numberPad
-        
         setMeasureButton()
         setModeButton()
         
@@ -44,6 +34,7 @@ class FluidFeedViewController: UIViewController {
 //        modeOptionsTableView.isHidden = true
         
         // Do any additional setup after loading the view.
+        indicateTextField.isHidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -81,6 +72,14 @@ class FluidFeedViewController: UIViewController {
         
         feedModeButton.showsMenuAsPrimaryAction = true
         feedModeButton.changesSelectionAsPrimaryAction = true
+    }
+    
+    @IBAction func otherTapped(_ sender: Any) {
+        if otherRadio.isSelected == true {
+            indicateTextField.isHidden = false
+        } else {
+            indicateTextField.isHidden = true
+        }
     }
     
 //    @IBAction func measureButtonTouched(_ sender: UIButton) {
@@ -128,7 +127,7 @@ class FluidFeedViewController: UIViewController {
         let fluidMeasure = fluidAmountTextField.text! + " " + feedMeasureButton.title(for: .normal)!// string amount appended by fluid mode button selection
         
         //capture with radio buttons and optional 'other'
-        //here
+
         
         // ********** print to console ****************
         print("NOTES: \(notesText)")
