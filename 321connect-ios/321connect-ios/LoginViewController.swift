@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func enterPressed(_ sender: Any) {
+        // verify email and password
     }
     
     @IBAction func signupPressed(_ sender: Any) {

@@ -40,6 +40,9 @@ class SleepViewController: UIViewController {
         }
         /* *** source: https://www.youtube.com/watch?v=9UovPNh4Csw *** */
     
+    /*
+     // MARK: - Help Functions
+     */
     @IBAction func saveTapped(_ sender: UIButton) {
         let notesText = sleepNotesView.text!
         let sleepDate = dateTimePicker.date
