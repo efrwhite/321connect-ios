@@ -18,10 +18,15 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view, typically from a nib.
+        
         self.navigationController?.navigationBar.tintColor = UIColor.white
-//hereherehereherehere
+        // hereherehereherehere this when screen is loaded it changes nav color to white
+        // for all preceding screens w/ nav bars
+        
     }
     
+    
+    // segmented horizontal scroll view next
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             FluidView.alpha = 1
