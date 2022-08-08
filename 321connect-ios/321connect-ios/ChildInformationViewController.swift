@@ -13,8 +13,10 @@ class ChildView: UIViewController {
  
     @IBOutlet weak var BloodTypeTablView: UITableView!
     @IBOutlet weak var BloodTypeButton: UIButton!
-    @IBOutlet weak var Birthday: UITextField!
-    @IBOutlet weak var DueDate: UITextField!
+    @IBOutlet weak var birthday: UIDatePicker!
+  
+    @IBOutlet weak var Duedate: UIDatePicker!
+    
     @IBOutlet weak var OnOff: UISegmentedControl!
     @IBOutlet weak var FirstName: UITextField!
     @IBOutlet weak var LastName: UITextField!
@@ -37,37 +39,9 @@ class ChildView: UIViewController {
     
     override func viewDidLoad() {
      super.viewDidLoad()
-        datePicker = UIDatePicker()
-        datePicker2 = UIDatePicker()
-        
-        datePicker?.datePickerMode = .date
-        datePicker?.addTarget(self, action: #selector(ChildView.dateChanged(datePicker:)), for: .valueChanged)
-        datePicker2?.datePickerMode = .date
-        datePicker2?.addTarget(self, action: #selector(ChildView.dateChange(datePicker:)), for: .valueChanged)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ChildView.viewTapGesture(gestureRecognizer:)))
-        view.addGestureRecognizer(tapGesture)
-        //Birthday.inputView = datePicker
-        //DueDate.inputView = datePicker2
-    }
-    @objc func viewTapGesture (gestureRecognizer: UITapGestureRecognizer){
-        view.endEditing(true)
+       
     }
    
-    @objc func dateChanged(datePicker: UIDatePicker){
-        let DateFormatter = DateFormatter()
-        DateFormatter.dateFormat = "MM/dd/yyyy"
-        Birthday.text = DateFormatter.string(from: datePicker.date)
-        view.endEditing(true)
-        
-    }
-    
-    @objc func dateChange(datePicker: UIDatePicker){
-        let DateFormatter = DateFormatter()
-        DateFormatter.dateFormat = "MM/dd/yyyy"
-        DueDate.text = DateFormatter.string(from: datePicker.date)
-        view.endEditing(true)
-        
-    }
     @IBAction func dropButtonTouched(_ sender: Any) {
             if BloodTypeTablView.isHidden {
                 animate(toggle: true)       // if hidden, show
@@ -92,10 +66,12 @@ class ChildView: UIViewController {
         
         let FN = FirstName.text!
         let LN = LastName.text!
-        let DD = DueDate.text!
-        let BD = Birthday.text!
+        let DD = Duedate.date
+        let BT = BloodTypeButton.currentTitle
+        let BD = birthday.date
         let Al = Allergies.text!
         let MD = Medications.text!
+       
         // this will need to be put in a if else statement
         let boyslider = OnOff.titleForSegment(at: 0)
         let girlslider = OnOff.titleForSegment(at: 1)
@@ -108,6 +84,7 @@ class ChildView: UIViewController {
         print("This is the DueDate: \(DD)")
         print("This is the Allergies: \(Al)")
         print("This is the Medications: \(MD)")
+        print("BloodType: \(BT)")
         print("This is the slider for boy: \(boyslider)")
         print("This is the slider for girl: \(girlslider)")
       

@@ -26,8 +26,8 @@ class ConstipationViewController: UIViewController {
         let ConstipationDate = DoLSConsti.date
         let notes = ConstiNotes.text
         let TreatmentPlan = TreatPlan.text
-        print("\(notes),\(TreatmentPlan)")
-        print(ConstipationDate)
+        print("Notes: \(notes),Consipation Date:\(ConstipationDate)  Treatment\(TreatmentPlan)")
+  
         
         
     }

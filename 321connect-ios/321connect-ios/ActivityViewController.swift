@@ -32,15 +32,17 @@ class ActivityViewController: UIViewController {
     }
     @IBAction func SaveButton(_ sender: Any) {
         let notes = Note.text
+        let activity = ActivityButton.currentTitle
         let ActivityDuration = ActivityDuration.countDownDuration
         print("Notes: \(notes ?? "Something went wrong with notes")")
         print("Duration: \(ActivityDuration )")
+        print("Current Activity: \(activity)")
     }
     @IBAction func dropButtonTouched(_ sender: Any) {
             if TableActivity.isHidden {
-                animate(toggle: true)       // if hidden, show
+                animate(toggle: false)       // if hidden, show
             } else {
-                animate(toggle: false)      // else hide
+                animate(toggle: true)      // else hide
             }
         }
         
