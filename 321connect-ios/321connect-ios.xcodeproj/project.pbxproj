@@ -42,6 +42,8 @@
 		EBBD569927ADEAE4005121C8 /* DevelopmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */; };
 		EBBD569B27ADFE2F005121C8 /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBD569A27ADFE2F005121C8 /* SleepViewController.swift */; };
 		EBBD569D27AE034B005121C8 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBD569C27AE034B005121C8 /* ActivityViewController.swift */; };
+		EBD02BF1289D994F0005A030 /* MilestoneCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD02BEF289D994F0005A030 /* MilestoneCellTableViewCell.swift */; };
+		EBD02BF2289D994F0005A030 /* MilestoneCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBD02BF0289D994F0005A030 /* MilestoneCellTableViewCell.xib */; };
 		EBE099B72739B43000F056A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099B62739B43000F056A0 /* AppDelegate.swift */; };
 		EBE099B92739B43000F056A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099B82739B43000F056A0 /* SceneDelegate.swift */; };
 		EBE099BB2739B43000F056A0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099BA2739B43000F056A0 /* LoginViewController.swift */; };
@@ -54,6 +56,7 @@
 		EBE099E72739BA2000F056A0 /* HomeScreenViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE099E62739BA2000F056A0 /* HomeScreenViewControllerExt.swift */; };
 		EBE1EF1C287248BA00605F93 /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1EF1B287248BA00605F93 /* ResourcesViewController.swift */; };
 		EBE1EF5A287CCDF700605F93 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1EF59287CCDF700605F93 /* WebViewController.swift */; };
+		EBE4153B289A049F00014641 /* SleepCycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE4153A289A049F00014641 /* SleepCycleViewController.swift */; };
 		EBFFE10928998F7100DA05F6 /* NewbornViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFFE10828998F7100DA05F6 /* NewbornViewController.swift */; };
 		EBFFE10B28998F9000DA05F6 /* TwoMonthsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFFE10A28998F9000DA05F6 /* TwoMonthsViewController.swift */; };
 		EBFFE10D28998F9C00DA05F6 /* FourMonthsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFFE10C28998F9C00DA05F6 /* FourMonthsViewController.swift */; };
@@ -139,6 +142,8 @@
 		EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentViewController.swift; sourceTree = "<group>"; };
 		EBBD569A27ADFE2F005121C8 /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
 		EBBD569C27AE034B005121C8 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		EBD02BEF289D994F0005A030 /* MilestoneCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneCellTableViewCell.swift; sourceTree = "<group>"; };
+		EBD02BF0289D994F0005A030 /* MilestoneCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MilestoneCellTableViewCell.xib; sourceTree = "<group>"; };
 		EBE099B32739B43000F056A0 /* 321connect-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "321connect-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE099B62739B43000F056A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBE099B82739B43000F056A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +160,7 @@
 		EBE099E62739BA2000F056A0 /* HomeScreenViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewControllerExt.swift; sourceTree = "<group>"; };
 		EBE1EF1B287248BA00605F93 /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
 		EBE1EF59287CCDF700605F93 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		EBE4153A289A049F00014641 /* SleepCycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepCycleViewController.swift; sourceTree = "<group>"; };
 		EBFFE10828998F7100DA05F6 /* NewbornViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewbornViewController.swift; sourceTree = "<group>"; };
 		EBFFE10A28998F9000DA05F6 /* TwoMonthsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoMonthsViewController.swift; sourceTree = "<group>"; };
 		EBFFE10C28998F9C00DA05F6 /* FourMonthsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourMonthsViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +245,8 @@
 			children = (
 				EB5EF2F22892132F00711E39 /* UserResourceCell.swift */,
 				EB5EF2F42892135100711E39 /* CustomTableViewCell.swift */,
+				EBD02BEF289D994F0005A030 /* MilestoneCellTableViewCell.swift */,
+				EBD02BF0289D994F0005A030 /* MilestoneCellTableViewCell.xib */,
 				EB4335A128905DE30037CDEF /* ProfileHeaderView.swift */,
 				EB4335A228905DE30037CDEF /* ProfileHeaderView.xib */,
 			);
@@ -293,6 +301,7 @@
 				EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */,
 				EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */,
 				EBBD569A27ADFE2F005121C8 /* SleepViewController.swift */,
+				EBE4153A289A049F00014641 /* SleepCycleViewController.swift */,
 				EB7FF6E528986A6600FF87D3 /* SleepReportsViewController.swift */,
 				EBBD569C27AE034B005121C8 /* ActivityViewController.swift */,
 				EB35918B27C9A14A00FE651D /* ChildInformationViewController.swift */,
@@ -463,6 +472,7 @@
 				EBE099C02739B43100F056A0 /* Assets.xcassets in Resources */,
 				EBE099BE2739B43000F056A0 /* Main.storyboard in Resources */,
 				EB4335A428905DE30037CDEF /* ProfileHeaderView.xib in Resources */,
+				EBD02BF2289D994F0005A030 /* MilestoneCellTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +533,7 @@
 				EBFFE1232899903100DA05F6 /* SixYearsViewController.swift in Sources */,
 				EBE1EF5A287CCDF700605F93 /* WebViewController.swift in Sources */,
 				EBFFE11128998FC000DA05F6 /* NineMonthsViewController.swift in Sources */,
+				EBD02BF1289D994F0005A030 /* MilestoneCellTableViewCell.swift in Sources */,
 				EBFFE12B2899906500DA05F6 /* TenYearsViewController.swift in Sources */,
 				FE19E611288F7E940020A0DD /* DiaperViewController.swift in Sources */,
 				EB24C86A285D30CC00D7922A /* FluidFeedViewController.swift in Sources */,
@@ -543,6 +554,7 @@
 				EBFFE1292899905100DA05F6 /* NineYearsViewController.swift in Sources */,
 				EBFFE11D2899901100DA05F6 /* ThreeYearsViewController.swift in Sources */,
 				EB24C860285BE06600D7922A /* FeedViewController.swift in Sources */,
+				EBE4153B289A049F00014641 /* SleepCycleViewController.swift in Sources */,
 				EBFFE1272899904600DA05F6 /* EightYearsViewController.swift in Sources */,
 				EB35917D27C83B3C00FE651D /* Provider.swift in Sources */,
 				EBFFE11F2899901A00DA05F6 /* FourYearsViewController.swift in Sources */,

@@ -53,6 +53,7 @@ class ProfilesViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
     }
+    
 }
     
 extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
@@ -66,6 +67,10 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
        
         return profileType[section].name?.count ?? 0
         
+    }
+    
+    func someSegue() {
+        self.performSegue(withIdentifier: "showProvidersVC", sender: self)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -88,5 +93,7 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
         
         return headerView
     }
+    
+
 }
     
