@@ -22,42 +22,36 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         self.UnitPicker.delegate = self
         self.UnitPicker.dataSource = self
-        pickerData = ["oz","lbs"]
+        pickerData = ["mililiters","ounces"]
     }
 
     @IBAction func Switch(_ sender: UISegmentedControl) {
+        
         if sender.selectedSegmentIndex == 0{
-            print("Yes")
+            //print("Yes")
             
         }
         else if sender.selectedSegmentIndex == 1{
-            print("no")
+            //print("no")
             
         }
     }
 
     @IBAction func SaveButton(_ sender: Any) {
-       
+        
         let diaperNotes = DiaperNotes.text
         let quantity = QuantityField.text
-        
+
         // This needs to be put in a if else statement
-        let diaperleakswitch_Yes = DiaperLeakSwitch.titleForSegment(at: 1)
-        let diaperleakswitch_No = DiaperLeakSwitch.titleForSegment(at: 0)
-        let AirAccidentSwitch_Yes = AirAccidentSwitch.titleForSegment(at: 1)
-        let AirAccidentSwitch_No = AirAccidentSwitch.titleForSegment(at: 0)
-        let DiaperCreamSwitch_Yes = DiaperCreamSwitch.titleForSegment(at: 0)
-        let DiaperCreamSwitch_No = DiaperCreamSwitch.titleForSegment(at: 1)
-        
-        
+        let diaperleakswitch_Yes = DiaperLeakSwitch.selectedSegmentIndex
+        let AirAccidentSwitch_Yes = AirAccidentSwitch.selectedSegmentIndex
+        let DiaperCreamSwitch_Yes = DiaperCreamSwitch.selectedSegmentIndex
+      
         print("This is Diaper Notes: \(diaperNotes)")
         print("This is Quantity: \(quantity)")
-//        print("This is DiaperLeak: \(diaperleakswitch_Yes)")
-//        print("This is DiaperLeak: \(diaperleakswitch_No)")
-//        print("This is Air Accident: \(AirAccidentSwitch_Yes)")
-//        print("This is Air Accident: \(AirAccidentSwitch_No)")
-//        print("This is DiaperCream: \(DiaperCreamSwitch_Yes)")
-//        print("This is DiaperCream: \(DiaperCreamSwitch_No)")
+        print("Diaper leak: \(diaperleakswitch_Yes), AirAccident: \(AirAccidentSwitch_Yes), DiaperCream: \(DiaperCreamSwitch_Yes)")
+        
+        
     }
     
     

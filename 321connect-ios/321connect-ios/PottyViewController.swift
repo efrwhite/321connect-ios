@@ -41,8 +41,11 @@ class PottyViewController: UIViewController {
             }
         }
     @IBAction func SaveButton(_ sender: Any) {
-        _  = PottyDuration.countDownDuration
-        _ = PottyNotes.text
+        let duration_potty  = PottyDuration.countDownDuration
+        let Notes_Potty = PottyNotes.text
+        let acci = PottyButton.currentTitle
+        print("Duration:\(duration_potty), Accident: \(acci), Notes: \(Notes_Potty)")
+        
         
     }
 }
