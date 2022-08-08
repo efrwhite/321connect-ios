@@ -19,6 +19,8 @@ class SleepViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var sleepReportScrollView: UIScrollView!
     
+    lazy var sleepCycleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SleepCycleViewController")
+    
     var timer = Timer()
     
     override func viewDidLoad(){
@@ -58,6 +60,13 @@ class SleepViewController: UIViewController {
     
     @IBAction func sleepCycleTapped(_ sender: Any) {
         print("Sleep Cycle Button Tapped") //debug
+        
+        // half bottom sheet presentation. Cycle calculator VC
+        if let sheet = sleepCycleVC.sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
+        
+        self.present(sleepCycleVC, animated: true, completion: nil)
     }
     
     // animation toggle helper function
