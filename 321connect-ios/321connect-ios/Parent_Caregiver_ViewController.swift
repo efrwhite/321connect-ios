@@ -28,6 +28,13 @@ class Parent_Caregiver_ViewController: UIViewController {
           // Dispose of any resources that can be recreated.
       }
     
+    @IBAction func SelectImage(_ sender: UIButton) {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
     @IBAction func Save_Button(_ sender: Any) {
         let firstName = FirstName.text
         let lastName = LastName.text
@@ -36,4 +43,16 @@ class Parent_Caregiver_ViewController: UIViewController {
         let password = Password.text
         print("firstname: \(firstName), lastname: \(lastName), PhoneNumber: \(phonenumber), Username: \(username), password: \(password)")
     }
+}
+extension Parent_Caregiver_ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
+            ParentPicture.image = image
+        }
+        picker.dismiss(animated: true)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+    
 }

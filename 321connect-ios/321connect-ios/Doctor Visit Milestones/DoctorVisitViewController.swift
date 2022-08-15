@@ -84,31 +84,31 @@ class DoctorVisitViewController: UIViewController, UIPickerViewDelegate, UIPicke
         let optional = {(action: UIAction) in print(action.title)}
         //Height
         HeightUnits.menu = UIMenu(children:[
-            UIAction(title:"cm",state: .on, handler: optional),
-                UIAction(title:"ft", handler: optional)
+            UIAction(title:"Centimeters (cm)",state: .on, handler: optional),
+                UIAction(title:"Feet (ft)", handler: optional)
         ])
         HeightUnits.showsMenuAsPrimaryAction = true
         HeightUnits.changesSelectionAsPrimaryAction = true
         //Weight
         WeightUnits.menu = UIMenu(children:[
-            UIAction(title:"oz",state: .on, handler: optional),
-                UIAction(title:"lbs", handler: optional)
+            UIAction(title:"Ounces (oz)",state: .on, handler: optional),
+                UIAction(title:"Pounds (lbs)", handler: optional)
         ])
        WeightUnits.showsMenuAsPrimaryAction = true
         WeightUnits.changesSelectionAsPrimaryAction = true
         
         // Head Circumference Units
         HCUnits.menu = UIMenu(children:[
-            UIAction(title:"cm",state: .on, handler: optional),
-                UIAction(title:"in", handler: optional)
+            UIAction(title:"Centimeters (cm)",state: .on, handler: optional),
+                UIAction(title:"Inches (in)", handler: optional)
         ])
         HCUnits.showsMenuAsPrimaryAction = true
         HCUnits.changesSelectionAsPrimaryAction = true
         
         //Temp
         TempUnits.menu = UIMenu(children:[
-            UIAction(title:"°C",state: .on, handler: optional),
-                UIAction(title:"°F", handler: optional)
+            UIAction(title:"Celsius °C",state: .on, handler: optional),
+                UIAction(title:"Fahrenheit °F", handler: optional)
         ])
         TempUnits.showsMenuAsPrimaryAction = true
         TempUnits.changesSelectionAsPrimaryAction = true

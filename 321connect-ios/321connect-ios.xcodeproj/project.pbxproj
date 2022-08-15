@@ -306,6 +306,7 @@
 				EBBD569C27AE034B005121C8 /* ActivityViewController.swift */,
 				EB35918B27C9A14A00FE651D /* ChildInformationViewController.swift */,
 				EB6A17AD27AB645D0069428E /* JournalViewController.swift */,
+				FE19E6162891DD4C0020A0DD /* Parent_Caregiver_ViewController.swift */,
 				EB35918827C83B9000FE651D /* DBHelper.swift */,
 				EBFFE10728998F3300DA05F6 /* Doctor Visit Milestones */,
 				EB4335A528905E340037CDEF /* Custom Cells */,
@@ -313,7 +314,6 @@
 				EBE099BF2739B43100F056A0 /* Assets.xcassets */,
 				EBE099C12739B43100F056A0 /* LaunchScreen.storyboard */,
 				EBE099C42739B43100F056A0 /* Info.plist */,
-				FE19E6162891DD4C0020A0DD /* Parent_Caregiver_ViewController.swift */,
 			);
 			path = "321connect-ios";
 			sourceTree = "<group>";
