@@ -12,50 +12,56 @@ import UIKit
 class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
   
     @IBOutlet weak var DiaperNotes: UITextView!
-    @IBOutlet weak var DiaperLeakSwitch: UISegmentedControl!
-    @IBOutlet weak var AirAccidentSwitch: UISegmentedControl!
-    @IBOutlet weak var DiaperCreamSwitch: UISegmentedControl!
-    @IBOutlet weak var UnitPicker: UIPickerView!
     @IBOutlet weak var QuantityField: UITextField!
+    @IBOutlet weak var DiaperLeak: UISwitch!
+    @IBOutlet weak var DiaperCream: UISwitch!
+    @IBOutlet weak var Accident: UISwitch!
+    @IBOutlet weak var QuantityUnits: UIButton!
     var pickerData: [String] = [String]()
     
     override func viewDidLoad() {
-        self.UnitPicker.delegate = self
-        self.UnitPicker.dataSource = self
-        pickerData = ["mililiters","ounces"]
+       setPopUpButton()
+
     }
 
-    @IBAction func Switch(_ sender: UISegmentedControl) {
+    
+
+    @IBAction func SwitchCheck(_ sender: UISwitch) {
+        if sender.tag == 0{
+            print("Diaper leak: \(DiaperLeak.isOn)")
+        }
+        if sender.tag == 1{
+            print("Open Air Accident: \(Accident.isOn)")
+        }
+        if sender.tag == 2{
+            print("Diaper Cream: \(DiaperCream.isOn)")
+        }
         
-        if sender.selectedSegmentIndex == 0{
-            //print("Yes")
-            
-        }
-        else if sender.selectedSegmentIndex == 1{
-            //print("no")
-            
-        }
+        
     }
-
     @IBAction func SaveButton(_ sender: Any) {
-        
+      
         let diaperNotes = DiaperNotes.text
         let quantity = QuantityField.text
-
-        // This needs to be put in a if else statement
-        let diaperleakswitch_Yes = DiaperLeakSwitch.selectedSegmentIndex
-        let AirAccidentSwitch_Yes = AirAccidentSwitch.selectedSegmentIndex
-        let DiaperCreamSwitch_Yes = DiaperCreamSwitch.selectedSegmentIndex
-      
         print("This is Diaper Notes: \(diaperNotes)")
         print("This is Quantity: \(quantity)")
-        print("Diaper leak: \(diaperleakswitch_Yes), AirAccident: \(AirAccidentSwitch_Yes), DiaperCream: \(DiaperCreamSwitch_Yes)")
+        
+       
         
         
     }
-    
-    
-    
+    func setPopUpButton(){
+        let optional = {(action: UIAction) in print(action.title)}
+
+        QuantityUnits.menu = UIMenu(children:[
+            UIAction(title:"Milliliter (mL)",state: .on, handler: optional),
+                UIAction(title:"Ounces (oz)", handler: optional)
+        ])
+        QuantityUnits.showsMenuAsPrimaryAction = true
+        QuantityUnits.changesSelectionAsPrimaryAction = true
+    }
+  
+ 
     
     @objc func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count

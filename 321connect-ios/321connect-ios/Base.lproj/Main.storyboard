@@ -1211,13 +1211,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="firstname" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bVM-rz-jxK">
-                                <rect key="frame" x="94" y="220" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="lastname" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y9f-gE-fcN">
-                                <rect key="frame" x="210" y="220" width="97" height="34"/>
+                                <rect key="frame" x="85" y="257" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1258,13 +1252,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyJ-NA-t00">
-                                <rect key="frame" x="76" y="478" width="42" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAD-45-1Cv">
                                 <rect key="frame" x="181" y="623" width="54" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1276,9 +1263,35 @@
                                     <action selector="Save_Button:" destination="3sK-ka-yc8" eventType="touchUpInside" id="WIw-AD-lB6"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyJ-NA-t00">
+                                <rect key="frame" x="76" y="478" width="115" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGs-Th-r5f">
+                                <rect key="frame" x="148" y="218" width="108" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Select Image">
+                                    <color key="baseForegroundColor" red="0.036156980540000001" green="0.18953203909999999" blue="0.037663669050000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="SelectImage:" destination="3sK-ka-yc8" eventType="touchUpInside" id="FZ1-MA-ReF"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="lastname" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y9f-gE-fcN">
+                                <rect key="frame" x="223" y="257" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="p9e-0s-ZSP"/>
                         <color key="backgroundColor" systemColor="linkColor"/>
+                        <color key="tintColor" red="0.53691068149999999" green="0.78441069050000001" blue="0.96611279250000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <navigationItem key="navigationItem" id="PCr-rC-9Da"/>
                     <connections>
@@ -1293,7 +1306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eai-Bd-YO1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10390" y="1985"/>
+            <point key="canvasLocation" x="-10391.304347826088" y="1984.8214285714284"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="hhK-nC-Gi7">
@@ -1481,12 +1494,6 @@
                                 <rect key="frame" x="30" y="575" width="100" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pfh-G7-bYj">
-                                <rect key="frame" x="207" y="621" width="110" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Select"/>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Activity" translatesAutoresizingMaskIntoConstraints="NO" id="ExZ-rt-pQ2">
                                 <rect key="frame" x="149" y="25" width="116" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1499,8 +1506,31 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" countDownDuration="86340" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mih-SV-7tu">
+                                <rect key="frame" x="53" y="633" width="294" height="75"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k45-DV-aPc">
+                                <rect key="frame" x="236" y="537" width="111" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <menu key="menu" id="HzS-qi-hwc">
+                                    <children>
+                                        <command title="Item 1" id="fYQ-Lf-Xcu"/>
+                                        <command title="Item 2" id="sPq-ie-V8O"/>
+                                        <command title="Item 3" id="Bkn-PU-AfA"/>
+                                        <command title="Item 4" id="Ld6-da-RmB"/>
+                                        <command title="Item 5" id="d9E-6F-9tf"/>
+                                        <command title="Item 6" id="Pcl-RS-XUV"/>
+                                        <command title="Item 7" id="erT-Ms-5br"/>
+                                        <command title="Item 8" id="8tY-xy-IwT"/>
+                                        <command title="Item 9" id="VMq-hc-lzW"/>
+                                        <command title="Item 10" id="7sE-7U-wyg"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Select Activity"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jvp-px-4E8">
-                                <rect key="frame" x="163" y="733" width="89" height="40"/>
+                                <rect key="frame" x="149" y="753" width="89" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save" cornerStyle="capsule"/>
@@ -1508,48 +1538,15 @@
                                     <action selector="SaveButton:" destination="O5y-mq-47D" eventType="touchUpInside" id="CMA-9H-7TW"/>
                                 </connections>
                             </button>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" countDownDuration="86340" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mih-SV-7tu">
-                                <rect key="frame" x="0.0" y="627" width="199" height="36"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qp8-aq-HvL">
-                                <rect key="frame" x="185" y="536" width="197" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Select Activity"/>
-                                <connections>
-                                    <action selector="dropButtonTouched:" destination="O5y-mq-47D" eventType="touchUpInside" id="XwD-m0-7ay"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4Mb-fv-qDJ">
-                                <rect key="frame" x="185" y="566" width="197" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="tak-8f-ZmW">
-                                        <rect key="frame" x="0.0" y="44.5" width="197" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tak-8f-ZmW" id="vnR-sq-WXt">
-                                            <rect key="frame" x="0.0" y="0.0" width="197" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="O5y-mq-47D" id="uzW-Ox-cG9"/>
-                                    <outlet property="delegate" destination="O5y-mq-47D" id="ni5-eW-WAD"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="q8a-Qq-rpv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="hLU-Mt-fEt"/>
                     <connections>
-                        <outlet property="ActivityButton" destination="Qp8-aq-HvL" id="TNr-bt-wCL"/>
                         <outlet property="ActivityDuration" destination="Mih-SV-7tu" id="bVg-R8-TMO"/>
                         <outlet property="Note" destination="TLQ-Nc-O06" id="rdI-c2-W1s"/>
-                        <outlet property="TableActivity" destination="4Mb-fv-qDJ" id="Ud8-w5-h3h"/>
+                        <outlet property="activityselection" destination="k45-DV-aPc" id="4ec-bx-qzD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDz-4e-1vU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1961,14 +1958,7 @@
                                 </connections>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Child FirstName" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qRi-Ox-5mM">
-                                <rect key="frame" x="99" y="215" width="105" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Child LastName" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ngz-hC-7as">
-                                <rect key="frame" x="212" y="215" width="105" height="34"/>
+                                <rect key="frame" x="75" y="238" width="105" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2029,42 +2019,48 @@
                                     <action selector="SaveButton:" destination="isc-2C-jJx" eventType="touchUpInside" id="8hi-iW-kOm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyR-Ja-sEE">
-                                <rect key="frame" x="245" y="521" width="97" height="31"/>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fq2-E1-bRU">
+                                <rect key="frame" x="168" y="368" width="226" height="54"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oxQ-9A-bKA">
+                                <rect key="frame" x="245" y="528" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <menu key="menu" id="srD-eC-MFQ">
+                                    <children>
+                                        <command title="Item 1" id="1zf-21-7qR"/>
+                                        <command title="Item 2" id="jHW-xo-qJG"/>
+                                        <command title="Item 3" id="bt4-l6-J8G"/>
+                                        <command title="Item 4" id="ANU-xb-Um4"/>
+                                        <command title="Item 5" id="fZU-b2-MSe"/>
+                                        <command title="Item 6" id="zzI-as-OJ3"/>
+                                        <command title="Item 7" id="BOe-uo-B5H"/>
+                                        <command title="Item 8" id="Pvb-Z4-F3T"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Select"/>
+                            </button>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TDI-OL-ClS">
+                                <rect key="frame" x="168" y="440" width="226" height="54"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFn-mY-mTl">
+                                <rect key="frame" x="154" y="197" width="108" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Select Image"/>
                                 <connections>
-                                    <action selector="dropButtonTouched:" destination="isc-2C-jJx" eventType="touchUpInside" id="GDr-6s-ABC"/>
+                                    <action selector="SelectImage:" destination="isc-2C-jJx" eventType="touchUpInside" id="Wie-va-SJB"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XST-Ap-lk4">
-                                <rect key="frame" x="245" y="552" width="97" height="72"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Child LastName" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ngz-hC-7as">
+                                <rect key="frame" x="237" y="238" width="105" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="6Og-H5-5ST">
-                                        <rect key="frame" x="0.0" y="44.5" width="97" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Og-H5-5ST" id="TaY-1d-qQZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="97" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="isc-2C-jJx" id="gIu-NF-Rs5"/>
-                                    <outlet property="delegate" destination="isc-2C-jJx" id="IMc-f7-UfL"/>
-                                </connections>
-                            </tableView>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fq2-E1-bRU">
-                                <rect key="frame" x="188" y="368" width="226" height="54"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </datePicker>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TDI-OL-ClS">
-                                <rect key="frame" x="180" y="440" width="226" height="54"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </datePicker>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ip8-2W-U7s"/>
                         <color key="backgroundColor" red="0.75795294319999995" green="0.86552279539999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -2072,8 +2068,8 @@
                     <navigationItem key="navigationItem" id="Mr7-LX-R97"/>
                     <connections>
                         <outlet property="Allergies" destination="yMh-Rg-qcC" id="Wua-u8-SWL"/>
-                        <outlet property="BloodTypeButton" destination="qyR-Ja-sEE" id="Ff1-di-zbQ"/>
-                        <outlet property="BloodTypeTablView" destination="XST-Ap-lk4" id="EV8-Li-96A"/>
+                        <outlet property="BloodType" destination="oxQ-9A-bKA" id="07D-fo-fj8"/>
+                        <outlet property="ChildImage" destination="aoQ-VU-Olg" id="Ttg-Al-YXf"/>
                         <outlet property="Duedate" destination="TDI-OL-ClS" id="tSI-Sh-avG"/>
                         <outlet property="FirstName" destination="qRi-Ox-5mM" id="sbc-bR-PKp"/>
                         <outlet property="LastName" destination="Ngz-hC-7as" id="bhs-JJ-iki"/>
@@ -2137,10 +2133,10 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="LJX-Wm-uLe">
-                                <rect key="frame" x="20" y="26" width="69" height="28"/>
+                                <rect key="frame" x="20" y="26" width="59" height="24"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notes" translatesAutoresizingMaskIntoConstraints="NO" id="GZI-D0-Whe">
-                                        <rect key="frame" x="0.0" y="0.0" width="69" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="59" height="24"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -2320,10 +2316,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="e12-r3-HUp">
-                                <rect key="frame" x="20" y="30" width="69" height="28"/>
+                                <rect key="frame" x="20" y="30" width="59" height="24"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notes" translatesAutoresizingMaskIntoConstraints="NO" id="cJa-uf-dno">
-                                        <rect key="frame" x="0.0" y="0.0" width="69" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="59" height="24"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -2646,28 +2642,6 @@
                                 <rect key="frame" x="16" y="559" width="104" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9Me-fo-CNQ">
-                                <rect key="frame" x="276" y="366" width="81" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Yes"/>
-                                    <segment title="No"/>
-                                </segments>
-                                <connections>
-                                    <action selector="Switch:" destination="rRg-dZ-51Y" eventType="valueChanged" id="hmM-K4-UUb"/>
-                                </connections>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GQe-a2-7bX">
-                                <rect key="frame" x="277" y="430" width="81" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Yes"/>
-                                    <segment title="No"/>
-                                </segments>
-                                <connections>
-                                    <action selector="Switch:" destination="rRg-dZ-51Y" eventType="valueChanged" id="cvU-oV-dzI"/>
-                                </connections>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5C7-Oe-f2R">
                                 <rect key="frame" x="180" y="659" width="56" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2680,43 +2654,60 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a4k-cW-yg8">
-                                <rect key="frame" x="214" y="570" width="68" height="34"/>
+                                <rect key="frame" x="197" y="570" width="68" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8y8-kp-lk6">
-                                <rect key="frame" x="276" y="494" width="81" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lJA-nK-99i">
+                                <rect key="frame" x="290" y="572" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Yes"/>
-                                    <segment title="No"/>
-                                </segments>
+                                <menu key="menu" id="XOj-v6-ki6">
+                                    <children>
+                                        <command title="Item 1" id="3qk-E1-fIo"/>
+                                        <command title="Item 2" id="Kgl-hm-6Vi"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Quantity Units"/>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pZd-fs-yuI">
+                                <rect key="frame" x="309" y="366" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="Switch:" destination="rRg-dZ-51Y" eventType="valueChanged" id="CVG-Bp-IY2"/>
+                                    <action selector="SwitchCheck:" destination="rRg-dZ-51Y" eventType="valueChanged" id="xk6-4w-UD0"/>
                                 </connections>
-                            </segmentedControl>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oap-eU-MkV">
-                                <rect key="frame" x="290" y="555" width="97" height="65"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
+                            </switch>
+                            <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nsw-WF-pyl">
+                                <rect key="frame" x="309" y="494" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="SwitchCheck:" destination="rRg-dZ-51Y" eventType="valueChanged" id="jIY-oE-KNO"/>
+                                </connections>
+                            </switch>
+                            <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="90i-C5-Meo">
+                                <rect key="frame" x="309" y="430" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="SwitchCheck:" destination="rRg-dZ-51Y" eventType="valueChanged" id="3Ub-cG-5A8"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SvD-4G-sRA"/>
                         <color key="backgroundColor" red="0.39852434827138722" green="0.67281988576549068" blue="0.96611279249191284" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
-                        <outlet property="AirAccidentSwitch" destination="GQe-a2-7bX" id="k3M-lP-pjQ"/>
-                        <outlet property="DiaperCreamSwitch" destination="8y8-kp-lk6" id="Tlf-r7-wng"/>
-                        <outlet property="DiaperLeakSwitch" destination="9Me-fo-CNQ" id="Gvs-q8-Yn4"/>
+                        <outlet property="Accident" destination="90i-C5-Meo" id="Qbf-gQ-Dro"/>
+                        <outlet property="DiaperCream" destination="Nsw-WF-pyl" id="f08-OO-N83"/>
+                        <outlet property="DiaperLeak" destination="pZd-fs-yuI" id="yjV-cA-a43"/>
                         <outlet property="DiaperNotes" destination="DNP-TM-dVA" id="J91-qc-jo3"/>
                         <outlet property="QuantityField" destination="a4k-cW-yg8" id="mmx-vd-8P2"/>
-                        <outlet property="UnitPicker" destination="Oap-eU-MkV" id="eFs-Ij-oqB"/>
+                        <outlet property="QuantityUnits" destination="lJA-nK-99i" id="kSW-mi-HUe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KGL-6u-UMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1320" y="4007"/>
+            <point key="canvasLocation" x="-1320.289855072464" y="4006.8080357142853"/>
         </scene>
         <!--Potty-->
         <scene sceneID="O17-aQ-dW6">
@@ -2742,25 +2733,6 @@
                                 <rect key="frame" x="16" y="357" width="118" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="97u-hv-VRE">
-                                <rect key="frame" x="207" y="248" width="109" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="zg9-vi-eXz">
-                                        <rect key="frame" x="0.0" y="44.5" width="109" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zg9-vi-eXz" id="X6w-Cf-2CK">
-                                            <rect key="frame" x="0.0" y="0.0" width="109" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="CD5-tL-Pve" id="50m-ot-Gki"/>
-                                    <outlet property="delegate" destination="CD5-tL-Pve" id="tnm-Bk-fVF"/>
-                                </connections>
-                            </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Duration" translatesAutoresizingMaskIntoConstraints="NO" id="n1l-P3-8cb">
                                 <rect key="frame" x="11" y="467" width="128" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2774,29 +2746,25 @@
                                     <action selector="SaveButton:" destination="CD5-tL-Pve" eventType="touchUpInside" id="kP0-7L-iwm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moJ-QD-Uig">
-                                <rect key="frame" x="207" y="373" width="109" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                                <connections>
-                                    <action selector="dropButtonTouched:" destination="CD5-tL-Pve" eventType="touchUpInside" id="9GW-59-5Sv"/>
-                                </connections>
-                            </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDZ-nc-P1C">
                                 <rect key="frame" x="142" y="434" width="272" height="135"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cdo-8F-D1H">
+                                <rect key="frame" x="271" y="373" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="SwitchChange:" destination="CD5-tL-Pve" eventType="valueChanged" id="39W-rY-zaV"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="H35-3z-dSs"/>
                         <color key="backgroundColor" red="0.3985243483" green="0.67281988579999996" blue="0.96611279250000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <connections>
-                        <outlet property="PottyButton" destination="moJ-QD-Uig" id="qvX-1Z-MLg"/>
+                        <outlet property="Accident" destination="Cdo-8F-D1H" id="wFw-Dw-5L0"/>
                         <outlet property="PottyDuration" destination="xDZ-nc-P1C" id="DwY-uD-fnh"/>
                         <outlet property="PottyNotes" destination="Bn4-Ne-uTB" id="qCX-MG-pEg"/>
-                        <outlet property="PottyTableView" destination="97u-hv-VRE" id="NDL-bo-0u1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knH-dy-Vok" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -7793,7 +7761,7 @@
         <image name="3 lines" width="30" height="24"/>
         <image name="321 Connect" width="216" height="47"/>
         <image name="Accident" width="91" height="28"/>
-        <image name="Activity" width="82" height="28"/>
+        <image name="Activity" width="71" height="24"/>
         <image name="Address 1" width="87" height="24"/>
         <image name="Address 2" width="88" height="24"/>
         <image name="Amount of Fluid" width="149" height="24"/>
@@ -7802,7 +7770,7 @@
         <image name="Development" width="137" height="28"/>
         <image name="Diaper Cream" width="140" height="28"/>
         <image name="Diaper Leak" width="122" height="28"/>
-        <image name="Duration" width="91" height="28"/>
+        <image name="Duration" width="78" height="24"/>
         <image name="Ellipse 1" width="90" height="90"/>
         <image name="Ellipse 2" width="24" height="24"/>
         <image name="Ellipse 6" width="69" height="69"/>
@@ -7812,14 +7780,14 @@
         <image name="Feed" width="58" height="33"/>
         <image name="Fluid" width="51" height="28"/>
         <image name="Hello, Name" width="108" height="24"/>
-        <image name="Journal" width="75" height="28"/>
+        <image name="Journal" width="65" height="24"/>
         <image name="Line 17" width="1" height="26"/>
         <image name="Login" width="58" height="28"/>
         <image name="Medical" width="68" height="24"/>
-        <image name="Message" width="105" height="33"/>
+        <image name="Message" width="76" height="24"/>
         <image name="Message-1" width="95" height="28"/>
         <image name="Mode of Eating" width="137" height="24"/>
-        <image name="Notes" width="69" height="28"/>
+        <image name="Notes" width="59" height="24"/>
         <image name="Open Air Accident" width="189" height="28"/>
         <image name="Path 3" width="334.5" height="1"/>
         <image name="Path 6" width="477" height="136.5"/>
@@ -7838,20 +7806,15 @@
         <image name="Rectangle 103" width="375" height="814"/>
         <image name="Rectangle 13" width="186" height="65"/>
         <image name="Rectangle 22" width="337" height="241"/>
-        <image name="Rectangle 24" width="368" height="478"/>
-        <image name="Rectangle 25" width="291" height="342"/>
-        <image name="Rectangle 26" width="167" height="53"/>
-        <image name="Rectangle 27" width="291" height="362"/>
-        <image name="Rectangle 28" width="167" height="53"/>
         <image name="Rectangle 32" width="130" height="65"/>
-        <image name="Rectangle 54" width="381" height="347"/>
+        <image name="Rectangle 54" width="416" height="378"/>
         <image name="Rectangle 69" width="402" height="777"/>
         <image name="Rectangle 79" width="15" height="15"/>
         <image name="Rectangle 9" width="190" height="57"/>
         <image name="Rectangle 99" width="375" height="812"/>
         <image name="Resources" width="90" height="24"/>
         <image name="SIGN IN" width="77" height="26"/>
-        <image name="Select" width="63" height="28"/>
+        <image name="Select" width="54" height="24"/>
         <image name="Sign Up-1" width="76" height="26"/>
         <image name="Sign up" width="83" height="30"/>
         <image name="Sleep" width="48" height="24"/>

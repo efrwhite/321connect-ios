@@ -11,63 +11,71 @@ import UIKit
  
 class ChildView: UIViewController {
  
-    @IBOutlet weak var BloodTypeTablView: UITableView!
-    @IBOutlet weak var BloodTypeButton: UIButton!
-    @IBOutlet weak var birthday: UIDatePicker!
-  
-    @IBOutlet weak var Duedate: UIDatePicker!
+    @IBOutlet weak var ChildImage: UIImageView!
     
+    @IBOutlet weak var birthday: UIDatePicker!
+    @IBOutlet weak var Duedate: UIDatePicker!
     @IBOutlet weak var OnOff: UISegmentedControl!
     @IBOutlet weak var FirstName: UITextField!
     @IBOutlet weak var LastName: UITextField!
     @IBOutlet weak var Allergies: UITextField!
     @IBOutlet weak var Medications: UITextField!
+    private var datePicker: UIDatePicker?
+    private var datePicker2: UIDatePicker?
+    @IBOutlet weak var BloodType: UIButton!
+    // var bloodTypes = ["A+","A-","B+","B-","AB+","AB-","O+","O-"]
+    //where ever U have your print statements make a object to store the information into child
     
-    var bloodTypes = ["A+","A-","B+","B-","AB+","AB-","O+","O-"]
     @IBAction func Slider(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0{
             print("Boy")
+            
         }
         else if sender.selectedSegmentIndex == 1{
             print("Girl")
         }
     }
     
+    @IBAction func SelectImage(_ sender: UIButton) {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
     
-    private var datePicker: UIDatePicker?
-    private var datePicker2: UIDatePicker?
+    func setPopupButton(){
+        let optional = {(action: UIAction) in print(action.title)}
+
+        BloodType.menu = UIMenu(children:[
+            UIAction(title:"A+",state: .on, handler: optional),
+            UIAction(title:"A-", handler: optional),
+            UIAction(title:"B+", handler: optional),
+            UIAction(title:"B-", handler: optional),
+            UIAction(title:"AB+", handler: optional),
+            UIAction(title:"AB-", handler: optional),
+            UIAction(title:"O+", handler: optional),
+            UIAction(title:"O-", handler: optional)
+            
+        ])
+        BloodType.showsMenuAsPrimaryAction = true
+        BloodType.changesSelectionAsPrimaryAction = true
+    }
     
     override func viewDidLoad() {
      super.viewDidLoad()
+        setPopupButton()
        
     }
    
-    @IBAction func dropButtonTouched(_ sender: Any) {
-            if BloodTypeTablView.isHidden {
-                animate(toggle: true)       // if hidden, show
-            } else {
-                animate(toggle: false)      // else hide
-            }
-        }
-        
-        func animate(toggle: Bool) {
-            if toggle {
-                UIView.animate(withDuration: 0.4) {
-                    self.BloodTypeTablView.isHidden = false
-                }
-            } else {
-                UIView.animate(withDuration: 0.4) {
-                    self.BloodTypeTablView.isHidden = true
-                }
-            }
-        }
+   
  
     @IBAction func SaveButton(_ sender: UIButton) {
         
         let FN = FirstName.text!
         let LN = LastName.text!
         let DD = Duedate.date
-        let BT = BloodTypeButton.currentTitle
+        let BT = BloodType.currentTitle
         let BD = birthday.date
         let Al = Allergies.text!
         let MD = Medications.text!
@@ -91,19 +99,15 @@ class ChildView: UIViewController {
     }
 
 }
-extension ChildView: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        bloodTypes.count
+extension ChildView: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
+            ChildImage.image = image
+        }
+        picker.dismiss(animated: true)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = bloodTypes[indexPath.row]
-        return cell
-    }
-    
-    func tableView(_ tableView:UITableView, didSelectRowAt indexPath: IndexPath) {
-        BloodTypeButton.setTitle("\(bloodTypes[indexPath.row])", for: .normal)
-        animate(toggle: false)
-    }
 }

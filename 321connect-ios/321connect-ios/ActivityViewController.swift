@@ -11,68 +11,43 @@ import UIKit
 class ActivityViewController: UIViewController {
     
 
+    @IBOutlet weak var activityselection: UIButton!
     @IBOutlet weak var ActivityDuration: UIDatePicker!
-    @IBOutlet weak var TableActivity: UITableView!
-    
-    @IBOutlet weak var ActivityButton: UIButton!
-    var Activities = ["Playing Alone",
-    "Playing with Others",
-    "Crawling",
-    "Rolling Over",
-    "Sitting",
-    "Standing",
-    "Out for a walk",
-    "Listening to a story",
-    "Having a bath",
-    "Brushing Teeth"]
     @IBOutlet weak var Note: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        setpopupbutton()
  
     }
     @IBAction func SaveButton(_ sender: Any) {
         let notes = Note.text
-        let activity = ActivityButton.currentTitle
+        let activity = activityselection.currentTitle
         let ActivityDuration = ActivityDuration.countDownDuration
         print("Notes: \(notes ?? "Something went wrong with notes")")
         print("Duration: \(ActivityDuration )")
         print("Current Activity: \(activity)")
     }
-    @IBAction func dropButtonTouched(_ sender: Any) {
-            if TableActivity.isHidden {
-                animate(toggle: false)       // if hidden, show
-            } else {
-                animate(toggle: true)      // else hide
-            }
-        }
+    
+    func setpopupbutton(){
+        let optional = {(action: UIAction) in print(action.title)}
+
+        activityselection.menu = UIMenu(children:[
+            UIAction(title:"Playing Alone",state: .on, handler: optional),
+            UIAction(title:"Playing with Others", handler: optional),
+            UIAction(title:"Crawling", handler: optional),
+            UIAction(title:"Rolling Over", handler: optional),
+            UIAction(title:"Sitting", handler: optional),
+            UIAction(title:"Standing", handler: optional),
+            UIAction(title:"Out for a walk", handler: optional),
+            UIAction(title:"Listening to a story", handler: optional),
+            UIAction(title:"Having a bath", handler: optional),
+            UIAction(title:"Brushing Teeth", handler: optional)
+        ])
+        activityselection.showsMenuAsPrimaryAction = true
+        activityselection.changesSelectionAsPrimaryAction = true
         
-        func animate(toggle: Bool) {
-            if toggle {
-                UIView.animate(withDuration: 0.4) {
-                    self.TableActivity.isHidden = false
-                }
-            } else {
-                UIView.animate(withDuration: 0.4) {
-                    self.TableActivity.isHidden = true
-                }
-            }
-        }
+    }
+    
 }
 
 
-extension ActivityViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        Activities.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = Activities[indexPath.row]
-        return cell
-    }
-    
-    func tableView(_ tableView:UITableView, didSelectRowAt indexPath: IndexPath) {
-        ActivityButton.setTitle("\(Activities[indexPath.row])", for: .normal)
-        animate(toggle: false)
-    }
-}
