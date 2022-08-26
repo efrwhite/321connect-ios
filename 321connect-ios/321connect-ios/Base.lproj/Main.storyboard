@@ -823,8 +823,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 101" translatesAutoresizingMaskIntoConstraints="NO" id="H5E-N6-duc">
-                                <rect key="frame" x="-189" y="-102" width="792" height="998"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 101" translatesAutoresizingMaskIntoConstraints="NO" id="H5E-N6-duc">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="THP-fO-iGe">
@@ -1006,7 +1006,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOV-xC-ud0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-11435" y="1985"/>
+            <point key="canvasLocation" x="-11436.231884057972" y="1984.8214285714284"/>
         </scene>
         <!--Sleep Cycle View Controller-->
         <scene sceneID="qTh-iL-Cv5">
@@ -1205,11 +1205,15 @@
         <!--ParentViewController-->
         <scene sceneID="Mw4-rT-HqG">
             <objects>
-                <viewController title="ParentViewController" id="3sK-ka-yc8" customClass="Parent_Caregiver_ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ParentCaregiverViewController" title="ParentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3sK-ka-yc8" customClass="Parent_Caregiver_ViewController" customModule="_21connect_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uOe-NA-BW4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 101" translatesAutoresizingMaskIntoConstraints="NO" id="01J-GK-PLX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="firstname" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bVM-rz-jxK">
                                 <rect key="frame" x="85" y="257" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1252,17 +1256,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAD-45-1Cv">
-                                <rect key="frame" x="181" y="623" width="54" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="save">
-                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="Save_Button:" destination="3sK-ka-yc8" eventType="touchUpInside" id="WIw-AD-lB6"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyJ-NA-t00">
                                 <rect key="frame" x="76" y="478" width="115" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1279,7 +1272,7 @@
                                     <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="SelectImage:" destination="3sK-ka-yc8" eventType="touchUpInside" id="FZ1-MA-ReF"/>
+                                    <action selector="SelectImage:" destination="3sK-ka-yc8" eventType="touchUpInside" id="0pr-v6-LZA"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="lastname" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y9f-gE-fcN">
@@ -1288,6 +1281,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ft4-qQ-8tZ">
+                                <rect key="frame" x="152" y="759" width="100" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Save"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="p9e-0s-ZSP"/>
                         <color key="backgroundColor" systemColor="linkColor"/>
@@ -1295,13 +1294,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="PCr-rC-9Da"/>
                     <connections>
-                        <outlet property="FirstName" destination="bVM-rz-jxK" id="TqN-6t-mex"/>
-                        <outlet property="LastName" destination="y9f-gE-fcN" id="5Xp-Xl-DSv"/>
                         <outlet property="ParentPicture" destination="Ba3-02-072" id="HG1-Lw-0yo"/>
-                        <outlet property="Password" destination="Rib-Us-8yQ" id="mpc-CC-ucn"/>
-                        <outlet property="PhoneNumber" destination="EI0-0Y-Zmn" id="lVM-Vv-hzH"/>
-                        <outlet property="SaveButton" destination="QAD-45-1Cv" id="7ww-L8-TuN"/>
-                        <outlet property="Username" destination="QTD-gF-67l" id="nhX-PP-fdw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eai-Bd-YO1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1942,6 +1935,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rectangle 101" translatesAutoresizingMaskIntoConstraints="NO" id="QSe-QD-9cj">
+                                <rect key="frame" x="0.0" y="0.0" width="415" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aoQ-VU-Olg">
                                 <rect key="frame" x="108" y="60" width="198" height="129"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -7751,7 +7748,7 @@
         <segue reference="JfG-ll-slp"/>
         <segue reference="aKp-sF-QPk"/>
         <segue reference="yVy-ry-Osa"/>
-        <segue reference="lXf-ky-ldp"/>
+        <segue reference="klS-EG-BR2"/>
         <segue reference="1hW-le-3t9"/>
         <segue reference="1wn-hu-7An"/>
         <segue reference="1KZ-tx-RKW"/>
@@ -7761,7 +7758,7 @@
         <image name="3 lines" width="30" height="24"/>
         <image name="321 Connect" width="216" height="47"/>
         <image name="Accident" width="91" height="28"/>
-        <image name="Activity" width="71" height="24"/>
+        <image name="Activity" width="82" height="28"/>
         <image name="Address 1" width="87" height="24"/>
         <image name="Address 2" width="88" height="24"/>
         <image name="Amount of Fluid" width="149" height="24"/>
@@ -7770,7 +7767,7 @@
         <image name="Development" width="137" height="28"/>
         <image name="Diaper Cream" width="140" height="28"/>
         <image name="Diaper Leak" width="122" height="28"/>
-        <image name="Duration" width="78" height="24"/>
+        <image name="Duration" width="91" height="28"/>
         <image name="Ellipse 1" width="90" height="90"/>
         <image name="Ellipse 2" width="24" height="24"/>
         <image name="Ellipse 6" width="69" height="69"/>
@@ -7780,7 +7777,7 @@
         <image name="Feed" width="58" height="33"/>
         <image name="Fluid" width="51" height="28"/>
         <image name="Hello, Name" width="108" height="24"/>
-        <image name="Journal" width="65" height="24"/>
+        <image name="Journal" width="75" height="28"/>
         <image name="Line 17" width="1" height="26"/>
         <image name="Login" width="58" height="28"/>
         <image name="Medical" width="68" height="24"/>
@@ -7814,10 +7811,10 @@
         <image name="Rectangle 99" width="375" height="812"/>
         <image name="Resources" width="90" height="24"/>
         <image name="SIGN IN" width="77" height="26"/>
-        <image name="Select" width="54" height="24"/>
+        <image name="Select" width="63" height="28"/>
         <image name="Sign Up-1" width="76" height="26"/>
         <image name="Sign up" width="83" height="30"/>
-        <image name="Sleep" width="48" height="24"/>
+        <image name="Sleep" width="67" height="33"/>
         <image name="Solid" width="52" height="28"/>
         <image name="Specialty" width="81" height="24"/>
         <image name="State" width="47" height="24"/>
