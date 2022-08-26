@@ -69,9 +69,9 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
         
     }
     
-    func someSegue() {
-        self.performSegue(withIdentifier: "showProvidersVC", sender: self)
-    }
+//    func someSegue() {
+//        self.performSegue(withIdentifier: "showProvidersVC", sender: self)
+//    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = profilesTableView.dequeueReusableCell(withIdentifier: "customCell") as! CustomTableViewCell
@@ -94,6 +94,32 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
         return headerView
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            self.performSegue(withIdentifier: "showChildVC", sender: tableView(_:didSelectRowAt:))
+        case 1:
+            self.performSegue(withIdentifier: "showParentsVC", sender: tableView(_:didSelectRowAt:))
+        case 2:
+            self.performSegue(withIdentifier: "showProvidersVC", sender: tableView(_:didSelectRowAt:))
+        default:
+            break
+        }
+    }
+    
+    // MARK: - Navigation
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        if segue.identifier == "showChildVC" {
+//
+//            guard let data = sender as? String,
+//                  let newViewController = segue.destination as? UIViewController else {
+//                return
+//            }
+//
+//            newViewController.data = data
+//        }
+    
 }
     

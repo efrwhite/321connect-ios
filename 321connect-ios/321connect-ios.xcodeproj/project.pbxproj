@@ -86,7 +86,7 @@
 		FE19E611288F7E940020A0DD /* DiaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19E610288F7E940020A0DD /* DiaperViewController.swift */; };
 		FE19E613288F7EA40020A0DD /* ConstipationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19E612288F7EA40020A0DD /* ConstipationViewController.swift */; };
 		FE19E615288F7EB10020A0DD /* PottyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19E614288F7EB10020A0DD /* PottyViewController.swift */; };
-		FE19E6172891DD4C0020A0DD /* Parent_Caregiver_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19E6162891DD4C0020A0DD /* Parent_Caregiver_ViewController.swift */; };
+		FE19E6172891DD4C0020A0DD /* ParentCaregiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19E6162891DD4C0020A0DD /* ParentCaregiverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,7 +190,7 @@
 		FE19E610288F7E940020A0DD /* DiaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaperViewController.swift; sourceTree = "<group>"; };
 		FE19E612288F7EA40020A0DD /* ConstipationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstipationViewController.swift; sourceTree = "<group>"; };
 		FE19E614288F7EB10020A0DD /* PottyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PottyViewController.swift; sourceTree = "<group>"; };
-		FE19E6162891DD4C0020A0DD /* Parent_Caregiver_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parent_Caregiver_ViewController.swift; sourceTree = "<group>"; };
+		FE19E6162891DD4C0020A0DD /* ParentCaregiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCaregiverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +253,16 @@
 			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
+		EBA9C6D528B721C500779A2B /* Profile Types */ = {
+			isa = PBXGroup;
+			children = (
+				EB35918B27C9A14A00FE651D /* ChildInformationViewController.swift */,
+				EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */,
+				FE19E6162891DD4C0020A0DD /* ParentCaregiverViewController.swift */,
+			);
+			path = "Profile Types";
+			sourceTree = "<group>";
+		};
 		EBE099AA2739B43000F056A0 = {
 			isa = PBXGroup;
 			children = (
@@ -298,15 +308,13 @@
 				EB24C867285D309700D7922A /* SolidFeedViewController.swift */,
 				EB24C86B286656C100D7922A /* BehaviorViewController.swift */,
 				EB7978172852D01800154969 /* ProfilesViewController.swift */,
-				EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */,
+				EBA9C6D528B721C500779A2B /* Profile Types */,
 				EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */,
 				EBBD569A27ADFE2F005121C8 /* SleepViewController.swift */,
 				EBE4153A289A049F00014641 /* SleepCycleViewController.swift */,
 				EB7FF6E528986A6600FF87D3 /* SleepReportsViewController.swift */,
 				EBBD569C27AE034B005121C8 /* ActivityViewController.swift */,
-				EB35918B27C9A14A00FE651D /* ChildInformationViewController.swift */,
 				EB6A17AD27AB645D0069428E /* JournalViewController.swift */,
-				FE19E6162891DD4C0020A0DD /* Parent_Caregiver_ViewController.swift */,
 				EB35918827C83B9000FE651D /* DBHelper.swift */,
 				EBFFE10728998F3300DA05F6 /* Doctor Visit Milestones */,
 				EB4335A528905E340037CDEF /* Custom Cells */,
@@ -524,7 +532,7 @@
 				EB35917927C83B2200FE651D /* Milestone.swift in Sources */,
 				EBFFE10928998F7100DA05F6 /* NewbornViewController.swift in Sources */,
 				FE19E613288F7EA40020A0DD /* ConstipationViewController.swift in Sources */,
-				FE19E6172891DD4C0020A0DD /* Parent_Caregiver_ViewController.swift in Sources */,
+				FE19E6172891DD4C0020A0DD /* ParentCaregiverViewController.swift in Sources */,
 				EB51422927B76FDE0030EDB3 /* HomeScreenViewController.swift in Sources */,
 				EBFFE10F28998FB100DA05F6 /* SixMonthsViewController.swift in Sources */,
 				EBFFE12D2899907600DA05F6 /* ElevenYearsViewController.swift in Sources */,
