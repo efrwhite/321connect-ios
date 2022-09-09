@@ -9,6 +9,11 @@ import UIKit
 
 class SleepReportsViewController: UIViewController {
     
+    @IBOutlet weak var dateTimePicker: UIDatePicker!
+    @IBOutlet weak var durationPicker: UIDatePicker!
+    @IBOutlet weak var sleepNotesView: UITextView!
+    @IBOutlet weak var saveButton: UIButton!
+    
     // switches
     @IBOutlet weak var snoreSwitch: UISwitch!
     @IBOutlet weak var treatmentsSwitch: UISwitch!
@@ -21,6 +26,10 @@ class SleepReportsViewController: UIViewController {
     @IBOutlet weak var otherToggle: UIButton!
     @IBOutlet weak var indicateTextField: UITextField!
     
+    lazy var sleepCycleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SleepCycleViewController")
+    
+    var timer = Timer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,11 +39,34 @@ class SleepReportsViewController: UIViewController {
         cpapToggle.isEnabled = false
         otherToggle.isEnabled = false
         // Do any additional setup after loading the view.
+        
     }
+    
     
     /*
      // MARK: - Button Functions
      */
+    
+    @IBAction func saveTapped(_ sender: UIButton) {
+        let notesText = sleepNotesView.text!
+        let sleepDate = dateTimePicker.date
+        let sleepTime = dateTimePicker.countDownDuration
+
+        
+        if (snoreSwitch.isOn == true) {
+            let snoreHistory = "YES"
+        } else {
+            let snoreHistory = "NO"
+        }
+
+        // ********** print to console ****************
+        print("SLEEP DATE: \(sleepDate)")
+        print("SLEEP TIME: \(sleepTime)")
+//        print("NOTES: \(notesText)")
+//        print("SNORE HISTORY: \(snoreHistory)")
+        // ********** print to console ****************
+
+    }
     
     @IBAction func treatmentsChanged(_ sender: Any) {
         if treatmentsSwitch.isOn == true {
