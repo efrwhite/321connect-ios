@@ -87,12 +87,18 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        // show custom Profile Header View (with add button)
         let headerView = Bundle.main.loadNibNamed("ProfileHeaderView", owner: self, options: nil)?.first as! ProfileHeaderView
+        
+//        headerView.delegate = self
         
         headerView.profileTitle.text = profileType[section].profile
         
         return headerView
     }
+    
+    // MARK: - Navigation
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
@@ -106,20 +112,5 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
             break
         }
     }
-    
-    // MARK: - Navigation
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
-//        if segue.identifier == "showChildVC" {
-//
-//            guard let data = sender as? String,
-//                  let newViewController = segue.destination as? UIViewController else {
-//                return
-//            }
-//
-//            newViewController.data = data
-//        }
-    
 }
     
