@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class JournalViewController: UIViewController {
 
@@ -14,6 +15,8 @@ class JournalViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
+    var journalArray = [Journal]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var timer = Timer()
     
@@ -38,11 +41,39 @@ class JournalViewController: UIViewController {
     /* *** source: https://www.youtube.com/watch?v=9UovPNh4Csw *** */
     
     @IBAction func saveTapped(_ sender: Any) {
-        let journalTitle = titleTextField.text!
-        let journalNotes = notesTextView.text!
+//        let journalTitle = titleTextField.text!
+//        let journalNotes = notesTextView.text!
         
-        // print to console
-        print("TITLE: \(journalTitle)")
-        print("NOTES: \(journalNotes)")
+//        // print to console
+//        print("TITLE: \(journalTitle)")
+//        print("NOTES: \(journalNotes)")
+        
+        let new_journalEntry = Journal(context: self.context)
+        new_journalEntry.title = titleTextField.text!
+        new_journalEntry.notes = notesTextView.text!
+        
+        self.journalArray.append(new_journalEntry)
+        
+        
+        self.SaveItems()
     }
+    
+    func SaveItems(){
+       
+        do {
+            try context.save()
+        } catch {
+            print("Error Saving context \(error)")
+        }
+    }
+
+    func loadItems(){
+        let request : NSFetchRequest<Journal> = Journal.fetchRequest()
+        do{
+        journalArray = try context.fetch(request)
+        } catch{
+            print("Error fetching data \(error)")
+        }
+    }
+    
 }
