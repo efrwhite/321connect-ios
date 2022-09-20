@@ -34,6 +34,7 @@
 		EB5EF2F32892132F00711E39 /* UserResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EF2F22892132F00711E39 /* UserResourceCell.swift */; };
 		EB5EF2F52892135100711E39 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EF2F42892135100711E39 /* CustomTableViewCell.swift */; };
 		EB6A17AE27AB645D0069428E /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A17AD27AB645D0069428E /* JournalViewController.swift */; };
+		EB6E061628D5541B0023BA00 /* DoctorsVisitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6E061528D5541B0023BA00 /* DoctorsVisitViewController.swift */; };
 		EB7978182852D01800154969 /* ProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7978172852D01800154969 /* ProfilesViewController.swift */; };
 		EB7FF6E628986A6600FF87D3 /* SleepReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7FF6E528986A6600FF87D3 /* SleepReportsViewController.swift */; };
 		EBBD569727ADEA42005121C8 /* ProvidersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */; };
@@ -134,6 +135,7 @@
 		EB5EF2F22892132F00711E39 /* UserResourceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserResourceCell.swift; sourceTree = "<group>"; };
 		EB5EF2F42892135100711E39 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		EB6A17AD27AB645D0069428E /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
+		EB6E061528D5541B0023BA00 /* DoctorsVisitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsVisitViewController.swift; sourceTree = "<group>"; };
 		EB7978172852D01800154969 /* ProfilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesViewController.swift; sourceTree = "<group>"; };
 		EB7FF6E528986A6600FF87D3 /* SleepReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepReportsViewController.swift; sourceTree = "<group>"; };
 		EBBD569627ADEA42005121C8 /* ProvidersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidersViewController.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				EBE099B62739B43000F056A0 /* AppDelegate.swift */,
 				EBE099B82739B43000F056A0 /* SceneDelegate.swift */,
 				EBE099BC2739B43000F056A0 /* Main.storyboard */,
+				EB6E061528D5541B0023BA00 /* DoctorsVisitViewController.swift */,
 				FE19E60E288F7E850020A0DD /* BathroomViewController.swift */,
 				FE19E614288F7EB10020A0DD /* PottyViewController.swift */,
 				FE19E612288F7EA40020A0DD /* ConstipationViewController.swift */,
@@ -313,11 +316,11 @@
 				EBBD569C27AE034B005121C8 /* ActivityViewController.swift */,
 				FEBFC9AD28CFCCC000E0F299 /* MessageView.swift */,
 				EB6A17AD27AB645D0069428E /* JournalViewController.swift */,
-				EB35918827C83B9000FE651D /* DBHelper.swift */,
 				EBA9C6D528B721C500779A2B /* Profile Types */,
 				EBFFE10728998F3300DA05F6 /* Doctor Visit Milestones */,
 				EB4335A528905E340037CDEF /* Custom Cells */,
 				EB35918A27C8407B00FE651D /* Table Titles */,
+				EB35918827C83B9000FE651D /* DBHelper.swift */,
 				EBE099BF2739B43100F056A0 /* Assets.xcassets */,
 				EBE099C12739B43100F056A0 /* LaunchScreen.storyboard */,
 				FEBFC9AA28CFC79000E0F299 /* 321ConnectDatabase.xcdatamodeld */,
@@ -569,6 +572,7 @@
 				EBFFE11F2899901A00DA05F6 /* FourYearsViewController.swift in Sources */,
 				EBBD569B27ADFE2F005121C8 /* SleepViewController.swift in Sources */,
 				FE19E60F288F7E850020A0DD /* BathroomViewController.swift in Sources */,
+				EB6E061628D5541B0023BA00 /* DoctorsVisitViewController.swift in Sources */,
 				EB6A17AE27AB645D0069428E /* JournalViewController.swift in Sources */,
 				EB3A328D27A362CC00B96417 /* SignUpViewController.swift in Sources */,
 				EBFFE11528998FDC00DA05F6 /* FifteenMonthsViewController.swift in Sources */,
