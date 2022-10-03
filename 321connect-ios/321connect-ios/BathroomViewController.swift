@@ -16,6 +16,12 @@ class BathroomViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //load initial: view 1
+        view1.alpha = 1
+        view2.alpha = 0
+        view3.alpha = 0
+        
     }
     
     @IBAction func SegmentView(_ sender: UISegmentedControl) {

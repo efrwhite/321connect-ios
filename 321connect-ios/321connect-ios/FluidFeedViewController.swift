@@ -125,7 +125,7 @@ class FluidFeedViewController: UIViewController {
         let notesText = notesTextField.text!
         let fluidType = fluidTypeTextField.text!
         let fluidMeasure = fluidAmountTextField.text! + " " + feedMeasureButton.title(for: .normal)!// string amount appended by fluid mode button selection
-        
+        let feedMode = feedModeButton.title(for: .normal)!
         //capture with radio buttons and optional 'other'
 
         
@@ -133,6 +133,7 @@ class FluidFeedViewController: UIViewController {
         print("NOTES: \(notesText)")
         print("FLUID: \(fluidType)")    // fix for required selection?
         print("AMOUNT: \(fluidMeasure)")
+        print("MODE OF FEED: \(feedMode)")
     }
     
     /*
