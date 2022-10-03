@@ -8,79 +8,91 @@
 import Foundation
 import UIKit
 
-struct cellData {
-    let section : String!
-    let cellType : Int!
-    let text : String!
-}
-
 class DevelopmentViewController: UIViewController {
     
-    @IBOutlet weak var milestonesTableView: UITableView!
     @IBOutlet weak var saveButton: UIButton!
     
-    var cellArray = [cellData]()
+    // physical milestone dates
+    @IBOutlet weak var physicalRollDate: UIDatePicker!
+    @IBOutlet weak var physicalSitDate: UIDatePicker!
+    @IBOutlet weak var physicalCrawlsDate: UIDatePicker!
+    @IBOutlet weak var physicalStandingDate: UIDatePicker!
+    @IBOutlet weak var physicalHoldingDate: UIDatePicker!
+    @IBOutlet weak var physicalNoHoldDate: UIDatePicker!
+    @IBOutlet weak var physicalJumpDate: UIDatePicker!
     
-    /* Table view arrays data */
-    var sections = ["Physical",
-                    "Fine Motor",
-                    "Social",
-                    "Verbal",
-                    "Hearing",
-                    "Notes"
-    ]
+    // fine motor milestone dates
+    @IBOutlet weak var motorHoldsObjDate: UIDatePicker!
+    @IBOutlet weak var motorHandMouthDate: UIDatePicker!
+    @IBOutlet weak var motorPassesDate: UIDatePicker!
+    @IBOutlet weak var motorPincerDate: UIDatePicker!
+    @IBOutlet weak var motorCupDate: UIDatePicker!
+    @IBOutlet weak var motorScribbleDate: UIDatePicker!
+    @IBOutlet weak var motorSpoonDate: UIDatePicker!
+    
+    // social milestone dates
+    @IBOutlet weak var socialPointsDate: UIDatePicker!
+    @IBOutlet weak var socialEmotionDate: UIDatePicker!
+    @IBOutlet weak var socialAffectionDate: UIDatePicker!
+    @IBOutlet weak var socialChildrenAffectionDate: UIDatePicker!
+    
+    // verbal milestone dates
+    @IBOutlet weak var verbalCooDate: UIDatePicker!
+    @IBOutlet weak var verbalBabbleDate: UIDatePicker!
+    @IBOutlet weak var verbalWordDate: UIDatePicker!
+    @IBOutlet weak var verbalSentenceDate: UIDatePicker!
+    @IBOutlet weak var verbalLongDate: UIDatePicker!
+    
+    // hearing milestone dates
+    @IBOutlet weak var hearingStartleDate: UIDatePicker!
+    @IBOutlet weak var hearingSoundDate: UIDatePicker!
+    
+    @IBOutlet weak var notesField: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        cellArray = [cellData(section: "Physical", cellType: 1, text: "Child first rolls over"),
-                     cellData(section: "Physical", cellType: 1, text: "Child first sits up"),
-                     cellData(section: "Physical", cellType: 1, text: "Child first crawls/creeps"),
-                     cellData(section: "Physical", cellType: 1, text: "Child first pulls to standing"),
-                     cellData(section: "Physical", cellType: 1, text: "Child first walks holding on"),
-                     cellData(section: "Physical", cellType: 1, text: "Child first pulls without holding on"),
-                     cellData(section: "Physical", cellType: 1, text: "Child first jumps"),
-                     
-                     cellData(section: "Fine Motor", cellType: 1, text: "Child first holds object"),
-                     cellData(section: "Fine Motor", cellType: 1, text: "Child first hands to mouth"),
-                     cellData(section: "Fine Motor", cellType: 1, text: "Child first passes object between hands"),
-                     cellData(section: "Fine Motor", cellType: 1, text: "Child first uses pincer grasp (pick up small object with thumb and pointer finger"),
-                     cellData(section: "Fine Motor", cellType: 1, text: "Child first drinks from a cup"),
-                     cellData(section: "Fine Motor", cellType: 1, text: "Child first scribbles"),
-                     cellData(section: "Fine Motor", cellType: 1, text: "Child first feeds self with spoon"),
-                     
-                     cellData(section: "Social", cellType: 1, text: "Child first points"),
-                     cellData(section: "Social", cellType: 1, text: "Child first shows emotion"),
-                     cellData(section: "Social", cellType: 1, text: "Child first shows affection"),
-                     cellData(section: "Social", cellType: 1, text: "Child first interested and shows affection to other children"),
-                     
-                     cellData(section: "Verbal", cellType: 1, text: "Child first coos"),
-                     cellData(section: "Verbal", cellType: 1, text: "Child first babbles"),
-                     cellData(section: "Verbal", cellType: 1, text: "Child speaks first word"),
-                     cellData(section: "Verbal", cellType: 1, text: "Child speaks first two word sentence"),
-                     cellData(section: "Verbal", cellType: 1, text: "Child speaks first longer sentence"),
 
-                     cellData(section: "Hearing", cellType: 1, text: "Child first startles"),
-                     cellData(section: "Hearing", cellType: 1, text: "Child first turns toward sound"),
-                     
-                     cellData(section: "Notes", cellType: 2, text: "Enter notes"),
-        ]
+        /* date data transfer from database to populate corresponding datepickers*/
+        //here
+        
     }
+    
+    @IBAction func saveTapped(_ sender: Any) {
+        let pRollDate = physicalRollDate.date
+        let pSitDate = physicalSitDate.date
+        let pCrawlsDate = physicalCrawlsDate.date
+        let pStandingDate = physicalStandingDate.date
+        let pHoldingDate = physicalHoldingDate.date
+        let pNoHoldDate = physicalNoHoldDate.date
+        let pJumpDate = physicalJumpDate.date
+        
+        let mHoldsObjDate = motorHoldsObjDate.date
+        let mHandMouthDate = motorHandMouthDate.date
+        let mPassesDate = motorPassesDate.date
+        let mPincerDate = motorPincerDate.date
+        let mCupDate = motorCupDate.date
+        let mScribbleDate = motorScribbleDate.date
+        let mSpoonDate = motorSpoonDate.date
+        
+        let sPointsDate = socialPointsDate.date
+        let sEmotionDate = socialEmotionDate.date
+        let sAffectionDate = socialAffectionDate.date
+        let sChildrenAffectionDate = socialChildrenAffectionDate.date
+        
+        let vCooDate = verbalCooDate.date
+        let vBabbleDate = verbalBabbleDate.date
+        let vWordDate = verbalWordDate.date
+        let vSentenceDate = verbalSentenceDate.date
+        let vLongDate = verbalLongDate.date
+        
+        let hearingStartleDate = hearingStartleDate.date
+        let hearingSoundDate = hearingSoundDate.date
+        
+        // database data does not transfer to populate notes field
+        // append to data base coloumn 
+        let notesField = notesField.text
+    }
+    
 }
 
-//extension DevelopmentViewController: UITableViewDataSource, UITableViewDelegate{
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return sections.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return cellArray[section].section.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = milestonesTableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath)
-//
-//        cell.textLabel?.text = cellArray.[indexPath.row].text
-//    }
-//
-//}
