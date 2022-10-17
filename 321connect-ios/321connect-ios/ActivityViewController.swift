@@ -7,25 +7,29 @@
 
 import Foundation
 import UIKit
-
+import CoreData
 class ActivityViewController: UIViewController {
-    
 
     @IBOutlet weak var activityselection: UIButton!
     @IBOutlet weak var ActivityDuration: UIDatePicker!
     @IBOutlet weak var Note: UITextView!
+    var ActivityArray = [Activity]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     override func viewDidLoad() {
         super.viewDidLoad()
         setpopupbutton()
  
     }
     @IBAction func SaveButton(_ sender: Any) {
-        let notes = Note.text
-        let activity = activityselection.currentTitle
-        let ActivityDuration = ActivityDuration.countDownDuration
-        print("Notes: \(notes ?? "Something went wrong with notes")")
-        print("Duration: \(ActivityDuration )")
-        print("Current Activity: \(activity)")
+//        let notes = Note.text
+//        let activity = activityselection.currentTitle
+//        let ActivityDuration = ActivityDuration.countDownDuration
+        let new_activity = Activity(context: self.context)
+        new_activity.duration = ActivityDuration.countDownDuration
+        new_activity.notes = Note.text
+        new_activity.activityType = activityselection.currentTitle
+        self.ActivityArray.append(new_activity)
+        self.SaveItems()
     }
     
     func setpopupbutton(){
@@ -46,6 +50,25 @@ class ActivityViewController: UIViewController {
         activityselection.showsMenuAsPrimaryAction = true
         activityselection.changesSelectionAsPrimaryAction = true
         
+    }
+    func SaveItems(){
+       
+        do {
+            try context.save()
+        } catch {
+            print("Error Saving context \(error)")
+        }
+        
+        
+    }
+
+    func loadItems(){
+        let request : NSFetchRequest<Activity> = Activity.fetchRequest()
+        do{
+        ActivityArray = try context.fetch(request)
+        } catch{
+            print("Error fetching data \(error)")
+        }
     }
     
 }

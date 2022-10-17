@@ -13,18 +13,13 @@
 		EB24C86C286656C200D7922A /* BehaviorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB24C86B286656C100D7922A /* BehaviorViewController.swift */; };
 		EB35916B27C839A000FE651D /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35916A27C839A000FE651D /* Account.swift */; };
 		EB35916D27C839EC00FE651D /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35916C27C839EC00FE651D /* Child.swift */; };
-		EB35916F27C83A3E00FE651D /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35916E27C83A3E00FE651D /* Feed.swift */; };
 		EB35917127C83A7800FE651D /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35917027C83A7800FE651D /* Mood.swift */; };
-		EB35917327C83A8600FE651D /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35917227C83A8600FE651D /* Sleep.swift */; };
 		EB35917527C83AAE00FE651D /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35917427C83AAE00FE651D /* Entry.swift */; };
 		EB35917727C83B1300FE651D /* Medical.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35917627C83B1300FE651D /* Medical.swift */; };
 		EB35917927C83B2200FE651D /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35917827C83B2200FE651D /* Milestone.swift */; };
-		EB35917B27C83B2F00FE651D /* Bathroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35917A27C83B2F00FE651D /* Bathroom.swift */; };
 		EB35917D27C83B3C00FE651D /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35917C27C83B3C00FE651D /* Provider.swift */; };
-		EB35917F27C83B4700FE651D /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35917E27C83B4700FE651D /* Activity.swift */; };
 		EB35918127C83B5400FE651D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35918027C83B5400FE651D /* Image.swift */; };
 		EB35918727C83B8200FE651D /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35918627C83B8200FE651D /* Medication.swift */; };
-		EB35918927C83B9000FE651D /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35918827C83B9000FE651D /* DBHelper.swift */; };
 		EB35918C27C9A14A00FE651D /* ChildInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB35918B27C9A14A00FE651D /* ChildInformationViewController.swift */; };
 		EB3A328D27A362CC00B96417 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3A328C27A362CC00B96417 /* SignUpViewController.swift */; };
 		EB4335A328905DE30037CDEF /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4335A128905DE30037CDEF /* ProfileHeaderView.swift */; };
@@ -114,18 +109,13 @@
 		EB24C86B286656C100D7922A /* BehaviorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorViewController.swift; sourceTree = "<group>"; };
 		EB35916A27C839A000FE651D /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		EB35916C27C839EC00FE651D /* Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child.swift; sourceTree = "<group>"; };
-		EB35916E27C83A3E00FE651D /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		EB35917027C83A7800FE651D /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
-		EB35917227C83A8600FE651D /* Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sleep.swift; sourceTree = "<group>"; };
 		EB35917427C83AAE00FE651D /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		EB35917627C83B1300FE651D /* Medical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medical.swift; sourceTree = "<group>"; };
 		EB35917827C83B2200FE651D /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
-		EB35917A27C83B2F00FE651D /* Bathroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bathroom.swift; sourceTree = "<group>"; };
 		EB35917C27C83B3C00FE651D /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
-		EB35917E27C83B4700FE651D /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		EB35918027C83B5400FE651D /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EB35918627C83B8200FE651D /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
-		EB35918827C83B9000FE651D /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		EB35918B27C9A14A00FE651D /* ChildInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildInformationViewController.swift; sourceTree = "<group>"; };
 		EB3A328C27A362CC00B96417 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EB4335A128905DE30037CDEF /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -225,15 +215,11 @@
 			children = (
 				EB35916A27C839A000FE651D /* Account.swift */,
 				EB35916C27C839EC00FE651D /* Child.swift */,
-				EB35916E27C83A3E00FE651D /* Feed.swift */,
 				EB35917027C83A7800FE651D /* Mood.swift */,
-				EB35917227C83A8600FE651D /* Sleep.swift */,
 				EB35917427C83AAE00FE651D /* Entry.swift */,
 				EB35917627C83B1300FE651D /* Medical.swift */,
 				EB35917827C83B2200FE651D /* Milestone.swift */,
-				EB35917A27C83B2F00FE651D /* Bathroom.swift */,
 				EB35917C27C83B3C00FE651D /* Provider.swift */,
-				EB35917E27C83B4700FE651D /* Activity.swift */,
 				EB35918027C83B5400FE651D /* Image.swift */,
 				EB35918627C83B8200FE651D /* Medication.swift */,
 			);
@@ -320,7 +306,6 @@
 				EBFFE10728998F3300DA05F6 /* Doctor Visit Milestones */,
 				EB4335A528905E340037CDEF /* Custom Cells */,
 				EB35918A27C8407B00FE651D /* Table Titles */,
-				EB35918827C83B9000FE651D /* DBHelper.swift */,
 				EBE099BF2739B43100F056A0 /* Assets.xcassets */,
 				EBE099C12739B43100F056A0 /* LaunchScreen.storyboard */,
 				FEBFC9AA28CFC79000E0F299 /* 321ConnectDatabase.xcdatamodeld */,
@@ -519,7 +504,6 @@
 				EB24C868285D309700D7922A /* SolidFeedViewController.swift in Sources */,
 				EB7FF6E628986A6600FF87D3 /* SleepReportsViewController.swift in Sources */,
 				EBFFE11728998FEA00DA05F6 /* EighteenMonthsViewController.swift in Sources */,
-				EB35918927C83B9000FE651D /* DBHelper.swift in Sources */,
 				FEBFC9AE28CFCCC000E0F299 /* MessageView.swift in Sources */,
 				EB35917527C83AAE00FE651D /* Entry.swift in Sources */,
 				EBE099E72739BA2000F056A0 /* HomeScreenViewControllerExt.swift in Sources */,
@@ -528,7 +512,6 @@
 				EBFFE13528999DD000DA05F6 /* MedicalViewController.swift in Sources */,
 				EBE099B72739B43000F056A0 /* AppDelegate.swift in Sources */,
 				EBFFE10D28998F9C00DA05F6 /* FourMonthsViewController.swift in Sources */,
-				EB35916F27C83A3E00FE651D /* Feed.swift in Sources */,
 				EBBD569D27AE034B005121C8 /* ActivityViewController.swift in Sources */,
 				EBBD569727ADEA42005121C8 /* ProvidersViewController.swift in Sources */,
 				EBFFE13728999E2300DA05F6 /* VaccinationViewController.swift in Sources */,
@@ -554,7 +537,6 @@
 				EBFFE1252899903A00DA05F6 /* SevenYearsViewController.swift in Sources */,
 				EB24C86C286656C200D7922A /* BehaviorViewController.swift in Sources */,
 				EBFFE1212899902500DA05F6 /* FiveYearsViewController.swift in Sources */,
-				EB35917B27C83B2F00FE651D /* Bathroom.swift in Sources */,
 				EBFFE131289990B700DA05F6 /* NoAgeVisitViewController.swift in Sources */,
 				EB5EF2F52892135100711E39 /* CustomTableViewCell.swift in Sources */,
 				EBFFE13928999E4400DA05F6 /* MedicationViewController.swift in Sources */,
@@ -576,8 +558,6 @@
 				EB6A17AE27AB645D0069428E /* JournalViewController.swift in Sources */,
 				EB3A328D27A362CC00B96417 /* SignUpViewController.swift in Sources */,
 				EBFFE11528998FDC00DA05F6 /* FifteenMonthsViewController.swift in Sources */,
-				EB35917F27C83B4700FE651D /* Activity.swift in Sources */,
-				EB35917327C83A8600FE651D /* Sleep.swift in Sources */,
 				EB5EF2EF2890702700711E39 /* HistoryTableViewController.swift in Sources */,
 				EBFFE12F2899908000DA05F6 /* TwelveYearsViewController.swift in Sources */,
 				EBFFE133289990E400DA05F6 /* DoctorVisitViewController.swift in Sources */,

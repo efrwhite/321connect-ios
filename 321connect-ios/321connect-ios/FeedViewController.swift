@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import CoreData
 class FeedViewController: UIViewController {
     
     @IBOutlet weak var FluidView: UIView!

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SolidFeedViewController: UIViewController {
 
@@ -19,6 +20,9 @@ class SolidFeedViewController: UIViewController {
     @IBOutlet weak var multiVitaminRadio: UIButton!
     @IBOutlet weak var otherRadio: UIButton!
     @IBOutlet weak var indicateTextField: UITextField!
+    var feedArray = [Feed]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,17 +100,33 @@ class SolidFeedViewController: UIViewController {
     
     
     @IBAction func saveTapped(_ sender: Any) {
-        let notesText = notesTextField.text!
-        let foodType = foodConsumedButton.title(for: .normal)!
-        let quantity = solidAmountTextField.text! + " " + feedMeasureButton.title(for: .normal)!
-        let feedMode = feedModeButton.title(for: .normal)!
-        
-        // ********** print to console ****************
-        print("NOTES: \(notesText)")
-        print("FOOD CONSUMED: \(foodType)")
-        print("QUANTITY: \(quantity)")
-        print("MODE OF EATING: \(feedMode)")
+//        let notesText = notesTextField.text!
+//        let foodType = foodConsumedButton.title(for: .normal)!
+//        let quantity = solidAmountTextField.text! + " " + feedMeasureButton.title(for: .normal)!
+//        let feedMode = feedModeButton.title(for: .normal)!
+//
+//        // ********** print to console ****************
+//        print("NOTES: \(notesText)")
+//        print("FOOD CONSUMED: \(foodType)")
+//        print("QUANTITY: \(quantity)")
+//        print("MODE OF EATING: \(feedMode)")
         // need to capture and print supplements
+        let feeding = Feed(context: self.context)
+        feeding.eatType = "Solid Eating Type"
+        feeding.notes = notesTextField.text
+        feeding.consumption = foodConsumedButton.title(for: .normal)
+        feeding.amount = solidAmountTextField.text
+        feeding.units = feedMeasureButton.title(for: .normal)
+        feeding.modeOfEating = feedModeButton.title(for: .normal)
+        feeding.iron = ironRadio.isEnabled
+        feeding.multivitamin = multiVitaminRadio.isEnabled
+        feeding.other = otherRadio.isEnabled
+        feeding.otherNotes = indicateTextField.text
+        
+        self.feedArray.append(feeding)
+        
+        
+        self.SaveItems()
     }
     
     /*
@@ -118,5 +138,25 @@ class SolidFeedViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func SaveItems(){
+       
+        do {
+            try context.save()
+        } catch {
+            print("Error Saving context \(error)")
+        }
+        
+        
+    }
 
+    func loadItems(){
+        let request : NSFetchRequest<Feed> = Feed.fetchRequest()
+        do{
+        feedArray = try context.fetch(request)
+        } catch{
+            print("Error fetching data \(error)")
+        }
+    }
+    
 }

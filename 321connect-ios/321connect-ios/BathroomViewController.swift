@@ -7,8 +7,9 @@
 
 import Foundation
 import UIKit
+import CoreData
 class BathroomViewController: UIViewController {
-
+    
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var view3: UIView!
@@ -26,6 +27,7 @@ class BathroomViewController: UIViewController {
     
     @IBAction func SegmentView(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0{
+            
 
             view1.alpha = 1
             view2.alpha = 0
