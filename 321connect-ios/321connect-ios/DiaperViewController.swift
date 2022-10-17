@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
   
@@ -17,6 +18,9 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var DiaperCream: UISwitch!
     @IBOutlet weak var Accident: UISwitch!
     @IBOutlet weak var QuantityUnits: UIButton!
+    var DiaperArray = [Bathroom]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var pickerData: [String] = [String]()
     
     override func viewDidLoad() {
@@ -41,11 +45,22 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     @IBAction func SaveButton(_ sender: Any) {
       
-        let diaperNotes = DiaperNotes.text
-        let quantity = QuantityField.text
-        print("This is Diaper Notes: \(diaperNotes)")
-        print("This is Quantity: \(quantity)")
+//        let diaperNotes = DiaperNotes.text
+//        let quantity = QuantityField.text
+//        print("This is Diaper Notes: \(diaperNotes)")
+//        print("This is Quantity: \(quantity)")
+        let new_Diaper = Bathroom(context: self.context)
+        new_Diaper.bathroomType = "Diaper"
+        new_Diaper.bathroomNotes = DiaperNotes.text
+        new_Diaper.diaperCream = DiaperCream.isOn
+        new_Diaper.leak = DiaperLeak.isOn
+        new_Diaper.openAir = Accident.isOn
+        new_Diaper.quantity = QuantityField.text
+        new_Diaper.units = QuantityUnits.currentTitle
         
+        
+        self.DiaperArray.append(new_Diaper)
+        self.SaveItems()
        
         
         
@@ -79,6 +94,24 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
           // Dispose of any resources that can be recreated.
       }
    
-    
+    func SaveItems(){
+       
+        do {
+            try context.save()
+        } catch {
+            print("Error Saving context \(error)")
+        }
+        
+        
+    }
+
+    func loadItems(){
+        let request : NSFetchRequest<Bathroom> = Bathroom.fetchRequest()
+        do{
+            DiaperArray = try context.fetch(request)
+        } catch{
+            print("Error fetching data \(error)")
+        }
+    }
 
  }

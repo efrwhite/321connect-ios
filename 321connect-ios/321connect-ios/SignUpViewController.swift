@@ -1,6 +1,5 @@
-//
-//  SignUpViewController.swift
-//  321connect-ios
+//SignUpViewController.swift
+//321connect-ios
 //
 //  Created by Edward Ladia on 1/27/22.
 //
@@ -33,18 +32,22 @@ class SignUpViewController: UIViewController/*, UITableViewDelegate, UITableView
         
         super.viewDidLoad()
         
+
 //        accountTable.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
 //        accountTable.delegate = self
 //        accountTable.dataSource = self
 //
 //
     }
+
 //
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return accounts.count
 //    }
+
     
-    //***************************************************************************check here
+//***************************************************************************check here
+
 //    // output used to check input
 //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)!
