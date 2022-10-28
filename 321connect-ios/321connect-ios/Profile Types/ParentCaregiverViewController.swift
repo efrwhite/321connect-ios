@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class Parent_Caregiver_ViewController: UIViewController {
     
@@ -19,6 +20,9 @@ class Parent_Caregiver_ViewController: UIViewController {
     @IBOutlet weak var Password: UITextField!
     //@IBOutlet weak var SaveButton: UIButton!
     var pickerData: [String] = [String]()
+    var ParentArray = [Parent]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +40,23 @@ class Parent_Caregiver_ViewController: UIViewController {
         present(vc, animated: true)
     }
     @IBAction func Save_Button(_ sender: Any) {
-        let firstName = FirstName.text
-        let lastName = LastName.text
-        let phonenumber = PhoneNumber.text
-        let username = Username.text
-        let password = Password.text
-        print("firstname: \(firstName), lastname: \(lastName), PhoneNumber: \(phonenumber), Username: \(username), password: \(password)")
+//        let firstName = FirstName.text
+//        let lastName = LastName.text
+//        let phonenumber = PhoneNumber.text
+//        let username = Username.text
+//        let password = Password.text
+//        print("firstname: \(firstName), lastname: \(lastName), PhoneNumber: \(phonenumber), Username: \(username), password: \(password)")
+        let new_parent = Parent(context: self.context)
+        new_parent.firstName = FirstName.text
+        new_parent.lastName = LastName.text
+        new_parent.phoneNumber = PhoneNumber.text
+        new_parent.userName = Username.text
+        new_parent.password = Password.text
+        //Dont forget the Parent Image
+        new_parent.parentImage = ParentPicture.image
+        self.ParentArray.append(new_parent)
+        self.SaveItems()
+        
     }
 }
 extension Parent_Caregiver_ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
@@ -53,6 +68,25 @@ extension Parent_Caregiver_ViewController: UIImagePickerControllerDelegate, UINa
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
+    }
+    func SaveItems(){
+       
+        do {
+            try context.save()
+        } catch {
+            print("Error Saving context \(error)")
+        }
+        
+        
+    }
+
+    func loadItems(){
+        let request : NSFetchRequest<Parent> = Parent.fetchRequest()
+        do{
+            ParentArray = try context.fetch(request)
+        } catch{
+            print("Error fetching data \(error)")
+        }
     }
     
 }

@@ -43,8 +43,10 @@ class PottyViewController: UIViewController {
         new_potty.duration = PottyDuration.countDownDuration
         new_potty.bathroomNotes = PottyNotes.text
         new_potty.pottyAccident = Accident.isOn // made it a boolean value since it is on or off
-        
+        new_potty.duration = PottyDuration.countDownDuration
+        new_potty.units = "seconds"
         self.PottyArray.append(new_potty)
+    
         self.SaveItems()
      }
     func SaveItems(){

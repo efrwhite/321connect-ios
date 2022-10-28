@@ -51,18 +51,7 @@ class SleepViewController: UIViewController {
      // MARK: - Help Functions
      */
     
-//    @IBAction func saveTapped(_ sender: UIButton) {
-//        let notesText = sleepNotesView.text!
-//        let sleepDate = dateTimePicker.date
-//        let sleepTime = dateTimePicker.countDownDuration
-//
-//        // ********** print to console ****************
-//        print("NOTES: \(notesText)")
-//        print("SLEEP DATE: \(sleepDate)")
-//        print("SLEEP TIME: \(sleepTime)")
-//        // ********** print to console ****************
-//
-//    }
+
     
     @IBAction func sleepCycleTapped(_ sender: Any) {
         print("Sleep Cycle Button Tapped") //debug
@@ -75,25 +64,6 @@ class SleepViewController: UIViewController {
         self.present(sleepCycleVC, animated: true, completion: nil)
     }
     
-    // animation toggle helper function
-//    @IBAction func reportsButtonTouched(_ sender: Any) {
-//        if sleepReportScrollView.isHidden {
-//            animate(toggle: true)       // if hidden, show
-//        } else {
-//            animate(toggle: false)      // else hide
-//        }
-//    }
-    
-//    func animate(toggle: Bool) {
-//        if toggle {
-//            UIView.animate(withDuration: 0.4) {
-//                self.sleepReportScrollView.isHidden = false
-//            }
-//        } else {
-//            UIView.animate(withDuration: 0.4) {
-//                self.sleepReportScrollView.isHidden = true
-//            }
-//        }
-//    }
+
 }
 

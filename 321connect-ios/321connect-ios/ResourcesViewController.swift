@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import CoreData
 
 class ResourcesTableViewController: UITableViewController {
         
@@ -35,6 +36,10 @@ class ResourcesTableViewController: UITableViewController {
         ]
     
     @IBOutlet weak var resourceAddButton: UIButton!
+    var resourceArray = [Resource]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +48,7 @@ class ResourcesTableViewController: UITableViewController {
         tableView.backgroundView = UIImageView(image: UIImage(named: "Rectangle 1"))
         
         navigationItem.rightBarButtonItem = editButtonItem
+        
 
     }
     
@@ -59,13 +65,17 @@ class ResourcesTableViewController: UITableViewController {
             textField.placeholder = "Resource URL:"
         })
 
-        // Alert action confirm
+        // Alert action confirm,
         let confirmAction = UIAlertAction(title: "Add", style: .default, handler: {(_ action: UIAlertAction) -> Void in
             print("Resource Title: \(String(describing: alertController.textFields?[0].text))")
             let resource = alertController.textFields?[0].text
             print("Resource URL: \(String(describing: alertController.textFields?[1].text))")
             let urlPath = alertController.textFields?[1].text
-            
+            let new_resource = Resource(context: self.context)
+            new_resource.resourceTitle = resource
+            new_resource.resourcelink = urlPath
+            self.resourceArray.append(new_resource)
+            self.SaveItems()
             // include in array data source
             self.add(resource ?? "Default", urlPath!)           /* here might need to fix for input error checking */
         })
@@ -168,6 +178,26 @@ class ResourcesTableViewController: UITableViewController {
                 let destination = segue.destination as? WebViewController
                 destination?.links = userLinks[indexPath.row]
             }
+        }
+    }
+    
+    func SaveItems(){
+       
+        do {
+            try context.save()
+        } catch {
+            print("Error Saving context \(error)")
+        }
+        
+        
+    }
+
+    func loadItems(){
+        let request : NSFetchRequest<Resource> = Resource.fetchRequest()
+        do{
+        resourceArray = try context.fetch(request)
+        } catch{
+            print("Error fetching data \(error)")
         }
     }
 }
