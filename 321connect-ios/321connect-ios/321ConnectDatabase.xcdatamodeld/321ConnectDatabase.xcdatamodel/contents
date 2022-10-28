@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Account" representedClassName="Account" syncable="YES" codeGenerationType="class">
+        <attribute name="confirmPassword" optional="YES" attributeType="String"/>
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="passWord" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="userName" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Activity" representedClassName=".Activity" syncable="YES" codeGenerationType="class">
         <attribute name="activityType" optional="YES" attributeType="String" defaultValueString="NA"/>
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" defaultValueString="NA"/>
+        <attribute name="units" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Bathroom" representedClassName=".Bathroom" syncable="YES" codeGenerationType="class">
         <attribute name="bathroomNotes" optional="YES" attributeType="String" defaultValueString="N/A"/>
@@ -12,7 +21,7 @@
         <attribute name="diaperCream" optional="YES" attributeType="Boolean" defaultValueString="N/A" usesScalarValueType="YES"/>
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="leak" optional="YES" attributeType="Boolean" defaultValueString="N/A" usesScalarValueType="YES"/>
-        <attribute name="openAir" optional="YES" attributeType="Boolean" defaultValueString="1e-06" usesScalarValueType="YES"/>
+        <attribute name="openAirAccident" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="pottyAccident" optional="YES" attributeType="Boolean" defaultValueString="N/A" usesScalarValueType="YES"/>
         <attribute name="quantity" optional="YES" attributeType="String" defaultValueString="N/A"/>
         <attribute name="treatment" optional="YES" attributeType="String" defaultValueString="N/A"/>
@@ -22,6 +31,46 @@
         <attribute name="moodType" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="unit" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Child" representedClassName=".Child" syncable="YES" codeGenerationType="class">
+        <attribute name="allergies" optional="YES" attributeType="String"/>
+        <attribute name="birthday" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="bloodType" optional="YES" attributeType="String"/>
+        <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="gender" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="Transformable"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="medication" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Development" representedClassName=".Development" syncable="YES" codeGenerationType="class">
+        <attribute name="firstAffection" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstBabbles" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstCoos" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstCrawl" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstDrink" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstEmotion" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstFeedSpoon" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstHandMouth" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstHoldsObject" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstInterest" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstInterestSound" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstJump" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstNoHandWalk" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstPassObject" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstPincher" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstPoint" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstPull" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstRoll" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstScribble" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstSentence" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstSit" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstStartle" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstTwoWords" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstWalk" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstWord" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Feed" representedClassName="Feed" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="String"/>
@@ -39,20 +88,58 @@
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="Med" representedClassName=".Medical" syncable="YES" codeGenerationType="class">
+        <attribute name="notes" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Medication" representedClassName="Medication" syncable="YES" codeGenerationType="class">
+        <attribute name="medDosage" optional="YES" attributeType="String"/>
+        <attribute name="medDosageUnits" optional="YES" attributeType="String"/>
+        <attribute name="medFrequency" optional="YES" attributeType="String"/>
+        <attribute name="medName" optional="YES" attributeType="String"/>
+        <attribute name="medReason" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Message" representedClassName=".Message" syncable="YES" codeGenerationType="class">
         <attribute name="message_Block" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="Parent" representedClassName=".Parent" syncable="YES" codeGenerationType="class">
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="parentImage" optional="YES" attributeType="Transformable"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String"/>
+        <attribute name="userName" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Provider" representedClassName=".Provider" syncable="YES" codeGenerationType="class">
+        <attribute name="address1" optional="YES" attributeType="String"/>
+        <attribute name="address2" optional="YES" attributeType="String"/>
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="fax" optional="YES" attributeType="String"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String"/>
+        <attribute name="practiceName" optional="YES" attributeType="String"/>
+        <attribute name="providerName" optional="YES" attributeType="String"/>
+        <attribute name="specialty" optional="YES" attributeType="String"/>
+        <attribute name="state" optional="YES" attributeType="String"/>
+        <attribute name="website" optional="YES" attributeType="String"/>
+        <attribute name="zipCode" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Resource" representedClassName=".Resource" syncable="YES" codeGenerationType="class">
+        <attribute name="resourcelink" optional="YES" attributeType="String"/>
+        <attribute name="resourceTitle" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Sleep" representedClassName=".Sleep" syncable="YES" codeGenerationType="class">
-        <attribute name="cPAP" optional="YES" attributeType="String"/>
+        <attribute name="cPAP" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="medication" optional="YES" attributeType="String"/>
+        <attribute name="medication" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
-        <attribute name="other" optional="YES" attributeType="String"/>
-        <attribute name="sleepDate" optional="YES" attributeType="String"/>
+        <attribute name="other" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="otherNote" optional="YES" attributeType="String"/>
+        <attribute name="sleepDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="sleepTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="snoring" optional="YES" attributeType="String"/>
-        <attribute name="study" optional="YES" attributeType="String"/>
-        <attribute name="supplements" optional="YES" attributeType="String"/>
+        <attribute name="sleepTreatment" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="snoring" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="study" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="supplements" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
     </entity>
 </model>

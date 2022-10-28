@@ -28,6 +28,7 @@ class ActivityViewController: UIViewController {
         new_activity.duration = ActivityDuration.countDownDuration
         new_activity.notes = Note.text
         new_activity.activityType = activityselection.currentTitle
+        new_activity.units = "seconds"
         self.ActivityArray.append(new_activity)
         self.SaveItems()
     }

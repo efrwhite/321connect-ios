@@ -54,7 +54,7 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         new_Diaper.bathroomNotes = DiaperNotes.text
         new_Diaper.diaperCream = DiaperCream.isOn
         new_Diaper.leak = DiaperLeak.isOn
-        new_Diaper.openAir = Accident.isOn
+        new_Diaper.openAirAccident = Accident.isOn
         new_Diaper.quantity = QuantityField.text
         new_Diaper.units = QuantityUnits.currentTitle
         

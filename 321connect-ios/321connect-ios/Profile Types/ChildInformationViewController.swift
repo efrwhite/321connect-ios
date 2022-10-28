@@ -5,7 +5,7 @@
 //  Modified/Designed by Brianna Boston
 // Reminder allergies and medications are comma seperated
 
- 
+import CoreData
 import Foundation
 import UIKit
  
@@ -25,6 +25,8 @@ class ChildView: UIViewController {
     @IBOutlet weak var BloodType: UIButton!
     // var bloodTypes = ["A+","A-","B+","B-","AB+","AB-","O+","O-"]
     //where ever U have your print statements make a object to store the information into child
+    var ChildArray = [Child]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBAction func Slider(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0{
@@ -72,29 +74,44 @@ class ChildView: UIViewController {
  
     @IBAction func SaveButton(_ sender: UIButton) {
         
-        let FN = FirstName.text!
-        let LN = LastName.text!
-        let DD = Duedate.date
-        let BT = BloodType.currentTitle
-        let BD = birthday.date
-        let Al = Allergies.text!
-        let MD = Medications.text!
-       
-        // this will need to be put in a if else statement
-        let boyslider = OnOff.titleForSegment(at: 0)
-        let girlslider = OnOff.titleForSegment(at: 1)
+//        let FN = FirstName.text!
+//        let LN = LastName.text!
+//        let DD = Duedate.date
+//        let BT = BloodType.currentTitle
+//        let BD = birthday.date
+//        let Al = Allergies.text!
+//        let MD = Medications.text!
+//
+//        // this will need to be put in a if else statement
+//        let boyslider = OnOff.titleForSegment(at: 0)
+//        let girlslider = OnOff.titleForSegment(at: 1)
     
         
         
-        print("This is the firstName: \(FN)")
-        print("This is the firstName: \(LN)")
-        print("This is the Birthdate: \(BD)")
-        print("This is the DueDate: \(DD)")
-        print("This is the Allergies: \(Al)")
-        print("This is the Medications: \(MD)")
-        print("BloodType: \(BT)")
-        print("This is the slider for boy: \(boyslider)")
-        print("This is the slider for girl: \(girlslider)")
+//        print("This is the firstName: \(FN)")
+//        print("This is the firstName: \(LN)")
+//        print("This is the Birthdate: \(BD)")
+//        print("This is the DueDate: \(DD)")
+//        print("This is the Allergies: \(Al)")
+//        print("This is the Medications: \(MD)")
+//        print("BloodType: \(BT)")
+//        print("This is the slider for boy: \(boyslider)")
+//        print("This is the slider for girl: \(girlslider)")
+        
+        
+        let new_child = Child(context: self.context)
+        new_child.firstName = FirstName.text
+        new_child.lastName = LastName.text
+        new_child.gender = OnOff.isEnabled
+        new_child.bloodType = BloodType.currentTitle
+        new_child.dueDate = Duedate.date
+        new_child.birthday = birthday.date
+        new_child.allergies = Allergies.text
+        new_child.medication = Medications.text
+       // come back to image saving new_child.image = ChildImage
+        new_child.image = ChildImage.image
+        self.ChildArray.append(new_child)
+        self.SaveItems()
       
     }
 
@@ -108,6 +125,25 @@ extension ChildView: UIImagePickerControllerDelegate, UINavigationControllerDele
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
+    }
+    func SaveItems(){
+       
+        do {
+            try context.save()
+        } catch {
+            print("Error Saving context \(error)")
+        }
+        
+        
+    }
+
+    func loadItems(){
+        let request : NSFetchRequest<Child> = Child.fetchRequest()
+        do{
+            ChildArray = try context.fetch(request)
+        } catch{
+            print("Error fetching data \(error)")
+        }
     }
     
 }

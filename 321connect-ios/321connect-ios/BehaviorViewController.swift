@@ -82,6 +82,7 @@ class BehaviorViewController: UIViewController {
         // new_mood.time = duration.countDownDuration
         new_mood.moodType = moodButton.currentTitle
         new_mood.time = durationPicker.countDownDuration
+        new_mood.unit = "seconds"
 //        new_mood.units = durationPicker.minuteInterval
       
         // ********** print to console ****************
