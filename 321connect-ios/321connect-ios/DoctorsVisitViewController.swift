@@ -12,6 +12,15 @@ class DoctorsVisitViewController: UIViewController {
     
     @IBOutlet weak var milestoneView: UIView!
     
+    
+    // possible to try and put all 21 screens in 1 table view
+    // divided in 21  sections (custom cells for ones with pickers)
+    // HIDE all sections + show only section from the selection.
+    
+    @IBOutlet weak var test: UIButton!
+    
+    //sections of the same name "visits"
+    
     let visits = [  "Newborn",
                     "Two months",
                     "Four months",
@@ -42,7 +51,10 @@ class DoctorsVisitViewController: UIViewController {
     }
     
     
-  
+    @IBAction func testbutton(_ sender: Any) {
+//        NewbornViewController.ishidden
+    }
+    
     
     /*
     // MARK: - Navigation
