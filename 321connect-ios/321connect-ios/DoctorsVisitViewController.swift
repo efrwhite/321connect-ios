@@ -11,9 +11,13 @@ import UIKit
 
 class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    // tableview height constraint constant set (arbitrary)
+    @IBOutlet weak var FormTableHeight: NSLayoutConstraint!
+    
     // -----> Need auto layout/ constraints for dynamically changing cell heights
-    // -----> Need visit picker to select corresponding table view section <conditional>
-    // -----> Need auto layout/ constraints for dynamically changing cell heights
+    // -----> Need visit picker to select corresponding table view section <conditional> ~
+    // -----> Need dynamically changing tableview height (disable scroll) ~
+    
     @IBOutlet weak var DateOfVisit: UIDatePicker!
     @IBOutlet weak var Provider: UIPickerView!
     @IBOutlet weak var ProviderType: UIPickerView!
@@ -404,85 +408,162 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         
         formsTableView.dataSource = self
         formsTableView.delegate = self
-        
+
         formsTableView.rowHeight = UITableView.automaticDimension
-        formsTableView.estimatedRowHeight = 80
+        formsTableView.estimatedRowHeight = 600
+        
+        self.formsTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
     }
     
+    // Dynamiccaly adjust height of tableview for content size
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+         if(keyPath == "contentSize"){
+             if let newvalue = change?[.newKey]
+             {
+                 DispatchQueue.main.async {
+                 let newsize  = newvalue as! CGSize
+                 self.FormTableHeight.constant = newsize.height
+                 }
+             }
+         }
+     }
+
     
     
 /*
  // MARK: - TableView * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
-    
+
     /* * * * * * * * * * * * * * SECTION * * * * * * * * * * * * * * * * * * * * */
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // # 21 milestone visits -> sections (0 - 20)
-        return self.visits.count
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        // # 21 milestone visits -> sections (0 - 20)
+//        return self.visits.count
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+//        if section == 0 {
+//            return self.newbornForm.count
+//        }
+//        else if section == 1 {
+//            return self.twoMonthForm.count
+//        }
+//        else if section == 2 {
+//            return self.fourMonthForm.count
+//        }
+//        else if section == 3 {
+//            return self.sixMonthForm.count
+//        }
+//        else if section == 4 {
+//            return self.nineMonthForm.count
+//        }
+//        else if section == 5 {
+//            return self.twelveMonthForm.count
+//        }
+//        else if section == 6 {
+//            return self.fifteenMonthForm.count
+//        }
+//        else if section == 7 {
+//            return self.eighteenMonthForm.count
+//        }
+//        else if section == 8 {
+//            return self.twoYearForm.count
+//        }
+//        else if section == 9 {
+//            return self.thirtyMonthForm.count
+//        }
+//        else if section == 10 {
+//            return self.threeYearForm.count
+//        }
+//        else if section == 11 {
+//            return self.fourYearForm.count
+//        }
+//        else if section == 12 {
+//            return self.fiveYearForm.count
+//        }
+//        else if section == 13 {
+//            return self.sixYearForm.count
+//        }
+//        else if section == 14 {
+//            return self.sevenYearForm.count
+//        }
+//        else if section == 15 {
+//            return self.eightYearForm.count
+//        }
+//        else if section == 16 {
+//            return self.nineYearForm.count
+//        }
+//        else if section == 17 {
+//            return self.tenYearForm.count
+//        }
+//        else if section == 18 {
+//            return self.elevenYearForm.count
+//        }
+//        else if section == 19 {
+//            return self.twelveYearForm.count
+//        }
+//        else if section == 20 {
+//            return 1            // single note field cell
+//        }
+        if pickerIdentifier == "Newborn"{
             return self.newbornForm.count
-        }
-        else if section == 1 {
+        }else if pickerIdentifier == "Two months" {
             return self.twoMonthForm.count
         }
-        else if section == 2 {
+        else if pickerIdentifier == "Four months" {
             return self.fourMonthForm.count
         }
-        else if section == 3 {
+        else if pickerIdentifier == "Six months" {
             return self.sixMonthForm.count
         }
-        else if section == 4 {
+        else if pickerIdentifier == "Nine months" {
             return self.nineMonthForm.count
         }
-        else if section == 5 {
+        else if pickerIdentifier == "Twelve months" {
             return self.twelveMonthForm.count
         }
-        else if section == 6 {
+        else if pickerIdentifier == "Fifteen months" {
             return self.fifteenMonthForm.count
         }
-        else if section == 7 {
+        else if pickerIdentifier == "Eighteen months" {
             return self.eighteenMonthForm.count
         }
-        else if section == 8 {
+        else if pickerIdentifier == "Two years" {
             return self.twoYearForm.count
         }
-        else if section == 9 {
+        else if pickerIdentifier == "Thirty months" {
             return self.thirtyMonthForm.count
         }
-        else if section == 10 {
+        else if pickerIdentifier == "Three years" {
             return self.threeYearForm.count
         }
-        else if section == 11 {
+        else if pickerIdentifier == "Four years" {
             return self.fourYearForm.count
         }
-        else if section == 12 {
+        else if pickerIdentifier == "Five years" {
             return self.fiveYearForm.count
         }
-        else if section == 13 {
+        else if pickerIdentifier == "Six years" {
             return self.sixYearForm.count
         }
-        else if section == 14 {
+        else if pickerIdentifier == "Seven years" {
             return self.sevenYearForm.count
         }
-        else if section == 15 {
+        else if pickerIdentifier == "Eight years" {
             return self.eightYearForm.count
         }
-        else if section == 16 {
+        else if pickerIdentifier == "Nine years" {
             return self.nineYearForm.count
         }
-        else if section == 17 {
+        else if pickerIdentifier == "Ten years" {
             return self.tenYearForm.count
         }
-        else if section == 18 {
+        else if pickerIdentifier == "Eleven years" {
             return self.elevenYearForm.count
         }
-        else if section == 19 {
+        else if pickerIdentifier == "Twelve years" {
             return self.twelveYearForm.count
         }
-        else if section == 20 {
+        else if pickerIdentifier == "Not an age-scheduled" {
             return 1            // single note field cell
         }
         return 0
@@ -494,7 +575,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // NEWBORN FORM
-        if indexPath.section == 0 {
+        if pickerIdentifier == "Newborn"{
             if(indexPath.row == 0) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = newbornForm[indexPath.row]
@@ -521,41 +602,41 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         }
         
         // TWO-MONTH FORM
-        if indexPath.section == 1 {
+        if pickerIdentifier == "Two months"{
             if(indexPath.row == 9) {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = twoMonthForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
-            }
-            else if(indexPath.row == 10) {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
-                cell.selectionStyle = .none
-                return cell
-            }
-            else if(indexPath.row == 11) {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
-                cell.selectionStyle = .none
-                return cell
-            }
-            else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = twoMonthForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
-            }
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+                    cell.formTextLabel?.text = twoMonthForm[indexPath.row]
+                    cell.selectionStyle = .none
+                    return cell
+                }
+                else if(indexPath.row == 10) {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+                    cell.selectionStyle = .none
+                    return cell
+                }
+                else if(indexPath.row == 11) {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+                    cell.selectionStyle = .none
+                    return cell
+                }
+                else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+                    cell.questionLabel.text = twoMonthForm[indexPath.row]
+                    cell.selectionStyle = .none
+                    return cell
+                }
         }
         
         // FOUR-MONTH FORM
-        if indexPath.section == 2 {
+        if pickerIdentifier == "Four months" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
             cell.questionLabel.text = fourMonthForm[indexPath.row]
             cell.selectionStyle = .none
             return cell
         }
-        
+
         // SIX-MONTH FORM
-        if indexPath.section == 3 {
+        if pickerIdentifier == "Six months" {
             if(indexPath.row == 0 || indexPath.row == 3) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = sixMonthForm[indexPath.row]
@@ -579,17 +660,17 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-        
+
         // NINE-MONTH FORM
-        if indexPath.section == 4 {
+        if pickerIdentifier == "Nine months" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
             cell.questionLabel.text = nineMonthForm[indexPath.row]
             cell.selectionStyle = .none
             return cell
         }
-        
+
         // TWELVE-MONTH FORM
-        if indexPath.section == 5 {
+        if pickerIdentifier == "Twelve months" {
             if(indexPath.row == 0 || indexPath.row == 3) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = twelveMonthForm[indexPath.row]
@@ -613,17 +694,17 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-        
+
         // FIFTEEN-MONTH FORM
-        if indexPath.section == 6 {
+        if pickerIdentifier == "Fifteen months" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
             cell.questionLabel.text = fifteenMonthForm[indexPath.row]
             cell.selectionStyle = .none
             return cell
         }
-        
+
         // EIGHTEEN-MONTH FORM
-        if indexPath.section == 7 {
+        if pickerIdentifier == "Eighteen months" {
             if(indexPath.row == 0 || indexPath.row == 3) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = eighteenMonthForm[indexPath.row]
@@ -649,7 +730,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         }
         
         // TWO-YEAR FORM
-        if indexPath.section == 8 {
+        if pickerIdentifier == "Two years" {
             if(indexPath.row == 1 || indexPath.row == 4) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = twoYearForm[indexPath.row]
@@ -673,9 +754,9 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-        
+
         // THIRTY-MONTH FORM
-        if indexPath.section == 9 {
+        if pickerIdentifier == "Thirty months" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 9) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = thirtyMonthForm[indexPath.row]
@@ -699,9 +780,9 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-        
+
         // THREE-YEAR FORM
-        if indexPath.section == 10 {
+        if pickerIdentifier == "Three years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 14 || indexPath.row == 15 || indexPath.row == 16 || indexPath.row == 20 || indexPath.row == 21) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = threeYearForm[indexPath.row]
@@ -725,9 +806,9 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-        
+
         // FOUR-YEAR FORM
-        if indexPath.section == 11 {
+        if pickerIdentifier == "Four years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 20) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = fourYearForm[indexPath.row]
@@ -751,9 +832,9 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-        
+
         // FIVE-YEAR FORM
-        if indexPath.section == 12 {
+        if pickerIdentifier == "Five years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 20) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = fiveYearForm[indexPath.row]
@@ -777,9 +858,9 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-        
+
         // SIX-YEAR FORM
-        if indexPath.section == 13 {
+        if pickerIdentifier == "Six years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 20) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = fiveYearForm[indexPath.row]
@@ -803,9 +884,9 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-        
+
         // SEVEN-YEAR FORM
-        if indexPath.section == 14 {
+        if pickerIdentifier == "Seven years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = sevenYearForm[indexPath.row]
@@ -829,9 +910,8 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-        
         // EIGHT-YEAR FORM
-        if indexPath.section == 15 {
+        if pickerIdentifier == "Eight years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = eightYearForm[indexPath.row]
@@ -855,9 +935,9 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-        
+
         // NINE-YEAR FORM
-        if indexPath.section == 16 {
+        if pickerIdentifier == "Nine years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = nineYearForm[indexPath.row]
@@ -881,9 +961,9 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-        
+
         // TEN-YEAR FORM
-        if indexPath.section == 17 {
+        if pickerIdentifier == "Ten years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = tenYearForm[indexPath.row]
@@ -907,9 +987,9 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-        
+
         // ELEVEN-YEAR FORM
-        if indexPath.section == 18 {
+        if pickerIdentifier == "Eleven years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = elevenYearForm[indexPath.row]
@@ -933,9 +1013,9 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-        
+
         // TWELVE-YEAR FORM
-        if indexPath.section == 19 {
+        if pickerIdentifier == "Twelve years" {
             if(indexPath.row == 0) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = twelveYearForm[indexPath.row]
@@ -959,25 +1039,506 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-        
+
         // NO-AGE FORM
-        if indexPath.section == 20 {
+        if pickerIdentifier == "Not an age-scheduled" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotesCell", for: indexPath) as! FormNotesTableViewCell
             cell.selectionStyle = .none
             return cell
         }
         
+        
         // temporary default until finish ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-        cell.formTextLabel?.text = newbornForm[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) 
         cell.selectionStyle = .none
         return cell
     }
+        
+        // NEWBORN FORM
+//        if indexPath.section == 0 {
+//            if(indexPath.row == 0) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = newbornForm[indexPath.row]
+//                cell.textLabel?.numberOfLines = 0
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15 || indexPath.row == 19) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 4 || indexPath.row == 8 || indexPath.row == 12 || indexPath.row == 16 || indexPath.row == 20) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = newbornForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // TWO-MONTH FORM
+//        if indexPath.section == 1 {
+//            if(indexPath.row == 9) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = twoMonthForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 10) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 11) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = twoMonthForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // FOUR-MONTH FORM
+//        if indexPath.section == 2 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//            cell.questionLabel.text = fourMonthForm[indexPath.row]
+//            cell.selectionStyle = .none
+//            return cell
+//        }
+//
+//        // SIX-MONTH FORM
+//        if indexPath.section == 3 {
+//            if(indexPath.row == 0 || indexPath.row == 3) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = sixMonthForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 1 || indexPath.row == 4 || indexPath.row == 8) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 9) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = sixMonthForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // NINE-MONTH FORM
+//        if indexPath.section == 4 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//            cell.questionLabel.text = nineMonthForm[indexPath.row]
+//            cell.selectionStyle = .none
+//            return cell
+//        }
+//
+//        // TWELVE-MONTH FORM
+//        if indexPath.section == 5 {
+//            if(indexPath.row == 0 || indexPath.row == 3) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = twelveMonthForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 1 || indexPath.row == 4 || indexPath.row == 8 || indexPath.row == 12 || indexPath.row == 16) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 9 || indexPath.row == 13 || indexPath.row == 17) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = twelveMonthForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // FIFTEEN-MONTH FORM
+//        if indexPath.section == 6 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//            cell.questionLabel.text = fifteenMonthForm[indexPath.row]
+//            cell.selectionStyle = .none
+//            return cell
+//        }
+//
+//        // EIGHTEEN-MONTH FORM
+//        if indexPath.section == 7 {
+//            if(indexPath.row == 0 || indexPath.row == 3) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = eighteenMonthForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 1 || indexPath.row == 4) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = eighteenMonthForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // TWO-YEAR FORM
+//        if indexPath.section == 8 {
+//            if(indexPath.row == 1 || indexPath.row == 4) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = twoYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 9 || indexPath.row == 13) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 10 || indexPath.row == 14) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = twoYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // THIRTY-MONTH FORM
+//        if indexPath.section == 9 {
+//            if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 9) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = thirtyMonthForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 1 || indexPath.row == 4) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = thirtyMonthForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // THREE-YEAR FORM
+//        if indexPath.section == 10 {
+//            if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 14 || indexPath.row == 15 || indexPath.row == 16 || indexPath.row == 20 || indexPath.row == 21) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = threeYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 1 || indexPath.row == 4 || indexPath.row == 8 || indexPath.row == 12) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 9 || indexPath.row == 13) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = threeYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // FOUR-YEAR FORM
+//        if indexPath.section == 11 {
+//            if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 20) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = fourYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 1 || indexPath.row == 4 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 8 || indexPath.row == 12 || indexPath.row == 16) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = fourYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // FIVE-YEAR FORM
+//        if indexPath.section == 12 {
+//            if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 20) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = fiveYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 1 || indexPath.row == 4 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 8 || indexPath.row == 12 || indexPath.row == 16) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = fiveYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // SIX-YEAR FORM
+//        if indexPath.section == 13 {
+//            if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 20) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = fiveYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 1 || indexPath.row == 4 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 8 || indexPath.row == 12 || indexPath.row == 16) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = fiveYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // SEVEN-YEAR FORM
+//        if indexPath.section == 14 {
+//            if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = sevenYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 1 || indexPath.row == 4 || indexPath.row == 8 || indexPath.row == 12 || indexPath.row == 16) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 8 || indexPath.row == 13 || indexPath.row == 17) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = sevenYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // EIGHT-YEAR FORM
+//        if indexPath.section == 15 {
+//            if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = eightYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 1 || indexPath.row == 4 || indexPath.row == 8 || indexPath.row == 12 || indexPath.row == 16) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 8 || indexPath.row == 13 || indexPath.row == 17) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = eightYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // NINE-YEAR FORM
+//        if indexPath.section == 16 {
+//            if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = nineYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 1 || indexPath.row == 4 || indexPath.row == 8 || indexPath.row == 12 || indexPath.row == 16) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 8 || indexPath.row == 13 || indexPath.row == 17) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = nineYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // TEN-YEAR FORM
+//        if indexPath.section == 17 {
+//            if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = tenYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 1 || indexPath.row == 4 || indexPath.row == 8 || indexPath.row == 12 || indexPath.row == 16) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 8 || indexPath.row == 13 || indexPath.row == 17) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = tenYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // ELEVEN-YEAR FORM
+//        if indexPath.section == 18 {
+//            if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = elevenYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 1 || indexPath.row == 4 || indexPath.row == 8 || indexPath.row == 12 || indexPath.row == 16) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 8 || indexPath.row == 13 || indexPath.row == 17) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = elevenYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // TWELVE-YEAR FORM
+//        if indexPath.section == 19 {
+//            if(indexPath.row == 0) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//                cell.formTextLabel?.text = twelveYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 1 || indexPath.row == 4) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else if(indexPath.row == 2 || indexPath.row == 5) {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//            else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+//                cell.questionLabel.text = twelveYearForm[indexPath.row]
+//                cell.selectionStyle = .none
+//                return cell
+//            }
+//        }
+//
+//        // NO-AGE FORM
+//        if indexPath.section == 20 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "NotesCell", for: indexPath) as! FormNotesTableViewCell
+//            cell.selectionStyle = .none
+//            return cell
+//        }
+//
+//        // temporary default until finish ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+//        cell.formTextLabel?.text = newbornForm[indexPath.row]
+//        cell.selectionStyle = .none
+//        return cell
+//    }
     
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.visits[section] + " Provider Visit"
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return self.visits[section] + " Provider Visit"
+//    }
     
 }
     
@@ -1001,6 +1562,7 @@ extension DoctorsVisitViewController: UIPickerViewDelegate {
         return visits[row]
     }
     
+    // reload tableview data form based on picker selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickerIdentifier = visits[row]
         formsTableView.reloadData()

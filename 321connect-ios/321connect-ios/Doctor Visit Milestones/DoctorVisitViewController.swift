@@ -34,7 +34,7 @@ class DoctorVisitViewController: UIViewController, UIPickerViewDelegate, UIPicke
         formatter.dateStyle = .short
         formatter.timeStyle = .short
         let datestring = formatter.string(from: date)
-        SysTime.text = datestring
+
         setPopUpButton()
         
         //Provider
