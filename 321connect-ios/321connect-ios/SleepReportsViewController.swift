@@ -9,6 +9,8 @@ import UIKit
 import CoreData
 class SleepReportsViewController: UIViewController {
     
+    
+    
     @IBOutlet weak var dateTimePicker: UIDatePicker!
     @IBOutlet weak var durationPicker: UIDatePicker!
     @IBOutlet weak var sleepNotesView: UITextView!
@@ -27,7 +29,7 @@ class SleepReportsViewController: UIViewController {
     @IBOutlet weak var indicateTextField: UITextField!
     var SleepArray = [Sleep]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+    let dateFormatter = DateFormatter()
     
     lazy var sleepCycleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SleepCycleViewController")
     
@@ -52,8 +54,11 @@ class SleepReportsViewController: UIViewController {
     
     @IBAction func saveTapped(_ sender: UIButton) {
 //        let notesText = sleepNotesView.text!
-//        let sleepDate = dateTimePicker.date
-//        let sleepTime = dateTimePicker.countDownDuration
+        let sleepDate = dateTimePicker.date
+        dateFormatter.dateFormat = "MM/dd/YY"
+        let stringsleepDate = dateFormatter.string(from:sleepDate)
+//        let s = String(describing: durationPicker.countDownDuration)
+//        print(s)
 //
 //
 //        if (snoreSwitch.isOn == true) {
@@ -70,7 +75,7 @@ class SleepReportsViewController: UIViewController {
         // ********** print to console ****************
         let new_sleep = Sleep(context: self.context)
         new_sleep.notes = sleepNotesView.text
-        new_sleep.sleepDate = dateTimePicker.date
+        new_sleep.sleepDate = stringsleepDate
         new_sleep.duration = durationPicker.countDownDuration
         new_sleep.unit = "Seconds"
         new_sleep.snoring = snoreSwitch.isOn
@@ -86,6 +91,7 @@ class SleepReportsViewController: UIViewController {
         
         
         self.SaveItems()
+        print("THIS IS SLEEP ARRAY", SleepArray)
 
     }
     
@@ -120,6 +126,7 @@ class SleepReportsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+  
     func SaveItems(){
        
         do {
@@ -135,6 +142,7 @@ class SleepReportsViewController: UIViewController {
         let request : NSFetchRequest<Sleep> = Sleep.fetchRequest()
         do{
         SleepArray = try context.fetch(request)
+        print(SleepArray)
         } catch{
             print("Error fetching data \(error)")
         }
