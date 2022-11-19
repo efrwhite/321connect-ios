@@ -112,7 +112,7 @@ class SignUpViewController: UIViewController/*, UITableViewDelegate, UITableView
             new_account.userName = usernameTextField.text
             new_account.phone = phoneNumberTextField.text
             new_account.passWord = passwordTextField.text
-            new_account.confirmPassword = confirmPasswordTextField.text
+            
             self.accountArray.append(new_account)
             self.SaveItems()
         }
