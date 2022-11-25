@@ -30,7 +30,6 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var TempUnits: UIButton!
     @IBOutlet weak var Temp: UITextField!
     @IBOutlet weak var milestoneVisit: UIPickerView!
-    var Providers: [String] = [String]()
     var pickerIdentifier: String?
     
     @IBOutlet weak var milestonePicker: UIPickerView!
@@ -58,6 +57,16 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                     "Eleven years",
                     "Twelve years",
                     "Not an age-scheduled"]
+    
+    // provider types
+    let Providers = ["Pediatrician",
+               "OT",
+               "PT",
+               "Speech",
+               "Hearing",
+               "Dental",
+               "Cardio",
+               "Ophthalmology"]
     
     let newbornForm = [ "Shortly after your child was born, your child will usually have a number of tests and procedures done. The following questions are gathering that information.",
                         "Did your child have an eye exam?",
@@ -406,16 +415,25 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         milestonePicker.dataSource = self
         milestonePicker.delegate = self
         
+        ProviderType.delegate = self
+        ProviderType.dataSource = self
+        
         formsTableView.dataSource = self
         formsTableView.delegate = self
 
+        formsTableView.estimatedRowHeight = 200
         formsTableView.rowHeight = UITableView.automaticDimension
-        formsTableView.estimatedRowHeight = 600
         
         self.formsTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        
+        setPopUpButton()
     }
+   
+/*
+// MARK: - Navigation * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
     
-    // Dynamiccaly adjust height of tableview for content size
+    // Dynamically adjust height of tableview for content size
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
          if(keyPath == "contentSize"){
              if let newvalue = change?[.newKey]
@@ -427,12 +445,58 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
              }
          }
      }
+    
+    // Setup for unit of measure pop up button selection
+    func setPopUpButton(){
+        
+        let optional = {(action: UIAction) in print(action.title)}
+        
+        //Height
+        HeightUnits.menu = UIMenu(children : [
+            UIAction(title:"Centimeters (cm)",state: .on, handler: optional),
+            UIAction(title:"Feet (ft)", handler: optional)])
+        
+        HeightUnits.showsMenuAsPrimaryAction = true
+        HeightUnits.changesSelectionAsPrimaryAction = true
+        
+        //Weight
+        WeightUnits.menu = UIMenu(children:[
+            UIAction(title:"Ounces (oz)",state: .on, handler: optional),
+            UIAction(title:"Pounds (lbs)", handler: optional)])
+        
+        WeightUnits.showsMenuAsPrimaryAction = true
+        WeightUnits.changesSelectionAsPrimaryAction = true
+        
+        // Head Circumference Units
+        HCUnits.menu = UIMenu(children:[
+            UIAction(title:"Centimeters (cm)",state: .on, handler: optional),
+            UIAction(title:"Inches (in)", handler: optional)])
+        
+        HCUnits.showsMenuAsPrimaryAction = true
+        HCUnits.changesSelectionAsPrimaryAction = true
+        
+        //Temp
+        TempUnits.menu = UIMenu(children:[
+            UIAction(title:"Celsius °C",state: .on, handler: optional),
+            UIAction(title:"Fahrenheit °F", handler: optional)])
+        
+        TempUnits.showsMenuAsPrimaryAction = true
+        TempUnits.changesSelectionAsPrimaryAction = true
+    }
 
     
     
 /*
  // MARK: - TableView * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
+    
+//    private func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
+//
+//    private func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
 
     /* * * * * * * * * * * * * * SECTION * * * * * * * * * * * * * * * * * * * * */
 //    func numberOfSections(in tableView: UITableView) -> Int {
@@ -579,7 +643,8 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
             if(indexPath.row == 0) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = newbornForm[indexPath.row]
-                cell.textLabel?.numberOfLines = 0
+        // here
+                cell.formTextLabel.preferredMaxLayoutWidth = CGRectGetWidth(tableView.bounds)
                 cell.selectionStyle = .none
                 return cell
             }
@@ -1543,28 +1608,44 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
 }
     
 /*
- // MARK: - PickerView * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ // MARK: - PickerViews * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 
-extension DoctorsVisitViewController: UIPickerViewDataSource {
+extension DoctorsVisitViewController: UIPickerViewDataSource,UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return visits.count
+        if pickerView.tag == 1 {
+               return Providers.count
+        }
+        else if pickerView.tag == 2 {
+            return visits.count
+        }
+        else{
+            return Providers.count
+        }
     }
-}
+    
 
-
-extension DoctorsVisitViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return visits[row]
+        if pickerView == ProviderType{
+            return Providers[row]
+        }
+        else if pickerView == milestonePicker{
+            return visits[row]
+        }
+         return ""
     }
     
     // reload tableview data form based on picker selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        pickerIdentifier = visits[row]
-        formsTableView.reloadData()
+        if pickerView == milestonePicker{
+            pickerIdentifier = visits[row]
+            formsTableView.reloadData()
+        }
     }
 }
+
+
