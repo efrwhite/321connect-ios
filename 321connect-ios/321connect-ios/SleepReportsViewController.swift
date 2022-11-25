@@ -88,8 +88,6 @@ class SleepReportsViewController: UIViewController {
         new_sleep.study = sleepStudySwitch.isOn
         
         self.SleepArray.append(new_sleep)
-        
-        
         self.SaveItems()
         print("THIS IS SLEEP ARRAY", SleepArray)
 
