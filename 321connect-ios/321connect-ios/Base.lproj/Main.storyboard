@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -2382,10 +2387,6 @@
                                 <rect key="frame" x="-38" y="201" width="490" height="262"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Message-1" translatesAutoresizingMaskIntoConstraints="NO" id="DFI-7K-RCt">
-                                <rect key="frame" x="20" y="142" width="136" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Message" translatesAutoresizingMaskIntoConstraints="NO" id="go7-Gq-d3e">
                                 <rect key="frame" x="146" y="0.0" width="122" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2401,7 +2402,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="current date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6rX-TG-7h9">
                                 <rect key="frame" x="20" y="95" width="223" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -2411,7 +2412,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="Today:">
                                         <attributes>
-                                            <font key="NSFont" size="20" name="Helvetica-Bold"/>
+                                            <font key="NSFont" size="24" name="Lato-Bold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -2421,8 +2422,18 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYF-3C-Ync">
                                 <rect key="frame" x="146" y="600" width="122" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.25490196078431371" green="0.37647058823529411" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Save"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Save">
+                                            <attributes>
+                                                <font key="NSFont" size="17" name="Lato-Bold"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <attributedString key="attributedSubtitle"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="SaveButton:" destination="JnC-Nt-2m8" eventType="touchUpInside" id="sbd-2H-YPe"/>
                                 </connections>
@@ -2436,8 +2447,15 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="current time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlD-iW-frr">
                                 <rect key="frame" x="20" y="117" width="105" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
                                 <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9e-bm-5oN">
+                                <rect key="frame" x="20" y="172" width="94" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="24"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -2865,10 +2883,10 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="LJX-Wm-uLe">
-                                <rect key="frame" x="20" y="26" width="69" height="28"/>
+                                <rect key="frame" x="20" y="26" width="59" height="24"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notes" translatesAutoresizingMaskIntoConstraints="NO" id="GZI-D0-Whe">
-                                        <rect key="frame" x="0.0" y="0.0" width="69" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="59" height="24"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -3048,10 +3066,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="e12-r3-HUp">
-                                <rect key="frame" x="20" y="30" width="69" height="28"/>
+                                <rect key="frame" x="20" y="30" width="59" height="24"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notes" translatesAutoresizingMaskIntoConstraints="NO" id="cJa-uf-dno">
-                                        <rect key="frame" x="0.0" y="0.0" width="69" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="59" height="24"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -4941,11 +4959,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JfG-ll-slp"/>
+        <segue reference="GXc-Lk-C2d"/>
         <segue reference="PJK-iN-xtL"/>
         <segue reference="8l8-5M-ooy"/>
         <segue reference="klS-EG-BR2"/>
-        <segue reference="tUN-gI-Bd9"/>
+        <segue reference="bGp-15-ulQ"/>
         <segue reference="S72-Vi-Zbi"/>
         <segue reference="1wn-hu-7An"/>
         <segue reference="KXT-Sl-Iht"/>
@@ -4972,17 +4990,16 @@
         <image name="Email" width="48" height="24"/>
         <image name="Enter" width="48" height="24"/>
         <image name="Fax" width="30" height="24"/>
-        <image name="Feed" width="58" height="33"/>
+        <image name="Feed" width="42" height="24"/>
         <image name="Fluid" width="51" height="28"/>
         <image name="Hello, Name" width="108" height="24"/>
-        <image name="Journal" width="75" height="28"/>
+        <image name="Journal" width="65" height="24"/>
         <image name="Line 17" width="1" height="26"/>
         <image name="Login" width="58" height="28"/>
         <image name="Medical" width="68" height="24"/>
         <image name="Message" width="76" height="24"/>
-        <image name="Message-1" width="95" height="28"/>
         <image name="Mode of Eating" width="137" height="24"/>
-        <image name="Notes" width="69" height="28"/>
+        <image name="Notes" width="59" height="24"/>
         <image name="Open Air Accident" width="189" height="28"/>
         <image name="Path 3" width="334.5" height="1"/>
         <image name="Path 6" width="477" height="136.5"/>
@@ -5001,19 +5018,19 @@
         <image name="Rectangle 102" width="333" height="591"/>
         <image name="Rectangle 103" width="375" height="814"/>
         <image name="Rectangle 13" width="186" height="65"/>
-        <image name="Rectangle 22" width="337" height="241"/>
+        <image name="Rectangle 22" width="337" height="123"/>
         <image name="Rectangle 32" width="130" height="65"/>
-        <image name="Rectangle 54" width="381" height="347"/>
+        <image name="Rectangle 54" width="416" height="378"/>
         <image name="Rectangle 69" width="402" height="777"/>
         <image name="Rectangle 79" width="15" height="15"/>
         <image name="Rectangle 9" width="190" height="57"/>
         <image name="Rectangle 99" width="375" height="812"/>
         <image name="Resources" width="90" height="24"/>
         <image name="SIGN IN" width="77" height="26"/>
-        <image name="Select" width="63" height="28"/>
+        <image name="Select" width="54" height="24"/>
         <image name="Sign Up-1" width="76" height="26"/>
         <image name="Sign up" width="83" height="30"/>
-        <image name="Sleep" width="48" height="24"/>
+        <image name="Sleep" width="67" height="33"/>
         <image name="Solid" width="52" height="28"/>
         <image name="Specialty" width="81" height="24"/>
         <image name="State" width="47" height="24"/>
