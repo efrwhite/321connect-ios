@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		389B085F2931B29C0058A8B4 /* Lato2OFL in Resources */ = {isa = PBXBuildFile; fileRef = 389B085E2931B29C0058A8B4 /* Lato2OFL */; };
 		EB022CB0292D18870046C27A /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB022C9B292D18070046C27A /* Lato-HeavyItalic.ttf */; };
 		EB022CB1292D18920046C27A /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB022C9C292D18070046C27A /* Lato-Italic.ttf */; };
 		EB022CB2292D18920046C27A /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB022CA0292D18070046C27A /* Lato-Black.ttf */; };
@@ -117,6 +118,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		389B085E2931B29C0058A8B4 /* Lato2OFL */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Lato2OFL; path = Fonts/Lato2OFL; sourceTree = SOURCE_ROOT; };
 		EB022C9B292D18070046C27A /* Lato-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HeavyItalic.ttf"; sourceTree = "<group>"; };
 		EB022C9C292D18070046C27A /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
 		EB022C9D292D18070046C27A /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				EBFFE10728998F3300DA05F6 /* Doctor Visit Milestones */,
 				EB4335A528905E340037CDEF /* Custom Cells */,
 				EBE099BF2739B43100F056A0 /* Assets.xcassets */,
+				389B085E2931B29C0058A8B4 /* Lato2OFL */,
 				EBE099C12739B43100F056A0 /* LaunchScreen.storyboard */,
 				FEBFC9AA28CFC79000E0F299 /* 321ConnectDatabase.xcdatamodeld */,
 				EBE099C42739B43100F056A0 /* Info.plist */,
@@ -521,6 +524,7 @@
 				EB022CBD292D189D0046C27A /* Lato-Heavy.ttf in Resources */,
 				EB022CB4292D18920046C27A /* Lato-MediumItalic.ttf in Resources */,
 				EBE099C32739B43100F056A0 /* LaunchScreen.storyboard in Resources */,
+				389B085F2931B29C0058A8B4 /* Lato2OFL in Resources */,
 				EB022CB8292D18920046C27A /* Lato-HairlineItalic.ttf in Resources */,
 				EB022CBC292D18920046C27A /* Lato-Regular.ttf in Resources */,
 				EB022CB2292D18920046C27A /* Lato-Black.ttf in Resources */,
