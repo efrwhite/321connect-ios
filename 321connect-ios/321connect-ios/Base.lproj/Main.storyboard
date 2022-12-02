@@ -3373,7 +3373,7 @@
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEe-1w-geV">
-                                <rect key="frame" x="125" y="66" width="228" height="43"/>
+                                <rect key="frame" x="124" y="66" width="229" height="43"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                         </subviews>
@@ -5023,11 +5023,11 @@
     <inferredMetricsTieBreakers>
         <segue reference="GXc-Lk-C2d"/>
         <segue reference="PJK-iN-xtL"/>
-        <segue reference="8l8-5M-ooy"/>
+        <segue reference="yVy-ry-Osa"/>
         <segue reference="klS-EG-BR2"/>
         <segue reference="bGp-15-ulQ"/>
         <segue reference="S72-Vi-Zbi"/>
-        <segue reference="1wn-hu-7An"/>
+        <segue reference="yqK-St-CcA"/>
         <segue reference="KXT-Sl-Iht"/>
         <segue reference="WwD-j0-FeR"/>
     </inferredMetricsTieBreakers>
@@ -5076,7 +5076,7 @@
         <image name="Rectangle 102" width="333" height="591"/>
         <image name="Rectangle 103" width="375" height="814"/>
         <image name="Rectangle 13" width="186" height="65"/>
-        <image name="Rectangle 22" width="337" height="241"/>
+        <image name="Rectangle 22" width="337" height="123"/>
         <image name="Rectangle 32" width="130" height="65"/>
         <image name="Rectangle 54" width="416" height="378"/>
         <image name="Rectangle 69" width="402" height="777"/>

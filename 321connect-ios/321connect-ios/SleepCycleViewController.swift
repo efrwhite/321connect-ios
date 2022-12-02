@@ -46,10 +46,18 @@ class SleepCycleViewController: UIViewController {
         request.predicate = NSPredicate(format: "(sleepDate CONTAINS[cd] %@) AND (duration > %i)", stringsleepDate, 0)
         request.fetchLimit = 1
         let date = (try? context.fetch(request))?.first
-        print("This is duration associated with \(stringsleepDate) : ",date?.duration)
+        let newd = date?.duration
+        print("This is duration associated with \(stringsleepDate) : ",newd)
 //        request.predicate = predicate
-//
-//
+        let intdate =  Int(newd!)
+        print("This is duration as an Integer: ", intdate)
+        let minutes = round(Double(intdate/60))
+        let hours = round(Double(minutes/60))
+        print("Number of Minutes:", minutes)
+        print("Number of hours:", hours)
+        minlabel.text = String(minutes)
+        hourlable.text = String(hours)
+        
 //        let sortDescriptor = NSSortDescriptor(key:"sleepDate", ascending: true)
 //        request.sortDescriptors = [sortDescriptor]
        

@@ -29,7 +29,7 @@ class ResourcesTableViewController: UITableViewController {
         "http://www.ndss.org",
         "http://www.dsdiagnosisnetwork.org"
         ]
-    
+    /*Table view arrays data part 2 of links*/
     var userLinks = [
         "http://www.google.com",
         "https://www.desertmuseum.org/"
@@ -49,6 +49,7 @@ class ResourcesTableViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = editButtonItem
         
+        loadItems()
 
     }
     
@@ -71,11 +72,13 @@ class ResourcesTableViewController: UITableViewController {
             let resource = alertController.textFields?[0].text
             print("Resource URL: \(String(describing: alertController.textFields?[1].text))")
             let urlPath = alertController.textFields?[1].text
+            //DataBase Entry
             let new_resource = Resource(context: self.context)
             new_resource.resourceTitle = resource
             new_resource.resourcelink = urlPath
             self.resourceArray.append(new_resource)
             self.SaveItems()
+           
             // include in array data source
             self.add(resource ?? "Default", urlPath!)           /* here might need to fix for input error checking */
         })
@@ -121,6 +124,7 @@ class ResourcesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+    
         /* If NSG section, use basic cell */
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -134,6 +138,9 @@ class ResourcesTableViewController: UITableViewController {
             cell.resourceTitleLabel.text = userResources[indexPath.row]
             return cell
         }
+        
+        
+        
     }
     
     // disable editing for section 0: Support Groups
@@ -180,22 +187,26 @@ class ResourcesTableViewController: UITableViewController {
             }
         }
     }
-    
+// Database Methods
     func SaveItems(){
        
         do {
             try context.save()
+            
         } catch {
             print("Error Saving context \(error)")
         }
-        
+        self.tableView.reloadData()
         
     }
-
+    
     func loadItems(){
+        
         let request : NSFetchRequest<Resource> = Resource.fetchRequest()
+
+      
         do{
-        resourceArray = try context.fetch(request)
+            resourceArray = try context.fetch(request)
         } catch{
             print("Error fetching data \(error)")
         }
