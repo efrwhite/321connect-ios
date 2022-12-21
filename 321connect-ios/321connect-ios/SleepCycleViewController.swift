@@ -48,7 +48,6 @@ class SleepCycleViewController: UIViewController {
         let date = (try? context.fetch(request))?.first
         let newd = date?.duration
         print("This is duration associated with \(stringsleepDate) : ",newd)
-//        request.predicate = predicate
         let intdate =  Int(newd!)
         print("This is duration as an Integer: ", intdate)
         let minutes = round(Double(intdate/60))
@@ -58,14 +57,11 @@ class SleepCycleViewController: UIViewController {
         minlabel.text = String(minutes)
         hourlable.text = String(hours)
         
-//        let sortDescriptor = NSSortDescriptor(key:"sleepDate", ascending: true)
-//        request.sortDescriptors = [sortDescriptor]
-       
+
 
         do{
         SleepArray = try context.fetch(request)
-//        print("Dump method")
-//        dump(SleepArray)
+
         } catch{
             print("Error fetching data \(error)")
         }
@@ -82,15 +78,7 @@ class SleepCycleViewController: UIViewController {
             print("Error Saving context \(error)")
         }
     }
-//    func loadItems(){
-//        let request : NSFetchRequest<Sleep> = Sleep.fetchRequest()
-//        do{
-//        SleepArray = try context.fetch(request)
-//        print(SleepArray)
-//        } catch{
-//            print("Error fetching data \(error)")
-//        }
-//    }
+
 
 
 }
