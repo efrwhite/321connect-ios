@@ -4,7 +4,7 @@
 //
 //  Created by Edward Ladia on 8/2/22.
 // Edited By Brianna Boston
-//
+// note : deprecated. Currently using DoctorsVisitViewController
 
 import UIKit
 
