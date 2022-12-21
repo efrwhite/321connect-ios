@@ -10,6 +10,9 @@ import WebKit
 import CoreData
 
 class ResourcesTableViewController: UITableViewController {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
         
     /* Table view arrays data */
     var sections = ["National Support Groups", "Your Resources"]
@@ -37,8 +40,11 @@ class ResourcesTableViewController: UITableViewController {
     
     @IBOutlet weak var resourceAddButton: UIButton!
     var resourceArray = [Resource]()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+     // Where Locations = your NSManaged Class
+
+ 
+
+   
     
     
     override func viewDidLoad() {
@@ -73,6 +79,9 @@ class ResourcesTableViewController: UITableViewController {
             print("Resource URL: \(String(describing: alertController.textFields?[1].text))")
             let urlPath = alertController.textFields?[1].text
             //DataBase Entry
+//            self.userResources.append(resource!)
+//            self.userLinks.append(urlPath!)
+            print(self.userResources, self.userLinks)
             let new_resource = Resource(context: self.context)
             new_resource.resourceTitle = resource
             new_resource.resourcelink = urlPath
@@ -151,15 +160,31 @@ class ResourcesTableViewController: UITableViewController {
             return true
         }
     }
+    //DELETETION
 
     // tableview editing styles
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
+            let usertask = userResources[indexPath.row]
+            let usertaskl = userLinks[indexPath.row]
+            print("Deletion ")
+            print(type(of: usertask),usertask)
+            print(type(of: usertaskl),usertaskl)
             
+            //Deleting from Database
+            print("TESTING AREA FOR MY DELETION")
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Resource")
+            request.predicate = NSPredicate(format:"resourcelink = %@ AND resourceTitle = %@", usertaskl,usertask)
+            request.fetchLimit = 1
+            print(request)
+            let link = (try? context.fetch(request))?.first
+            
+          
             // delete row from data source(s)
             userResources.remove(at: indexPath.row)
             userLinks.remove(at: indexPath.row)
+            
             // delete row from tableview
             tableView.deleteRows(at: [indexPath], with: .fade)
             
@@ -203,12 +228,19 @@ class ResourcesTableViewController: UITableViewController {
     func loadItems(){
         
         let request : NSFetchRequest<Resource> = Resource.fetchRequest()
-
       
+        resourceArray = (try? context.fetch(request))!
+         
+        for location in resourceArray {
+            userResources.append(location.resourceTitle!)
+            userLinks.append(location.resourcelink!)
+        }
+
         do{
             resourceArray = try context.fetch(request)
         } catch{
             print("Error fetching data \(error)")
         }
     }
+
 }
