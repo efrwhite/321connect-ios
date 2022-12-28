@@ -185,10 +185,14 @@ class ResourcesTableViewController: UITableViewController {
             userResources.remove(at: indexPath.row)
             userLinks.remove(at: indexPath.row)
             
+            
             // delete row from tableview
             tableView.deleteRows(at: [indexPath], with: .fade)
             
             tableView.endUpdates()
+            context.delete(link as! NSManagedObject)
+            SaveItems()
+            
         }
     }
     
