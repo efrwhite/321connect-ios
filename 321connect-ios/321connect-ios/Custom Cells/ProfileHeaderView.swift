@@ -18,25 +18,25 @@ class ProfileHeaderView: UITableViewCell, UITableViewDelegate {
         
     }
     
-    @IBAction func profileAddTapped(_ sender: Any) {
-        // Show corresponding add form for each profile
-        let section = profileTitle.text!
-        
-        switch(section) {
-            
-        case ("Children"):
-            print("Add Child Profile")
-            
-        case ("Parents/Caregivers"):
-            print("Add Parent/Caregiver Profile")
-            
-        case ("Providers"):
-            print("Add Provider Profile")
-            
-        default:
-            print("invalid selection")
-        }
-    }
+//    @IBAction func profileAddTapped(_ sender: Any) {
+//        // Show corresponding add form for each profile
+//        let section = profileTitle.text!
+//        
+//        switch(section) {
+//            
+//        case ("Children"):
+//            print("Add Child Profile")
+//            
+//        case ("Parents/Caregivers"):
+//            print("Add Parent/Caregiver Profile")
+//            
+//        case ("Providers"):
+//            print("Add Provider Profile")
+//            
+//        default:
+//            print("invalid selection")
+//        }
+//    }
     
 //    override func setSelected(_ selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)

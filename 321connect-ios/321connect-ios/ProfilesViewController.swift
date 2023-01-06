@@ -34,6 +34,7 @@ class ProfilesViewController: UIViewController {
         profileType.append(ProfileType.init(profile: "Parents/Caregivers", name: ["Jackson", "Charlotte"]))
         profileType.append(ProfileType.init(profile: "Providers", name: ["Brianna"]))
         // ******************************** hard code for debug ********************************
+        
 
     }
     
@@ -54,6 +55,23 @@ class ProfilesViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = nil
     }
     
+//    @IBAction func editTapped(_ sender: Any, indexPath: IndexPath) {
+//        // Get the index path of the cell that contains the button
+//        let button = sender as! UIButton
+//        let section = indexPath.section
+//
+//        // Use a switch statement to determine the corresponding view controller based on the section of the index path
+//        switch section {
+//            case 0:
+//                self.performSegue(withIdentifier: "showChildVC", sender: button)
+//            case 1:
+//                self.performSegue(withIdentifier: "showParentsVC", sender: button)
+//            case 2:
+//                self.performSegue(withIdentifier: "showProvidersVC", sender: button)
+//            default:
+//                break
+//        }
+//    }
 }
     
 extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
@@ -68,18 +86,45 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
         return profileType[section].name?.count ?? 0
         
     }
-    
-//    func someSegue() {
-//        self.performSegue(withIdentifier: "showProvidersVC", sender: self)
-//    }
+
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = profilesTableView.dequeueReusableCell(withIdentifier: "customCell") as! CustomTableViewCell
         
         cell.nameLabel.text = profileType[indexPath.section].name?[indexPath.row]
         
+        // Set the allowsSelection property of the cells in the sections [2,3] to false
+            if indexPath.section == 0 {
+                cell.selectionStyle = .default
+            } else {
+                cell.selectionStyle = .none
+            }
+        
+        cell.editButton.tag = indexPath.section
+        cell.deleteButton.tag = indexPath.row
+
+        cell.editButton.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
+
+        
         return cell
     }
+    
+    @objc
+    func editButtonPressed(sender:UIButton) {
+        print("add button pressed")
+        let sectionIndex:Int = sender.tag
+        switch sectionIndex {
+        case 0:
+            self.performSegue(withIdentifier: "showChildVC", sender: editButtonItem)
+        case 1:
+            self.performSegue(withIdentifier: "showParentsVC", sender: editButtonItem)
+        case 2:
+            self.performSegue(withIdentifier: "showProvidersVC", sender: editButtonItem)
+        default:
+            break
+        }
+    }
+
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
@@ -91,26 +136,58 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
         // show custom Profile Header View (with add button)
         let headerView = Bundle.main.loadNibNamed("ProfileHeaderView", owner: self, options: nil)?.first as! ProfileHeaderView
         
-//        headerView.delegate = self
+        headerView.profileAddButton.tag = section
+        
+        headerView.profileAddButton.addTarget(self, action: #selector(profileAddButtonPressed(sender:)), for: .touchUpInside)
         
         headerView.profileTitle.text = profileType[section].profile
         
         return headerView
     }
     
-    // MARK: - Navigation
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
+    @objc
+    func profileAddButtonPressed(sender:UIButton) {
+        print("add button pressed")
+        let sectionIndex:Int = sender.tag
+        switch sectionIndex {
         case 0:
-            self.performSegue(withIdentifier: "showChildVC", sender: tableView(_:didSelectRowAt:))
+            self.performSegue(withIdentifier: "showChildVC", sender: nil)
         case 1:
-            self.performSegue(withIdentifier: "showParentsVC", sender: tableView(_:didSelectRowAt:))
+            self.performSegue(withIdentifier: "showParentsVC", sender: nil)
         case 2:
-            self.performSegue(withIdentifier: "showProvidersVC", sender: tableView(_:didSelectRowAt:))
+            self.performSegue(withIdentifier: "showProvidersVC", sender: nil)
         default:
             break
         }
+    }
+    
+    // MARK: - Navigation
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showChildVC" {
+//            let destinationVC = segue.destination as! ChildView
+//        } else if segue.identifier == "showParentsVC" {
+//            let destinationVC = segue.destination as! Parent_Caregiver_ViewController
+//        } else if segue.identifier == "showProvidersVC" {
+//            let destinationVC = segue.destination as! ProvidersViewController
+//        }
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if indexPath.section == 0 {
+            // CHILD SELECTION HERE
+//        }
+        
+//        switch indexPath.section {
+//        case 0:
+//            self.performSegue(withIdentifier: "showChildVC", sender: tableView(_:didSelectRowAt:))
+//        case 1:
+//            self.performSegue(withIdentifier: "showParentsVC", sender: tableView(_:didSelectRowAt:))
+//        case 2:
+//            self.performSegue(withIdentifier: "showProvidersVC", sender: tableView(_:didSelectRowAt:))
+//        default:
+//            break
+//        }
     }
 }
     
