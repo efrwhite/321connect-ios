@@ -16,9 +16,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var PasswordTextField: UITextField!
     
     // accounts //** not coredata entity
-    var accounts = [Account]()
+    var accountArray = [Account]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -49,14 +50,67 @@ class LoginViewController: UIViewController {
         let managedContext = appDelegate.persistentContainer.viewContext
         // instance of NSFRequest collects criteria needed to select group of objects
             /* entity name should be Account */
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Account")
-        
-        do{
+        if (!username.isEmpty && !password.isEmpty){// if not empty check database
+//            print("Checking the strings input")
+//            print(password, type(of: password)) String
+//            print(username, type(of: username)) String
+            let request: NSFetchRequest<Account> = Account.fetchRequest()
+            request.predicate = NSPredicate(format: "(userName CONTAINS[cd] %@) AND passWord CONTAINS[cd] %@", username, password )
+            request.fetchLimit = 1
+            let user = (try? context.fetch(request))?.first
+            let userinfo = user?.userName
+            let userinfop = user?.passWord
+            print("USER FETCH")
+            // if username and password not found in database deny access
+            if userinfo == nil && userinfop == nil{
+                // Create new Alert
+                var dialogMessage = UIAlertController(title: "Error", message: "Please Create an Account using Sign Up Button", preferredStyle: .alert)
+                
+                // Create OK button with action handler
+                let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                    print("Ok button tapped")
+                 })
+                
+                //Add OK button to a dialog message
+                dialogMessage.addAction(ok)
+
+                // Present Alert to
+                self.present(dialogMessage, animated: true, completion: nil)
+            }
+            
+            
             
         }
+       
+
+        
+    
     }
     
     @IBAction func signupPressed(_ sender: Any) {
+    }
+    
+    func SaveItems(){
+       
+        do {
+            try context.save()
+        } catch {
+            print("Error Saving context \(error)")
+        }
+        
+        
+    }
+
+    func loadItems(){
+        let request : NSFetchRequest<Account> = Account.fetchRequest()
+     // if the username and password is not found in the database than deny access else allow them into the app
+    // Sign up if not found
+        
+        do{
+        accountArray = try context.fetch(request)
+        } catch{
+            print("Error fetching data \(error)")
+        }
     }
 }
 
