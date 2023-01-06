@@ -451,7 +451,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
              }
          }
      }
-    
+    //LOOK FOR CONSTANT DATABSE SELECTION OF NONE VISIT ATTRIBUTES HERE
     // Setup for unit of measure pop up button selection
     func setPopUpButton(){
         
@@ -592,19 +592,23 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 
                 cell.formTextLabel.numberOfLines = 0
                 cell.selectionStyle = .none
+                
                 return cell
             }
+            // this is appointment dates
             else if(indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15 || indexPath.row == 19) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
                 cell.selectionStyle = .none
                 return cell
             }
+            // providers area
             else if(indexPath.row == 4 || indexPath.row == 8 || indexPath.row == 12 || indexPath.row == 16 || indexPath.row == 20) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
                 cell.selectionStyle = .none
                 return cell
             }
             else {
+                //Questions Cell Slider
                 let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
                 cell.questionLabel.text = newbornForm[indexPath.row]
                 cell.selectionStyle = .none

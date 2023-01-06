@@ -52,6 +52,7 @@ class Parent_Caregiver_ViewController: UIViewController {
         new_parent.phoneNumber = PhoneNumber.text
         new_parent.userName = Username.text
         new_parent.password = Password.text
+        // new_parent.accountId = //Delegate of Account
         //Dont forget the Parent Image
         new_parent.parentImage = ParentPicture.image
         self.ParentArray.append(new_parent)
