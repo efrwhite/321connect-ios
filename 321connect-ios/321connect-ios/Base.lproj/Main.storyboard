@@ -1695,7 +1695,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="3bH-az-DKM">
-                                <rect key="frame" x="100" y="184" width="126" height="39"/>
+                                <rect key="frame" x="99" y="184" width="127" height="39"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pux-Fa-nKl">
@@ -2865,7 +2865,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" countDownDuration="86340" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mih-SV-7tu">
-                                <rect key="frame" x="26" y="633" width="292" height="75"/>
+                                <rect key="frame" x="25" y="633" width="293" height="75"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k45-DV-aPc">
@@ -2924,21 +2924,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jan-fx-FoZ">
-                                <rect key="frame" x="-32" y="145" width="423" height="730"/>
+                                <rect key="frame" x="-33" y="145" width="422" height="730"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="rRg-dZ-51Y" kind="embed" id="UPM-6x-LIl"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zhj-ui-wOH">
-                                <rect key="frame" x="-32" y="145" width="423" height="730"/>
+                                <rect key="frame" x="-33" y="145" width="422" height="730"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="CD5-tL-Pve" kind="embed" id="xoR-Iq-8iR"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yjq-Uv-dSs">
-                                <rect key="frame" x="-32" y="145" width="423" height="730"/>
+                                <rect key="frame" x="-33" y="145" width="422" height="730"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="ekX-Pl-lpC" kind="embed" id="uAK-d6-P1u"/>
@@ -3142,7 +3142,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDl-j5-GJQ">
-                                <rect key="frame" x="-3" y="582" width="362" height="123"/>
+                                <rect key="frame" x="-4" y="582" width="363" height="123"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J6n-Te-Ml6">
@@ -3237,7 +3237,7 @@
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fj9-UU-DZv">
-                                <rect key="frame" x="-58" y="487" width="423" height="44"/>
+                                <rect key="frame" x="-60" y="487" width="424" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="44H-iR-LiU">
@@ -3383,7 +3383,7 @@
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fq2-E1-bRU">
-                                <rect key="frame" x="131" y="368" width="232" height="54"/>
+                                <rect key="frame" x="130" y="368" width="233" height="54"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oxQ-9A-bKA">
@@ -3405,7 +3405,7 @@
                                 <state key="normal" title="Select"/>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TDI-OL-ClS">
-                                <rect key="frame" x="131" y="440" width="232" height="54"/>
+                                <rect key="frame" x="130" y="440" width="233" height="54"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFn-mY-mTl">
@@ -3845,7 +3845,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="lZe-9D-kds">
-                                <rect key="frame" x="125" y="11" width="190" height="42"/>
+                                <rect key="frame" x="123" y="11" width="191" height="42"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Does the child have a history of snoring?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlF-TD-qBO">
@@ -3988,7 +3988,7 @@
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEe-1w-geV">
-                                <rect key="frame" x="118" y="66" width="228" height="43"/>
+                                <rect key="frame" x="117" y="66" width="228" height="43"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                         </subviews>
@@ -4019,7 +4019,7 @@
             <objects>
                 <viewController title="Diaper" id="rRg-dZ-51Y" customClass="DiaperViewController" customModule="_21connect_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dw1-IK-hDu">
-                        <rect key="frame" x="0.0" y="0.0" width="422.99839454736997" height="730"/>
+                        <rect key="frame" x="0.0" y="0.0" width="422" height="730"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DNP-TM-dVA">
@@ -4183,7 +4183,7 @@
             <objects>
                 <viewController title="Potty" id="CD5-tL-Pve" customClass="PottyViewController" customModule="_21connect_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ScJ-95-1M6">
-                        <rect key="frame" x="0.0" y="0.0" width="422.99839454736997" height="730"/>
+                        <rect key="frame" x="0.0" y="0.0" width="422" height="730"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Notes" translatesAutoresizingMaskIntoConstraints="NO" id="7mX-x3-oMm">
@@ -4216,7 +4216,7 @@
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDZ-nc-P1C">
-                                <rect key="frame" x="117" y="434" width="276" height="135"/>
+                                <rect key="frame" x="117" y="434" width="275" height="135"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cdo-8F-D1H">
@@ -4245,7 +4245,7 @@
             <objects>
                 <viewController title="Constipation" id="ekX-Pl-lpC" customClass="ConstipationViewController" customModule="_21connect_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fNh-ql-pTx">
-                        <rect key="frame" x="0.0" y="0.0" width="422.99839454736997" height="730"/>
+                        <rect key="frame" x="0.0" y="0.0" width="422" height="730"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Notes" translatesAutoresizingMaskIntoConstraints="NO" id="Inq-Nh-vD3">
@@ -4284,7 +4284,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="UjJ-Mb-U8m">
-                                <rect key="frame" x="18" y="411" width="312" height="87"/>
+                                <rect key="frame" x="17" y="411" width="312" height="87"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                         </subviews>
@@ -4446,7 +4446,7 @@
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="tcf-wR-jud" kind="show" id="5dm-cX-FCb"/>
+                                    <segue destination="tcf-wR-jud" kind="show" id="BOy-EW-sr3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQO-rC-cuM">
@@ -4559,7 +4559,7 @@
             </objects>
             <point key="canvasLocation" x="4681" y="1077"/>
         </scene>
-        <!--Vaccination View Controller-->
+        <!--Vaccination Records-->
         <scene sceneID="xjX-fR-ZDt">
             <objects>
                 <viewController storyboardIdentifier="VaccinationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tcf-wR-jud" customClass="VaccinationViewController" customModule="_21connect_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -4571,48 +4571,76 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dks-Kh-yLv">
-                                <rect key="frame" x="127" y="244" width="116" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5M-lY-A0M">
+                                <rect key="frame" x="47" y="101" width="317" height="87"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Upload Vaccination Record">
+                                        <attributes>
+                                            <color key="NSColor" red="0.67843137254901964" green="0.67450980392156867" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="24" name="Lato-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiB-ed-XvI">
+                                <rect key="frame" x="49" y="235" width="317" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Current Vaccination Record">
+                                        <attributes>
+                                            <color key="NSColor" red="0.67843137254901964" green="0.67450980392156867" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="24" name="Lato-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ap8-Oq-zBQ">
+                                <rect key="frame" x="125" y="180" width="165" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.25490196078431371" green="0.37647058823529411" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Delete History"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Add Photo">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="17" name="Lato-Regular"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="AddPhotoPressed:" destination="tcf-wR-jud" eventType="touchUpInside" id="vz9-9q-pGB"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vaccination Records" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cax-1q-DBt">
-                                <rect key="frame" x="78" y="35" width="260" height="41"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eY8-VD-tgN">
+                                <rect key="frame" x="10" y="291" width="395" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please upload photos of your child's vaccination records." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5M-lY-A0M">
-                                <rect key="frame" x="47" y="101" width="317" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39o-66-sZw">
-                                <rect key="frame" x="118" y="191" width="134" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Choose a picture"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Vaccination Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiB-ed-XvI">
-                                <rect key="frame" x="47" y="300" width="317" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <gestureRecognizers/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dFr-e2-oAS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="CAL-jU-hwx"/>
+                    <navigationItem key="navigationItem" title="Vaccination Records" id="CAL-jU-hwx"/>
+                    <connections>
+                        <outlet property="NavigationBar" destination="CAL-jU-hwx" id="eoL-xK-rsT"/>
+                        <outlet property="VaccinationImage" destination="eY8-VD-tgN" id="0Xv-xJ-W6M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4U-1S-ueU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="jka-y9-Kjf">
+                    <connections>
+                        <action selector="GestureisTapped:" destination="tcf-wR-jud" id="2r2-uL-Qbe"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5465" y="2271"/>
+            <point key="canvasLocation" x="6373.913043478261" y="2270.7589285714284"/>
         </scene>
         <!--Medication View Controller-->
         <scene sceneID="j8f-fP-iNR">
@@ -4634,7 +4662,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zSm-Dr-sW7">
-                                <rect key="frame" x="-21" y="80" width="383" height="41"/>
+                                <rect key="frame" x="-23" y="80" width="384" height="41"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="+" id="iAC-cE-zGE"/>
@@ -4810,7 +4838,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="PYS-9a-ipH">
-                                <rect key="frame" x="123" y="133" width="237" height="45"/>
+                                <rect key="frame" x="122" y="133" width="235" height="45"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7J5-wS-CiI">
@@ -4853,7 +4881,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uAg-EK-ws9">
-                                <rect key="frame" x="110" y="247" width="251" height="38"/>
+                                <rect key="frame" x="108" y="247" width="251" height="38"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Height" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z2a-wP-FBW">
@@ -4927,7 +4955,7 @@
                                 </state>
                             </button>
                             <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pq0-1D-YRc">
-                                <rect key="frame" x="90" y="508" width="217" height="38"/>
+                                <rect key="frame" x="90" y="508" width="216" height="38"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Provider Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ol0-Mn-eUT">
@@ -5013,13 +5041,13 @@
                                 <rect key="frame" x="0.0" y="92" width="414" height="804"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Jl5-wD-l8K">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1476.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1499.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kms-GA-rfc" userLabel="Measurements View">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="527.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="550.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="s4G-sW-bIn">
-                                                        <rect key="frame" x="10" y="0.0" width="394" height="527.5"/>
+                                                        <rect key="frame" x="10" y="0.0" width="394" height="550.5"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="77o-W7-r70" userLabel="Age Row">
                                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="23.5"/>
@@ -5248,10 +5276,10 @@
                                                                 </variation>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jZc-wn-mXy" userLabel="HC Row">
-                                                                <rect key="frame" x="0.0" y="336.5" width="394" height="47"/>
+                                                                <rect key="frame" x="0.0" y="336.5" width="394" height="70"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEZ-9v-rZQ">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="176" height="47"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="176" height="70"/>
                                                                         <attributedString key="attributedText">
                                                                             <fragment content="Head Circumference">
                                                                                 <attributes>
@@ -5263,13 +5291,13 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BBv-79-Fih">
-                                                                        <rect key="frame" x="184" y="0.0" width="210" height="47"/>
+                                                                        <rect key="frame" x="184" y="0.0" width="210" height="70"/>
                                                                         <subviews>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="l0R-8H-0N9">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="210" height="47"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="210" height="70"/>
                                                                                 <subviews>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HC" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U0D-Wh-v7d">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="47"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" constant="80" id="ihe-or-JO3"/>
                                                                                         </constraints>
@@ -5277,7 +5305,7 @@
                                                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                     </textField>
                                                                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcI-IX-OWc">
-                                                                                        <rect key="frame" x="90" y="0.0" width="120" height="47"/>
+                                                                                        <rect key="frame" x="90" y="0.0" width="120" height="70"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" constant="120" id="3U3-Aj-Alg"/>
                                                                                         </constraints>
@@ -5301,7 +5329,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="9e0-oy-2Ag" userLabel="Temperature Row">
-                                                                <rect key="frame" x="0.0" y="398.5" width="394" height="34"/>
+                                                                <rect key="frame" x="0.0" y="421.5" width="394" height="34"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqz-cd-kt8">
                                                                         <rect key="frame" x="0.0" y="0.0" width="142" height="34"/>
@@ -5362,7 +5390,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="dYw-44-Z9f" userLabel="Visit Select Row">
-                                                                <rect key="frame" x="0.0" y="447.5" width="394" height="80"/>
+                                                                <rect key="frame" x="0.0" y="470.5" width="394" height="80"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pf4-3p-9OD">
                                                                         <rect key="frame" x="0.0" y="0.0" width="131" height="80"/>
@@ -5427,7 +5455,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Szu-bx-Ebm">
-                                                <rect key="frame" x="0.0" y="537.5" width="414" height="800"/>
+                                                <rect key="frame" x="0.0" y="560.5" width="414" height="800"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="800" id="NRx-Hu-Tq4"/>
                                                 </constraints>
@@ -5633,7 +5661,7 @@
                                                 </connections>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Clg-BU-GxU" userLabel="Add Documentation View">
-                                                <rect key="frame" x="0.0" y="1347.5" width="414" height="60"/>
+                                                <rect key="frame" x="0.0" y="1370.5" width="414" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRk-Sj-9xT">
                                                         <rect key="frame" x="182" y="12" width="34" height="34"/>
@@ -5665,7 +5693,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uGq-CW-t6H" userLabel="Save Button View">
-                                                <rect key="frame" x="0.0" y="1417.5" width="414" height="59"/>
+                                                <rect key="frame" x="0.0" y="1440.5" width="414" height="59"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTe-In-Pgn">
                                                         <rect key="frame" x="150.5" y="18" width="113" height="33"/>
@@ -5804,11 +5832,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JfG-ll-slp"/>
-        <segue reference="PJK-iN-xtL"/>
+        <segue reference="GXc-Lk-C2d"/>
+        <segue reference="aKp-sF-QPk"/>
         <segue reference="8l8-5M-ooy"/>
         <segue reference="klS-EG-BR2"/>
-        <segue reference="tUN-gI-Bd9"/>
+        <segue reference="bGp-15-ulQ"/>
         <segue reference="S72-Vi-Zbi"/>
         <segue reference="yqK-St-CcA"/>
         <segue reference="KXT-Sl-Iht"/>
@@ -5818,7 +5846,7 @@
         <image name="3 lines" width="30" height="24"/>
         <image name="321 Connect" width="216" height="47"/>
         <image name="Accident" width="91" height="28"/>
-        <image name="Activity" width="71" height="24"/>
+        <image name="Activity" width="82" height="28"/>
         <image name="Amount of Fluid" width="149" height="24"/>
         <image name="Bathroom" width="102" height="28"/>
         <image name="Date of Last Stool" width="182" height="28"/>
@@ -5830,7 +5858,7 @@
         <image name="Feed" width="58" height="33"/>
         <image name="Fluid" width="51" height="28"/>
         <image name="Hello, Name" width="108" height="24"/>
-        <image name="Journal" width="65" height="24"/>
+        <image name="Journal" width="75" height="28"/>
         <image name="Line 17" width="1" height="26"/>
         <image name="Medical" width="68" height="24"/>
         <image name="Message" width="76" height="24"/>
@@ -5853,7 +5881,7 @@
         <image name="Rectangle 9" width="190" height="57"/>
         <image name="Rectangle 99" width="375" height="812"/>
         <image name="Select" width="54" height="24"/>
-        <image name="Sleep" width="48" height="24"/>
+        <image name="Sleep" width="67" height="33"/>
         <image name="Solid" width="52" height="28"/>
         <image name="Summary" width="98" height="28"/>
         <image name="Treatment Plan" width="158" height="28"/>

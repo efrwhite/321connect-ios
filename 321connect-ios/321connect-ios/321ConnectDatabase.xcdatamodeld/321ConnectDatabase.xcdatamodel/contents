@@ -62,6 +62,7 @@
         <relationship name="providerId" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Provider" inverseName="childId" inverseEntity="Provider"/>
         <relationship name="resourceId" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Resource" inverseName="childId" inverseEntity="Resource"/>
         <relationship name="sleepId" toMany="YES" minCount="1" maxCount="100" deletionRule="Cascade" destinationEntity="Sleep" inverseName="childId" inverseEntity="Sleep"/>
+        <relationship name="vacId" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vaccination" inverseName="childId" inverseEntity="Vaccination"/>
     </entity>
     <entity name="Development" representedClassName=".Development" syncable="YES" codeGenerationType="class">
         <attribute name="firstAffection" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -201,5 +202,10 @@
         <attribute name="supplements" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
         <relationship name="childId" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child" inverseName="sleepId" inverseEntity="Child"/>
+    </entity>
+    <entity name="Vaccination" representedClassName=".Vaccination" syncable="YES" codeGenerationType="class">
+        <attribute name="vacImage" optional="YES" attributeType="Transformable"/>
+        <attribute name="vacSystemDate" optional="YES" attributeType="String"/>
+        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="vacId" inverseEntity="Child"/>
     </entity>
 </model>
