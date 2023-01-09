@@ -141,10 +141,15 @@ class ResourcesTableViewController: UITableViewController {
             return cell
             
         } else {
+//            /* Else use custom resource cell */
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "userResourceCell", for: indexPath) as! UserResourceCell
+//            /* user resource cells change title label */
+//            cell.resourceTitleLabel.text = userResources[indexPath.row]
+//            return cell
             /* Else use custom resource cell */
-            let cell = tableView.dequeueReusableCell(withIdentifier: "userResourceCell", for: indexPath) as! UserResourceCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "userResourceCell", for: indexPath)
             /* user resource cells change title label */
-            cell.resourceTitleLabel.text = userResources[indexPath.row]
+            cell.textLabel?.text = userResources[indexPath.row]
             return cell
         }
         

@@ -20,6 +20,7 @@ class HomeScreenViewController: UIViewController{
     @IBOutlet weak var profilesButton: UIButton!
     
     @IBOutlet weak var labelISO: UILabel!
+    
     // extension button to return to home screen
     @IBAction func extentionButton(_ sender: Any) {
     }
@@ -38,6 +39,9 @@ class HomeScreenViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.isTranslucent = true
+
        
     }
 }
