@@ -18,6 +18,11 @@ class ActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setpopupbutton()
+        
+        Note.layer.cornerRadius = 10
+        Note.clipsToBounds = true
+        Note.layer.borderWidth = 1
+        Note.layer.borderColor = UIColor.black.cgColor
  
     }
     @IBAction func SaveButton(_ sender: Any) {

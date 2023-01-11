@@ -67,6 +67,13 @@ class ChildView: UIViewController {
     override func viewDidLoad() {
      super.viewDidLoad()
         setPopupButton()
+        
+        // profile image mask and style
+        ChildImage.layer.borderWidth = 1.0
+        ChildImage.layer.masksToBounds = false
+        ChildImage.layer.borderColor = UIColor.white.cgColor
+        ChildImage.layer.cornerRadius = ChildImage.frame.size.width/2
+        ChildImage.clipsToBounds = true
        
     }
    

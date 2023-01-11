@@ -33,6 +33,12 @@ class SolidFeedViewController: UIViewController {
         setMeasureButton()
         setModeButton()
         
+        // text field corner/border styling
+        notesTextField.layer.cornerRadius = 10
+        notesTextField.clipsToBounds = true
+        notesTextField.layer.borderWidth = 1
+        notesTextField.layer.borderColor = UIColor.black.cgColor
+        
         // Do any additional setup after loading the view.
         indicateTextField.isHidden = true
     }
