@@ -35,6 +35,10 @@ class MessageViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        NotesField.layer.cornerRadius = 10
+        NotesField.clipsToBounds = true
+        NotesField.layer.borderWidth = 1
+        NotesField.layer.borderColor = UIColor.black.cgColor
         
         /* * * * dynamic label current time/date * * * */
         dateLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .none)

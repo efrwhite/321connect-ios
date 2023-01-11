@@ -41,7 +41,11 @@ class BehaviorViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         setMoodButton()
-        //        moodTableView.isHidden = true       // load tableView as hidden
+        
+        notesTextView.layer.cornerRadius = 10
+        notesTextView.clipsToBounds = true
+        notesTextView.layer.borderWidth = 1
+        notesTextView.layer.borderColor = UIColor.black.cgColor
     }
     
     override func didReceiveMemoryWarning() {

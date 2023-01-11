@@ -26,6 +26,13 @@ class Parent_Caregiver_ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // profile image mask and style
+        ParentPicture.layer.borderWidth = 1.0
+        ParentPicture.layer.masksToBounds = false
+        ParentPicture.layer.borderColor = UIColor.white.cgColor
+        ParentPicture.layer.cornerRadius = ParentPicture.frame.size.width/2
+        ParentPicture.clipsToBounds = true
     }
     override func didReceiveMemoryWarning() {
           super.didReceiveMemoryWarning()

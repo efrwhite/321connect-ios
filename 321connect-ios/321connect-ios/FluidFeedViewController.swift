@@ -32,6 +32,12 @@ class FluidFeedViewController: UIViewController {
         setMeasureButton()
         setModeButton()
         
+        // text field corner/border styling
+        notesTextField.layer.cornerRadius = 10
+        notesTextField.clipsToBounds = true
+        notesTextField.layer.borderWidth = 1
+        notesTextField.layer.borderColor = UIColor.black.cgColor
+        
         // table views load as hidden
 //        measureOptionsTableView.isHidden = true
 //        modeOptionsTableView.isHidden = true

@@ -24,6 +24,10 @@ class JournalViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        notesTextView.layer.cornerRadius = 10
+        notesTextView.clipsToBounds = true
+        notesTextView.layer.borderWidth = 1
+        notesTextView.layer.borderColor = UIColor.black.cgColor
         
         /* * * * dynamic label current time/date * * * */
         dateLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .none)
