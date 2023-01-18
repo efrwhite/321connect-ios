@@ -43,7 +43,8 @@ class FluidFeedViewController: UIViewController {
 //        modeOptionsTableView.isHidden = true
         
         // Do any additional setup after loading the view.
-        indicateTextField.isHidden = true
+        indicateTextField.isEnabled = false
+        indicateTextField.placeholder = ""
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,8 +60,8 @@ class FluidFeedViewController: UIViewController {
         }
         
         feedMeasureButton.menu = UIMenu(children : [
-            UIAction(title : "milliliters", state : .on, handler: optionClosure),
-            UIAction(title : "ounces", handler: optionClosure)])
+            UIAction(title : "milliliters (ml)", state : .on, handler: optionClosure),
+            UIAction(title : "ounces (oz)", handler: optionClosure)])
         
         feedMeasureButton.showsMenuAsPrimaryAction = true
         feedMeasureButton.changesSelectionAsPrimaryAction = true
@@ -85,9 +86,12 @@ class FluidFeedViewController: UIViewController {
     
     @IBAction func otherTapped(_ sender: Any) {
         if otherRadio.isSelected == true {
-            indicateTextField.isHidden = false
+            indicateTextField.isEnabled = true
+            indicateTextField.placeholder = "Please indicate"
         } else {
-            indicateTextField.isHidden = true
+            indicateTextField.isEnabled = false
+            indicateTextField.placeholder = ""
+
         }
     }
     

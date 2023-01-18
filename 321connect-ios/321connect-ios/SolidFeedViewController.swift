@@ -40,7 +40,8 @@ class SolidFeedViewController: UIViewController {
         notesTextField.layer.borderColor = UIColor.black.cgColor
         
         // Do any additional setup after loading the view.
-        indicateTextField.isHidden = true
+        indicateTextField.isEnabled = false
+        indicateTextField.placeholder = ""
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,8 +73,8 @@ class SolidFeedViewController: UIViewController {
         
         feedMeasureButton.menu = UIMenu(children : [
             UIAction(title : "cups", state : .on, handler: optionClosure),
-            UIAction(title : "ounces", handler: optionClosure),
-            UIAction(title : "grams", handler: optionClosure),
+            UIAction(title : "ounces (oz)", handler: optionClosure),
+            UIAction(title : "grams (g)", handler: optionClosure),
             UIAction(title : "pieces", handler: optionClosure)])
         
         feedMeasureButton.showsMenuAsPrimaryAction = true
@@ -98,9 +99,11 @@ class SolidFeedViewController: UIViewController {
     
     @IBAction func otherTapped(_ sender: Any) {
         if otherRadio.isSelected == true {
-            indicateTextField.isHidden = false
+            indicateTextField.isEnabled = true
+            indicateTextField.placeholder = "Please indicate"
         } else {
-            indicateTextField.isHidden = true
+            indicateTextField.isEnabled = false
+            indicateTextField.placeholder = ""
         }
     }
     

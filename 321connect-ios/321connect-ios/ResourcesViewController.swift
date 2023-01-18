@@ -51,7 +51,7 @@ class ResourcesTableViewController: UITableViewController {
         super.viewDidLoad()
 
         // set background for table view
-        tableView.backgroundView = UIImageView(image: UIImage(named: "Rectangle 1"))
+        tableView.backgroundView = UIImageView(image: UIImage(named: "Rectangle 99"))
         
         navigationItem.rightBarButtonItem = editButtonItem
         

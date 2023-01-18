@@ -34,7 +34,6 @@ class ProfilesViewController: UIViewController {
         profileType.append(ProfileType.init(profile: "Parents/Caregivers", name: ["Jackson", "Charlotte"]))
         profileType.append(ProfileType.init(profile: "Providers", name: ["Brianna"]))
         // ******************************** hard code for debug ********************************
-        
 
     }
     
@@ -89,25 +88,22 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = profilesTableView.dequeueReusableCell(withIdentifier: "customCell") as! CustomTableViewCell
-        
-        cell.nameLabel.text = profileType[indexPath.section].name?[indexPath.row]
-        
-        // Set the allowsSelection property of the cells in the sections [2,3] to false
-            if indexPath.section == 0 {
-                cell.selectionStyle = .default
-            } else {
-                cell.selectionStyle = .none
-            }
-        
-        cell.editButton.tag = indexPath.section
-        cell.deleteButton.tag = indexPath.row
-
-        cell.editButton.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
-
-        
-        return cell
-    }
+            let cell = profilesTableView.dequeueReusableCell(withIdentifier: "customCell") as! CustomTableViewCell
+            cell.nameLabel.text = profileType[indexPath.section].name?[indexPath.row]
+            // Set the allowsSelection property of the cells in the sections [2,3] to false
+                if indexPath.section == 0 {
+                    cell.selectionStyle = .default
+                } else {
+                    cell.selectionStyle = .none
+                }
+            cell.editButton.tag = indexPath.section
+            cell.editButton.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
+            cell.deleteButton.addTarget(self, action: #selector(deleteButtonTapped(sender:)), for: .touchUpInside)
+//            cell.deleteClosure = { [weak self] in
+//                self?.deleteButtonTapped(sender: cell.deleteButton)
+//            }
+            return cell
+        }
     
     @objc
     func editButtonPressed(sender:UIButton) {
@@ -147,7 +143,7 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     
     @objc
     func profileAddButtonPressed(sender:UIButton) {
-        print("add button pressed")
+
         let sectionIndex:Int = sender.tag
         switch sectionIndex {
         case 0:
@@ -160,6 +156,28 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
             break
         }
     }
+    
+    @objc
+    func deleteButtonTapped(sender: UIButton) {
+        print ("delete tapped")
+        guard let cell = sender.superview?.superview as? CustomTableViewCell, let indexPath = profilesTableView.indexPath(for: cell) else { return }
+        let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to delete this profile?", preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+           // Delete the corresponding data from the data source array
+           self.profileType.remove(at: indexPath.row)
+           // Delete the corresponding row from the table view
+           self.profilesTableView.deleteRows(at: [indexPath], with: .fade)
+            
+            self.profilesTableView.reloadData()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+           // dismiss the alert
+        }
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+//        present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
+     }
     
     // MARK: - Navigation
     
