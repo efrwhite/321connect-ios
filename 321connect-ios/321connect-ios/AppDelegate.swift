@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
 //        }
         
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Lato", size: 24)!]
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Lato", size: 20)!], for: .normal)
+        
         return true
     }
 
