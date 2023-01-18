@@ -98,7 +98,6 @@
 		FE19E6172891DD4C0020A0DD /* ParentCaregiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19E6162891DD4C0020A0DD /* ParentCaregiverViewController.swift */; };
 		FEBFC9AC28CFC79000E0F299 /* 321ConnectDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FEBFC9AA28CFC79000E0F299 /* 321ConnectDatabase.xcdatamodeld */; };
 		FEBFC9AE28CFCCC000E0F299 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFC9AD28CFCCC000E0F299 /* MessageView.swift */; };
-		FEFFB5322976F13200BFE8AD /* MedicationAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFFB5312976F13200BFE8AD /* MedicationAddition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,7 +215,6 @@
 		FE19E6162891DD4C0020A0DD /* ParentCaregiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCaregiverViewController.swift; sourceTree = "<group>"; };
 		FEBFC9AB28CFC79000E0F299 /* 321ConnectDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 321ConnectDatabase.xcdatamodel; sourceTree = "<group>"; };
 		FEBFC9AD28CFCCC000E0F299 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
-		FEFFB5312976F13200BFE8AD /* MedicationAddition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationAddition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,7 +358,6 @@
 				EBBD569C27AE034B005121C8 /* ActivityViewController.swift */,
 				FEBFC9AD28CFCCC000E0F299 /* MessageView.swift */,
 				EB6A17AD27AB645D0069428E /* JournalViewController.swift */,
-				FEFFB5312976F13200BFE8AD /* MedicationAddition.swift */,
 				EBA9C6D528B721C500779A2B /* Profile Types */,
 				EBFFE10728998F3300DA05F6 /* Doctor Visit Milestones */,
 				EB4335A528905E340037CDEF /* Custom Cells */,
@@ -596,7 +593,6 @@
 				FE19E613288F7EA40020A0DD /* ConstipationViewController.swift in Sources */,
 				FE19E6172891DD4C0020A0DD /* ParentCaregiverViewController.swift in Sources */,
 				EB51422927B76FDE0030EDB3 /* HomeScreenViewController.swift in Sources */,
-				FEFFB5322976F13200BFE8AD /* MedicationAddition.swift in Sources */,
 				EBFFE10F28998FB100DA05F6 /* SixMonthsViewController.swift in Sources */,
 				EBFFE12D2899907600DA05F6 /* ElevenYearsViewController.swift in Sources */,
 				EBBD569927ADEAE4005121C8 /* DevelopmentViewController.swift in Sources */,
