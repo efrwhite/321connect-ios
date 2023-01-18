@@ -334,7 +334,6 @@
 				EBE099B62739B43000F056A0 /* AppDelegate.swift */,
 				EBE099B82739B43000F056A0 /* SceneDelegate.swift */,
 				EBE099BC2739B43000F056A0 /* Main.storyboard */,
-				EB6E061528D5541B0023BA00 /* DoctorsVisitViewController.swift */,
 				FE19E60E288F7E850020A0DD /* BathroomViewController.swift */,
 				FE19E614288F7EB10020A0DD /* PottyViewController.swift */,
 				FE19E612288F7EA40020A0DD /* ConstipationViewController.swift */,
@@ -356,8 +355,8 @@
 				EB7978172852D01800154969 /* ProfilesViewController.swift */,
 				EBBD569827ADEAE4005121C8 /* DevelopmentViewController.swift */,
 				EBBD569A27ADFE2F005121C8 /* SleepViewController.swift */,
-				EBE4153A289A049F00014641 /* SleepCycleViewController.swift */,
 				EB7FF6E528986A6600FF87D3 /* SleepReportsViewController.swift */,
+				EBE4153A289A049F00014641 /* SleepCycleViewController.swift */,
 				EBBD569C27AE034B005121C8 /* ActivityViewController.swift */,
 				FEBFC9AD28CFCCC000E0F299 /* MessageView.swift */,
 				EB6A17AD27AB645D0069428E /* JournalViewController.swift */,
@@ -394,6 +393,7 @@
 		EBFFE10728998F3300DA05F6 /* Doctor Visit Milestones */ = {
 			isa = PBXGroup;
 			children = (
+				EB6E061528D5541B0023BA00 /* DoctorsVisitViewController.swift */,
 				EBFFE132289990E400DA05F6 /* DoctorVisitViewController.swift */,
 				EBFFE10828998F7100DA05F6 /* NewbornViewController.swift */,
 				EBFFE10A28998F9000DA05F6 /* TwoMonthsViewController.swift */,

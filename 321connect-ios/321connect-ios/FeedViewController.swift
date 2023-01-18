@@ -18,6 +18,9 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view, typically from a nib.
+        // initial view at view load
+        FluidView.isHidden = false
+        SolidView.isHidden = true
         
 //        self.navigationController?.navigationBar.tintColor = UIColor.white
         // hereherehereherehere this when screen is loaded it changes nav color to white
@@ -29,11 +32,15 @@ class FeedViewController: UIViewController {
     // segmented horizontal scroll view next
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            FluidView.alpha = 1
-            SolidView.alpha = 0
+//            FluidView.alpha = 1
+//            SolidView.alpha = 0
+            FluidView.isHidden = false
+            SolidView.isHidden = true
         } else {
-            FluidView.alpha = 0
-            SolidView.alpha = 1
+//            FluidView.alpha = 0
+//            SolidView.alpha = 1
+            FluidView.isHidden = true
+            SolidView.isHidden = false
         }
     }
 
