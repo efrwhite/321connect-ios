@@ -19,6 +19,11 @@ class PottyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        PottyDuration.countDownDuration
+        
+        PottyNotes.layer.cornerRadius = 10
+        PottyNotes.clipsToBounds = true
+        PottyNotes.layer.borderWidth = 1
+        PottyNotes.layer.borderColor = UIColor.black.cgColor
     }
    
  

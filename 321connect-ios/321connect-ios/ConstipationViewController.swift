@@ -21,7 +21,10 @@ class ConstipationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+        ConstiNotes.layer.cornerRadius = 10
+        ConstiNotes.clipsToBounds = true
+        ConstiNotes.layer.borderWidth = 1
+        ConstiNotes.layer.borderColor = UIColor.black.cgColor
     }
    
 

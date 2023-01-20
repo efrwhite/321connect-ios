@@ -431,8 +431,8 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        formsTableView.estimatedRowHeight = 150
-        formsTableView.rowHeight = UITableView.automaticDimension
+//        formsTableView.estimatedRowHeight = 150
+//        formsTableView.rowHeight = UITableView.automaticDimension
     }
    
 /*
@@ -582,13 +582,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.formTextLabel?.text = newbornForm[indexPath.row]
                 
-                cell.formTextLabel.translatesAutoresizingMaskIntoConstraints = false
+//                cell.formTextLabel.translatesAutoresizingMaskIntoConstraints = false
 
-                NSLayoutConstraint.activate([
-                    cell.formTextLabel.leadingAnchor.constraint(equalTo: cell.leadingAnchor,constant: 20),
-                    cell.formTextLabel.trailingAnchor.constraint(equalTo: cell.trailingAnchor,constant: 20),
-                    cell.formTextLabel.topAnchor.constraint(equalTo: cell.topAnchor,constant: 20),
-                    cell.formTextLabel.bottomAnchor.constraint(equalTo: cell.bottomAnchor,constant: 20)])
+//                NSLayoutConstraint.activate([
+//                    cell.formTextLabel.leadingAnchor.constraint(equalTo: cell.leadingAnchor,constant: 20),
+//                    cell.formTextLabel.trailingAnchor.constraint(equalTo: cell.trailingAnchor,constant: 20),
+//                    cell.formTextLabel.topAnchor.constraint(equalTo: cell.topAnchor,constant: 20),
+//                    cell.formTextLabel.bottomAnchor.constraint(equalTo: cell.bottomAnchor,constant: 20)])
                 
                 cell.formTextLabel.numberOfLines = 0
                 cell.selectionStyle = .none
@@ -613,9 +613,9 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 cell.questionLabel.text = newbornForm[indexPath.row]
                 cell.selectionStyle = .none
 
-                NSLayoutConstraint.activate([
-                    cell.questionSwitch.trailingAnchor.constraint(equalTo: cell.trailingAnchor),
-                    cell.questionLabel.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 20)])
+//                NSLayoutConstraint.activate([
+//                    cell.questionSwitch.trailingAnchor.constraint(equalTo: cell.trailingAnchor),
+//                    cell.questionLabel.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 20)])
                 return cell
             }
         }

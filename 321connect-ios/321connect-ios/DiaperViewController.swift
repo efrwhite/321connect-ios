@@ -25,6 +25,11 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     override func viewDidLoad() {
        setPopUpButton()
+        
+    DiaperNotes.layer.cornerRadius = 10
+    DiaperNotes.clipsToBounds = true
+    DiaperNotes.layer.borderWidth = 1
+    DiaperNotes.layer.borderColor = UIColor.black.cgColor
 
     }
 
@@ -69,8 +74,8 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let optional = {(action: UIAction) in print(action.title)}
 
         QuantityUnits.menu = UIMenu(children:[
-            UIAction(title:"Milliliter (mL)",state: .on, handler: optional),
-                UIAction(title:"Ounces (oz)", handler: optional)
+            UIAction(title:"Milliliters (mL)",state: .on, handler: optional),
+            UIAction(title:"Ounces (oz)", handler: optional)
         ])
         QuantityUnits.showsMenuAsPrimaryAction = true
         QuantityUnits.changesSelectionAsPrimaryAction = true
