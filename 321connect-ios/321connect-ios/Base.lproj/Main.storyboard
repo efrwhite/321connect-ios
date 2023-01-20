@@ -611,25 +611,6 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HeI-eN-2ue">
-                                                <rect key="frame" x="304" y="264" width="40" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="78J-Kf-NyL"/>
-                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="Ba3-oL-Or3"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <imageReference key="image" image="arrow.up.backward.and.arrow.down.forward" catalog="system" symbolScale="medium"/>
-                                                    <backgroundConfiguration key="background" image="Ellipse 2" imageContentMode="scaleAspectFit"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="extentionButton:" destination="RMH-4o-CjA" eventType="touchUpInside" id="dY2-ha-Ycg"/>
-                                                    <segue destination="V4L-be-o3B" kind="presentation" modalPresentationStyle="fullScreen" id="fVL-PJ-ecv"/>
-                                                </connections>
-                                            </button>
-
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="220" id="Smk-0N-kJr"/>
@@ -641,8 +622,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HeI-eN-2ue">
                                         <rect key="frame" x="314" y="240" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="78J-Kf-NyL"/>
-                                            <constraint firstAttribute="width" constant="40" id="Ba3-oL-Or3"/>
+                                            <constraint firstAttribute="height" constant="40" id="Q8i-WT-Jtu"/>
+                                            <constraint firstAttribute="width" constant="40" id="QRw-eP-uKM"/>
                                         </constraints>
                                         <color key="tintColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
@@ -675,8 +656,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDo-kf-Q27">
                                         <rect key="frame" x="164.5" y="0.0" width="85" height="85"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="85" id="Q8i-WT-Jtu"/>
-                                            <constraint firstAttribute="width" constant="85" id="QRw-eP-uKM"/>
+                                            <constraint firstAttribute="height" constant="85" id="78J-Kf-NyL"/>
+                                            <constraint firstAttribute="width" constant="85" id="Ba3-oL-Or3"/>
                                         </constraints>
                                         <color key="tintColor" red="0.25490196079999999" green="0.37647058820000001" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
