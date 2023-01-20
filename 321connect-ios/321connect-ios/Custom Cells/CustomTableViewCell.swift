@@ -12,7 +12,7 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
 
     @IBOutlet weak var deleteButton: UIButton!
-    var deleteClosure: (()->())?
+//    var deleteClosure: (()->())?
 //    @IBAction func deleteButtonTapped(_ sender: UIButton) {
 //        deleteClosure?()
 //    }

@@ -99,9 +99,7 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
             cell.editButton.tag = indexPath.section
             cell.editButton.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
             cell.deleteButton.addTarget(self, action: #selector(deleteButtonTapped(sender:)), for: .touchUpInside)
-//            cell.deleteClosure = { [weak self] in
-//                self?.deleteButtonTapped(sender: cell.deleteButton)
-//            }
+
             return cell
         }
     
@@ -159,53 +157,31 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     
     @objc
     func deleteButtonTapped(sender: UIButton) {
-        print ("delete tapped")
-        guard let cell = sender.superview?.superview as? CustomTableViewCell, let indexPath = profilesTableView.indexPath(for: cell) else { return }
-        let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to delete this profile?", preferredStyle: .alert)
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
-           // Delete the corresponding data from the data source array
-           self.profileType.remove(at: indexPath.row)
-           // Delete the corresponding row from the table view
-           self.profilesTableView.deleteRows(at: [indexPath], with: .fade)
-            
-            self.profilesTableView.reloadData()
+        if let cell = sender.superview?.superview, cell is UITableViewCell, let indexPath = self.profilesTableView.indexPath(for: cell as! UITableViewCell) {
+            let profile = self.profileType[indexPath.section].name?[indexPath.row]
+            // Show an alert to confirm deletion
+            let alert = UIAlertController(title: "Delete Profile", message: "Are you sure you want to delete this profile?", preferredStyle: .alert)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+                // Delete the profile from the array and reload the table view
+                self.profileType[indexPath.section].name?.remove(at: indexPath.row)
+                self.profilesTableView.beginUpdates()
+                self.profilesTableView.deleteRows(at: [indexPath], with: .fade)
+                self.profilesTableView.endUpdates()
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-           // dismiss the alert
-        }
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
-//        present(alertController, animated: true, completion: nil)
-        self.present(alertController, animated: true, completion: nil)
-     }
+
+    }
+
     
     // MARK: - Navigation
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showChildVC" {
-//            let destinationVC = segue.destination as! ChildView
-//        } else if segue.identifier == "showParentsVC" {
-//            let destinationVC = segue.destination as! Parent_Caregiver_ViewController
-//        } else if segue.identifier == "showProvidersVC" {
-//            let destinationVC = segue.destination as! ProvidersViewController
-//        }
-//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if indexPath.section == 0 {
-            // CHILD SELECTION HERE
-//        }
-        
-//        switch indexPath.section {
-//        case 0:
-//            self.performSegue(withIdentifier: "showChildVC", sender: tableView(_:didSelectRowAt:))
-//        case 1:
-//            self.performSegue(withIdentifier: "showParentsVC", sender: tableView(_:didSelectRowAt:))
-//        case 2:
-//            self.performSegue(withIdentifier: "showProvidersVC", sender: tableView(_:didSelectRowAt:))
-//        default:
-//            break
-//        }
+
     }
 }
     
