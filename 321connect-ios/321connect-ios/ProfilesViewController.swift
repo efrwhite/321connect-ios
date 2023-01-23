@@ -34,6 +34,10 @@ class ProfilesViewController: UIViewController {
         profileType.append(ProfileType.init(profile: "Parents/Caregivers", name: ["Jackson", "Charlotte"]))
         profileType.append(ProfileType.init(profile: "Providers", name: ["Brianna"]))
         // ******************************** hard code for debug ********************************
+        
+        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(tableViewEditButtonTapped))
+        navigationItem.rightBarButtonItem = editButton
+
 
     }
     
@@ -84,6 +88,20 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
        
         return profileType[section].name?.count ?? 0
         
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // delete row from data source(s)
+            profileType.remove(at: indexPath.row)
+            profilesTableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 
 
@@ -154,6 +172,11 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
             break
         }
     }
+    
+    @objc func tableViewEditButtonTapped(_ sender: Any) {
+        profilesTableView.isEditing = !profilesTableView.isEditing
+    }
+
     
     @objc
     func deleteButtonTapped(sender: UIButton) {

@@ -41,7 +41,7 @@ class SleepViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        indicateTextField.isHidden = true
+//        indicateTextField.isHidden = true
         medicationToggle.isEnabled = false
         supplementsToggle.isEnabled = false
         cpapToggle.isEnabled = false
@@ -51,6 +51,9 @@ class SleepViewController: UIViewController {
         sleepNotesView.clipsToBounds = true
         sleepNotesView.layer.borderWidth = 1
         sleepNotesView.layer.borderColor = UIColor.black.cgColor
+        
+        indicateTextField.isEnabled = false
+        indicateTextField.placeholder = ""
         
         /* *** dynamic label current time/date *** */
         dateLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .none)
@@ -135,10 +138,13 @@ class SleepViewController: UIViewController {
     }
     
     @IBAction func otherChanged(_ sender: Any) {
-        if otherToggle.isSelected == false {
-            indicateTextField.isHidden = true
+        if otherToggle.isSelected == true {
+            indicateTextField.isEnabled = true
+            indicateTextField.placeholder = "Please indicate"
         } else {
-            indicateTextField.isHidden = false
+            indicateTextField.isEnabled = false
+            indicateTextField.placeholder = ""
+
         }
     }
     
