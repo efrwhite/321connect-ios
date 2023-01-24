@@ -5,8 +5,10 @@
 //  Created by Edward Ladia on 2/11/22.
 //
 
+
 import Foundation
 import UIKit
+
 
 class HomeScreenViewController: UIViewController{
     
@@ -19,9 +21,11 @@ class HomeScreenViewController: UIViewController{
     @IBOutlet weak var medicalButton: UIButton!
     @IBOutlet weak var profilesButton: UIButton!
     
+    @IBOutlet weak var RecentEntryTableView: UITableView!
     @IBOutlet weak var childImage: UIButton!
     @IBOutlet weak var labelISO: UILabel!
-    
+    var receivedString = ""
+    var user = ""
     // extension button to return to home screen
     @IBAction func extentionButton(_ sender: Any) {
     }
@@ -35,6 +39,7 @@ class HomeScreenViewController: UIViewController{
     /* possible change to 'segmented control' */
     
 
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,14 +50,20 @@ class HomeScreenViewController: UIViewController{
         childImage.layer.borderColor = UIColor.white.cgColor
         childImage.layer.cornerRadius = childImage.frame.size.width/2
         childImage.clipsToBounds = true
-        
+        receivedString = user
+        print("This is my Username Passed over!",receivedString)
 //        let appearance = UINavigationBarAppearance()
 //        appearance.backgroundColor = .clear
 //        appearance.shadowColor = .clear
 //        navigationController?.navigationBar.standardAppearance = appearance
-//        
+//
 //        navigationController?.navigationBar.compactAppearance = appearance
 //        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        RecentEntryTableView.layer.cornerRadius = 10
+        RecentEntryTableView.clipsToBounds = true
+        RecentEntryTableView.layer.borderWidth = 1
        
     }
 }
+

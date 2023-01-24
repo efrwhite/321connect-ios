@@ -2,6 +2,7 @@
 //  CustomTableViewCell.swift
 //  321connect-ios
 //
+//  This is the custom cell used profiles in the profiles table view
 //  Created by Edward Ladia on 7/21/22.
 //
 
@@ -11,11 +12,12 @@ class CustomTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
 
-    @IBOutlet weak var deleteButton: UIButton!
+//    @IBOutlet weak var deleteButton: UIButton!
 //    var deleteClosure: (()->())?
 //    @IBAction func deleteButtonTapped(_ sender: UIButton) {
 //        deleteClosure?()
 //    }
+    
     @IBOutlet weak var editButton: UIButton!
     
     override func awakeFromNib() {

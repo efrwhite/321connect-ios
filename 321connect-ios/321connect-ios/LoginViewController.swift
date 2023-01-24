@@ -6,8 +6,11 @@
 //
 
 
+
+
 import UIKit
 import CoreData
+
 
 class LoginViewController: UIViewController {
     
@@ -25,6 +28,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
 //        self.getAccountoData
     }
+
 
     @IBAction func enterPressed(_ sender: Any){
     let username = UsernameTextField.text!
@@ -74,6 +78,7 @@ class LoginViewController: UIViewController {
                 //Add OK button to a dialog message
                 dialogMessage.addAction(ok)
 
+
                 // Present Alert to
                 self.present(dialogMessage, animated: true, completion: nil)
             }
@@ -83,8 +88,17 @@ class LoginViewController: UIViewController {
         }
        
 
+
         
     
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "homescreenSegue")
+        {
+            let destViewController = segue.destination as! UINavigationController
+            let secondViewcontroller = destViewController.viewControllers.first as! HomeScreenViewController
+            secondViewcontroller.user = UsernameTextField.text!
+        }
     }
     
     @IBAction func signupPressed(_ sender: Any) {
@@ -101,6 +115,7 @@ class LoginViewController: UIViewController {
         
     }
 
+
     func loadItems(){
         let request : NSFetchRequest<Account> = Account.fetchRequest()
      // if the username and password is not found in the database than deny access else allow them into the app
@@ -113,4 +128,6 @@ class LoginViewController: UIViewController {
         }
     }
 }
+
+
 

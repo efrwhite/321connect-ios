@@ -81,7 +81,7 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // # 3 sections
-        return profileType.count
+        return 3
     }
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,27 +96,53 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
         return true
     }
     
+    /* Deletion editing style w/ alert */
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // delete row from data source(s)
-            profileType.remove(at: indexPath.row)
-            profilesTableView.deleteRows(at: [indexPath], with: .fade)
+            
+            // alert user for deletion confirmation
+            let alert = UIAlertController(title: "Delete profile?", message: "This profile will be deleted from this account. This action cannot be undone. ", preferredStyle: .alert)
+            
+            // confirm delete
+            let yesAction = UIAlertAction(title: "Delete", style: .default) { _ in
+                
+                // Delete item from data source
+                self.profilesTableView.beginUpdates()
+                self.profileType[indexPath.section].name?.remove(at: indexPath.row)
+                
+                // Remove row from table view
+                self.profilesTableView.deleteRows(at: [indexPath], with: .automatic)
+                
+                // Reload table view contents after update
+                self.profilesTableView.reloadData()
+                self.profilesTableView.endUpdates()
+            }
+            
+            // dismiss deletion
+            let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(yesAction)
+            alert.addAction(noAction)
+            present(alert, animated: true, completion: nil)
         }
     }
 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = profilesTableView.dequeueReusableCell(withIdentifier: "customCell") as! CustomTableViewCell
+        
+            // assign profile name to row
             cell.nameLabel.text = profileType[indexPath.section].name?[indexPath.row]
+        
             // Set the allowsSelection property of the cells in the sections [2,3] to false
                 if indexPath.section == 0 {
                     cell.selectionStyle = .default
                 } else {
                     cell.selectionStyle = .none
                 }
+        
+            // edit button (need passed data from db)
             cell.editButton.tag = indexPath.section
             cell.editButton.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
-            cell.deleteButton.addTarget(self, action: #selector(deleteButtonTapped(sender:)), for: .touchUpInside)
 
             return cell
         }
@@ -137,7 +163,7 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
         }
     }
 
-    
+    /* HEADER VIEWS AND TITLES */
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         return profileType[section].profile
@@ -175,28 +201,6 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     
     @objc func tableViewEditButtonTapped(_ sender: Any) {
         profilesTableView.isEditing = !profilesTableView.isEditing
-    }
-
-    
-    @objc
-    func deleteButtonTapped(sender: UIButton) {
-        if let cell = sender.superview?.superview, cell is UITableViewCell, let indexPath = self.profilesTableView.indexPath(for: cell as! UITableViewCell) {
-            let profile = self.profileType[indexPath.section].name?[indexPath.row]
-            // Show an alert to confirm deletion
-            let alert = UIAlertController(title: "Delete Profile", message: "Are you sure you want to delete this profile?", preferredStyle: .alert)
-            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
-                // Delete the profile from the array and reload the table view
-                self.profileType[indexPath.section].name?.remove(at: indexPath.row)
-                self.profilesTableView.beginUpdates()
-                self.profilesTableView.deleteRows(at: [indexPath], with: .fade)
-                self.profilesTableView.endUpdates()
-            }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            alert.addAction(deleteAction)
-            alert.addAction(cancelAction)
-            self.present(alert, animated: true, completion: nil)
-        }
-
     }
 
     

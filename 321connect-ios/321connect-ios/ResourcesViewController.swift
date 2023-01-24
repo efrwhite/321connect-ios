@@ -71,26 +71,37 @@ class ResourcesTableViewController: UITableViewController {
         alertController.addTextField(configurationHandler: {(_ textField: UITextField) -> Void in
             textField.placeholder = "Resource URL:"
         })
-
-        // Alert action confirm,
+        
         let confirmAction = UIAlertAction(title: "Add", style: .default, handler: {(_ action: UIAlertAction) -> Void in
-            print("Resource Title: \(String(describing: alertController.textFields?[0].text))")
-            let resource = alertController.textFields?[0].text
-            print("Resource URL: \(String(describing: alertController.textFields?[1].text))")
-            let urlPath = alertController.textFields?[1].text
-            //DataBase Entry
-//            self.userResources.append(resource!)
-//            self.userLinks.append(urlPath!)
-            print(self.userResources, self.userLinks)
-            let new_resource = Resource(context: self.context)
-            new_resource.resourceTitle = resource
-            new_resource.resourcelink = urlPath
-            self.resourceArray.append(new_resource)
-            self.SaveItems()
-           
-            // include in array data source
-            self.add(resource ?? "Default", urlPath!)           /* here might need to fix for input error checking */
+            
+            // Check if text fields are left blank
+            if let resource = alertController.textFields?[0].text, let urlPath = alertController.textFields?[1].text {
+                if resource.isEmpty || urlPath.isEmpty {
+                    
+                    // display error message
+                    let errorAlert = UIAlertController(title: "Error", message: "Please enter a resource title and URL", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    errorAlert.addAction(okAction)
+                    self.present(errorAlert, animated: true, completion: nil)
+                    return
+                }
+                print("Resource Title: \(resource)")
+                print("Resource URL: \(urlPath)")
+                //DataBase Entry
+//                self.userResources.append(resource!)
+//                self.userLinks.append(urlPath!)
+                let new_resource = Resource(context: self.context)
+                new_resource.resourceTitle = resource
+                new_resource.resourcelink = urlPath
+                self.resourceArray.append(new_resource)
+                self.SaveItems()
+                
+                // include in array data source
+                self.add(resource, urlPath)
+//                self.add(resource ?? "Default", urlPath!)           /* here might need to fix for input error checking */
+            }
         })
+        
         alertController.addAction(confirmAction)
 
         // Alert action cancel
@@ -221,7 +232,8 @@ class ResourcesTableViewController: UITableViewController {
             }
         }
     }
-// Database Methods
+    
+    // Database Methods
     func SaveItems(){
        
         do {
