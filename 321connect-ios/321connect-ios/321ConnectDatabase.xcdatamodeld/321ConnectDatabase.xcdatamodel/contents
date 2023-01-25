@@ -39,6 +39,7 @@
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="behaviorId" inverseEntity="Child"/>
     </entity>
     <entity name="Child" representedClassName=".Child" syncable="YES" codeGenerationType="class">
@@ -104,6 +105,7 @@
         <attribute name="other" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="otherNotes" optional="YES" attributeType="String"/>
         <attribute name="units" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="feedId" inverseEntity="Child"/>
     </entity>
     <entity name="Journal" representedClassName=".Journal" syncable="YES" codeGenerationType="class">
@@ -185,6 +187,7 @@
     <entity name="Resource" representedClassName=".Resource" syncable="YES" codeGenerationType="class">
         <attribute name="resourcelink" optional="YES" attributeType="String"/>
         <attribute name="resourceTitle" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="resourceId" inverseEntity="Child"/>
     </entity>
     <entity name="Sleep" representedClassName=".Sleep" syncable="YES" codeGenerationType="class">
@@ -201,6 +204,7 @@
         <attribute name="study" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="supplements" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="childId" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child" inverseName="sleepId" inverseEntity="Child"/>
     </entity>
     <entity name="Vaccination" representedClassName=".Vaccination" syncable="YES" codeGenerationType="class">

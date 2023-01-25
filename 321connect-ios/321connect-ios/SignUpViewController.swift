@@ -139,6 +139,13 @@ class SignUpViewController: UIViewController/*, UITableViewDelegate, UITableView
         // return to login view controller (signup cancel button)
         dismiss(animated: true, completion: nil)
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "homescreenSegue")
+        {
+            let displayVC = segue.destination as! HomeScreenViewController
+            displayVC.user = usernameTextField.text!
+        }
+    }
     func SaveItems(){
        
         do {

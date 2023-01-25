@@ -20,6 +20,8 @@ class FluidFeedViewController: UIViewController {
     @IBOutlet weak var multiVitaminRadio: UIButton!
     @IBOutlet weak var otherRadio: UIButton!
     @IBOutlet weak var indicateTextField: UITextField!
+    var receivedString = ""
+    var user = ""
     var feedArray = [Feed]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -45,6 +47,8 @@ class FluidFeedViewController: UIViewController {
         // Do any additional setup after loading the view.
         indicateTextField.isEnabled = false
         indicateTextField.placeholder = ""
+        receivedString = user
+        print("This is my Username Passed over to FLUID!",receivedString)
     }
     
     override func didReceiveMemoryWarning() {
@@ -152,6 +156,7 @@ class FluidFeedViewController: UIViewController {
         //############### Capture to database ##################
         let feeding = Feed(context: self.context)
         feeding.eatType = "Fluid Eating Type"
+        feeding.username = receivedString
         feeding.notes = notesTextField.text
         feeding.consumption = fluidTypeTextField.text
         feeding.amount = fluidAmountTextField.text

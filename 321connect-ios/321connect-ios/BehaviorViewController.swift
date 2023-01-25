@@ -21,7 +21,8 @@ class BehaviorViewController: UIViewController {
     @IBOutlet weak var durationPicker: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var historyButton: UIButton! // need history
-    
+    var receivedString = ""
+    var user = ""
     /* mood selection options */
     var moods = ["Happy",
                  "Smiling",
@@ -46,6 +47,8 @@ class BehaviorViewController: UIViewController {
         notesTextView.clipsToBounds = true
         notesTextView.layer.borderWidth = 1
         notesTextView.layer.borderColor = UIColor.black.cgColor
+        receivedString = user
+        print("Behavior Passed Data:", receivedString)
     }
     
     override func didReceiveMemoryWarning() {
@@ -81,7 +84,7 @@ class BehaviorViewController: UIViewController {
 //        let notesText = notesTextView.text!
 //        let moodType = moodButton.title(for: .normal)!
 //        let duration = durationPicker.countDownDuration
-        
+        new_mood.username = receivedString
         new_mood.notes = notesTextView.text
         // new_mood.time = duration.countDownDuration
         new_mood.moodType = moodButton.currentTitle

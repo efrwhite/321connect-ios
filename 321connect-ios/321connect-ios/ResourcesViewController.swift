@@ -13,7 +13,8 @@ class ResourcesTableViewController: UITableViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-        
+    var receivedString = ""
+    var user = ""
     /* Table view arrays data */
     var sections = ["National Support Groups", "Your Resources"]
     
@@ -56,7 +57,8 @@ class ResourcesTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = editButtonItem
         
         loadItems()
-
+        receivedString = user
+        print("This is my Username Passed over to Resources",receivedString)
     }
     
     @IBAction func addTapped(_ sender: Any) {
@@ -72,7 +74,7 @@ class ResourcesTableViewController: UITableViewController {
             textField.placeholder = "Resource URL:"
         })
         
-        let confirmAction = UIAlertAction(title: "Add", style: .default, handler: {(_ action: UIAlertAction) -> Void in
+        let confirmAction = UIAlertAction(title: "Add", style: .default, handler: { [self](_ action: UIAlertAction) -> Void in
             
             // Check if text fields are left blank
             if let resource = alertController.textFields?[0].text, let urlPath = alertController.textFields?[1].text {
@@ -91,6 +93,7 @@ class ResourcesTableViewController: UITableViewController {
 //                self.userResources.append(resource!)
 //                self.userLinks.append(urlPath!)
                 let new_resource = Resource(context: self.context)
+                new_resource.username = self.receivedString
                 new_resource.resourceTitle = resource
                 new_resource.resourcelink = urlPath
                 self.resourceArray.append(new_resource)

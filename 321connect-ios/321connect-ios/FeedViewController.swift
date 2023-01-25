@@ -13,7 +13,8 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var FluidView: UIView!
     @IBOutlet weak var SolidView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
+    var receivedString = ""
+    var user = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +22,8 @@ class FeedViewController: UIViewController {
         // initial view at view load
         FluidView.isHidden = false
         SolidView.isHidden = true
-        
+        receivedString = user
+       
 //        self.navigationController?.navigationBar.tintColor = UIColor.white
         // hereherehereherehere this when screen is loaded it changes nav color to white
         // for all preceding screens w/ nav bars
@@ -42,6 +44,20 @@ class FeedViewController: UIViewController {
             FluidView.isHidden = true
             SolidView.isHidden = false
         }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "SolidViewSegue")
+        {
+            let displayVC = segue.destination as! SolidFeedViewController
+            print(receivedString)
+            displayVC.user = receivedString
+        }
+        if (segue.identifier == "FluidViewSegue"){
+            print(receivedString)
+            let displayVC = segue.destination as! FluidFeedViewController
+            displayVC.user = receivedString
+        }
+        
     }
 
 }
