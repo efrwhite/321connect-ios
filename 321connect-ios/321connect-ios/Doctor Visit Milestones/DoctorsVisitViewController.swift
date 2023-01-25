@@ -422,8 +422,9 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         formsTableView.dataSource = self
         formsTableView.delegate = self
 
-//        formsTableView.estimatedRowHeight = 200
-//        formsTableView.rowHeight = UITableView.automaticDimension
+        formsTableView.rowHeight = UITableView.automaticDimension
+        formsTableView.estimatedRowHeight = 600
+
         
         self.formsTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
@@ -580,7 +581,9 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Newborn"{
             if(indexPath.row == 0) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = newbornForm[indexPath.row]
+//                cell.formTextLabel?.text = newbornForm[indexPath.row]
+                cell.textLabel!.text = newbornForm[indexPath.row]
+                  
                 
 //                cell.formTextLabel.translatesAutoresizingMaskIntoConstraints = false
 
@@ -590,7 +593,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
 //                    cell.formTextLabel.topAnchor.constraint(equalTo: cell.topAnchor,constant: 20),
 //                    cell.formTextLabel.bottomAnchor.constraint(equalTo: cell.bottomAnchor,constant: 20)])
                 
-                cell.formTextLabel.numberOfLines = 0
+//                cell.formTextLabel.numberOfLines = 0
                 cell.selectionStyle = .none
                 
                 return cell
@@ -624,7 +627,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Two months"{
             if(indexPath.row == 9) {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                    cell.formTextLabel?.text = twoMonthForm[indexPath.row]
+                    cell.textLabel!.text = twoMonthForm[indexPath.row]
                     cell.selectionStyle = .none
                     return cell
                 }
@@ -658,7 +661,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Six months" {
             if(indexPath.row == 0 || indexPath.row == 3) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = sixMonthForm[indexPath.row]
+                cell.textLabel!.text = sixMonthForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -692,7 +695,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Twelve months" {
             if(indexPath.row == 0 || indexPath.row == 3) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = twelveMonthForm[indexPath.row]
+                cell.textLabel!.text = twelveMonthForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -726,7 +729,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Eighteen months" {
             if(indexPath.row == 0 || indexPath.row == 3) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = eighteenMonthForm[indexPath.row]
+                cell.textLabel!.text = eighteenMonthForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -752,7 +755,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Two years" {
             if(indexPath.row == 1 || indexPath.row == 4) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = twoYearForm[indexPath.row]
+                cell.textLabel!.text = twoYearForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -778,7 +781,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Thirty months" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 9) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = thirtyMonthForm[indexPath.row]
+                cell.textLabel!.text = thirtyMonthForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -804,7 +807,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Three years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 14 || indexPath.row == 15 || indexPath.row == 16 || indexPath.row == 20 || indexPath.row == 21) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = threeYearForm[indexPath.row]
+                cell.textLabel!.text = threeYearForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -830,7 +833,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Four years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 20) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = fourYearForm[indexPath.row]
+                cell.textLabel!.text = fourYearForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -856,7 +859,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Five years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 20) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = fiveYearForm[indexPath.row]
+                cell.textLabel!.text = fiveYearForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -882,7 +885,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Six years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 20) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = fiveYearForm[indexPath.row]
+                cell.textLabel!.text = fiveYearForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -908,7 +911,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Seven years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = sevenYearForm[indexPath.row]
+                cell.textLabel!.text = sevenYearForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -933,7 +936,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Eight years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = eightYearForm[indexPath.row]
+                cell.textLabel!.text = eightYearForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -959,7 +962,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Nine years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = nineYearForm[indexPath.row]
+                cell.textLabel!.text = nineYearForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -985,7 +988,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Ten years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = tenYearForm[indexPath.row]
+                cell.textLabel!.text = tenYearForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -1011,7 +1014,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Eleven years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = elevenYearForm[indexPath.row]
+                cell.textLabel!.text = elevenYearForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -1037,7 +1040,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Twelve years" {
             if(indexPath.row == 0) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.formTextLabel?.text = twelveYearForm[indexPath.row]
+                cell.textLabel!.text = twelveYearForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }

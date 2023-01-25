@@ -34,6 +34,29 @@ class MedicationAddition: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // load units button with drop down values
+        setUnitsButton()
+        
+    }
+    
+    // MARK: Button functions
+    
+    func setUnitsButton() {
+        
+        let optionClosure = {(action : UIAction) in
+            print(action.title)
+        }
+        
+        DosageUnits.menu = UIMenu(children : [
+            UIAction(title : "grams (g)", state : .on, handler: optionClosure),
+            UIAction(title : "milligrams (mg)", handler: optionClosure),
+            UIAction(title : "ounces (oz)", handler: optionClosure),
+            UIAction(title : "cups", handler: optionClosure),
+            UIAction(title : "teaspoon (tsp)", handler: optionClosure),
+            UIAction(title : "tablespoon (tbsp)", handler: optionClosure)])
+        
+        DosageUnits.showsMenuAsPrimaryAction = true
+        DosageUnits.changesSelectionAsPrimaryAction = true
     }
     
     @IBAction func AddMedication(_ sender: Any) {
@@ -46,6 +69,7 @@ class MedicationAddition: UIViewController {
         
         self.medicationArray.append(new_medication)
         self.SaveItems()
+        
 //        // Call this method on whichever class implements our delegate protocol
 //        delegate?.userDidEnterInformation(info: MedicationName.text!)
 //
@@ -54,6 +78,9 @@ class MedicationAddition: UIViewController {
 //        _ = self.navigationController?.popViewController(animated: true)
 //
     }
+    
+    // MARK: Database functions
+    
     func SaveItems(){
        
         do {

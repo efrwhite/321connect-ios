@@ -13,13 +13,21 @@ class VaccinationViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var VaccinationImage: UIImageView!
     @IBOutlet weak var NavigationBar: UINavigationItem!
   
-    
     var vaccinationArray = [Vaccination]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Vaccination document image styling
+        VaccinationImage.layer.cornerRadius = 10
+        VaccinationImage.clipsToBounds = true
+        VaccinationImage.layer.borderWidth = 1
+        VaccinationImage.layer.borderColor = UIColor.lightGray.cgColor
     }
+    
+    // MARK: - Button functions
+    
     @IBAction func AddPhotoPressed(_ sender: UIButton) {
         let vc = UIImagePickerController()
         vc.sourceType = .photoLibrary
@@ -40,6 +48,8 @@ class VaccinationViewController: UIViewController, UIImagePickerControllerDelega
         self.SaveItems()
     }
     
+    // MARK: - Database functions
+    
     func SaveItems(){
         do {
             try context.save()
@@ -57,6 +67,7 @@ class VaccinationViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
 }
+
 extension VaccinationViewController {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
