@@ -816,7 +816,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AJ84Q69AHZ;
+				DEVELOPMENT_TEAM = HJ578KXY67;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "321connect-ios/Info.plist";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please Allow Image to Profiles";
@@ -830,7 +830,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "BostonBA-321connectIdentifier";
+				PRODUCT_BUNDLE_IDENTIFIER = "-21connect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -847,7 +847,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AJ84Q69AHZ;
+				DEVELOPMENT_TEAM = HJ578KXY67;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "321connect-ios/Info.plist";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please Allow Image to Profiles";
@@ -861,7 +861,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "BostonBA-321connectIdentifier";
+				PRODUCT_BUNDLE_IDENTIFIER = "-21connect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

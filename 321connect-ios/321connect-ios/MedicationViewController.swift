@@ -40,7 +40,7 @@ class MedicationViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     
- // Tapped Button
+    // Tapped Button
     @IBAction func add_Medication(_ sender: Any) {
     }
    
