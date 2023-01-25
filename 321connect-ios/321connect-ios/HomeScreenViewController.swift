@@ -38,8 +38,8 @@ class HomeScreenViewController: UIViewController{
     // automatic segue
     /* possible change to 'segmented control' */
     
-
-
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,19 +51,38 @@ class HomeScreenViewController: UIViewController{
         childImage.layer.cornerRadius = childImage.frame.size.width/2
         childImage.clipsToBounds = true
         receivedString = user
-        print("This is my Username Passed over!",receivedString)
-//        let appearance = UINavigationBarAppearance()
-//        appearance.backgroundColor = .clear
-//        appearance.shadowColor = .clear
-//        navigationController?.navigationBar.standardAppearance = appearance
-//
-//        navigationController?.navigationBar.compactAppearance = appearance
-//        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        print("HOME SCREEN", receivedString)
+        //        let appearance = UINavigationBarAppearance()
+        //        appearance.backgroundColor = .clear
+        //        appearance.shadowColor = .clear
+        //        navigationController?.navigationBar.standardAppearance = appearance
+        //
+        //        navigationController?.navigationBar.compactAppearance = appearance
+        //        navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
         RecentEntryTableView.layer.cornerRadius = 10
         RecentEntryTableView.clipsToBounds = true
         RecentEntryTableView.layer.borderWidth = 1
-       
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "HomeScreenViewExt")
+        {
+            let destViewController = segue.destination as! UINavigationController
+            let secondViewcontroller = destViewController.viewControllers.first as! HomeScreenViewControllerExt
+            secondViewcontroller.user = receivedString
+        }
+        if(segue.identifier == "ResourcesView"){
+                let displayVC = segue.destination as! ResourcesTableViewController
+                displayVC.user = receivedString
+            }
+        if(segue.identifier == "FoodSegueHomeScreen1"){
+                let displayVC = segue.destination as! FeedViewController
+                displayVC.user = receivedString
+            }
+        if (segue.identifier == "BehaviorSegue1"){
+            let displayVC = segue.destination as! BehaviorViewController
+            displayVC.user = receivedString
+        }
     }
 }
-

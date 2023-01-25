@@ -20,6 +20,8 @@ class SolidFeedViewController: UIViewController {
     @IBOutlet weak var multiVitaminRadio: UIButton!
     @IBOutlet weak var otherRadio: UIButton!
     @IBOutlet weak var indicateTextField: UITextField!
+    var receivedString = ""
+    var user = ""
     var feedArray = [Feed]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -42,6 +44,8 @@ class SolidFeedViewController: UIViewController {
         // Do any additional setup after loading the view.
         indicateTextField.isEnabled = false
         indicateTextField.placeholder = ""
+        receivedString = user
+        print("This is my Username Passed over to SOLID!",receivedString)
     }
     
     override func didReceiveMemoryWarning() {
@@ -122,6 +126,7 @@ class SolidFeedViewController: UIViewController {
         // need to capture and print supplements
         let feeding = Feed(context: self.context)
         feeding.eatType = "Solid Eating Type"
+        feeding.username = receivedString
         feeding.notes = notesTextField.text
         feeding.consumption = foodConsumedButton.title(for: .normal)
         feeding.amount = solidAmountTextField.text

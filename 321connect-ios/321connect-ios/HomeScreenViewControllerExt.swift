@@ -23,11 +23,13 @@ class HomeScreenViewControllerExt: UIViewController {
     @IBOutlet weak var journalButton: UIButton!
     @IBOutlet weak var medicationButton: UIButton!
     @IBOutlet weak var signInOutButton: UIButton!
-    
+    var receivedString = ""
+    var user = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        receivedString = user
+        print("This is my Username Passed over to Extended HomeScreen", receivedString)
         // Do any additional setup after loading the view.
         
     }
@@ -40,7 +42,26 @@ class HomeScreenViewControllerExt: UIViewController {
         
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "ResourceSegueView2"){
+                let displayVC = segue.destination as! ResourcesTableViewController
+                displayVC.user = receivedString
+            }
+        if(segue.identifier == "FoodSegueHomeScreen2"){
+                let displayVC = segue.destination as! FeedViewController
+                displayVC.user = receivedString
+            }
+        if (segue.identifier == "BehaviourSegue2"){
+            let displayVC = segue.destination as! BehaviorViewController
+            displayVC.user = receivedString
+        }
+        if (segue.identifier == "HomeScreenViewExt")
+        {
+            let destViewController = segue.destination as! UINavigationController
+            let secondViewcontroller = destViewController.viewControllers.first as! HomeScreenViewController
+            secondViewcontroller.user = receivedString
+        }
+    }
 
     /*
     // MARK: - Navigation

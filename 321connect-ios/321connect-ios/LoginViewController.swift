@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
             let userinfop = user?.passWord
             print("USER FETCH")
             // if username and password not found in database deny access
-            if userinfo == nil && userinfop == nil{
+            if (userinfo == nil && userinfop == nil) || (userinfo != UsernameTextField.text && userinfop != PasswordTextField.text){
                 // Create new Alert
                 var dialogMessage = UIAlertController(title: "Error", message: "Please Create an Account using Sign Up Button", preferredStyle: .alert)
                 
@@ -82,6 +82,7 @@ class LoginViewController: UIViewController {
                 // Present Alert to
                 self.present(dialogMessage, animated: true, completion: nil)
             }
+           
             
             
             
@@ -99,6 +100,7 @@ class LoginViewController: UIViewController {
             let secondViewcontroller = destViewController.viewControllers.first as! HomeScreenViewController
             secondViewcontroller.user = UsernameTextField.text!
         }
+        
     }
     
     @IBAction func signupPressed(_ sender: Any) {
