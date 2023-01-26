@@ -19,7 +19,8 @@ class JournalViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var timer = Timer()
-    
+    var receivedString = ""
+    var user = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +29,8 @@ class JournalViewController: UIViewController {
         notesTextView.clipsToBounds = true
         notesTextView.layer.borderWidth = 1
         notesTextView.layer.borderColor = UIColor.black.cgColor
-        
+        receivedString = user
+        print("Journal Passed:", receivedString)
         /* * * * dynamic label current time/date * * * */
         dateLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .none)
             timeLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short)
@@ -53,6 +55,7 @@ class JournalViewController: UIViewController {
 //        print("NOTES: \(journalNotes)")
         
         let new_journalEntry = Journal(context: self.context)
+        new_journalEntry.username = receivedString
         new_journalEntry.title = titleTextField.text!
         new_journalEntry.notes = notesTextView.text!
         
