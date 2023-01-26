@@ -15,21 +15,24 @@ class ActivityViewController: UIViewController {
     @IBOutlet weak var Note: UITextView!
     var ActivityArray = [Activity]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var receivedString = ""
+    var user = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         setpopupbutton()
-        
+        receivedString = user
         Note.layer.cornerRadius = 10
         Note.clipsToBounds = true
         Note.layer.borderWidth = 1
         Note.layer.borderColor = UIColor.black.cgColor
- 
+        print("Activity Passed:", receivedString)
     }
     @IBAction func SaveButton(_ sender: Any) {
 //        let notes = Note.text
 //        let activity = activityselection.currentTitle
 //        let ActivityDuration = ActivityDuration.countDownDuration
         let new_activity = Activity(context: self.context)
+        new_activity.username = receivedString
         new_activity.duration = ActivityDuration.countDownDuration
         new_activity.notes = Note.text
         new_activity.activityType = activityselection.currentTitle

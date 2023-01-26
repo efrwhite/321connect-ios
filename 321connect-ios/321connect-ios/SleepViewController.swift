@@ -30,6 +30,9 @@ class SleepViewController: UIViewController {
     @IBOutlet weak var otherToggle: UIButton!
     @IBOutlet weak var indicateTextField: UITextField!
     var SleepArray = [Sleep]()
+    var receivedString = ""
+    var user = ""
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let dateFormatter = DateFormatter()
     
@@ -54,7 +57,8 @@ class SleepViewController: UIViewController {
         
         indicateTextField.isEnabled = false
         indicateTextField.placeholder = ""
-        
+        receivedString = user
+        print("SLEEP Passed:", receivedString)
         /* *** dynamic label current time/date *** */
         dateLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .none)
             timeLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short)
@@ -104,6 +108,7 @@ class SleepViewController: UIViewController {
 //        print("SNORE HISTORY: \(snoreHistory)")
         // ********** print to console ****************
         let new_sleep = Sleep(context: self.context)
+        new_sleep.username = receivedString
         new_sleep.notes = sleepNotesView.text
         new_sleep.sleepDate = stringsleepDate
         new_sleep.duration = durationPicker.countDownDuration
@@ -146,6 +151,18 @@ class SleepViewController: UIViewController {
             indicateTextField.placeholder = ""
 
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "SleepViewSegue2"){
+            let displayVC = segue.destination as! HomeScreenViewControllerExt
+            displayVC.user = receivedString
+        }
+            if (segue.identifier == "SleepViewSegue"){
+                let displayVC = segue.destination as! HomeScreenViewController
+                displayVC.user = receivedString
+            }
+        
     }
     
     func SaveItems(){

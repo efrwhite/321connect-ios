@@ -13,11 +13,12 @@ class BathroomViewController: UIViewController {
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var view3: UIView!
-    
+    var receivedString = ""
+    var user = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        receivedString = user
         //load initial: view 1
         view1.alpha = 1
         view2.alpha = 0

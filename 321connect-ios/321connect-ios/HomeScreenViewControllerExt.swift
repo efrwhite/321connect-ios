@@ -29,7 +29,7 @@ class HomeScreenViewControllerExt: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         receivedString = user
-        print("This is my Username Passed over to Extended HomeScreen", receivedString)
+        print("Extended HomeScreen Passed", receivedString)
         // Do any additional setup after loading the view.
         
     }
@@ -60,6 +60,26 @@ class HomeScreenViewControllerExt: UIViewController {
             let destViewController = segue.destination as! UINavigationController
             let secondViewcontroller = destViewController.viewControllers.first as! HomeScreenViewController
             secondViewcontroller.user = receivedString
+        }
+        if (segue.identifier == "SleepViewSegue2"){
+            let displayVC = segue.destination as! SleepViewController
+            displayVC.user = receivedString
+        }
+        if (segue.identifier == "ActivityViewSegue2"){
+            let displayVC = segue.destination as! ActivityViewController
+            displayVC.user = receivedString
+        }
+        if (segue.identifier == "JournalViewSegue"){
+            let displayVC = segue.destination as! JournalViewController
+            displayVC.user = receivedString
+        }
+        if (segue.identifier == "JournalViewSegue"){
+            let displayVC = segue.destination as! JournalViewController
+            displayVC.user = receivedString
+        }
+        if (segue.identifier == "BathroomViewSegue"){
+            let displayVC = segue.destination as! BathroomViewController
+            displayVC.user = receivedString
         }
     }
 

@@ -519,7 +519,7 @@
                                                             </attributedString>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <segue destination="O5y-mq-47D" kind="show" id="KXT-Sl-Iht"/>
+                                                            <segue destination="O5y-mq-47D" kind="show" identifier="ActivityViewSegue" id="KXT-Sl-Iht"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZU-a5-KbE">
@@ -543,7 +543,7 @@
                                                             </attributedString>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <segue destination="nn2-UD-luL" kind="show" id="S72-Vi-Zbi"/>
+                                                            <segue destination="nn2-UD-luL" kind="show" identifier="SleepViewSegue" id="S72-Vi-Zbi"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1002,7 +1002,7 @@
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="buttonPressed:" destination="gG6-7y-bqh" eventType="touchUpInside" id="OkI-sQ-j5P"/>
-                                                                            <segue destination="O5y-mq-47D" kind="show" id="1KZ-tx-RKW"/>
+                                                                            <segue destination="O5y-mq-47D" kind="show" identifier="ActivityViewSegue2" id="1KZ-tx-RKW"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVh-1b-Vsm">
@@ -1030,7 +1030,7 @@
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="buttonPressed:" destination="gG6-7y-bqh" eventType="touchUpInside" id="6v4-tp-kUt"/>
-                                                                            <segue destination="nn2-UD-luL" kind="show" id="1hW-le-3t9"/>
+                                                                            <segue destination="nn2-UD-luL" kind="show" identifier="SleepViewSegue2" id="1hW-le-3t9"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -1204,7 +1204,7 @@
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="buttonPressed:" destination="gG6-7y-bqh" eventType="touchUpInside" id="uYH-Ie-1OO"/>
-                                                                            <segue destination="FSk-XW-bPI" kind="show" id="l3S-CS-QBq"/>
+                                                                            <segue destination="FSk-XW-bPI" kind="show" identifier="BathroomViewSegue" id="l3S-CS-QBq"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -1236,7 +1236,7 @@
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="buttonPressed:" destination="gG6-7y-bqh" eventType="touchUpInside" id="AUQ-oc-NcL"/>
-                                                                            <segue destination="eeG-Fw-LWR" kind="show" id="gRf-bv-cpi"/>
+                                                                            <segue destination="eeG-Fw-LWR" kind="show" identifier="JournalViewSegue" id="gRf-bv-cpi"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sfr-2d-dMZ">
@@ -7017,6 +7017,7 @@
                                 </connections>
                             </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zSm-Dr-sW7">
+
                                 <rect key="frame" x="18" y="91" width="374" height="42"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
@@ -8114,8 +8115,9 @@
         <segue reference="klS-EG-BR2"/>
         <segue reference="bGp-15-ulQ"/>
         <segue reference="S72-Vi-Zbi"/>
-        <segue reference="yqK-St-CcA"/>
-        <segue reference="KXT-Sl-Iht"/>
+
+        <segue reference="1wn-hu-7An"/>
+        <segue reference="1KZ-tx-RKW"/>
         <segue reference="sAS-T9-4Og"/>
     </inferredMetricsTieBreakers>
     <resources>

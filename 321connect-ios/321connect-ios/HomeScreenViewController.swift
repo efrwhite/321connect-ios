@@ -51,7 +51,7 @@ class HomeScreenViewController: UIViewController{
         childImage.layer.cornerRadius = childImage.frame.size.width/2
         childImage.clipsToBounds = true
         receivedString = user
-        print("HOME SCREEN", receivedString)
+        print("HOME SCREEN Passed", receivedString)
         //        let appearance = UINavigationBarAppearance()
         //        appearance.backgroundColor = .clear
         //        appearance.shadowColor = .clear
@@ -82,6 +82,14 @@ class HomeScreenViewController: UIViewController{
             }
         if (segue.identifier == "BehaviorSegue1"){
             let displayVC = segue.destination as! BehaviorViewController
+            displayVC.user = receivedString
+        }
+        if (segue.identifier == "SleepViewSegue"){
+            let displayVC = segue.destination as! SleepViewController
+            displayVC.user = receivedString
+        }
+        if (segue.identifier == "ActivityViewSegue"){
+            let displayVC = segue.destination as! ActivityViewController
             displayVC.user = receivedString
         }
     }
