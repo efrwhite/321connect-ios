@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class Parent_Caregiver_ViewController: UIViewController {
+class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var ParentPicture: UIImageView!
     @IBOutlet weak var FirstName: UITextField!
@@ -33,11 +33,17 @@ class Parent_Caregiver_ViewController: UIViewController {
         ParentPicture.layer.borderColor = UIColor.white.cgColor
         ParentPicture.layer.cornerRadius = ParentPicture.frame.size.width/2
         ParentPicture.clipsToBounds = true
+        
+        // Gesture to collapse/dismiss keyboard on click outside
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
     override func didReceiveMemoryWarning() {
           super.didReceiveMemoryWarning()
           // Dispose of any resources that can be recreated.
       }
+    
+    // MARK: - BUTTON FUNCTIONS
     
     @IBAction func SelectImage(_ sender: UIButton) {
         let vc = UIImagePickerController()
@@ -46,6 +52,18 @@ class Parent_Caregiver_ViewController: UIViewController {
         vc.allowsEditing = true
         present(vc, animated: true)
     }
+    
+    // Enter dismisses keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     @IBAction func Save_Button(_ sender: Any) {
 //        let firstName = FirstName.text
 //        let lastName = LastName.text
@@ -67,6 +85,7 @@ class Parent_Caregiver_ViewController: UIViewController {
         
     }
 }
+
 extension Parent_Caregiver_ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
@@ -77,6 +96,9 @@ extension Parent_Caregiver_ViewController: UIImagePickerControllerDelegate, UINa
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
+    
+    
+    // MARK: - DATABASE FUNCTIONS
     func SaveItems(){
        
         do {
@@ -96,5 +118,4 @@ extension Parent_Caregiver_ViewController: UIImagePickerControllerDelegate, UINa
             print("Error fetching data \(error)")
         }
     }
-    
 }

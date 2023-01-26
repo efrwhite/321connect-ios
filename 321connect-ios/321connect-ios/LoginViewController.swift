@@ -12,7 +12,7 @@ import UIKit
 import CoreData
 
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // login vc local variables
     @IBOutlet weak var UsernameTextField: UITextField!
@@ -25,8 +25,14 @@ class LoginViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
 //        self.getAccountoData
+        
+        // Gesture to collapse/dismiss keyboard on click outside
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+        
     }
 
 
@@ -82,17 +88,20 @@ class LoginViewController: UIViewController {
                 // Present Alert to
                 self.present(dialogMessage, animated: true, completion: nil)
             }
-           
-            
-            
-            
         }
-       
-
-
-        
-    
     }
+    
+    // Enter dismisses keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "homescreenSegue")
         {
