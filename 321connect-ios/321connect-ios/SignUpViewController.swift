@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 //import iPhoneNumberField
 
-class SignUpViewController: UIViewController/*, UITableViewDelegate, UITableViewDataSource*/{
+class SignUpViewController: UIViewController, UITextFieldDelegate/*, UITableViewDelegate, UITableViewDataSource*/{
 
     // account table iboutlet variable declaration
 //    @IBOutlet weak var accountTable: UITableView!
@@ -36,12 +36,9 @@ class SignUpViewController: UIViewController/*, UITableViewDelegate, UITableView
 
         super.viewDidLoad()
 
-
-//        accountTable.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-//        accountTable.delegate = self
-//        accountTable.dataSource = self
-//
-//
+        // Gesture to collapse/dismiss keyboard on click outside
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
 
 //
@@ -72,12 +69,6 @@ class SignUpViewController: UIViewController/*, UITableViewDelegate, UITableView
         let confirmPassword = confirmPasswordTextField.text!
         
         //Database
-          
-
-       
-        
-
-
 
         // if empty textfield(s) alert
         if(userFirstName.isEmpty || userLastName.isEmpty || username.isEmpty || userPhone.isEmpty || password.isEmpty || confirmPassword.isEmpty){
@@ -130,8 +121,6 @@ class SignUpViewController: UIViewController/*, UITableViewDelegate, UITableView
             //present(loginVC, animated: true, completion: nil)
 
         self.performSegue(withIdentifier: "homeSegue", sender: self)
-       
-        
     }
 
     @IBAction func cancelPressed(_ sender: Any) {
@@ -146,6 +135,18 @@ class SignUpViewController: UIViewController/*, UITableViewDelegate, UITableView
             displayVC.user = usernameTextField.text!
         }
     }
+    
+    // Enter dismisses keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     func SaveItems(){
        
         do {
