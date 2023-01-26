@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,9 +31,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xH-Id-zQA">
-                        <rect key="frame" x="354" y="5" width="50" height="34"/>
+                        <rect key="frame" x="359.5" y="5" width="44.5" height="34"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="person.crop.circle.badge.plus" catalog="system">
+                        <buttonConfiguration key="configuration" style="plain">
+                            <imageReference key="image" image="person.crop.circle.badge.plus" catalog="system" symbolScale="medium"/>
                             <color key="baseForegroundColor" red="0.25490196079999999" green="0.37647058820000001" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </buttonConfiguration>
                     </button>

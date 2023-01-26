@@ -9,10 +9,9 @@ import CoreData
 import Foundation
 import UIKit
  
-class ChildView: UIViewController {
+class ChildView: UIViewController, UITextFieldDelegate {
  
     @IBOutlet weak var ChildImage: UIImageView!
-    
     @IBOutlet weak var birthday: UIDatePicker!
     @IBOutlet weak var Duedate: UIDatePicker!
     @IBOutlet weak var OnOff: UISegmentedControl!
@@ -27,7 +26,25 @@ class ChildView: UIViewController {
     //where ever U have your print statements make a object to store the information into child
     var ChildArray = [Child]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+ 
     
+    override func viewDidLoad() {
+     super.viewDidLoad()
+        setPopupButton()
+        
+        // profile image mask and style
+        ChildImage.layer.borderWidth = 1.0
+        ChildImage.layer.masksToBounds = false
+        ChildImage.layer.borderColor = UIColor.white.cgColor
+        ChildImage.layer.cornerRadius = ChildImage.frame.size.width/2
+        ChildImage.clipsToBounds = true
+        
+        // Gesture to collapse/dismiss keyboard on click outside
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    // MARK: - BUTTON FUNCTIONS --------------------
     @IBAction func Slider(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0{
             print("Boy")
@@ -63,21 +80,16 @@ class ChildView: UIViewController {
         BloodType.showsMenuAsPrimaryAction = true
         BloodType.changesSelectionAsPrimaryAction = true
     }
-    
-    override func viewDidLoad() {
-     super.viewDidLoad()
-        setPopupButton()
-        
-        // profile image mask and style
-        ChildImage.layer.borderWidth = 1.0
-        ChildImage.layer.masksToBounds = false
-        ChildImage.layer.borderColor = UIColor.white.cgColor
-        ChildImage.layer.cornerRadius = ChildImage.frame.size.width/2
-        ChildImage.clipsToBounds = true
-       
+    // Enter dismisses keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
-   
-   
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
  
     @IBAction func SaveButton(_ sender: UIButton) {
         
@@ -121,8 +133,8 @@ class ChildView: UIViewController {
         self.SaveItems()
       
     }
-
 }
+
 extension ChildView: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
@@ -152,5 +164,4 @@ extension ChildView: UIImagePickerControllerDelegate, UINavigationControllerDele
             print("Error fetching data \(error)")
         }
     }
-    
 }
