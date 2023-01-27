@@ -35,8 +35,8 @@ class SleepViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let dateFormatter = DateFormatter()
-    
-    lazy var sleepCycleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SleepCycleViewController")
+    //Edward I changed this down into the function since I cant pass data without changing this
+//    lazy var sleepCycleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SleepCycleViewController")
     
     var timer = Timer()
     
@@ -77,11 +77,14 @@ class SleepViewController: UIViewController {
 
     @IBAction func sleepCycleTapped(_ sender: Any) {
         print("Sleep Cycle Button Tapped") //debug
-        
+        let sleepCycleVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SleepCycleViewController") as! SleepCycleViewController
         // half bottom sheet presentation. Cycle calculator VC
         if let sheet = sleepCycleVC.sheetPresentationController {
             sheet.detents = [.medium()]
+            sleepCycleVC.user = receivedString
+
         }
+        
         
         self.present(sleepCycleVC, animated: true, completion: nil)
     }
@@ -180,7 +183,7 @@ class SleepViewController: UIViewController {
         let request : NSFetchRequest<Sleep> = Sleep.fetchRequest()
         do{
         SleepArray = try context.fetch(request)
-        print(SleepArray)
+        print("This is SLEEP ARRAY:",SleepArray)
         } catch{
             print("Error fetching data \(error)")
         }

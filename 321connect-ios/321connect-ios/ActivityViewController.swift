@@ -9,14 +9,20 @@ import Foundation
 import UIKit
 import CoreData
 class ActivityViewController: UIViewController {
-
     @IBOutlet weak var activityselection: UIButton!
     @IBOutlet weak var ActivityDuration: UIDatePicker!
     @IBOutlet weak var Note: UITextView!
+    
     var ActivityArray = [Activity]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var receivedString = ""
     var user = ""
+   
+    
+    @IBOutlet weak var CurrentDates: UIDatePicker!
+    let dateFormatter = DateFormatter()
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setpopupbutton()
@@ -26,13 +32,19 @@ class ActivityViewController: UIViewController {
         Note.layer.borderWidth = 1
         Note.layer.borderColor = UIColor.black.cgColor
         print("Activity Passed:", receivedString)
+        
     }
     @IBAction func SaveButton(_ sender: Any) {
 //        let notes = Note.text
 //        let activity = activityselection.currentTitle
 //        let ActivityDuration = ActivityDuration.countDownDuration
+        let sleepDate = CurrentDates.date
+        dateFormatter.dateFormat = "MM/dd/YY"
+        let stringsleepDate = dateFormatter.string(from:sleepDate)
+        
         let new_activity = Activity(context: self.context)
         new_activity.username = receivedString
+        new_activity.currentdate = stringsleepDate
         new_activity.duration = ActivityDuration.countDownDuration
         new_activity.notes = Note.text
         new_activity.activityType = activityselection.currentTitle

@@ -17,9 +17,16 @@ class SleepCycleViewController: UIViewController {
     @IBOutlet weak var SleepCycleDate: UIDatePicker!
     @IBOutlet weak var hourlable: UILabel!
     @IBOutlet weak var minlabel: UILabel!
+    var user = ""
+    var username = ""
+    var seconds = [Double]()
+//    var min = [Int]()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 //        loadItems()
+        username = user
+        print("SLEEP CYCLE Passed:", username)
        
         
 
@@ -43,19 +50,61 @@ class SleepCycleViewController: UIViewController {
         print("THIS IS MY SLEEP DATA CYCLE", stringsleepDate)
         
         let request: NSFetchRequest<Sleep> = Sleep.fetchRequest()
-        request.predicate = NSPredicate(format: "(sleepDate CONTAINS[cd] %@) AND (duration > %i)", stringsleepDate, 0)
-        request.fetchLimit = 1
-        let date = (try? context.fetch(request))?.first
-        let newd = date?.duration
-        print("This is duration associated with \(stringsleepDate) : ",newd)
-        let intdate =  Int(newd!)
-        print("This is duration as an Integer: ", intdate)
-        let minutes = round(Double(intdate/60))
-        let hours = round(Double(minutes/60))
-        print("Number of Minutes:", minutes)
-        print("Number of hours:", hours)
-        minlabel.text = String(minutes)
-        hourlable.text = String(hours)
+        request.predicate = NSPredicate(format: "(username MATCHES [cd] %@) AND (sleepDate MATCHES [cd] %@) AND (duration > %i) ", username ,stringsleepDate,0)
+        let durations = (try? context.fetch(request))!
+        
+        for d in durations {
+            seconds.append(d.duration)
+        }
+        print("ARRAY SECONDS:", seconds)
+      //adding the array of seconds
+        var sum = 0.0
+        for secs in seconds{
+            sum += secs
+        }
+        seconds.removeAll()
+        print("SUM of SECONDS:",sum)
+        var mins = round(sum/60)
+        var roundmn = Int(mins)
+        print("Minutes", mins)
+        
+        if mins > 60 {
+            var hours = round(mins/60)
+            var rounded = Int(hours)
+            hourlable.text = String(rounded)
+        } else{
+            minlabel.text = String(roundmn)
+        }
+        
+//        print("minutes in the array:",min)
+//        var sum = 0
+//        for j in min{
+//            print(j)
+//            sum += j
+//
+//        }
+//        print("SUM:",sum)
+//        var h = 0
+//        if sum > 60 {
+//            h = sum/60
+//            hourlable.text = String(h)
+//        }
+//        else {
+//            minlabel.text = String(sum)
+//
+//        }
+       
+//        let date = (try? context.fetch(request))?.first
+//        let newd = date?.duration
+//        print("This is duration associated with \(stringsleepDate) : ",newd)
+//        let intdate =  Int(newd!)
+//        print("This is duration as an Integer: ", intdate)
+//        let minutes = round(Double(intdate/60))
+//        let hours = round(Double(minutes/60))
+//        print("Number of Minutes:", minutes)
+//        print("Number of hours:", hours)
+//        minlabel.text = String(minutes)
+//        hourlable.text = String(hours)
         
 
 

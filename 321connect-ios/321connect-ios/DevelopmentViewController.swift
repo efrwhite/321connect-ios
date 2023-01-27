@@ -49,13 +49,16 @@ class DevelopmentViewController: UIViewController {
     @IBOutlet weak var hearingSoundDate: UIDatePicker!
     
     @IBOutlet weak var notesField: UITextField!
+    var receivedString = ""
+    var user = ""
     
     var DevelopmentArray = [Development]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        receivedString = user
+        print("Development Passed",receivedString)
         /* date data transfer from database to populate corresponding datepickers*/
         //here
         
@@ -97,6 +100,7 @@ class DevelopmentViewController: UIViewController {
 //        let notesField = notesField.text
         
         let new_development = Development(context: self.context)
+        new_development.username = receivedString
         new_development.firstRoll = physicalRollDate.date
         new_development.firstSit = physicalSitDate.date
         new_development.firstCrawl = physicalCrawlsDate.date
