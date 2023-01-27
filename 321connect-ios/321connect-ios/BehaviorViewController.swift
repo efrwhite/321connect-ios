@@ -11,6 +11,7 @@ import CoreData
 
 class BehaviorViewController: UIViewController {
     
+    @IBOutlet weak var DateBehaviour: UIDatePicker!
     @IBOutlet weak var notesTextView: UITextView!
     var BehaviorArray = [Behavior]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -86,6 +87,7 @@ class BehaviorViewController: UIViewController {
 //        let duration = durationPicker.countDownDuration
         new_mood.username = receivedString
         new_mood.notes = notesTextView.text
+        new_mood.currentdate = DateBehaviour.date
         // new_mood.time = duration.countDownDuration
         new_mood.moodType = moodButton.currentTitle
         new_mood.time = durationPicker.countDownDuration

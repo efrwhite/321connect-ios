@@ -51,6 +51,7 @@ class HomeScreenViewControllerExt: UIViewController {
                 let displayVC = segue.destination as! FeedViewController
                 displayVC.user = receivedString
             }
+     
         if (segue.identifier == "BehaviourSegue2"){
             let displayVC = segue.destination as! BehaviorViewController
             displayVC.user = receivedString
@@ -73,12 +74,13 @@ class HomeScreenViewControllerExt: UIViewController {
             let displayVC = segue.destination as! JournalViewController
             displayVC.user = receivedString
         }
-        if (segue.identifier == "JournalViewSegue"){
-            let displayVC = segue.destination as! JournalViewController
-            displayVC.user = receivedString
-        }
+      
         if (segue.identifier == "BathroomViewSegue"){
             let displayVC = segue.destination as! BathroomViewController
+            displayVC.user = receivedString
+        }
+        if (segue.identifier == "DevelopmentViewSegue"){
+            let displayVC = segue.destination as! DevelopmentViewController
             displayVC.user = receivedString
         }
     }

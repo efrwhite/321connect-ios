@@ -38,7 +38,7 @@
         <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="bathroomId" inverseEntity="Child"/>
     </entity>
     <entity name="Behavior" representedClassName=".Behavior" syncable="YES" codeGenerationType="class">
-        <attribute name="currentdate" optional="YES" attributeType="String"/>
+        <attribute name="currentdate" optional="YES" attributeType="Date" defaultDateTimeInterval="696538200" usesScalarValueType="NO"/>
         <attribute name="moodType" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -116,7 +116,7 @@
         <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="feedId" inverseEntity="Child"/>
     </entity>
     <entity name="Journal" representedClassName=".Journal" syncable="YES" codeGenerationType="class">
-        <attribute name="currentdate" optional="YES" attributeType="String"/>
+        <attribute name="currentdate" optional="YES" attributeType="Date" defaultDateTimeInterval="696538260" usesScalarValueType="NO"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>

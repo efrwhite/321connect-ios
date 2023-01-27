@@ -1177,7 +1177,7 @@
                                                                         </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="buttonPressed:" destination="gG6-7y-bqh" eventType="touchUpInside" id="D7J-Ke-3iS"/>
-                                                                            <segue destination="bNm-qt-D9g" kind="show" id="cxc-dh-Eyy"/>
+                                                                            <segue destination="bNm-qt-D9g" kind="show" identifier="DevelopmentViewSegue" id="cxc-dh-Eyy"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIN-Sb-O07">
@@ -3625,13 +3625,13 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wk0-GU-Kjg">
                                 <rect key="frame" x="0.0" y="157" width="414" height="739"/>
                                 <connections>
-                                    <segue destination="Ij7-O0-eKT" kind="embed" identifier="SolidViewSegue" id="Wsz-1U-kdI"/>
+                                    <segue destination="Ij7-O0-eKT" kind="embed" identifier="FeedSegue" id="Wsz-1U-kdI"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vaa-Ds-YkC">
                                 <rect key="frame" x="0.0" y="157" width="414" height="739"/>
                                 <connections>
-                                    <segue destination="YNM-UO-XM1" kind="embed" identifier="FluidViewSegue" id="Fbd-Zv-H0J"/>
+                                    <segue destination="YNM-UO-XM1" kind="embed" identifier="FeedSegue" id="Fbd-Zv-H0J"/>
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="I57-gS-Q4b">
@@ -4018,6 +4018,7 @@
                     <navigationItem key="navigationItem" title="Activity" id="hLU-Mt-fEt"/>
                     <connections>
                         <outlet property="ActivityDuration" destination="Mih-SV-7tu" id="bVg-R8-TMO"/>
+                        <outlet property="CurrentDates" destination="9rn-g0-bnR" id="9kK-Fo-dbk"/>
                         <outlet property="Note" destination="TLQ-Nc-O06" id="rdI-c2-W1s"/>
                         <outlet property="activityselection" destination="k45-DV-aPc" id="4ec-bx-qzD"/>
                     </connections>
@@ -4474,6 +4475,7 @@
                         <barButtonItem key="rightBarButtonItem" title="History" style="plain" id="Yhg-Rf-cOp"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="DateBehaviour" destination="ltx-Oo-PQE" id="Nio-7g-213"/>
                         <outlet property="durationPicker" destination="aDl-j5-GJQ" id="LvJ-YX-62S"/>
                         <outlet property="moodButton" destination="J6n-Te-Ml6" id="pS8-fm-TrS"/>
                         <outlet property="notesTextView" destination="mp4-q7-W1r" id="whw-1j-3Fs"/>
@@ -6989,7 +6991,9 @@
                                 </connections>
                             </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zSm-Dr-sW7">
+
                                 <rect key="frame" x="18" y="91" width="374" height="42"/>
+
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="+" id="iAC-cE-zGE"/>

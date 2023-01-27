@@ -22,13 +22,16 @@ class SolidFeedViewController: UIViewController {
     @IBOutlet weak var indicateTextField: UITextField!
     var receivedString = ""
     var user = ""
+    var myStr = ""
     var feedArray = [Feed]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        receivedString = user
+        print("This is my Username Passed over to SOLID!",receivedString)
+        
         // assign numeric key pad for amount text field
         solidAmountTextField.keyboardType = UIKeyboardType.numberPad
         setFoodButton()
@@ -44,10 +47,9 @@ class SolidFeedViewController: UIViewController {
         // Do any additional setup after loading the view.
         indicateTextField.isEnabled = false
         indicateTextField.placeholder = ""
-        receivedString = user
-        print("This is my Username Passed over to SOLID!",receivedString)
+        
     }
-    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

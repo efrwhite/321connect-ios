@@ -65,7 +65,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //            print(password, type(of: password)) String
 //            print(username, type(of: username)) String
             let request: NSFetchRequest<Account> = Account.fetchRequest()
-            request.predicate = NSPredicate(format: "(userName CONTAINS[cd] %@) AND passWord CONTAINS[cd] %@", username, password )
+            request.predicate = NSPredicate(format: "(userName MATCHES [cd] %@) AND passWord MATCHES [cd] %@", username, password )
             request.fetchLimit = 1
             let user = (try? context.fetch(request))?.first
             let userinfo = user?.userName

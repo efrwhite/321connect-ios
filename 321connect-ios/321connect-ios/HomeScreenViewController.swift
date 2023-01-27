@@ -80,6 +80,7 @@ class HomeScreenViewController: UIViewController{
                 let displayVC = segue.destination as! FeedViewController
                 displayVC.user = receivedString
             }
+      
         if (segue.identifier == "BehaviorSegue1"){
             let displayVC = segue.destination as! BehaviorViewController
             displayVC.user = receivedString

@@ -56,9 +56,10 @@ class ResourcesTableViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = editButtonItem
         
-        loadItems()
+        
         receivedString = user
         print("This is my Username Passed over to Resources",receivedString)
+        loadItems()
     }
     
     @IBAction func addTapped(_ sender: Any) {
@@ -252,10 +253,11 @@ class ResourcesTableViewController: UITableViewController {
     func loadItems(){
         
         let request : NSFetchRequest<Resource> = Resource.fetchRequest()
-      
-        resourceArray = (try? context.fetch(request))!
+        request.predicate = NSPredicate(format: "(username MATCHES [cd] %@) ", receivedString )
+        let url = (try? context.fetch(request))!
+//        resourceArray = (try? context.fetch(request))!
          
-        for location in resourceArray {
+        for location in url {
             userResources.append(location.resourceTitle!)
             userLinks.append(location.resourcelink!)
         }
