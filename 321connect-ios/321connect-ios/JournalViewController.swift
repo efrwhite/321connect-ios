@@ -31,6 +31,7 @@ class JournalViewController: UIViewController {
         notesTextView.layer.borderColor = UIColor.black.cgColor
         receivedString = user
         print("Journal Passed:", receivedString)
+        
         /* * * * dynamic label current time/date * * * */
         dateLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .none)
             timeLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short)
@@ -54,15 +55,42 @@ class JournalViewController: UIViewController {
 //        print("TITLE: \(journalTitle)")
 //        print("NOTES: \(journalNotes)")
         
-        let new_journalEntry = Journal(context: self.context)
-        new_journalEntry.username = receivedString
-        new_journalEntry.title = titleTextField.text!
-        new_journalEntry.notes = notesTextView.text!
+//        let new_journalEntry = Journal(context: self.context)
+//        new_journalEntry.username = receivedString
+//        new_journalEntry.title = titleTextField.text!
+//        new_journalEntry.notes = notesTextView.text!
+//
+//        self.journalArray.append(new_journalEntry)
+//
+//
+//        self.SaveItems()
         
-        self.journalArray.append(new_journalEntry)
-        
-        
-        self.SaveItems()
+        // here are alerts for success or errors on view at save tapped
+        if titleTextField.text!.isEmpty || notesTextView.text.isEmpty {
+            let alert = UIAlertController(title: "Error", message: "Please complete all fields", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(OKAction)
+            present(alert, animated: true)
+        } else {
+            
+            // moved database code here (-edward)
+            let new_journalEntry = Journal(context: self.context)
+            new_journalEntry.username = receivedString
+            new_journalEntry.title = titleTextField.text!
+            new_journalEntry.notes = notesTextView.text!
+            
+            self.journalArray.append(new_journalEntry)
+            
+            
+            self.SaveItems()
+            
+            let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(OKAction)
+            present(alert, animated: true)
+        }
     }
     
     func SaveItems(){

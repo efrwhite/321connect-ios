@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
   
     @IBOutlet weak var DiaperNotes: UITextView!
     @IBOutlet weak var QuantityField: UITextField!
@@ -30,6 +30,10 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     DiaperNotes.clipsToBounds = true
     DiaperNotes.layer.borderWidth = 1
     DiaperNotes.layer.borderColor = UIColor.black.cgColor
+        
+    // Gesture to collapse/dismiss keyboard on click outside
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+    view.addGestureRecognizer(tapGesture)
 
     }
 
@@ -81,7 +85,16 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         QuantityUnits.changesSelectionAsPrimaryAction = true
     }
   
- 
+    // Enter dismisses keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
     @objc func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
@@ -118,5 +131,4 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             print("Error fetching data \(error)")
         }
     }
-
  }

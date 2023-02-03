@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class SolidFeedViewController: UIViewController {
+class SolidFeedViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var notesTextField: UITextView!
     @IBOutlet weak var solidAmountTextField: UITextField!
@@ -44,6 +44,10 @@ class SolidFeedViewController: UIViewController {
         notesTextField.layer.borderWidth = 1
         notesTextField.layer.borderColor = UIColor.black.cgColor
         
+        // Gesture to collapse/dismiss keyboard on click outside
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+        
         // Do any additional setup after loading the view.
         indicateTextField.isEnabled = false
         indicateTextField.placeholder = ""
@@ -52,6 +56,17 @@ class SolidFeedViewController: UIViewController {
    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // Enter dismisses keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     // MARK: Button functions

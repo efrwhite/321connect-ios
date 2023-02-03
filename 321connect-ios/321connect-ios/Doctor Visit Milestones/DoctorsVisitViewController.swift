@@ -31,7 +31,10 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var TempUnits: UIButton!
     @IBOutlet weak var Temp: UITextField!
     @IBOutlet weak var milestoneVisit: UIPickerView!
-    var pickerIdentifier: String?
+    @IBOutlet weak var saveButton: UIButton!
+    var pickerIdentifier: String?   // visit
+    var providerValue: String?      // provider
+    var proTypeValue: String?       // provider type
     
     @IBOutlet weak var milestonePicker: UIPickerView!
     @IBOutlet weak var formsTableView: UITableView!
@@ -422,8 +425,11 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         formsTableView.dataSource = self
         formsTableView.delegate = self
 
-        formsTableView.rowHeight = UITableView.automaticDimension
-        formsTableView.estimatedRowHeight = 600
+        
+//        formsTableView.estimatedRowHeight = 500
+//        formsTableView.rowHeight = UITableView.automaticDimension
+        
+        
 
         
         self.formsTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
@@ -574,6 +580,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         return 0
     }
     
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        let cell = tableView.cellForRow(at: indexPath)
+//        if cell?.reuseIdentifier == "FormQuestionCell" {
+//            return 250
+//        }
+//        return UITableView.automaticDimension
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -581,19 +594,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Newborn"{
             if(indexPath.row == 0) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-//                cell.formTextLabel?.text = newbornForm[indexPath.row]
                 cell.textLabel!.text = newbornForm[indexPath.row]
-                  
-                
-//                cell.formTextLabel.translatesAutoresizingMaskIntoConstraints = false
-
-//                NSLayoutConstraint.activate([
-//                    cell.formTextLabel.leadingAnchor.constraint(equalTo: cell.leadingAnchor,constant: 20),
-//                    cell.formTextLabel.trailingAnchor.constraint(equalTo: cell.trailingAnchor,constant: 20),
-//                    cell.formTextLabel.topAnchor.constraint(equalTo: cell.topAnchor,constant: 20),
-//                    cell.formTextLabel.bottomAnchor.constraint(equalTo: cell.bottomAnchor,constant: 20)])
-                
-//                cell.formTextLabel.numberOfLines = 0
                 cell.selectionStyle = .none
                 
                 return cell
@@ -1074,6 +1075,50 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) 
         cell.selectionStyle = .none
         return cell
+    }
+    
+    // MARK: - Button functions * * * * * * * * * * * * * * * * * * * * * * * * * * *
+    
+    @IBAction func saveTapped(_ sender: Any) {
+        
+        /* for this view: will string all data and submit on save tapped */
+        let date = DateOfVisit.date
+        
+        // provider name
+        let selectedRow0 = Provider.selectedRow(inComponent: 0)
+            providerValue = Provider.delegate?.pickerView!(Provider, titleForRow: selectedRow0, forComponent: 0)
+        // provider type
+        let selectedRow1 = ProviderType.selectedRow(inComponent: 0)
+            proTypeValue = ProviderType.delegate?.pickerView!(ProviderType, titleForRow: selectedRow1, forComponent: 0)
+        
+        let height = Height.text!
+        let hUnits = HeightUnits.currentTitle!
+
+        let weight = Weight.text!
+        let wUnits = WeightUnits.currentTitle!
+
+        let head = HeadCirc.text!
+        let hcUnits = HCUnits.currentTitle!
+
+        let temp = Temp.text!
+        let tUnits = TempUnits.currentTitle!
+
+        let visit = pickerIdentifier
+        
+        // save table view information below //
+        if pickerIdentifier == "Newborn"{
+            
+        }
+        
+        
+        // ********** print to console (debug) ****************
+        print("DATE: \(date)")
+        print("PROVIDER: \(selectedRow0)")      // defaulted to row number until provider name list secured
+        print("SPECIALTY: \(proTypeValue!)")
+        print("HEIGHT: \(height) \(String(describing: hUnits))")
+        print("WEIGHT: \(weight) \(String(describing: wUnits))")
+        print("HEAD: \(head) \(String(describing: hcUnits))")
+        print("TEMP: \(temp) \(String(describing: tUnits))")
     }
 }
     
