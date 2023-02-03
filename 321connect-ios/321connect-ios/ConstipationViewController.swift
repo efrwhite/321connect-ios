@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class ConstipationViewController: UIViewController {
+class ConstipationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var ConstiNotes: UITextView!
     @IBOutlet weak var DoLSConsti: UIDatePicker!
     @IBOutlet weak var TreatPlan: UITextField!
@@ -25,6 +25,21 @@ class ConstipationViewController: UIViewController {
         ConstiNotes.clipsToBounds = true
         ConstiNotes.layer.borderWidth = 1
         ConstiNotes.layer.borderColor = UIColor.black.cgColor
+        
+        // Gesture to collapse/dismiss keyboard on click outside
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    // Enter dismisses keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
    
 
