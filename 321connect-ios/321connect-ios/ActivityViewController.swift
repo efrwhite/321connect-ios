@@ -66,7 +66,8 @@ class ActivityViewController: UIViewController {
             UIAction(title:"Out for a walk", handler: optional),
             UIAction(title:"Listening to a story", handler: optional),
             UIAction(title:"Having a bath", handler: optional),
-            UIAction(title:"Brushing Teeth", handler: optional)
+            UIAction(title:"Brushing Teeth", handler: optional),
+            UIAction(title:"Other", handler: optional)
         ])
         activityselection.showsMenuAsPrimaryAction = true
         activityselection.changesSelectionAsPrimaryAction = true

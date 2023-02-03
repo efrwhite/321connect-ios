@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class FluidFeedViewController: UIViewController {
+class FluidFeedViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var fluidTypeTextField: UITextField!
     @IBOutlet weak var fluidAmountTextField: UITextField!
@@ -40,9 +40,9 @@ class FluidFeedViewController: UIViewController {
         notesTextField.layer.borderWidth = 1
         notesTextField.layer.borderColor = UIColor.black.cgColor
         
-        // table views load as hidden
-//        measureOptionsTableView.isHidden = true
-//        modeOptionsTableView.isHidden = true
+        // Gesture to collapse/dismiss keyboard on click outside
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
         
         // Do any additional setup after loading the view.
         indicateTextField.isEnabled = false
@@ -69,6 +69,17 @@ class FluidFeedViewController: UIViewController {
         
         feedMeasureButton.showsMenuAsPrimaryAction = true
         feedMeasureButton.changesSelectionAsPrimaryAction = true
+    }
+    
+    // Enter dismisses keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func setModeButton() {

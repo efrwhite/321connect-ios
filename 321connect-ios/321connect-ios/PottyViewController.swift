@@ -9,13 +9,14 @@ import Foundation
 import UIKit
 import CoreData
 
-class PottyViewController: UIViewController {
+class PottyViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var PottyNotes: UITextView!
     @IBOutlet weak var Accident: UISwitch!
     @IBOutlet weak var PottyDuration: UIDatePicker!
     var PottyArray = [Bathroom]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        PottyDuration.countDownDuration
@@ -24,6 +25,21 @@ class PottyViewController: UIViewController {
         PottyNotes.clipsToBounds = true
         PottyNotes.layer.borderWidth = 1
         PottyNotes.layer.borderColor = UIColor.black.cgColor
+        
+        // Gesture to collapse/dismiss keyboard on click outside
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    // Enter dismisses keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
    
  
