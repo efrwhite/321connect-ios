@@ -7,9 +7,11 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class ProfileType {
     var profile: String?
+//    var name: [String]?
     var name: [String]?
     
     init(profile: String, name: [String]){
@@ -21,26 +23,44 @@ class ProfileType {
 class ProfilesViewController: UIViewController {
     
     @IBOutlet weak var profilesTableView: UITableView!
-    
+    var receivedString = ""
+    var user = ""
     var profileType = [ProfileType]()
+    var ChildName = [String]()
+    var ParentName = [String]()
+    var ChildArray = [Child]()
+    var ParentArray = [Parent]()
+    var selected_Child = ""
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+   //######################################
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        receivedString = user
+        loadItems()
+        print("PRofiles Passed:",receivedString)
+        print("You Entered Profiles!")
+//        print("Child Name Array:", ChildName)
+        print("Parent Name Array", ParentName)
+//        print("TYPE", type(of: ChildName))
         // Do any additional setup after loading the view, typically from a nib.
         
         // ******************************** hard code for debug ********************************
-        profileType.append(ProfileType.init(profile: "Children", name: ["Edward", "Dallas"]))
-        profileType.append(ProfileType.init(profile: "Parents/Caregivers", name: ["Jackson", "Charlotte"]))
-        profileType.append(ProfileType.init(profile: "Providers", name: ["Brianna"]))
-        // ******************************** hard code for debug ********************************
         
+            profileType.append(ProfileType.init(profile: "Children", name: ChildName))
+            profileType.append(ProfileType.init(profile: "Parents/Caregivers", name: ParentName))
+            profileType.append(ProfileType.init(profile: "Providers", name: ["Edward"]))
+   
+        
+        // ******************************** hard code for debug ********************************
+      
         let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(tableViewEditButtonTapped))
         navigationItem.rightBarButtonItem = editButton
-
-
+        loadItems()
+//        ChildName.removeAll()
     }
-    
+ //#######################################
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -48,8 +68,21 @@ class ProfilesViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+        loadItems()
     }
-
+ //#######################################
+    //PASSING DATA
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showChildVC"){
+            let displayVC = segue.destination as! ChildView
+            displayVC.user = receivedString
+        }
+        if(segue.identifier == "showParentsVC"){
+            let displayVC = segue.destination as! Parent_Caregiver_ViewController
+            displayVC.user = receivedString
+        }
+    }
+//#######################################
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
@@ -57,6 +90,41 @@ class ProfilesViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
     }
+//#######################################
+    func loadItems(){
+        let request : NSFetchRequest<Child> = Child.fetchRequest()
+        let parentrequest : NSFetchRequest<Parent> = Parent.fetchRequest()
+        request.predicate = NSPredicate(format: "(username MATCHES [cd] %@)", receivedString )
+        parentrequest.predicate = NSPredicate(format: "(userName MATCHES [cd] %@)", receivedString )
+        let parent = (try? context.fetch(parentrequest))!
+        let childrequest = (try? context.fetch(request))!
+        for names in childrequest {
+            ChildName.append(names.firstName!)
+        }
+        for parents in parent{
+            ParentName.append(parents.firstName!)
+        }
+//        print("CHILD NAME ARRAY ",ChildName)
+//        print("Parent NAME ARRAY ",ParentName)
+        do{
+            ChildArray = try context.fetch(request)
+            ParentArray = try context.fetch(parentrequest)
+            
+        } catch{
+            print("Error fetching data \(error)")
+        }
+    }
+    
+      func SaveItems(){
+         
+          do {
+              try context.save()
+          } catch {
+              print("Error Saving context \(error)")
+          }
+          
+          
+      }
     
 //    @IBAction func editTapped(_ sender: Any, indexPath: IndexPath) {
 //        // Get the index path of the cell that contains the button
@@ -75,6 +143,7 @@ class ProfilesViewController: UIViewController {
 //                break
 //        }
 //    }
+    
 }
     
 extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
@@ -85,37 +154,68 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     }
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
+        //bri added this
+        tableView.rowHeight = 45;
         return profileType[section].name?.count ?? 0
         
     }
     
-    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print(indexPath.row)
+        //Access the array that you have used to fill the tableViewCell
+        selected_Child = ChildName[indexPath.row]
+        print("CHILD SELECTED:",selected_Child)
+//        print(ChildName[indexPath.row])
+    }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
     /* Deletion editing style w/ alert */
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
-            
+           
             // alert user for deletion confirmation
             let alert = UIAlertController(title: "Delete profile?", message: "This profile will be deleted from this account. This action cannot be undone. ", preferredStyle: .alert)
             
             // confirm delete
-            let yesAction = UIAlertAction(title: "Delete", style: .default) { _ in
+            let yesAction = UIAlertAction(title: "Delete", style: .default) { [self] _ in
                 
                 // Delete item from data source
                 self.profilesTableView.beginUpdates()
-                self.profileType[indexPath.section].name?.remove(at: indexPath.row)
+                let childsname = profileType[indexPath.section].name?.remove(at: indexPath.row)
+                //CORE DATA DELETION SECTION
+                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Child")
+                let parent_request = NSFetchRequest<NSFetchRequestResult>(entityName: "Parent")
+                 request.predicate = NSPredicate(format:"username = %@ AND firstName = %@", receivedString,childsname!)
+                parent_request.predicate = NSPredicate(format:"userName = %@ AND firstName = %@", receivedString,childsname!)
+                    request.fetchLimit = 1
+                parent_request.fetchLimit = 1
+                    let link = (try? context.fetch(request))?.first
+               
+//                    let plink = (try? context.fetch(parent_request))?.first
+                    
                 
+//                self.profileType[indexPath.section].name?.remove(at: indexPath.row)
                 // Remove row from table view
                 self.profilesTableView.deleteRows(at: [indexPath], with: .automatic)
                 
+              
+                
                 // Reload table view contents after update
+                
                 self.profilesTableView.reloadData()
                 self.profilesTableView.endUpdates()
+                //This does a check between two entities in the database Parent and CHild
+                if link == nil{
+                    let link = (try? context.fetch(parent_request))?.first
+                    context.delete(link as! NSManagedObject)
+                }
+                else{
+                    context.delete(link as! NSManagedObject)
+                }
+                SaveItems()
             }
             
             // dismiss deletion
@@ -133,19 +233,23 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
             // assign profile name to row
             cell.nameLabel.text = profileType[indexPath.section].name?[indexPath.row]
         
+        
             // Set the allowsSelection property of the cells in the sections [2,3] to false
                 if indexPath.section == 0 {
                     cell.selectionStyle = .default
+                    
                 } else {
                     cell.selectionStyle = .none
                 }
-        
+            
             // edit button (need passed data from db)
             cell.editButton.tag = indexPath.section
-            cell.editButton.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
+           cell.editButton.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
+       
 
             return cell
         }
+  
     
     @objc
     func editButtonPressed(sender:UIButton) {
@@ -199,6 +303,7 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
         }
     }
     
+    
     @objc func tableViewEditButtonTapped(_ sender: Any) {
         profilesTableView.isEditing = !profilesTableView.isEditing
     }
@@ -207,8 +312,7 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     // MARK: - Navigation
     
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-    }
+   
+    
 }
     
