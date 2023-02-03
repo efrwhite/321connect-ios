@@ -18,6 +18,8 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var PhoneNumber: UITextField!
     @IBOutlet weak var Username: UITextField!
     @IBOutlet weak var Password: UITextField!
+    var receivedString = ""
+    var user = ""
     //@IBOutlet weak var SaveButton: UIButton!
     var pickerData: [String] = [String]()
     var ParentArray = [Parent]()
@@ -26,7 +28,8 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        receivedString = user
+        print("Parent Passed:", receivedString)
         // profile image mask and style
         ParentPicture.layer.borderWidth = 1.0
         ParentPicture.layer.masksToBounds = false
@@ -75,7 +78,7 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
         new_parent.firstName = FirstName.text
         new_parent.lastName = LastName.text
         new_parent.phoneNumber = PhoneNumber.text
-        new_parent.userName = Username.text
+        new_parent.userName = receivedString
         new_parent.password = Password.text
         // new_parent.accountId = //Delegate of Account
         //Dont forget the Parent Image

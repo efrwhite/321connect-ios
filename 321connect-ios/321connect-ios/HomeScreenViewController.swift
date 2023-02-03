@@ -93,5 +93,9 @@ class HomeScreenViewController: UIViewController{
             let displayVC = segue.destination as! ActivityViewController
             displayVC.user = receivedString
         }
+        if (segue.identifier == "ProfilesViewSegue"){
+            let displayVC = segue.destination as! ProfilesViewController
+            displayVC.user = receivedString
+        }
     }
 }

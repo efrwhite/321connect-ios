@@ -22,6 +22,8 @@ class ChildView: UIViewController, UITextFieldDelegate {
     private var datePicker: UIDatePicker?
     private var datePicker2: UIDatePicker?
     @IBOutlet weak var BloodType: UIButton!
+    var receivedString = ""
+    var user = ""
     // var bloodTypes = ["A+","A-","B+","B-","AB+","AB-","O+","O-"]
     //where ever U have your print statements make a object to store the information into child
     var ChildArray = [Child]()
@@ -38,7 +40,8 @@ class ChildView: UIViewController, UITextFieldDelegate {
         ChildImage.layer.borderColor = UIColor.white.cgColor
         ChildImage.layer.cornerRadius = ChildImage.frame.size.width/2
         ChildImage.clipsToBounds = true
-        
+        receivedString = user
+        print("This is CHILD Passed:",receivedString)
         // Gesture to collapse/dismiss keyboard on click outside
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
@@ -85,7 +88,12 @@ class ChildView: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.identifier == "showChildVC"){
+//            let displayVC = segue.destination as! ChildView
+//            displayVC.user = receivedString
+//        }
+//    }
     // dismiss Keyboard
     @objc func dismissKeyboard() {
         view.endEditing(true)
@@ -119,6 +127,7 @@ class ChildView: UIViewController, UITextFieldDelegate {
         
         
         let new_child = Child(context: self.context)
+        new_child.username = receivedString
         new_child.firstName = FirstName.text
         new_child.lastName = LastName.text
         new_child.gender = OnOff.isEnabled
@@ -127,7 +136,6 @@ class ChildView: UIViewController, UITextFieldDelegate {
         new_child.birthday = birthday.date
         new_child.allergies = Allergies.text
         new_child.medication = Medications.text
-       // come back to image saving new_child.image = ChildImage
         new_child.image = ChildImage.image
         self.ChildArray.append(new_child)
         self.SaveItems()

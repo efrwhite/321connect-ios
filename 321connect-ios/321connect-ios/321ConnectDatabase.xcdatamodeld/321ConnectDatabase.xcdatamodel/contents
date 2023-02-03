@@ -20,7 +20,7 @@
         <attribute name="notes" optional="YES" attributeType="String" defaultValueString="NA"/>
         <attribute name="units" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="activityId" inverseEntity="Child"/>
+        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Bathroom" representedClassName=".Bathroom" syncable="YES" codeGenerationType="class">
         <attribute name="bathroomNotes" optional="YES" attributeType="String" defaultValueString="N/A"/>
@@ -35,7 +35,7 @@
         <attribute name="treatment" optional="YES" attributeType="String" defaultValueString="N/A"/>
         <attribute name="units" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="bathroomId" inverseEntity="Child"/>
+        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Behavior" representedClassName=".Behavior" syncable="YES" codeGenerationType="class">
         <attribute name="currentdate" optional="YES" attributeType="Date" defaultDateTimeInterval="696538200" usesScalarValueType="NO"/>
@@ -44,7 +44,7 @@
         <attribute name="time" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="behaviorId" inverseEntity="Child"/>
+        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Child" representedClassName=".Child" syncable="YES" codeGenerationType="class">
         <attribute name="allergies" optional="YES" attributeType="String"/>
@@ -58,18 +58,6 @@
         <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="medication" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="activityId" optional="YES" toMany="YES" minCount="1" maxCount="100000000" deletionRule="Cascade" destinationEntity="Activity" inverseName="childId" inverseEntity="Activity"/>
-        <relationship name="bathroomId" optional="YES" toMany="YES" minCount="1" maxCount="100000000" deletionRule="Cascade" destinationEntity="Bathroom" inverseName="childId" inverseEntity="Bathroom"/>
-        <relationship name="behaviorId" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Behavior" inverseName="childId" inverseEntity="Behavior"/>
-        <relationship name="developmentId" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Development" inverseName="childId" inverseEntity="Development"/>
-        <relationship name="feedId" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Feed" inverseName="childId" inverseEntity="Feed"/>
-        <relationship name="journalId" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Journal" inverseName="childId" inverseEntity="Journal"/>
-        <relationship name="messageId" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Message" inverseName="childId" inverseEntity="Message"/>
-        <relationship name="parents" maxCount="1" deletionRule="Nullify" destinationEntity="Parent" inverseName="children" inverseEntity="Parent"/>
-        <relationship name="providerId" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Provider" inverseName="childId" inverseEntity="Provider"/>
-        <relationship name="resourceId" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Resource" inverseName="childId" inverseEntity="Resource"/>
-        <relationship name="sleepId" toMany="YES" minCount="1" maxCount="100" deletionRule="Cascade" destinationEntity="Sleep" inverseName="childId" inverseEntity="Sleep"/>
-        <relationship name="vacId" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vaccination" inverseName="childId" inverseEntity="Vaccination"/>
     </entity>
     <entity name="Development" representedClassName=".Development" syncable="YES" codeGenerationType="class">
         <attribute name="firstAffection" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -99,7 +87,7 @@
         <attribute name="firstWord" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="developmentId" inverseEntity="Child"/>
+        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Feed" representedClassName="Feed" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="String"/>
@@ -113,14 +101,14 @@
         <attribute name="otherNotes" optional="YES" attributeType="String"/>
         <attribute name="units" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="feedId" inverseEntity="Child"/>
+        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Journal" representedClassName=".Journal" syncable="YES" codeGenerationType="class">
         <attribute name="currentdate" optional="YES" attributeType="Date" defaultDateTimeInterval="696538260" usesScalarValueType="NO"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="journalId" inverseEntity="Child"/>
+        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Med" representedClassName=".Medical" syncable="YES" codeGenerationType="class">
         <attribute name="childAge" optional="YES" attributeType="String"/>
@@ -168,7 +156,7 @@
     <entity name="Message" representedClassName=".Message" syncable="YES" codeGenerationType="class">
         <attribute name="message_Block" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="messageId" inverseEntity="Child"/>
+        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Parent" representedClassName=".Parent" syncable="YES" codeGenerationType="class">
         <attribute name="firstName" optional="YES" attributeType="String"/>
@@ -178,7 +166,7 @@
         <attribute name="phoneNumber" optional="YES" attributeType="String"/>
         <attribute name="userName" optional="YES" attributeType="String"/>
         <relationship name="accountId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="parentId" inverseEntity="Account"/>
-        <relationship name="children" optional="YES" toMany="YES" minCount="1" maxCount="100" deletionRule="Nullify" destinationEntity="Child" inverseName="parents" inverseEntity="Child"/>
+        <relationship name="children" optional="YES" toMany="YES" minCount="1" maxCount="100" deletionRule="Cascade" destinationEntity="Child"/>
     </entity>
     <entity name="Provider" representedClassName=".Provider" syncable="YES" codeGenerationType="class">
         <attribute name="address1" optional="YES" attributeType="String"/>
@@ -194,13 +182,13 @@
         <attribute name="username" optional="YES" attributeType="String"/>
         <attribute name="website" optional="YES" attributeType="String"/>
         <attribute name="zipCode" optional="YES" attributeType="String"/>
-        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="providerId" inverseEntity="Child"/>
+        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Resource" representedClassName=".Resource" syncable="YES" codeGenerationType="class">
         <attribute name="resourcelink" optional="YES" attributeType="String"/>
         <attribute name="resourceTitle" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="resourceId" inverseEntity="Child"/>
+        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Sleep" representedClassName=".Sleep" syncable="YES" codeGenerationType="class">
         <attribute name="cPAP" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -218,11 +206,11 @@
         <attribute name="supplements" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="unit" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="childId" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child" inverseName="sleepId" inverseEntity="Child"/>
+        <relationship name="childId" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Vaccination" representedClassName=".Vaccination" syncable="YES" codeGenerationType="class">
         <attribute name="vacImage" optional="YES" attributeType="Transformable"/>
         <attribute name="vacSystemDate" optional="YES" attributeType="String"/>
-        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="vacId" inverseEntity="Child"/>
+        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
 </model>
