@@ -10,7 +10,8 @@ import Foundation
 import UIKit
  
 class ChildView: UIViewController, UITextFieldDelegate {
- 
+    
+    var isFirstTimeSignUp = false
     @IBOutlet weak var ChildImage: UIImageView!
     @IBOutlet weak var birthday: UIDatePicker!
     @IBOutlet weak var Duedate: UIDatePicker!
@@ -45,6 +46,13 @@ class ChildView: UIViewController, UITextFieldDelegate {
         // Gesture to collapse/dismiss keyboard on click outside
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
+        // hide navigation item back button on first sign up
+              if isFirstTimeSignUp{
+                  navigationItem.hidesBackButton = true
+              }
+
+      /* Needed in Child's viewdidload() to prevent the back button for showing up and allowing the user to go
+         back to the parent view which could cause issues! */
     }
     
     // MARK: - BUTTON FUNCTIONS --------------------
@@ -98,50 +106,78 @@ class ChildView: UIViewController, UITextFieldDelegate {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          if segue.identifier == "childToHome" {
+              let navController = segue.destination as! UINavigationController
+              let homeScreenVC = navController.topViewController as! HomeScreenViewController
+              
+              // pass data to HomeScreenViewController if necessary
+              // possible name or user (database)
+          }
+       }
+
+   /* This code prepares the childToHome segue which is the first signin after creating
+      child and directing to the home view. Here you can pass any information needed. Good Luck!*/
  
     @IBAction func SaveButton(_ sender: UIButton) {
-        
-//        let FN = FirstName.text!
-//        let LN = LastName.text!
-//        let DD = Duedate.date
-//        let BT = BloodType.currentTitle
-//        let BD = birthday.date
-//        let Al = Allergies.text!
-//        let MD = Medications.text!
-//
-//        // this will need to be put in a if else statement
-//        let boyslider = OnOff.titleForSegment(at: 0)
-//        let girlslider = OnOff.titleForSegment(at: 1)
-    
-        
-        
-//        print("This is the firstName: \(FN)")
-//        print("This is the firstName: \(LN)")
-//        print("This is the Birthdate: \(BD)")
-//        print("This is the DueDate: \(DD)")
-//        print("This is the Allergies: \(Al)")
-//        print("This is the Medications: \(MD)")
-//        print("BloodType: \(BT)")
-//        print("This is the slider for boy: \(boyslider)")
-//        print("This is the slider for girl: \(girlslider)")
-        
-        
-        let new_child = Child(context: self.context)
-        new_child.username = receivedString
-        new_child.firstName = FirstName.text
-        new_child.lastName = LastName.text
-        new_child.gender = OnOff.isEnabled
-        new_child.bloodType = BloodType.currentTitle
-        new_child.dueDate = Duedate.date
-        new_child.birthday = birthday.date
-        new_child.allergies = Allergies.text
-        new_child.medication = Medications.text
-        new_child.image = ChildImage.image
-        self.ChildArray.append(new_child)
-        self.SaveItems()
-      
+            // here are alerts for success or errors on view at save tapped
+            if FirstName.text!.isEmpty || LastName.text!.isEmpty {
+                let alert = UIAlertController(title: "Error", message: "Please provide the child's name", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default)
+                alert.addAction(OKAction)
+                present(alert, animated: true)
+                
+            } else {
+                if isFirstTimeSignUp {
+                    let new_child = Child(context: self.context)
+                    new_child.username = receivedString
+                    new_child.firstName = FirstName.text
+                    new_child.lastName = LastName.text
+                    new_child.gender = OnOff.isEnabled
+                    new_child.bloodType = BloodType.currentTitle
+                    new_child.dueDate = Duedate.date
+                    new_child.birthday = birthday.date
+                    new_child.allergies = Allergies.text
+                    new_child.medication = Medications.text
+                    new_child.image = ChildImage.image
+                    self.ChildArray.append(new_child)
+                    self.SaveItems()
+                    
+                    let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+                        self.performSegue(withIdentifier: "childToHome", sender: nil)
+                    }
+                    
+                    alert.addAction(OKAction)
+                    present(alert, animated: true)
+                    
+                } else {
+                    let new_child = Child(context: self.context)
+                    new_child.username = receivedString
+                    new_child.firstName = FirstName.text
+                    new_child.lastName = LastName.text
+                    new_child.gender = OnOff.isEnabled
+                    new_child.bloodType = BloodType.currentTitle
+                    new_child.dueDate = Duedate.date
+                    new_child.birthday = birthday.date
+                    new_child.allergies = Allergies.text
+                    new_child.medication = Medications.text
+                    new_child.image = ChildImage.image
+                    self.ChildArray.append(new_child)
+                    self.SaveItems()
+                    
+                    let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+                        //                self.delegate?.childAdded()
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    
+                    alert.addAction(OKAction)
+                    present(alert, animated: true)
+                }
+            }
+        }
     }
-}
 
 extension ChildView: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -154,7 +190,6 @@ extension ChildView: UIImagePickerControllerDelegate, UINavigationControllerDele
         picker.dismiss(animated: true)
     }
     func SaveItems(){
-       
         do {
             try context.save()
         } catch {

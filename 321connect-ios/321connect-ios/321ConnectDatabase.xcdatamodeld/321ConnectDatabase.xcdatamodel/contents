@@ -89,29 +89,9 @@
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
-    <entity name="Feed" representedClassName="Feed" syncable="YES" codeGenerationType="class">
-        <attribute name="amount" optional="YES" attributeType="String"/>
-        <attribute name="consumption" optional="YES" attributeType="String"/>
-        <attribute name="eatType" optional="YES" attributeType="String"/>
-        <attribute name="iron" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="modeOfEating" optional="YES" attributeType="String"/>
-        <attribute name="multivitamin" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="notes" optional="YES" attributeType="String"/>
-        <attribute name="other" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="otherNotes" optional="YES" attributeType="String"/>
-        <attribute name="units" optional="YES" attributeType="String"/>
-        <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
-    </entity>
-    <entity name="Journal" representedClassName=".Journal" syncable="YES" codeGenerationType="class">
-        <attribute name="currentdate" optional="YES" attributeType="Date" defaultDateTimeInterval="696538260" usesScalarValueType="NO"/>
-        <attribute name="notes" optional="YES" attributeType="String"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
-        <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
-    </entity>
-    <entity name="Med" representedClassName=".Medical" syncable="YES" codeGenerationType="class">
+    <entity name="DocVisit" representedClassName=".DocVisit" syncable="YES" codeGenerationType="class">
         <attribute name="childAge" optional="YES" attributeType="String"/>
+        <attribute name="childName" optional="YES" attributeType="String"/>
         <attribute name="dateofVisit" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="eighteenMonths" optional="YES" attributeType="String"/>
         <attribute name="eightYears" optional="YES" attributeType="String"/>
@@ -142,8 +122,30 @@
         <attribute name="twelveYears" optional="YES" attributeType="String"/>
         <attribute name="twoMonths" optional="YES" attributeType="String"/>
         <attribute name="twoYears" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
         <attribute name="weight" optional="YES" attributeType="String"/>
         <attribute name="weightUnits" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Feed" representedClassName="Feed" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" optional="YES" attributeType="String"/>
+        <attribute name="consumption" optional="YES" attributeType="String"/>
+        <attribute name="eatType" optional="YES" attributeType="String"/>
+        <attribute name="iron" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="modeOfEating" optional="YES" attributeType="String"/>
+        <attribute name="multivitamin" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="other" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="otherNotes" optional="YES" attributeType="String"/>
+        <attribute name="units" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
+    </entity>
+    <entity name="Journal" representedClassName=".Journal" syncable="YES" codeGenerationType="class">
+        <attribute name="currentdate" optional="YES" attributeType="Date" defaultDateTimeInterval="696538260" usesScalarValueType="NO"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Medication" representedClassName="Medication" syncable="YES" codeGenerationType="class">
         <attribute name="medDosage" optional="YES" attributeType="String"/>

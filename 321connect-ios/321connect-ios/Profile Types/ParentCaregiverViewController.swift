@@ -12,6 +12,7 @@ import CoreData
 
 class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
     
+    var isFirstTimeSignUp = false
     @IBOutlet weak var ParentPicture: UIImageView!
     @IBOutlet weak var FirstName: UITextField!
     @IBOutlet weak var LastName: UITextField!
@@ -42,9 +43,9 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tapGesture)
     }
     override func didReceiveMemoryWarning() {
-          super.didReceiveMemoryWarning()
-          // Dispose of any resources that can be recreated.
-      }
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     // MARK: - BUTTON FUNCTIONS
     
@@ -66,26 +67,62 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "parentToChild")
+        {
+            let displayVC = segue.destination as! ChildView
+            //            displayVC.user = usernameTextField.text!
+            displayVC.isFirstTimeSignUp = true
+        }
+    }
     
     @IBAction func Save_Button(_ sender: Any) {
-//        let firstName = FirstName.text
-//        let lastName = LastName.text
-//        let phonenumber = PhoneNumber.text
-//        let username = Username.text
-//        let password = Password.text
-//        print("firstname: \(firstName), lastname: \(lastName), PhoneNumber: \(phonenumber), Username: \(username), password: \(password)")
-        let new_parent = Parent(context: self.context)
-        new_parent.firstName = FirstName.text
-        new_parent.lastName = LastName.text
-        new_parent.phoneNumber = PhoneNumber.text
-        new_parent.userName = receivedString
-        new_parent.password = Password.text
-        // new_parent.accountId = //Delegate of Account
-        //Dont forget the Parent Image
-        new_parent.parentImage = ParentPicture.image
-        self.ParentArray.append(new_parent)
-        self.SaveItems()
         
+        // first time sign up -> show child VC
+        if isFirstTimeSignUp {
+            let new_parent = Parent(context: self.context)
+            new_parent.firstName = FirstName.text
+            new_parent.lastName = LastName.text
+            new_parent.phoneNumber = PhoneNumber.text
+            new_parent.userName = receivedString
+            new_parent.password = Password.text
+            // new_parent.accountId = //Delegate of Account
+            //Dont forget the Parent Image
+            new_parent.parentImage = ParentPicture.image
+            self.ParentArray.append(new_parent)
+            self.SaveItems()
+            
+            // Perform segue to different screen -> child
+            let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+                self.performSegue(withIdentifier: "parentToChild", sender: nil)
+            }
+            
+            alert.addAction(OKAction)
+            present(alert, animated: true)
+            
+            // else pop view -> back to profiles
+        } else {
+            let new_parent = Parent(context: self.context)
+            new_parent.firstName = FirstName.text
+            new_parent.lastName = LastName.text
+            new_parent.phoneNumber = PhoneNumber.text
+            new_parent.userName = receivedString
+            new_parent.password = Password.text
+            // new_parent.accountId = //Delegate of Account
+            //Dont forget the Parent Image
+            new_parent.parentImage = ParentPicture.image
+            self.ParentArray.append(new_parent)
+            self.SaveItems()
+            
+            let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+            alert.addAction(OKAction)
+            present(alert, animated: true)
+        }
     }
 }
 
