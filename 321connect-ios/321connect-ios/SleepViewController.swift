@@ -94,15 +94,40 @@ class SleepViewController: UIViewController {
         let sleepDate = dateTimePicker.date
         dateFormatter.dateFormat = "MM/dd/YY"
         let stringsleepDate = dateFormatter.string(from:sleepDate)
-//        let s = String(describing: durationPicker.countDownDuration)
-//        print(s)
-//
-//
-//        if (snoreSwitch.isOn == true) {
-//            let snoreHistory = "YES"
-//        } else {
-//            let snoreHistory = "NO"
-//        }
+
+        // here are alerts for success or errors on view at save tapped
+        if indicateTextField.text!.isEmpty && indicateTextField.isEnabled && supplementsToggle.isEnabled{
+            let alert = UIAlertController(title: "Error", message: "Please indicate the sleep supplements used", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(OKAction)
+            present(alert, animated: true)
+        } else {
+            let new_sleep = Sleep(context: self.context)
+            new_sleep.username = receivedString
+            new_sleep.notes = sleepNotesView.text
+            new_sleep.sleepDate = stringsleepDate
+            new_sleep.duration = durationPicker.countDownDuration
+            new_sleep.unit = "Seconds"
+            new_sleep.snoring = snoreSwitch.isOn
+            new_sleep.sleepTreatment = treatmentsSwitch.isOn
+            new_sleep.medication = medicationToggle.isEnabled
+            new_sleep.supplements = supplementsToggle.isEnabled
+            new_sleep.cPAP = cpapToggle.isEnabled
+            new_sleep.other = otherToggle.isEnabled
+            new_sleep.otherNote = indicateTextField.text
+            new_sleep.study = sleepStudySwitch.isOn
+            print("THIS IS SLEEP ARRAY", SleepArray)
+            
+            let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+                self.SleepArray.append(new_sleep)
+                self.SaveItems()
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+            alert.addAction(OKAction)
+            present(alert, animated: true)
+        }
 
         // ********** print to console ****************
 //        print("SLEEP DATE: \(sleepDate)")
@@ -110,24 +135,24 @@ class SleepViewController: UIViewController {
 //        print("NOTES: \(notesText)")
 //        print("SNORE HISTORY: \(snoreHistory)")
         // ********** print to console ****************
-        let new_sleep = Sleep(context: self.context)
-        new_sleep.username = receivedString
-        new_sleep.notes = sleepNotesView.text
-        new_sleep.sleepDate = stringsleepDate
-        new_sleep.duration = durationPicker.countDownDuration
-        new_sleep.unit = "Seconds"
-        new_sleep.snoring = snoreSwitch.isOn
-        new_sleep.sleepTreatment = treatmentsSwitch.isOn
-        new_sleep.medication = medicationToggle.isEnabled
-        new_sleep.supplements = supplementsToggle.isEnabled
-        new_sleep.cPAP = cpapToggle.isEnabled
-        new_sleep.other = otherToggle.isEnabled
-        new_sleep.otherNote = indicateTextField.text
-        new_sleep.study = sleepStudySwitch.isOn
-        
-        self.SleepArray.append(new_sleep)
-        self.SaveItems()
-        print("THIS IS SLEEP ARRAY", SleepArray)
+//        let new_sleep = Sleep(context: self.context)
+//        new_sleep.username = receivedString
+//        new_sleep.notes = sleepNotesView.text
+//        new_sleep.sleepDate = stringsleepDate
+//        new_sleep.duration = durationPicker.countDownDuration
+//        new_sleep.unit = "Seconds"
+//        new_sleep.snoring = snoreSwitch.isOn
+//        new_sleep.sleepTreatment = treatmentsSwitch.isOn
+//        new_sleep.medication = medicationToggle.isEnabled
+//        new_sleep.supplements = supplementsToggle.isEnabled
+//        new_sleep.cPAP = cpapToggle.isEnabled
+//        new_sleep.other = otherToggle.isEnabled
+//        new_sleep.otherNote = indicateTextField.text
+//        new_sleep.study = sleepStudySwitch.isOn
+//
+//        self.SleepArray.append(new_sleep)
+//        self.SaveItems()
+//        print("THIS IS SLEEP ARRAY", SleepArray)
 
     }
     

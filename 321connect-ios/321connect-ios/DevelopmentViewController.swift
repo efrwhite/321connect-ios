@@ -65,39 +65,6 @@ class DevelopmentViewController: UIViewController {
     }
     
     @IBAction func saveTapped(_ sender: Any) {
-//        let pRollDate = physicalRollDate.date
-//        let pSitDate = physicalSitDate.date
-//        let pCrawlsDate = physicalCrawlsDate.date
-//        let pStandingDate = physicalStandingDate.date
-//        let pHoldingDate = physicalHoldingDate.date
-//        let pNoHoldDate = physicalNoHoldDate.date
-//        let pJumpDate = physicalJumpDate.date
-//
-//        let mHoldsObjDate = motorHoldsObjDate.date
-//        let mHandMouthDate = motorHandMouthDate.date
-//        let mPassesDate = motorPassesDate.date
-//        let mPincerDate = motorPincerDate.date
-//        let mCupDate = motorCupDate.date
-//        let mScribbleDate = motorScribbleDate.date
-//        let mSpoonDate = motorSpoonDate.date
-//
-//        let sPointsDate = socialPointsDate.date
-//        let sEmotionDate = socialEmotionDate.date
-//        let sAffectionDate = socialAffectionDate.date
-//        let sChildrenAffectionDate = socialChildrenAffectionDate.date
-//
-//        let vCooDate = verbalCooDate.date
-//        let vBabbleDate = verbalBabbleDate.date
-//        let vWordDate = verbalWordDate.date
-//        let vSentenceDate = verbalSentenceDate.date
-//        let vLongDate = verbalLongDate.date
-//
-//        let hearingStartleDate = hearingStartleDate.date
-//        let hearingSoundDate = hearingSoundDate.date
-        
-        // database data does not transfer to populate notes field
-        // append to data base coloumn 
-//        let notesField = notesField.text
         
         let new_development = Development(context: self.context)
         new_development.username = receivedString
@@ -128,9 +95,16 @@ class DevelopmentViewController: UIViewController {
         new_development.firstInterestSound = hearingSoundDate.date
         new_development.notes = notesField.text
         
-    
-        self.DevelopmentArray.append(new_development)
-        self.SaveItems()
+        let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.DevelopmentArray.append(new_development)
+            self.SaveItems()
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(OKAction)
+        present(alert, animated: true)
+
     }
     func SaveItems(){
        
