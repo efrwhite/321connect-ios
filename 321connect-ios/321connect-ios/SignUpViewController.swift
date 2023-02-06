@@ -7,21 +7,11 @@
 import Foundation
 import UIKit
 import CoreData
-//import iPhoneNumberField
 
-class SignUpViewController: UIViewController, UITextFieldDelegate/*, UITableViewDelegate, UITableViewDataSource*/{
+class SignUpViewController: UIViewController, UITextFieldDelegate{
 
-    // account table iboutlet variable declaration
-//    @IBOutlet weak var accountTable: UITableView!
-
-    let cellReuseIdentifier = "cell"
     var accountArray = [Account]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-
-    //var db:DBHelper = DBHelper()
-
-   // var accounts:[Account] = []
 
     // signup vc local variables
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -31,7 +21,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate/*, UITableView
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
 
-
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -40,11 +29,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate/*, UITableView
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
     }
-
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return accounts.count
-//    }
 
 
 //***************************************************************************check here
@@ -120,7 +104,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate/*, UITableView
             // let loginVC = storyboard?.instantiateViewController(withIdentifier: "HomeScreenViewController") as! HomeScreenViewController
             //present(loginVC, animated: true, completion: nil)
 
-        self.performSegue(withIdentifier: "homeSegue", sender: self)
+        
+
+        self.performSegue(withIdentifier: "firstSignin", sender: self)
     }
 
     @IBAction func cancelPressed(_ sender: Any) {
@@ -128,11 +114,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate/*, UITableView
         // return to login view controller (signup cancel button)
         dismiss(animated: true, completion: nil)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "homescreenSegue")
-        {
-            let displayVC = segue.destination as! HomeScreenViewController
+        if segue.identifier == "firstSignin" {
+            let navController = segue.destination as! UINavigationController
+            let displayVC = navController.topViewController as! Parent_Caregiver_ViewController
+
+            // pass data to HomeScreenViewController if necessary
+            // possible name or user (database)
             displayVC.user = usernameTextField.text!
+            displayVC.isFirstTimeSignUp = true
         }
     }
     
