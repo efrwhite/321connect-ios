@@ -8,14 +8,21 @@
 import UIKit
 
 class MedicalViewController: UIViewController {
-
+var user = ""
+var receivedString = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        receivedString = user
+        print("Medical passed:", receivedString)
         // Do any additional setup after loading the view.
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "HomeExtDV"){
+            let displayVC = segue.destination as! DoctorsVisitViewController
+            displayVC.user = receivedString
+        }
+    }
     /*
     // MARK: - Navigation
 

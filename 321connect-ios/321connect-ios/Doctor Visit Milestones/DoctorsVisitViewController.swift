@@ -9,7 +9,7 @@
 //
 
 import UIKit
-
+import CoreData
 class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // tableview height constraint constant set (arbitrary)
@@ -32,6 +32,11 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var Temp: UITextField!
     @IBOutlet weak var milestoneVisit: UIPickerView!
     @IBOutlet weak var saveButton: UIButton!
+    var doctorVisitArray = [DocVisit]()
+    var user = ""
+    var receivedString = ""
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var pickerIdentifier: String?   // visit
     var providerValue: String?      // provider
     var proTypeValue: String?       // provider type
@@ -416,6 +421,8 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        receivedString = user
+        print("DV Passed:", receivedString)
         milestonePicker.dataSource = self
         milestonePicker.delegate = self
         
@@ -1105,6 +1112,25 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
 
         let visit = pickerIdentifier
         
+        // MARK: - DataBase  * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        let new_DoctorV = DocVisit(context: self.context)
+        new_DoctorV.username = receivedString
+//        new_DoctorV.childName
+        new_DoctorV.dateofVisit = date
+        new_DoctorV.height = height
+        new_DoctorV.heightUnits = hUnits
+        new_DoctorV.weight = weight
+        new_DoctorV.weightUnits = wUnits
+        new_DoctorV.temperature = temp
+        new_DoctorV.temperatureUnits = tUnits
+        
+        
+        
+        self.doctorVisitArray.append(new_DoctorV)
+        
+        
+        self.SaveItems()
+    
         // save table view information below //
         if pickerIdentifier == "Newborn"{
             
@@ -1119,6 +1145,26 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         print("WEIGHT: \(weight) \(String(describing: wUnits))")
         print("HEAD: \(head) \(String(describing: hcUnits))")
         print("TEMP: \(temp) \(String(describing: tUnits))")
+        
+    }
+    func SaveItems(){
+       
+        do {
+            try context.save()
+        } catch {
+            print("Error Saving context \(error)")
+        }
+        
+        
+    }
+
+    func loadItems(){
+        let request : NSFetchRequest<DocVisit> = DocVisit.fetchRequest()
+        do{
+            doctorVisitArray = try context.fetch(request)
+        } catch{
+            print("Error fetching data \(error)")
+        }
     }
 }
     

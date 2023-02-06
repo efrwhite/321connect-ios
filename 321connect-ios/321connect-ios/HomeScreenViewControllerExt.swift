@@ -83,6 +83,10 @@ class HomeScreenViewControllerExt: UIViewController {
             let displayVC = segue.destination as! DevelopmentViewController
             displayVC.user = receivedString
         }
+        if (segue.identifier == "HomeExtDV"){
+            let displayVC = segue.destination as! MedicalViewController
+            displayVC.user = receivedString
+        }
     }
 
     /*
