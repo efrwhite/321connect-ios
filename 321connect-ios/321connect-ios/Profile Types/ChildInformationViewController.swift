@@ -110,6 +110,8 @@ class ChildView: UIViewController, UITextFieldDelegate {
           if segue.identifier == "childToHome" {
               let navController = segue.destination as! UINavigationController
               let homeScreenVC = navController.topViewController as! HomeScreenViewController
+              homeScreenVC.user = receivedString
+              homeScreenVC.childname = FirstName.text!
               
               // pass data to HomeScreenViewController if necessary
               // possible name or user (database)

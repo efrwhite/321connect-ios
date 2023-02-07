@@ -41,6 +41,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
 //               return cell
 //    }
     //***************************************************************************
+   
 
     // signup pressed confirm account information insertion
     @IBAction func signupPressed(_ sender: UIButton) {
@@ -51,7 +52,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         let userPhone = phoneNumberTextField.text!
         let password = passwordTextField.text!
         let confirmPassword = confirmPasswordTextField.text!
-        
+        var user = username
         //Database
 
         // if empty textfield(s) alert
@@ -108,6 +109,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
 
         self.performSegue(withIdentifier: "firstSignin", sender: self)
     }
+   
 
     @IBAction func cancelPressed(_ sender: Any) {
 

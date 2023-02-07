@@ -7021,7 +7021,9 @@
                                 </connections>
                             </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zSm-Dr-sW7">
+
                                 <rect key="frame" x="8" y="86" width="376" height="32"/>
+
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="+" id="iAC-cE-zGE"/>
