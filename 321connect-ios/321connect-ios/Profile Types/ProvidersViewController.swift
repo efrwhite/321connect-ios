@@ -25,7 +25,6 @@ class ProvidersViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var WebSite: UITextField!
     @IBOutlet weak var Address1: UITextField!
     @IBOutlet weak var Address2: UITextField!
-    
     @IBOutlet weak var State: UITextField!
     @IBOutlet weak var City: UITextField!
     @IBOutlet weak var ZipCode: UITextField!

@@ -9,14 +9,13 @@
 import Foundation
 import UIKit
 import CoreData
-class HomeScreenViewController: UIViewController,getItemsDelegate{
-   
-    
+class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDataSource, UITableViewDelegate{
+
     func getItems(_ items: [String]) {
         childuser = items
         print("ITEMS: ",childuser)
-       
     }
+    
     var ChildProfile = [String]()
     var ChildProfileDate = [Date]()
     var ChildProfileImage = [UIImage]()
@@ -30,7 +29,6 @@ class HomeScreenViewController: UIViewController,getItemsDelegate{
     @IBOutlet weak var Agelabel: UILabel!
     @IBOutlet weak var medicalButton: UIButton!
     @IBOutlet weak var profilesButton: UIButton!
-    
     @IBOutlet weak var RecentEntryTableView: UITableView!
     @IBOutlet weak var childImage: UIButton!
     @IBOutlet weak var labelISO: UILabel!
@@ -105,22 +103,13 @@ class HomeScreenViewController: UIViewController,getItemsDelegate{
         childImage.clipsToBounds = true
         receivedString = user
         print("HOME SCREEN Passed", receivedString)
-        
-      
-        
-        //        let appearance = UINavigationBarAppearance()
-        //        appearance.backgroundColor = .clear
-        //        appearance.shadowColor = .clear
-        //        navigationController?.navigationBar.standardAppearance = appearance
-        //
-        //        navigationController?.navigationBar.compactAppearance = appearance
-        //        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        
+
+        // table view styling
         RecentEntryTableView.layer.cornerRadius = 10
         RecentEntryTableView.clipsToBounds = true
         RecentEntryTableView.layer.borderWidth = 1
-        
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "HomeScreenViewExt")
         {
@@ -131,12 +120,11 @@ class HomeScreenViewController: UIViewController,getItemsDelegate{
         if(segue.identifier == "ResourcesView"){
                 let displayVC = segue.destination as! ResourcesTableViewController
                 displayVC.user = receivedString
-            }
+        }
         if(segue.identifier == "FoodSegueHomeScreen1"){
                 let displayVC = segue.destination as! FeedViewController
                 displayVC.user = receivedString
-            }
-      
+        }
         if (segue.identifier == "BehaviorSegue1"){
             let displayVC = segue.destination as! BehaviorViewController
             displayVC.user = receivedString
@@ -159,8 +147,25 @@ class HomeScreenViewController: UIViewController,getItemsDelegate{
             let displayVC = segue.destination as! MedicalViewController
             displayVC.user = receivedString
         }
-        
     }
+    
+    
+    // MARK: - UITableView * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ *
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        let count = min(/*results*/.count, 10)   // line of code takes entries from database and gets the minimum of amount of entries and 10 (limit table to 10)
+        return 1                                   // return count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        // THIS IS HARD CODED FOR TESTING. you can use this to populate table
+        cell.textLabel?.text = "02/06/23 2:30PM"
+        cell.detailTextLabel?.text = "Edward went to class"
+        return cell
+    }
+    
+    // MARK: - Database functions * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ *
     func loadItems(){
         
         let request : NSFetchRequest<Child> = Child.fetchRequest()
@@ -179,27 +184,20 @@ class HomeScreenViewController: UIViewController,getItemsDelegate{
                 print("Child Match name,", names.firstName!, childuser)
                 
             }
-            
-            
             do{
                 ChildArray = try context.fetch(request)
-                
-                
             } catch{
                 print("Error fetching data \(error)")
             }
         }
-        
     }
+    
     func SaveItems(){
         do {
             try context.save()
-            
         } catch {
             print("Error Saving context \(error)")
         }
-        
-        
     }
 }
 

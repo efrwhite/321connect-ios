@@ -110,6 +110,16 @@ class JournalViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "journalHistorySegue" {
+            let historyVC = segue.destination as! HistoryTableViewController
+            
+            // Pass data to the history view controller here
+            historyVC.title = "Journal History"
+            historyVC.segueType = segue.identifier 
+        }
+    }
+    
     func SaveItems(){
        
         do {
