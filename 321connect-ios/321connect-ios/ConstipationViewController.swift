@@ -57,6 +57,12 @@ class ConstipationViewController: UIViewController, UITextFieldDelegate {
         self.ConstipationArray.append(new_constipation)
         self.SaveItems()
         
+        let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(OKAction)
+        present(alert, animated: true)
         
     }
     func SaveItems(){

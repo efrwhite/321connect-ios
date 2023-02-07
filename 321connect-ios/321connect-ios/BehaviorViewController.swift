@@ -101,8 +101,25 @@ class BehaviorViewController: UIViewController {
         self.BehaviorArray.append(new_mood)
         self.SaveItems()
         
+        let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(OKAction)
+        present(alert, animated: true)
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "behaviorHistorySegue" {
+            let historyVC = segue.destination as! HistoryTableViewController
+            
+            // Pass data to the history view controller here
+            historyVC.title = "Behavior History"
+            historyVC.segueType = segue.identifier 
+        }
+    }
+    
     func SaveItems(){
        
         do {

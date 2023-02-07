@@ -27,11 +27,6 @@ class FeedViewController: UIViewController {
         FluidView.isHidden = false
         SolidView.isHidden = true
         
-       
-//        self.navigationController?.navigationBar.tintColor = UIColor.white
-        // hereherehereherehere this when screen is loaded it changes nav color to white
-        // for all preceding screens w/ nav bars
-        
     }
    
     
@@ -39,9 +34,7 @@ class FeedViewController: UIViewController {
     // segmented horizontal scroll view next
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            
-//            FluidView.alpha = 1
-//            SolidView.alpha = 0
+
             FluidView.isHidden = false
             SolidView.isHidden = true
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)

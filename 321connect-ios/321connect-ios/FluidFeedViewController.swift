@@ -150,20 +150,7 @@ class FluidFeedViewController: UIViewController, UITextFieldDelegate {
 //    }
     
     @IBAction func saveTapped(_ sender: Any) {
-//        let notesText = notesTextField.text!
-//        let fluidType = fluidTypeTextField.text!
-//        let fluidMeasure = fluidAmountTextField.text! + " " + feedMeasureButton.title(for: .normal)!// string amount appended by fluid mode button selection
-//        let feedMode = feedModeButton.title(for: .normal)!
-        //capture with radio buttons and optional 'other'
 
-        
-        // ********** print to console ****************
-//        print("NOTES: \(notesText)")
-//        print("FLUID: \(fluidType)")    // fix for required selection?
-//        print("AMOUNT: \(fluidMeasure)")
-//        print("MODE OF FEED: \(feedMode)")
-        
-        
         //############### Capture to database ##################
         let feeding = Feed(context: self.context)
         feeding.eatType = "Fluid Eating Type"
@@ -183,6 +170,13 @@ class FluidFeedViewController: UIViewController, UITextFieldDelegate {
         
         
         self.SaveItems()
+        
+        let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(OKAction)
+        present(alert, animated: true)
         
     }
     
