@@ -51,6 +51,13 @@ class ActivityViewController: UIViewController {
         new_activity.units = "seconds"
         self.ActivityArray.append(new_activity)
         self.SaveItems()
+        
+        let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(OKAction)
+        present(alert, animated: true)
     }
     
     func setpopupbutton(){

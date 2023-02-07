@@ -18,19 +18,6 @@ class MessageViewController: UIViewController {
     var timer = Timer()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    @IBAction func SaveButton(_ sender: UIButton) {
-        
-            let new_message = Message(context: self.context)
-            new_message.message_Block = NotesField.text
-            
-            self.messageArray.append(new_message)
-            
-            
-            self.SaveItems()
-        
-    
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,15 +37,49 @@ class MessageViewController: UIViewController {
         loadItems()
     }
     
-    /*
-     // MARK: - Help Functions * * * * * * * * * * * * * * * * * * * *
-     */
+    
+    // MARK: - Help Functions * * * * * * * * * * * * * * * * * * * *
     @objc func tick() {
         dateLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .none)
         timeLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short)
     }
     /* *** source: https://www.youtube.com/watch?v=9UovPNh4Csw *** */
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "messageHistorySegue" {
+            let historyVC = segue.destination as! HistoryTableViewController
+            
+            // Pass data to the history view controller here <--
+            historyVC.title = "Activity History"
+            historyVC.segueType = segue.identifier
+        }
+    }
+    
+    @IBAction func SaveButton(_ sender: UIButton) {
+        if NotesField.text!.isEmpty{
+            let alert = UIAlertController(title: "Error", message: "Please complete all text fields", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(OKAction)
+            present(alert, animated: true)
+            
+        } else{
+            
+            let new_message = Message(context: self.context)
+            new_message.message_Block = NotesField.text
+            
+            self.messageArray.append(new_message)
+            self.SaveItems()
+            
+            let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(OKAction)
+            present(alert, animated: true)
+        }
+    }
+    
+    // MARK: - Database Functions * * * * * * * * * * * * * * * * * * * *
     func SaveItems(){
        
         do {
@@ -66,8 +87,6 @@ class MessageViewController: UIViewController {
         } catch {
             print("Error Saving context \(error)")
         }
-        
-        
     }
 
     func loadItems(){
@@ -78,5 +97,4 @@ class MessageViewController: UIViewController {
             print("Error fetching data \(error)")
         }
     }
-    
 }
