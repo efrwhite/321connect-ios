@@ -22,6 +22,7 @@ class FluidFeedViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var indicateTextField: UITextField!
     var receivedString = ""
     var user = ""
+    var userchild = ""
     var feedArray = [Feed]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -48,7 +49,7 @@ class FluidFeedViewController: UIViewController, UITextFieldDelegate {
         indicateTextField.isEnabled = false
         indicateTextField.placeholder = ""
         receivedString = user
-        print("This is my Username Passed over to FLUID!",receivedString)
+        print("This is my Username Passed over to FLUID!",receivedString,"and Child: ", userchild)
     }
     
     override func didReceiveMemoryWarning() {

@@ -1372,6 +1372,7 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="HTT-Fu-Vea"/>
                     <connections>
+                        <outlet property="Agelabel" destination="S61-kC-AVc" id="iZv-SW-KFg"/>
                         <outlet property="activityButton" destination="5wU-X1-vwL" id="Vbp-JK-JBM"/>
                         <outlet property="bathroomButton" destination="HIN-Sb-O07" id="DyR-y5-YPX"/>
                         <outlet property="behaviorButton" destination="Q9b-6r-KJD" id="ThS-XB-fDn"/>
@@ -1381,6 +1382,7 @@
                         <outlet property="medicalButton" destination="Bbe-kl-j5x" id="w7W-Rw-lu4"/>
                         <outlet property="medicationButton" destination="Sfr-2d-dMZ" id="NNA-ff-b7N"/>
                         <outlet property="messageButton" destination="UMl-5n-2np" id="UBJ-me-DOZ"/>
+                        <outlet property="namelabel" destination="sne-so-I3p" id="FFf-5w-wzd"/>
                         <outlet property="resourcesButton" destination="XTf-OI-mZQ" id="JwJ-1F-XrT"/>
                         <outlet property="signInOutButton" destination="deL-J6-vml" id="CSO-2D-CPb"/>
                         <outlet property="sleepButton" destination="eVh-1b-Vsm" id="uc2-tH-8lb"/>
@@ -1404,7 +1406,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXW-ta-p4T">
-                                <rect key="frame" x="0.0" y="92" width="414" height="804"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v05-4U-AGR" userLabel="Sub View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
@@ -6576,7 +6578,7 @@
                                                     <fontDescription key="titleFontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <segue destination="q9O-Ug-cIn" kind="show" id="2hK-to-Fry"/>
+                                                    <segue destination="q9O-Ug-cIn" kind="show" identifier="DocVisit" id="2hK-to-Fry"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tiV-zL-I2z">
@@ -8031,12 +8033,13 @@
                         <outlet property="HeadCirc" destination="U0D-Wh-v7d" id="YZg-wz-i5v"/>
                         <outlet property="Height" destination="8KD-sP-Z4R" id="DlG-xz-h4w"/>
                         <outlet property="HeightUnits" destination="KCi-0X-kfX" id="6JS-YL-r8w"/>
-                        <outlet property="Provider" destination="EBn-F6-qmb" id="h33-Fx-yzK"/>
+                        <outlet property="Provider" destination="EBn-F6-qmb" id="211-8h-8E9"/>
                         <outlet property="ProviderType" destination="vNL-ZA-ndR" id="hxG-sS-VEv"/>
                         <outlet property="Temp" destination="48W-Qs-674" id="rWg-lK-tn3"/>
                         <outlet property="TempUnits" destination="lZN-29-9bK" id="BIu-Kc-cV2"/>
                         <outlet property="Weight" destination="jv7-HJ-p5R" id="Pmj-ah-reb"/>
                         <outlet property="WeightUnits" destination="E87-Og-gVI" id="kYK-cO-Hg1"/>
+                        <outlet property="ageLabel" destination="LfP-Td-jjt" id="2Xl-iY-jbE"/>
                         <outlet property="formsTableView" destination="Szu-bx-Ebm" id="at4-Pd-NW2"/>
                         <outlet property="milestonePicker" destination="83d-Rf-e3V" id="Gbx-AK-woP"/>
                         <outlet property="milestoneVisit" destination="83d-Rf-e3V" id="BnD-jI-FId"/>
@@ -8136,16 +8139,16 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Erf-tC-yWJ"/>
-        <segue reference="GXc-Lk-C2d"/>
-        <segue reference="PJK-iN-xtL"/>
-        <segue reference="8l8-5M-ooy"/>
+        <segue reference="JfG-ll-slp"/>
+        <segue reference="aKp-sF-QPk"/>
+        <segue reference="yVy-ry-Osa"/>
         <segue reference="klS-EG-BR2"/>
         <segue reference="Y9k-dQ-kP0"/>
         <segue reference="tEl-I1-ec4"/>
-        <segue reference="S72-Vi-Zbi"/>
-        <segue reference="yqK-St-CcA"/>
-        <segue reference="KXT-Sl-Iht"/>
-        <segue reference="WwD-j0-FeR"/>
+        <segue reference="1hW-le-3t9"/>
+        <segue reference="1wn-hu-7An"/>
+        <segue reference="1KZ-tx-RKW"/>
+        <segue reference="sAS-T9-4Og"/>
         <segue reference="2ws-Oa-PKY"/>
     </inferredMetricsTieBreakers>
     <resources>

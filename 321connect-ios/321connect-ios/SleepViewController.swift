@@ -32,7 +32,7 @@ class SleepViewController: UIViewController {
     var SleepArray = [Sleep]()
     var receivedString = ""
     var user = ""
-    
+    var userchild = ""
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let dateFormatter = DateFormatter()
     //Edward I changed this down into the function since I cant pass data without changing this
@@ -58,7 +58,7 @@ class SleepViewController: UIViewController {
         indicateTextField.isEnabled = false
         indicateTextField.placeholder = ""
         receivedString = user
-        print("SLEEP Passed:", receivedString)
+        print("SLEEP Passed:", receivedString,"and Child: ", userchild)
         /* *** dynamic label current time/date *** */
         dateLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .none)
             timeLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short)
@@ -81,6 +81,7 @@ class SleepViewController: UIViewController {
         // half bottom sheet presentation. Cycle calculator VC
         if let sheet = sleepCycleVC.sheetPresentationController {
             sheet.detents = [.medium()]
+            sleepCycleVC.userchild = userchild
             sleepCycleVC.user = receivedString
 
         }
@@ -102,8 +103,14 @@ class SleepViewController: UIViewController {
             alert.addAction(OKAction)
             present(alert, animated: true)
         } else {
+            let date = Date()
+
+            // Create Date Formatter
+            let dateFormatter = DateFormatter()
+            let calendar = Calendar.current
             let new_sleep = Sleep(context: self.context)
             new_sleep.username = receivedString
+            new_sleep.childName = userchild
             new_sleep.notes = sleepNotesView.text
             new_sleep.sleepDate = stringsleepDate
             new_sleep.duration = durationPicker.countDownDuration
@@ -116,6 +123,7 @@ class SleepViewController: UIViewController {
             new_sleep.other = otherToggle.isEnabled
             new_sleep.otherNote = indicateTextField.text
             new_sleep.study = sleepStudySwitch.isOn
+//            new_sleep.currentdate = calendar
             print("THIS IS SLEEP ARRAY", SleepArray)
             
             let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)

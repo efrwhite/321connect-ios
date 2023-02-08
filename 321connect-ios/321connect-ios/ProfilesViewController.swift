@@ -33,7 +33,7 @@ class ProfilesViewController: UIViewController {
     var ChildArray = [Child]()
     var ProviderName = [String]()
     var ParentArray = [Parent]()
-    var providerarray = [Provider]()
+    var providerarray = [ProviderE]()
     var selected_Child = [String]()
     var childss = "Shippo"
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -117,7 +117,7 @@ class ProfilesViewController: UIViewController {
         
         let request : NSFetchRequest<Child> = Child.fetchRequest()
         let parentrequest : NSFetchRequest<Parent> = Parent.fetchRequest()
-        let providerrequest: NSFetchRequest<Provider> = Provider.fetchRequest()
+        let providerrequest: NSFetchRequest<ProviderE> = ProviderE.fetchRequest()
         request.predicate = NSPredicate(format: "(username MATCHES [cd] %@)", receivedString )
         parentrequest.predicate = NSPredicate(format: "(userName MATCHES [cd] %@)", receivedString )
         providerrequest.predicate  = NSPredicate(format: "(username MATCHES [cd] %@)", receivedString )
@@ -205,7 +205,7 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
                 selected_Child.append(ChildName[indexPath.row])
                 print("CHILD SELECTED:",selected_Child)
 
-                let alert = UIAlertController(title: "Child Selected", message: "(selected_Child) is now the current child", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Child Selected", message: "\(selected_Child) is now the current child", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(okAction)
                 self.present(alert, animated: true, completion: nil)

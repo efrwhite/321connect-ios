@@ -15,6 +15,7 @@ class ResourcesTableViewController: UITableViewController {
     
     var receivedString = ""
     var user = ""
+    var userchild = ""
     /* Table view arrays data */
     var sections = ["National Support Groups", "Your Resources"]
     
@@ -58,7 +59,7 @@ class ResourcesTableViewController: UITableViewController {
         
         
         receivedString = user
-        print("This is my Username Passed over to Resources",receivedString)
+        print("This is my Username Passed over to Resources",receivedString,"and Child: ", userchild)
         loadItems()
     }
     
@@ -94,6 +95,7 @@ class ResourcesTableViewController: UITableViewController {
 //                self.userResources.append(resource!)
 //                self.userLinks.append(urlPath!)
                 let new_resource = Resource(context: self.context)
+                new_resource.childName = userchild
                 new_resource.username = self.receivedString
                 new_resource.resourceTitle = resource
                 new_resource.resourcelink = urlPath

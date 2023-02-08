@@ -26,6 +26,7 @@ class MedicationAddition: UIViewController {
     @IBOutlet weak var Frequency: UITextField!
     
     @IBOutlet weak var MedicationReason: UITextField!
+    var userchild = ""
     var medicationArray = [Medication]()
    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

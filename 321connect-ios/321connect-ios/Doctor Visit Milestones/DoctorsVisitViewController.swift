@@ -35,8 +35,15 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
     var doctorVisitArray = [DocVisit]()
     var user = ""
     var receivedString = ""
+    var userchild = ""
+    @IBOutlet weak var ageLabel: UILabel!
+    var ChildProfile = [String]()
+    var ChildProfileDate = [Date]()
+    var ChildProfileImage = [UIImage]()
+    var ProviderNames = [String]() //Array of Provider Names
+    var childArray = [Child]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+    var providerArray = [ProviderE]()
     var pickerIdentifier: String?   // visit
     var providerValue: String?      // provider
     var proTypeValue: String?       // provider type
@@ -69,13 +76,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
     
     // provider types
     let Providers = ["Pediatrician",
-               "OT",
-               "PT",
-               "Speech",
-               "Hearing",
-               "Dental",
-               "Cardio",
-               "Ophthalmology"]
+                     "OT",
+                     "PT",
+                     "Speech",
+                     "Hearing",
+                     "Dental",
+                     "Cardio",
+                     "Ophthalmology"]
     
     let newbornForm = [ "Shortly after your child was born, your child will usually have a number of tests and procedures done. The following questions are gathering that information.",
                         "Did your child have an eye exam?",
@@ -422,22 +429,24 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         receivedString = user
-        print("DV Passed:", receivedString)
+        print("DV Passed:", receivedString,"and Child: ", userchild)
         milestonePicker.dataSource = self
         milestonePicker.delegate = self
         
         ProviderType.delegate = self
         ProviderType.dataSource = self
+        Provider.delegate = self
+        Provider.dataSource = self
         
         formsTableView.dataSource = self
         formsTableView.delegate = self
-
-        
-//        formsTableView.estimatedRowHeight = 500
-//        formsTableView.rowHeight = UITableView.automaticDimension
         
         
-
+        //        formsTableView.estimatedRowHeight = 500
+        //        formsTableView.rowHeight = UITableView.automaticDimension
+        
+        
+        
         
         self.formsTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
@@ -445,26 +454,67 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        formsTableView.estimatedRowHeight = 150
-//        formsTableView.rowHeight = UITableView.automaticDimension
+        super.viewWillAppear(animated)
+        reloadInputViews()
+        loadItems()
+        //        reloadInputViews()
+        let lastElement = userchild
+        if lastElement != nil && lastElement != ""{
+            let date = Date()
+            
+            // Create Date Formatter
+            let dateFormatter = DateFormatter()
+            let calendar = Calendar.current
+            
+            let year = calendar.component(.year, from: date)
+            
+            // Set Date Format
+            dateFormatter.dateFormat = "YYYY/MM/dd"
+            
+            // Convert Date to String
+            dateFormatter.dateFormat = "YYYY/MM/dd"
+            print("CHILD passed:", lastElement)
+            
+            
+            var Dates = ChildProfileDate.first!
+            var stringdate = dateFormatter.string(from: Dates)
+            let components = stringdate.components(separatedBy: "/")
+            var childyear = components.first!
+            
+            var intchidyear = Int(childyear)
+            print("CHILD YEAR",intchidyear)
+            var currentyear = Int(year)
+            print("CURRENT YEAR",currentyear)
+            var diffyear = currentyear - intchidyear!
+            var age = String(diffyear)
+            
+            self.ageLabel.text = age + " years old"
+            print("picker, ",ProviderNames)
+            
+        }
+        
     }
-   
-/*
-// MARK: - Navigation * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*/
+    //    override func viewWillAppear(_ animated: Bool) {
+    ////        formsTableView.estimatedRowHeight = 150
+    ////        formsTableView.rowHeight = UITableView.automaticDimension
+    //    }
+    //
+    /*
+     // MARK: - Navigation * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     */
     
     // Dynamically adjust height of tableview for content size
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-         if(keyPath == "contentSize"){
-             if let newvalue = change?[.newKey]
-             {
-                 DispatchQueue.main.async {
-                 let newsize  = newvalue as! CGSize
-                 self.FormTableHeight.constant = newsize.height
-                 }
-             }
-         }
-     }
+        if(keyPath == "contentSize"){
+            if let newvalue = change?[.newKey]
+            {
+                DispatchQueue.main.async {
+                    let newsize  = newvalue as! CGSize
+                    self.FormTableHeight.constant = newsize.height
+                }
+            }
+        }
+    }
     //LOOK FOR CONSTANT DATABSE SELECTION OF NONE VISIT ATTRIBUTES HERE
     // Setup for unit of measure pop up button selection
     func setPopUpButton(){
@@ -503,25 +553,23 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         TempUnits.showsMenuAsPrimaryAction = true
         TempUnits.changesSelectionAsPrimaryAction = true
     }
-
     
+    /*
+     // MARK: - TableView * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     */
     
-/*
- // MARK: - TableView * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- */
+    //    private func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    //        return UITableView.automaticDimension
+    //    }
+    //
+    //    private func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    //        return UITableView.automaticDimension
+    //    }
     
-//    private func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
-//
-//    private func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
-
     /* * * * * * * * * * * * * * SECTION * * * * * * * * * * * * * * * * * * * * */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         if pickerIdentifier == "Newborn"{
             return self.newbornForm.count
         }else if pickerIdentifier == "Two months" {
@@ -587,13 +635,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         return 0
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let cell = tableView.cellForRow(at: indexPath)
-//        if cell?.reuseIdentifier == "FormQuestionCell" {
-//            return 250
-//        }
-//        return UITableView.automaticDimension
-//    }
+    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        let cell = tableView.cellForRow(at: indexPath)
+    //        if cell?.reuseIdentifier == "FormQuestionCell" {
+    //            return 250
+    //        }
+    //        return UITableView.automaticDimension
+    //    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -623,10 +671,10 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
                 cell.questionLabel.text = newbornForm[indexPath.row]
                 cell.selectionStyle = .none
-
-//                NSLayoutConstraint.activate([
-//                    cell.questionSwitch.trailingAnchor.constraint(equalTo: cell.trailingAnchor),
-//                    cell.questionLabel.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 20)])
+                
+                //                NSLayoutConstraint.activate([
+                //                    cell.questionSwitch.trailingAnchor.constraint(equalTo: cell.trailingAnchor),
+                //                    cell.questionLabel.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 20)])
                 return cell
             }
         }
@@ -634,27 +682,27 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         // TWO-MONTH FORM
         if pickerIdentifier == "Two months"{
             if(indexPath.row == 9) {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                    cell.textLabel!.text = twoMonthForm[indexPath.row]
-                    cell.selectionStyle = .none
-                    return cell
-                }
-                else if(indexPath.row == 10) {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
-                    cell.selectionStyle = .none
-                    return cell
-                }
-                else if(indexPath.row == 11) {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
-                    cell.selectionStyle = .none
-                    return cell
-                }
-                else {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                    cell.questionLabel.text = twoMonthForm[indexPath.row]
-                    cell.selectionStyle = .none
-                    return cell
-                }
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
+                cell.textLabel!.text = twoMonthForm[indexPath.row]
+                cell.selectionStyle = .none
+                return cell
+            }
+            else if(indexPath.row == 10) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
+                cell.selectionStyle = .none
+                return cell
+            }
+            else if(indexPath.row == 11) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
+                cell.selectionStyle = .none
+                return cell
+            }
+            else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
+                cell.questionLabel.text = twoMonthForm[indexPath.row]
+                cell.selectionStyle = .none
+                return cell
+            }
         }
         
         // FOUR-MONTH FORM
@@ -664,7 +712,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
             cell.selectionStyle = .none
             return cell
         }
-
+        
         // SIX-MONTH FORM
         if pickerIdentifier == "Six months" {
             if(indexPath.row == 0 || indexPath.row == 3) {
@@ -690,7 +738,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-
+        
         // NINE-MONTH FORM
         if pickerIdentifier == "Nine months" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
@@ -698,7 +746,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
             cell.selectionStyle = .none
             return cell
         }
-
+        
         // TWELVE-MONTH FORM
         if pickerIdentifier == "Twelve months" {
             if(indexPath.row == 0 || indexPath.row == 3) {
@@ -724,7 +772,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-
+        
         // FIFTEEN-MONTH FORM
         if pickerIdentifier == "Fifteen months" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
@@ -732,7 +780,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
             cell.selectionStyle = .none
             return cell
         }
-
+        
         // EIGHTEEN-MONTH FORM
         if pickerIdentifier == "Eighteen months" {
             if(indexPath.row == 0 || indexPath.row == 3) {
@@ -784,7 +832,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-
+        
         // THIRTY-MONTH FORM
         if pickerIdentifier == "Thirty months" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 9) {
@@ -810,7 +858,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-
+        
         // THREE-YEAR FORM
         if pickerIdentifier == "Three years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 14 || indexPath.row == 15 || indexPath.row == 16 || indexPath.row == 20 || indexPath.row == 21) {
@@ -836,7 +884,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-
+        
         // FOUR-YEAR FORM
         if pickerIdentifier == "Four years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 20) {
@@ -862,7 +910,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-
+        
         // FIVE-YEAR FORM
         if pickerIdentifier == "Five years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 20) {
@@ -888,7 +936,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-
+        
         // SIX-YEAR FORM
         if pickerIdentifier == "Six years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 20) {
@@ -914,7 +962,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-
+        
         // SEVEN-YEAR FORM
         if pickerIdentifier == "Seven years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
@@ -965,7 +1013,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-
+        
         // NINE-YEAR FORM
         if pickerIdentifier == "Nine years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
@@ -991,7 +1039,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-
+        
         // TEN-YEAR FORM
         if pickerIdentifier == "Ten years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
@@ -1017,7 +1065,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-
+        
         // ELEVEN-YEAR FORM
         if pickerIdentifier == "Eleven years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 17) {
@@ -1043,7 +1091,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-
+        
         // TWELVE-YEAR FORM
         if pickerIdentifier == "Twelve years" {
             if(indexPath.row == 0) {
@@ -1069,7 +1117,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
         }
-
+        
         // NO-AGE FORM
         if pickerIdentifier == "Not an age-scheduled" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotesCell", for: indexPath) as! FormNotesTableViewCell
@@ -1079,7 +1127,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         
         
         // temporary default until finish ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.selectionStyle = .none
         return cell
     }
@@ -1093,29 +1141,29 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         
         // provider name
         let selectedRow0 = Provider.selectedRow(inComponent: 0)
-            providerValue = Provider.delegate?.pickerView!(Provider, titleForRow: selectedRow0, forComponent: 0)
+        providerValue = Provider.delegate?.pickerView!(Provider, titleForRow: selectedRow0, forComponent: 0)
         // provider type
         let selectedRow1 = ProviderType.selectedRow(inComponent: 0)
-            proTypeValue = ProviderType.delegate?.pickerView!(ProviderType, titleForRow: selectedRow1, forComponent: 0)
+        proTypeValue = ProviderType.delegate?.pickerView!(ProviderType, titleForRow: selectedRow1, forComponent: 0)
         
         let height = Height.text!
         let hUnits = HeightUnits.currentTitle!
-
+        
         let weight = Weight.text!
         let wUnits = WeightUnits.currentTitle!
-
+        
         let head = HeadCirc.text!
         let hcUnits = HCUnits.currentTitle!
-
+        
         let temp = Temp.text!
         let tUnits = TempUnits.currentTitle!
-
+        
         let visit = pickerIdentifier
         
         // MARK: - DataBase  * * * * * * * * * * * * * * * * * * * * * * * * * * *
         let new_DoctorV = DocVisit(context: self.context)
         new_DoctorV.username = receivedString
-//        new_DoctorV.childName
+        new_DoctorV.childName = userchild
         new_DoctorV.dateofVisit = date
         new_DoctorV.height = height
         new_DoctorV.heightUnits = hUnits
@@ -1130,7 +1178,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         
         
         self.SaveItems()
-    
+        
         // save table view information below //
         if pickerIdentifier == "Newborn"{
             
@@ -1148,7 +1196,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     func SaveItems(){
-       
+        
         do {
             try context.save()
         } catch {
@@ -1157,17 +1205,36 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         
         
     }
-
+    
     func loadItems(){
-        let request : NSFetchRequest<DocVisit> = DocVisit.fetchRequest()
-        do{
-            doctorVisitArray = try context.fetch(request)
-        } catch{
-            print("Error fetching data \(error)")
+        let Drequest : NSFetchRequest<DocVisit> = DocVisit.fetchRequest()
+        let request : NSFetchRequest<Child> = Child.fetchRequest()
+        let Prequest : NSFetchRequest<ProviderE> = ProviderE.fetchRequest()
+        
+        let lastElement = userchild
+        if lastElement != nil{
+            request.predicate = NSPredicate(format: "(username MATCHES [cd] %@) && (firstName MATCHES [cd] %@)", receivedString, lastElement)
+            Prequest.predicate = NSPredicate(format: "(username MATCHES [cd] %@)", receivedString)
+            
+            let childrequest = (try? context.fetch(request))!
+            let provrequest = (try? context.fetch(Prequest))!
+            for i in provrequest{
+                ProviderNames.append(i.providerName!)
+            }
+            
+            
+            for names in childrequest {
+                ChildProfileDate.append(names.birthday!)
+            }
+            do{
+                doctorVisitArray = try context.fetch(Drequest)
+                childArray = try context.fetch(request)
+            } catch{
+                print("Error fetching data \(error)")
+            }
         }
     }
 }
-    
 /*
  // MARK: - PickerViews * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
@@ -1178,6 +1245,10 @@ extension DoctorsVisitViewController: UIPickerViewDataSource,UIPickerViewDelegat
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        if pickerView.tag == 0{
+            return ProviderNames.count
+        }
         if pickerView.tag == 1 {
                return Providers.count
         }
@@ -1194,6 +1265,10 @@ extension DoctorsVisitViewController: UIPickerViewDataSource,UIPickerViewDelegat
         if pickerView == ProviderType{
             return Providers[row]
         }
+        if pickerView == Provider{
+            return ProviderNames[row]
+        }
+    
         else if pickerView == milestonePicker{
             return visits[row]
         }

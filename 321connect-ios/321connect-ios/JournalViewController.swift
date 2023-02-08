@@ -21,6 +21,7 @@ class JournalViewController: UIViewController {
     var timer = Timer()
     var receivedString = ""
     var user = ""
+    var userchild = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +31,7 @@ class JournalViewController: UIViewController {
         notesTextView.layer.borderWidth = 1
         notesTextView.layer.borderColor = UIColor.black.cgColor
         receivedString = user
-        print("Journal Passed:", receivedString)
+        print("Journal Passed:", receivedString, "and Child: ", userchild)
         
         /* * * * dynamic label current time/date * * * */
         dateLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .none)
@@ -93,6 +94,7 @@ class JournalViewController: UIViewController {
             // moved database code here (-edward)
             let new_journalEntry = Journal(context: self.context)
             new_journalEntry.username = receivedString
+            new_journalEntry.childName = userchild
             new_journalEntry.title = titleTextField.text!
             new_journalEntry.notes = notesTextView.text!
             

@@ -10,16 +10,18 @@ import UIKit
 class MedicalViewController: UIViewController {
 var user = ""
 var receivedString = ""
+    var userchild = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         receivedString = user
-        print("Medical passed:", receivedString)
+        print("Medical passed:", receivedString,"and Child: ", userchild)
         // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "HomeExtDV"){
+        if (segue.identifier == "DocVisit"){
             let displayVC = segue.destination as! DoctorsVisitViewController
+            displayVC.userchild = userchild
             displayVC.user = receivedString
         }
     }

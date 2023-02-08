@@ -20,6 +20,10 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
     var ChildProfileDate = [Date]()
     var ChildProfileImage = [UIImage]()
     var ChildArray = [Child]()
+    var Sleepy = [String]()
+    var SleepyDate = [Date]()
+    var sleeparray = [Sleep]()
+    
     // homescreen(ext) vc local variables
     @IBOutlet weak var feedButton: UIButton!
     @IBOutlet weak var activityButton: UIButton!
@@ -37,6 +41,7 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
     var user = ""
     var childuser = [String]()
     var childname = ""
+    var child = ""
     
     // extension button to return to home screen
     @IBAction func extentionButton(_ sender: Any) {
@@ -56,6 +61,8 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
         super.viewWillAppear(animated)
         reloadInputViews()
         loadItems()
+        print("Array of SleepDates",SleepyDate)
+        print("Array of Sleep:", Sleepy)
 //        reloadInputViews()
         let lastElement = childuser.last
         if lastElement != nil{
@@ -91,10 +98,12 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
             self.Agelabel.text = "Age: " + age
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadItems()
-     
+        
+            
         // profile image mask and style
         childImage.layer.borderWidth = 1.0
         childImage.layer.masksToBounds = false
@@ -111,43 +120,100 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if childuser.last != nil{
+            child = childuser.last!
+            if (segue.identifier == "HomeScreenViewExt")
+            {
+                let destViewController = segue.destination as! UINavigationController
+                let secondViewcontroller = destViewController.viewControllers.first as! HomeScreenViewControllerExt
+                secondViewcontroller.userchild = child
+                secondViewcontroller.user = receivedString
+            }
+            if(segue.identifier == "ResourcesView"){
+                let displayVC = segue.destination as! ResourcesTableViewController
+                displayVC.userchild = child
+                displayVC.user = receivedString
+            }
+            if(segue.identifier == "FoodSegueHomeScreen1"){
+                let displayVC = segue.destination as! FeedViewController
+                displayVC.userchild = child
+                displayVC.user = receivedString
+            }
+            if (segue.identifier == "BehaviorSegue1"){
+                let displayVC = segue.destination as! BehaviorViewController
+                displayVC.userchild = child
+                displayVC.user = receivedString
+            }
+            if (segue.identifier == "SleepViewSegue"){
+                let displayVC = segue.destination as! SleepViewController
+                displayVC.userchild = child
+                displayVC.user = receivedString
+            }
+            if (segue.identifier == "ActivityViewSegue"){
+                let displayVC = segue.destination as! ActivityViewController
+                displayVC.userchild = child
+                displayVC.user = receivedString
+            }
+            if (segue.identifier == "ProfilesViewSegue"){
+                let vc = segue.destination as! ProfilesViewController
+                let displayVC = segue.destination as! ProfilesViewController
+                vc.delegate = self
+                displayVC.user = receivedString
+            }
+            if (segue.identifier == "HomeDV"){
+                let displayVC = segue.destination as! MedicalViewController
+                displayVC.userchild = child
+                displayVC.user = receivedString
+            }
+         }
+        
+    else{
         if (segue.identifier == "HomeScreenViewExt")
         {
             let destViewController = segue.destination as! UINavigationController
             let secondViewcontroller = destViewController.viewControllers.first as! HomeScreenViewControllerExt
+//            secondViewcontroller.userchild = child
             secondViewcontroller.user = receivedString
         }
         if(segue.identifier == "ResourcesView"){
-                let displayVC = segue.destination as! ResourcesTableViewController
-                displayVC.user = receivedString
+            let displayVC = segue.destination as! ResourcesTableViewController
+//            displayVC.userchild = child
+            displayVC.user = receivedString
         }
         if(segue.identifier == "FoodSegueHomeScreen1"){
-                let displayVC = segue.destination as! FeedViewController
-                displayVC.user = receivedString
+            let displayVC = segue.destination as! FeedViewController
+//            displayVC.userchild = child
+            displayVC.user = receivedString
         }
         if (segue.identifier == "BehaviorSegue1"){
             let displayVC = segue.destination as! BehaviorViewController
+//            displayVC.userchild = child
             displayVC.user = receivedString
         }
         if (segue.identifier == "SleepViewSegue"){
             let displayVC = segue.destination as! SleepViewController
+//            displayVC.userchild = child
             displayVC.user = receivedString
         }
         if (segue.identifier == "ActivityViewSegue"){
             let displayVC = segue.destination as! ActivityViewController
+//            displayVC.userchild = child
             displayVC.user = receivedString
         }
         if (segue.identifier == "ProfilesViewSegue"){
             let vc = segue.destination as! ProfilesViewController
             let displayVC = segue.destination as! ProfilesViewController
-                vc.delegate = self
-                displayVC.user = receivedString
+            vc.delegate = self
+            displayVC.user = receivedString
         }
         if (segue.identifier == "HomeDV"){
             let displayVC = segue.destination as! MedicalViewController
+//            displayVC.userchild = child
             displayVC.user = receivedString
         }
+        
     }
+}
     
     
     // MARK: - UITableView * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ *
@@ -168,15 +234,25 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
     // MARK: - Database functions * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ *
     func loadItems(){
         
-        let request : NSFetchRequest<Child> = Child.fetchRequest()
+        let request : NSFetchRequest<Child> = Child.fetchRequest() // first request : NSFetchRequest<ENTITYNAME> = ENTITYNAME.fetchRequest()
+        let Sleeprequest : NSFetchRequest<Sleep> = Sleep.fetchRequest()
+        
         let lastElement = childuser.last
         if lastElement != nil{
             request.predicate = NSPredicate(format: "(username MATCHES [cd] %@) && (firstName MATCHES [cd] %@)", receivedString, String(lastElement!))
+            Sleeprequest.predicate = NSPredicate(format: "username MATCHES [cd] %@", receivedString)
+            let SleepReq = (try? context.fetch(Sleeprequest))!
             
             
             let childrequest = (try? context.fetch(request))!
             
-            
+//            for sleep in SleepReq{
+//                Sleepy.append(sleep.currentdate!)
+//                SleepyDate.append(sleep.sleepTime!)
+//                print(Sleepy)
+//            }
+                    
+                    
             for names in childrequest {
                 ChildProfile.append(names.firstName!)
                 ChildProfile.append(names.lastName!)
@@ -185,6 +261,7 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
                 
             }
             do{
+                sleeparray = try context.fetch(Sleeprequest)
                 ChildArray = try context.fetch(request)
             } catch{
                 print("Error fetching data \(error)")

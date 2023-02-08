@@ -12,7 +12,7 @@ import CoreData
 class DevelopmentViewController: UIViewController {
     
     @IBOutlet weak var saveButton: UIButton!
-    
+    var userchild = ""
     // physical milestone dates
     @IBOutlet weak var physicalRollDate: UIDatePicker!
     @IBOutlet weak var physicalSitDate: UIDatePicker!
@@ -58,7 +58,7 @@ class DevelopmentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         receivedString = user
-        print("Development Passed",receivedString)
+        print("Development Passed",receivedString, "and Child: ", userchild)
         /* date data transfer from database to populate corresponding datepickers*/
         //here
         
@@ -68,6 +68,7 @@ class DevelopmentViewController: UIViewController {
         
         let new_development = Development(context: self.context)
         new_development.username = receivedString
+        new_development.childName = userchild
         new_development.firstRoll = physicalRollDate.date
         new_development.firstSit = physicalSitDate.date
         new_development.firstCrawl = physicalCrawlsDate.date
