@@ -16,11 +16,12 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
      var receivedString = ""
     var user = ""
+    var userchild = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         receivedString = user
-        print("FEED Passed :", receivedString)
+        print("FEED Passed :", receivedString, userchild)
       
         // Do any additional setup after loading the view, typically from a nib.
         // initial view at view load

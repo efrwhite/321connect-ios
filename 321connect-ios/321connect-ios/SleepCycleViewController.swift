@@ -19,6 +19,7 @@ class SleepCycleViewController: UIViewController {
     @IBOutlet weak var minlabel: UILabel!
     var user = ""
     var username = ""
+    var userchild = ""
     var seconds = [Double]()
 //    var min = [Int]()
    
@@ -50,11 +51,12 @@ class SleepCycleViewController: UIViewController {
         print("THIS IS MY SLEEP DATA CYCLE", stringsleepDate)
         
         let request: NSFetchRequest<Sleep> = Sleep.fetchRequest()
-        request.predicate = NSPredicate(format: "(username MATCHES [cd] %@) AND (sleepDate MATCHES [cd] %@) AND (duration > %i) ", username ,stringsleepDate,0)
+        request.predicate = NSPredicate(format: "(username MATCHES [cd] %@) AND (sleepDate MATCHES [cd] %@) AND (duration > %i) AND (childName MATCHES [cd] %@)", username ,stringsleepDate,0,userchild)
         let durations = (try? context.fetch(request))!
         
         for d in durations {
             seconds.append(d.duration)
+
         }
         print("ARRAY SECONDS:", seconds)
       //adding the array of seconds

@@ -17,7 +17,7 @@ class ActivityViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var receivedString = ""
     var user = ""
-   
+    var userchild = ""
     
     @IBOutlet weak var CurrentDates: UIDatePicker!
     let dateFormatter = DateFormatter()
@@ -31,7 +31,7 @@ class ActivityViewController: UIViewController {
         Note.clipsToBounds = true
         Note.layer.borderWidth = 1
         Note.layer.borderColor = UIColor.black.cgColor
-        print("Activity Passed:", receivedString)
+        print("Activity Passed:", receivedString, "and Child: ", userchild)
         
     }
     @IBAction func SaveButton(_ sender: Any) {
@@ -44,6 +44,7 @@ class ActivityViewController: UIViewController {
         
         let new_activity = Activity(context: self.context)
         new_activity.username = receivedString
+        new_activity.childName = userchild
         new_activity.currentdate = stringsleepDate
         new_activity.duration = ActivityDuration.countDownDuration
         new_activity.notes = Note.text

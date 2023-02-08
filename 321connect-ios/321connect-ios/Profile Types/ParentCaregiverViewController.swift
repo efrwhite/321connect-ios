@@ -68,13 +68,20 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     override func viewWillAppear(_ animated: Bool) {
-        FirstName.text = StringArray[0]
-        LastName.text = StringArray[1]
-        FirstName.placeholder = StringArray[0]
-        LastName.placeholder = StringArray[1]
-        PhoneNumber.placeholder = StringArray[2]
-        Username.placeholder = receivedString
-        Password.placeholder = StringArray[3]
+        if  isFirstTimeSignUp {
+            FirstName.text = StringArray[0]
+            LastName.text = StringArray[1]
+            PhoneNumber.text = StringArray[2]
+            Username.text = receivedString
+            Password.text = StringArray[3]
+            FirstName.isEnabled = false
+            LastName.isEnabled = false
+            PhoneNumber.isEnabled = false
+            Username.isEnabled = false
+            Password.isEnabled = false
+        }
+        
+        
     }
     
     // dismiss Keyboard
@@ -94,7 +101,7 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
         
         // first time sign up -> show child VC
         if isFirstTimeSignUp {
-            viewWillAppear(true)
+//            viewWillAppear(true)
             FirstName.text = StringArray[0]
             LastName.text = StringArray[1]
             PhoneNumber.text = StringArray[2]

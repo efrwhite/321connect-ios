@@ -39,7 +39,7 @@ class ProvidersViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                "Cardio",
                "Ophthalmology"]
     
-    var ProviderArray = [Provider]()
+    var ProviderArray = [ProviderE]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
@@ -64,7 +64,7 @@ class ProvidersViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                present(alert, animated: true)
                
            } else {
-               let new_provider = Provider(context: self.context)
+               let new_provider = ProviderE(context: self.context)
                new_provider.username = receivedString
                new_provider.providerName = ProviderName.text
                new_provider.practiceName = PracticeName.text
@@ -100,7 +100,7 @@ class ProvidersViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
 
     func loadItems(){
-        let request : NSFetchRequest<Provider> = Provider.fetchRequest()
+        let request : NSFetchRequest<ProviderE> = ProviderE.fetchRequest()
         do{
             ProviderArray = try context.fetch(request)
         } catch{

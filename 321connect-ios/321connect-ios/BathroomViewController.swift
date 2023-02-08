@@ -15,7 +15,7 @@ class BathroomViewController: UIViewController {
     @IBOutlet weak var view3: UIView!
     var receivedString = ""
     var user = ""
-
+    var userchild = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         receivedString = user

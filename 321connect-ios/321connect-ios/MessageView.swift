@@ -10,7 +10,7 @@ import CoreData
 import UIKit
 
 class MessageViewController: UIViewController {
-    
+    var userchild = ""
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var NotesField: UITextView!

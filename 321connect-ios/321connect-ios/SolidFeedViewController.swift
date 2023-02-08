@@ -23,6 +23,7 @@ class SolidFeedViewController: UIViewController, UITextFieldDelegate {
     var receivedString = ""
     var user = ""
     var myStr = ""
+    var userchild = ""
     var feedArray = [Feed]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -30,7 +31,7 @@ class SolidFeedViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         receivedString = user
-        print("This is my Username Passed over to SOLID!",receivedString)
+        print("This is my Username Passed over to SOLID!",receivedString,"and Child: ", userchild)
         
         // assign numeric key pad for amount text field
         solidAmountTextField.keyboardType = UIKeyboardType.numberPad

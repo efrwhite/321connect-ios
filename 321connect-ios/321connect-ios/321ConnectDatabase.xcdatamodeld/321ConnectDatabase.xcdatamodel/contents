@@ -15,6 +15,7 @@
     </entity>
     <entity name="Activity" representedClassName=".Activity" syncable="YES" codeGenerationType="class">
         <attribute name="activityType" optional="YES" attributeType="String" defaultValueString="NA"/>
+        <attribute name="childName" optional="YES" attributeType="String"/>
         <attribute name="currentdate" optional="YES" attributeType="String"/>
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" defaultValueString="NA"/>
@@ -25,6 +26,7 @@
     <entity name="Bathroom" representedClassName=".Bathroom" syncable="YES" codeGenerationType="class">
         <attribute name="bathroomNotes" optional="YES" attributeType="String" defaultValueString="N/A"/>
         <attribute name="bathroomType" optional="YES" attributeType="String" defaultValueString="N/A"/>
+        <attribute name="childName" optional="YES" attributeType="String"/>
         <attribute name="dateOfLastStool" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="diaperCream" optional="YES" attributeType="Boolean" defaultValueString="N/A" usesScalarValueType="YES"/>
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -38,6 +40,7 @@
         <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Behavior" representedClassName=".Behavior" syncable="YES" codeGenerationType="class">
+        <attribute name="childName" optional="YES" attributeType="String"/>
         <attribute name="currentdate" optional="YES" attributeType="Date" defaultDateTimeInterval="696538200" usesScalarValueType="NO"/>
         <attribute name="moodType" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
@@ -60,6 +63,7 @@
         <attribute name="username" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Development" representedClassName=".Development" syncable="YES" codeGenerationType="class">
+        <attribute name="childName" optional="YES" attributeType="String"/>
         <attribute name="firstAffection" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="firstBabbles" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="firstCoos" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -128,6 +132,7 @@
     </entity>
     <entity name="Feed" representedClassName="Feed" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="String"/>
+        <attribute name="childName" optional="YES" attributeType="String"/>
         <attribute name="consumption" optional="YES" attributeType="String"/>
         <attribute name="eatType" optional="YES" attributeType="String"/>
         <attribute name="iron" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -141,6 +146,7 @@
         <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Journal" representedClassName=".Journal" syncable="YES" codeGenerationType="class">
+        <attribute name="childName" optional="YES" attributeType="String"/>
         <attribute name="currentdate" optional="YES" attributeType="Date" defaultDateTimeInterval="696538260" usesScalarValueType="NO"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
@@ -148,6 +154,7 @@
         <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Medication" representedClassName="Medication" syncable="YES" codeGenerationType="class">
+        <attribute name="childName" optional="YES" attributeType="String"/>
         <attribute name="medDosage" optional="YES" attributeType="String"/>
         <attribute name="medDosageUnits" optional="YES" attributeType="String"/>
         <attribute name="medFrequency" optional="YES" attributeType="String"/>
@@ -156,6 +163,7 @@
         <attribute name="username" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Message" representedClassName=".Message" syncable="YES" codeGenerationType="class">
+        <attribute name="childName" optional="YES" attributeType="String"/>
         <attribute name="message_Block" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
@@ -170,7 +178,7 @@
         <relationship name="accountId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="parentId" inverseEntity="Account"/>
         <relationship name="children" optional="YES" toMany="YES" minCount="1" maxCount="100" deletionRule="Cascade" destinationEntity="Child"/>
     </entity>
-    <entity name="Provider" representedClassName=".Provider" syncable="YES" codeGenerationType="class">
+    <entity name="ProviderE" representedClassName=".ProviderE" syncable="YES" codeGenerationType="class">
         <attribute name="address1" optional="YES" attributeType="String"/>
         <attribute name="address2" optional="YES" attributeType="String"/>
         <attribute name="city" optional="YES" attributeType="String"/>
@@ -187,12 +195,14 @@
         <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Resource" representedClassName=".Resource" syncable="YES" codeGenerationType="class">
+        <attribute name="childName" optional="YES" attributeType="String"/>
         <attribute name="resourcelink" optional="YES" attributeType="String"/>
         <attribute name="resourceTitle" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Sleep" representedClassName=".Sleep" syncable="YES" codeGenerationType="class">
+        <attribute name="childName" optional="YES" attributeType="String"/>
         <attribute name="cPAP" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="currentdate" optional="YES" attributeType="String"/>
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -211,6 +221,7 @@
         <relationship name="childId" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child"/>
     </entity>
     <entity name="Vaccination" representedClassName=".Vaccination" syncable="YES" codeGenerationType="class">
+        <attribute name="childName" optional="YES" attributeType="String"/>
         <attribute name="vacImage" optional="YES" attributeType="Transformable"/>
         <attribute name="vacSystemDate" optional="YES" attributeType="String"/>
         <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
