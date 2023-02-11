@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UITextViewDelegate {
   
     @IBOutlet weak var DiaperNotes: UITextView!
     @IBOutlet weak var QuantityField: UITextField!
@@ -36,8 +36,6 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     view.addGestureRecognizer(tapGesture)
 
     }
-
-    
 
     @IBAction func SwitchCheck(_ sender: UISwitch) {
         if sender.tag == 0{
@@ -79,6 +77,7 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         present(alert, animated: true)
         
     }
+    
     func setPopUpButton(){
         let optional = {(action: UIAction) in print(action.title)}
 
@@ -90,6 +89,15 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         QuantityUnits.changesSelectionAsPrimaryAction = true
     }
   
+    // textview keyboard collapse on enter char
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
     // Enter dismisses keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

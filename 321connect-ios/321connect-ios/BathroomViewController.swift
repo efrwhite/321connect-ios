@@ -19,35 +19,26 @@ class BathroomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         receivedString = user
+        
         //load initial: view 1
         view1.alpha = 1
         view2.alpha = 0
         view3.alpha = 0
-        
     }
     
     @IBAction func SegmentView(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0{
-            
-
+        if sender.selectedSegmentIndex == 0 {
             view1.alpha = 1
             view2.alpha = 0
             view3.alpha = 0
-              }
-        else if sender.selectedSegmentIndex == 1{
-
-                  view1.alpha = 0
-                  view2.alpha = 1
-                  view3.alpha = 0
-              }
-        else {
-            
+        } else if sender.selectedSegmentIndex == 1 {
+            view1.alpha = 0
+            view2.alpha = 1
+            view3.alpha = 0
+        } else {
             view1.alpha = 0
             view2.alpha = 0
             view3.alpha = 1
-            
-            
         }
     }
-
 }

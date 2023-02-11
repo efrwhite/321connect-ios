@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class SleepViewController: UIViewController {
+class SleepViewController: UIViewController,UITextViewDelegate,UITextFieldDelegate {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -59,10 +59,16 @@ class SleepViewController: UIViewController {
         indicateTextField.placeholder = ""
         receivedString = user
         print("SLEEP Passed:", receivedString,"and Child: ", userchild)
+        
         /* *** dynamic label current time/date *** */
         dateLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .none)
             timeLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short)
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector:#selector(self.tick) , userInfo: nil, repeats: true)
+        
+        // Gesture to collapse/dismiss keyboard on click outside
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+
         }
 
         @objc func tick() {
@@ -74,6 +80,8 @@ class SleepViewController: UIViewController {
     /*
      // MARK: - Button Functions
      */
+    
+
 
     @IBAction func sleepCycleTapped(_ sender: Any) {
         print("Sleep Cycle Button Tapped") //debug
@@ -88,6 +96,26 @@ class SleepViewController: UIViewController {
         
         
         self.present(sleepCycleVC, animated: true, completion: nil)
+    }
+    
+    // textview keyboard collapse on enter char
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    // Enter dismisses keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func saveTapped(_ sender: UIButton) {
