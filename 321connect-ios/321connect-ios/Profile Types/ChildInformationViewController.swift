@@ -43,13 +43,15 @@ class ChildView: UIViewController, UITextFieldDelegate {
         ChildImage.clipsToBounds = true
         receivedString = user
         print("This is CHILD Passed:",receivedString)
+        
         // Gesture to collapse/dismiss keyboard on click outside
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
+        
         // hide navigation item back button on first sign up
-              if isFirstTimeSignUp{
-                  navigationItem.hidesBackButton = true
-              }
+          if isFirstTimeSignUp{
+              navigationItem.hidesBackButton = true
+          }
 
       /* Needed in Child's viewdidload() to prevent the back button for showing up and allowing the user to go
          back to the parent view which could cause issues! */
@@ -91,21 +93,25 @@ class ChildView: UIViewController, UITextFieldDelegate {
         BloodType.showsMenuAsPrimaryAction = true
         BloodType.changesSelectionAsPrimaryAction = true
     }
+    
     // Enter dismisses keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+    
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if (segue.identifier == "showChildVC"){
 //            let displayVC = segue.destination as! ChildView
 //            displayVC.user = receivedString
 //        }
 //    }
+    
     // dismiss Keyboard
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
           if segue.identifier == "childToHome" {
               let navController = segue.destination as! UINavigationController

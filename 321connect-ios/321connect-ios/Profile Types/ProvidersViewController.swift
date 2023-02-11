@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class ProvidersViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class ProvidersViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
     
     @IBOutlet weak var ProviderName: UITextField!
     @IBOutlet weak var PracticeName: UITextField!
@@ -50,6 +50,10 @@ class ProvidersViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         specialtyType.dataSource = self
         receivedString = user
         
+        // Gesture to collapse/dismiss keyboard on click outside
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+        
     }
     
     // intialize provider data to database
@@ -88,6 +92,19 @@ class ProvidersViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                present(alert, animated: true)
            }
        }
+    
+    // Enter dismisses keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    // MARK: - Database Functions * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     func SaveItems(){
        
         do {

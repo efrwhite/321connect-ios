@@ -10,7 +10,7 @@
 
 import UIKit
 import CoreData
-class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     // tableview height constraint constant set (arbitrary)
     @IBOutlet weak var FormTableHeight: NSLayoutConstraint!
@@ -446,7 +446,9 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         //        formsTableView.rowHeight = UITableView.automaticDimension
         
         
-        
+        // Gesture to collapse/dismiss keyboard on click outside
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
         
         self.formsTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
@@ -494,11 +496,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         }
         
     }
-    //    override func viewWillAppear(_ animated: Bool) {
-    ////        formsTableView.estimatedRowHeight = 150
-    ////        formsTableView.rowHeight = UITableView.automaticDimension
-    //    }
-    //
+
     /*
      // MARK: - Navigation * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      */
@@ -1134,6 +1132,17 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: - Button functions * * * * * * * * * * * * * * * * * * * * * * * * * * *
     
+    // Enter dismisses keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     @IBAction func saveTapped(_ sender: Any) {
         
         /* for this view: will string all data and submit on save tapped */
@@ -1184,6 +1193,12 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
             
         }
         
+        let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(OKAction)
+        present(alert, animated: true)
         
         // ********** print to console (debug) ****************
         print("DATE: \(date)")

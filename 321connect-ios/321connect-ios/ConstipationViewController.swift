@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class ConstipationViewController: UIViewController, UITextFieldDelegate {
+class ConstipationViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     @IBOutlet weak var ConstiNotes: UITextView!
     @IBOutlet weak var DoLSConsti: UIDatePicker!
     @IBOutlet weak var TreatPlan: UITextField!
@@ -29,6 +29,15 @@ class ConstipationViewController: UIViewController, UITextFieldDelegate {
         // Gesture to collapse/dismiss keyboard on click outside
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
+    }
+    
+    // textview keyboard collapse on enter char
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     // Enter dismisses keyboard
