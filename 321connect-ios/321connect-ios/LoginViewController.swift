@@ -10,7 +10,8 @@
 
 import UIKit
 import CoreData
-
+var defaultUsername = "username"
+var defaultPassword = "password"
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -60,10 +61,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let managedContext = appDelegate.persistentContainer.viewContext
         // instance of NSFRequest collects criteria needed to select group of objects
             /* entity name should be Account */
-        if (!username.isEmpty && !password.isEmpty){// if not empty check database
-//            print("Checking the strings input")
-//            print(password, type(of: password)) String
-//            print(username, type(of: username)) String
+        if (!username.isEmpty && !password.isEmpty) {// if not empty check database
+            // DEFAULT LOGIN
+            if username == defaultUsername && password == defaultPassword {
+                
+                // Successful login
+                // code here to segue to home screen
+                
+            }else{
             let request: NSFetchRequest<Account> = Account.fetchRequest()
             request.predicate = NSPredicate(format: "(userName MATCHES [cd] %@) AND passWord MATCHES [cd] %@", username, password )
             request.fetchLimit = 1
@@ -79,15 +84,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 // Create OK button with action handler
                 let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                     print("Ok button tapped")
-                 })
+                })
                 
                 //Add OK button to a dialog message
                 dialogMessage.addAction(ok)
-
-
+                
+                
                 // Present Alert to
                 self.present(dialogMessage, animated: true, completion: nil)
             }
+         }
         }
     }
     
