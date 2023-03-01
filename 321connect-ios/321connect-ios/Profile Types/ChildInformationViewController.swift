@@ -12,6 +12,7 @@ import UIKit
 class ChildView: UIViewController, UITextFieldDelegate {
     
     var isFirstTimeSignUp = false
+    
     @IBOutlet weak var ChildImage: UIImageView!
     @IBOutlet weak var birthday: UIDatePicker!
     @IBOutlet weak var Duedate: UIDatePicker!
@@ -177,11 +178,14 @@ class ChildView: UIViewController, UITextFieldDelegate {
                     let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
                     let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
                         //                self.delegate?.childAdded()
+                       
                         self.navigationController?.popViewController(animated: true)
                     }
                     
+                    
                     alert.addAction(OKAction)
                     present(alert, animated: true)
+                    
                 }
             }
         }
