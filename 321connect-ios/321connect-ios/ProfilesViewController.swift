@@ -1,4 +1,4 @@
-//
+// My Version Of Profiles
 //  ProfilesViewController.swift
 //  321connect-ios
 //
@@ -27,6 +27,7 @@ class ProfilesViewController: UIViewController {
     var delegate: getItemsDelegate?
     var receivedString = ""
     var user = ""
+    var selected_Child2 = ""
     var profileType = [ProfileType]()
     var ChildName = [String]()
     var ParentName = [String]()
@@ -38,26 +39,34 @@ class ProfilesViewController: UIViewController {
     var childss = "Shippo"
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+ 
+    
    //######################################
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-         receivedString = user
-       
+//        loadItems()
+//        reloadInputViews()
+    //######################################
+        receivedString = user
         print("PRofiles Passed:",receivedString)
         // Do any additional setup after loading the view, typically from a nib.
-        
+        profilesTableView.delegate = self
+         profilesTableView.dataSource = self
+        loadItems()
         // ******************************** hard code for debug ********************************
 //            profileType.append(ProfileType.init(profile: "Children", name: ChildName))
 //            profileType.append(ProfileType.init(profile: "Parents/Caregivers", name: ParentName))
 //            profileType.append(ProfileType.init(profile: "Providers", name: ProviderName))
         // ******************************** hard code for debug ********************************
-
+        
         let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(tableViewEditButtonTapped))
         navigationItem.rightBarButtonItem = editButton
         
        
-        
+        DispatchQueue.main.async {
+            // Update your table view or cells here
+            self.profilesTableView.reloadData()
+        }
 
  
     }
@@ -65,21 +74,30 @@ class ProfilesViewController: UIViewController {
  //#######################################
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        profilesTableView.reloadData()
+//        DispatchQueue.main.async {
+//            // Update your table view or cells here
+//            self.profilesTableView.reloadData()
+//            self.profilesTableView.reloadInputViews()
+//        }
         loadItems()
-                    profileType.append(ProfileType.init(profile: "Children", name: ChildName))
-                    profileType.append(ProfileType.init(profile: "Parents/Caregivers", name: ParentName))
-                    profileType.append(ProfileType.init(profile: "Providers", name: ProviderName))
-        context.refreshAllObjects()
+       
         
-        self.profilesTableView.reloadData()
-//        loadItems()
+//
+//        DispatchQueue.main.async {
+//            // Update your table view or cells here
+//            self.profilesTableView.reloadData()
+//        }
         
+   
+//        context.refreshAllObjects()
+//
 
         // Make the navigation bar background clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
-//        loadItems()
+
         
     }
  //#######################################
@@ -110,51 +128,61 @@ class ProfilesViewController: UIViewController {
         // Restore the navigation bar to default
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
+        
         delegate?.getItems(selected_Child)
+        profilesTableView.reloadInputViews()
     }
 //#######################################
     func loadItems(){
+        // Fetch child data
+        let childRequest : NSFetchRequest<Child> = Child.fetchRequest()
+        childRequest.predicate = NSPredicate(format: "(username MATCHES [cd] %@)", receivedString )
+        let childArray = try? context.fetch(childRequest)
+        let childNames = childArray?.compactMap({ $0.firstName })
         
-        let request : NSFetchRequest<Child> = Child.fetchRequest()
-        let parentrequest : NSFetchRequest<Parent> = Parent.fetchRequest()
-        let providerrequest: NSFetchRequest<ProviderE> = ProviderE.fetchRequest()
-        request.predicate = NSPredicate(format: "(username MATCHES [cd] %@)", receivedString )
-        parentrequest.predicate = NSPredicate(format: "(userName MATCHES [cd] %@)", receivedString )
-        providerrequest.predicate  = NSPredicate(format: "(username MATCHES [cd] %@)", receivedString )
-        let parent = (try? context.fetch(parentrequest))!
-        let childrequest = (try? context.fetch(request))!
+        // Fetch parent data
+        let parentRequest : NSFetchRequest<Parent> = Parent.fetchRequest()
+        parentRequest.predicate = NSPredicate(format: "(userName MATCHES [cd] %@)", receivedString )
+        let parentArray = try? context.fetch(parentRequest)
+        let parentNames = parentArray?.compactMap({ $0.firstName })
         
-        let providers = (try? context.fetch(providerrequest))!
-        for names in childrequest {
-            ChildName.append(names.firstName!)
-            print("names in child array: ", names.firstName!)
+        // Fetch provider data
+        let providerRequest : NSFetchRequest<ProviderE> = ProviderE.fetchRequest()
+        providerRequest.predicate  = NSPredicate(format: "(username MATCHES [cd] %@)", receivedString )
+        let providerArray = try? context.fetch(providerRequest)
+        let providerNames = providerArray?.compactMap({ $0.providerName })
+        
+        // Create ProfileType objects using the fetched data
+        var profileTypes: [ProfileType] = []
+        if let childNames = childNames, !childNames.isEmpty {
+            profileTypes.append(ProfileType(profile: "Children", name: childNames))
         }
-        for parents in parent{
-            ParentName.append(parents.firstName!)
+        if let parentNames = parentNames, !parentNames.isEmpty {
+            profileTypes.append(ProfileType(profile: "Parents/Caregivers", name: parentNames))
         }
-        for prov in providers{
-            ProviderName.append(prov.providerName!)
-        }
-
-        do{
-            ChildArray = try context.fetch(request)
-            ParentArray = try context.fetch(parentrequest)
-            providerarray = try context.fetch(providerrequest)
-            
-        } catch{
-            print("Error fetching data \(error)")
+        if let providerNames = providerNames, !providerNames.isEmpty {
+            profileTypes.append(ProfileType(profile: "Providers", name: providerNames))
         }
         
+        // Set the profileType array to the created ProfileType objects
+        self.profileType = profileTypes
+        
+        // Reload the table view data on the main thread
+        DispatchQueue.main.async {
+            self.profilesTableView.reloadData()
+        }
     }
-    
+
       func SaveItems(){
           do {
               try context.save()
-              
+              // Call reloadData() on the main thread
+                     DispatchQueue.main.async {
+                         self.profilesTableView.reloadData()
+                     }
           } catch {
               print("Error Saving context \(error)")
           }
-          self.profilesTableView.reloadData()
           
       }
     
@@ -190,7 +218,7 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
         // # 3 sections
         return 3
     }
-   
+   //index out of range error here
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //bri added this
         tableView.rowHeight = 45;
@@ -199,16 +227,22 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+            // changed feb 27 trying to get defualt child working with last row working
             //Access the array that you have used to fill the tableViewCell
             if indexPath.section == 0 {
-                selected_Child.append(ChildName[indexPath.row])
-                print("CHILD SELECTED:",selected_Child)
-
-                let alert = UIAlertController(title: "Child Selected", message: "\(selected_Child) is now the current child", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(okAction)
-                self.present(alert, animated: true, completion: nil)
+                if indexPath.row <= 1{
+                    selected_Child2 = ChildName[indexPath.row]
+                }else{
+       
+                    selected_Child.append(ChildName[indexPath.row])
+                    selected_Child2 = selected_Child.last!
+                    print("CHILD SELECTED:",selected_Child2)
+                    
+                    let alert = UIAlertController(title: "Child Selected", message: "\(selected_Child2) is now the current child", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
         }
 
@@ -229,12 +263,13 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
                 
                 // Delete item from data source
                 self.profilesTableView.beginUpdates()
+                
                 let childsname = profileType[indexPath.section].name?.remove(at: indexPath.row)
                 print("Area choosen for deletion:",childsname!)
                 //CORE DATA DELETION SECTION
                 let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Child")
                 let parent_request = NSFetchRequest<NSFetchRequestResult>(entityName: "Parent")
-                let provider_request = NSFetchRequest<NSFetchRequestResult>(entityName: "Provider")
+                let provider_request = NSFetchRequest<NSFetchRequestResult>(entityName: "ProviderE")
                 
                  request.predicate = NSPredicate(format:"username = %@ AND firstName = %@", receivedString,childsname!)
                 parent_request.predicate = NSPredicate(format:"userName = %@ AND firstName = %@", receivedString,childsname!)
@@ -244,50 +279,52 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
                     provider_request.fetchLimit = 1
                 
                
-//                    let plink = (try? context.fetch(parent_request))?.first
-                    
+
                 
 //                self.profileType[indexPath.section].name?.remove(at: indexPath.row)
                 // Remove row from table view
                 self.profilesTableView.deleteRows(at: [indexPath], with: .automatic)
-                // Reload table view contents after update
                 
+                // Reload table view contents after update
                 self.profilesTableView.reloadData()
                 self.profilesTableView.endUpdates()
                 let link = (try? context.fetch(request))?.first
                 let link2 = (try? context.fetch(parent_request))?.first
                 let link3 = (try? context.fetch(provider_request))?.first
-                //This does a check between two entities in the database Parent and CHild
-//                if link == nil{
-//                    let link = (try? context.fetch(parent_request))?.first
-//                    context.delete(link as! NSManagedObject)
-//                }
-//                {
-//                    context.delete(link as! NSManagedObject)
-//                }
+//                print("LINK 1:", link!, " Link 2:", link2!, "Link 3:", link3!)
+
+                
+                
                 if (link != nil){
                     context.delete(link as! NSManagedObject)
+                    
                 }
                 if(link2 != nil){
                     context.delete(link2 as! NSManagedObject)
+                    
                 }
                 if (link3 != nil) {
                     context.delete(link3 as! NSManagedObject)
+                
                 }
-                
+               
                 SaveItems()
-                
-                
+
                 
             }
-            
             // dismiss deletion
             let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alert.addAction(yesAction)
             alert.addAction(noAction)
             present(alert, animated: true, completion: nil)
         }
-    
+        
+        
+        
+     
+        
+       
+        
     }
 
 
@@ -383,3 +420,4 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     
 }
     
+
