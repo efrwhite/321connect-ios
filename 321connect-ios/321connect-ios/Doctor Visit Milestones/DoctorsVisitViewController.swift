@@ -648,31 +648,36 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
             if(indexPath.row == 0) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.textLabel!.text = newbornForm[indexPath.row]
-                cell.selectionStyle = .none
+//                cell.selectionStyle = .none
                 
                 return cell
             }
             // this is appointment dates
             else if(indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15 || indexPath.row == 19) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
-                cell.selectionStyle = .none
+//                cell.selectionStyle = .none
                 return cell
             }
             // providers area
             else if(indexPath.row == 4 || indexPath.row == 8 || indexPath.row == 12 || indexPath.row == 16 || indexPath.row == 20) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
-                cell.selectionStyle = .none
+//                cell.selectionStyle = .none
                 return cell
             }
             else {
                 //Questions Cell Slider
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = newbornForm[indexPath.row]
-                cell.selectionStyle = .none
-                
-                //                NSLayoutConstraint.activate([
-                //                    cell.questionSwitch.trailingAnchor.constraint(equalTo: cell.trailingAnchor),
-                //                    cell.questionLabel.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 20)])
+                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    cell.textLabel!.text = newbornForm[indexPath.row]
+                    
+                    // Customize checkmark accessory type for selected and unselected cells
+                    if cell.isSelected {
+                        cell.accessoryType = .checkmark
+                        cell.tintColor = UIColor.green
+                    } else {
+                        cell.accessoryType = .checkmark
+                        cell.tintColor = UIColor.gray
+                    }
+                    
                 return cell
             }
         }
@@ -698,7 +703,6 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
             else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
                 cell.questionLabel.text = twoMonthForm[indexPath.row]
-                cell.selectionStyle = .none
                 return cell
             }
         }
@@ -1128,6 +1132,18 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.selectionStyle = .none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
+        cell?.tintColor = UIColor.green
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
+        cell?.tintColor = UIColor.gray
     }
     
     // MARK: - Button functions * * * * * * * * * * * * * * * * * * * * * * * * * * *
