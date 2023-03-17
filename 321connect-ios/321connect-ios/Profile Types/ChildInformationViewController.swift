@@ -138,6 +138,9 @@ class ChildView: UIViewController, UITextFieldDelegate {
                 
             } else {
                 if isFirstTimeSignUp {
+//                    // Convert UIImage to Data
+                    let imageData = ChildImage.image?.jpegData(compressionQuality: 1.0)
+
                     let new_child = Child(context: self.context)
                     new_child.username = receivedString
                     new_child.firstName = FirstName.text
@@ -148,7 +151,7 @@ class ChildView: UIViewController, UITextFieldDelegate {
                     new_child.birthday = birthday.date
                     new_child.allergies = Allergies.text
                     new_child.medication = Medications.text
-                    new_child.image = ChildImage.image
+                    new_child.image = imageData as? NSData as Data?
                     self.ChildArray.append(new_child)
                     self.SaveItems()
                     
@@ -161,6 +164,10 @@ class ChildView: UIViewController, UITextFieldDelegate {
                     present(alert, animated: true)
                     
                 } else {
+//                   // Convert UIImage to Data
+                    let imageData = ChildImage.image?.jpegData(compressionQuality: 1.0)
+
+
                     let new_child = Child(context: self.context)
                     new_child.username = receivedString
                     new_child.firstName = FirstName.text
@@ -171,14 +178,13 @@ class ChildView: UIViewController, UITextFieldDelegate {
                     new_child.birthday = birthday.date
                     new_child.allergies = Allergies.text
                     new_child.medication = Medications.text
-                    new_child.image = ChildImage.image
+                    new_child.image = imageData as? NSData as Data?
                     self.ChildArray.append(new_child)
                     self.SaveItems()
                     
                     let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
                     let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
-                        //                self.delegate?.childAdded()
-                       
+                  
                         self.navigationController?.popViewController(animated: true)
                     }
                     

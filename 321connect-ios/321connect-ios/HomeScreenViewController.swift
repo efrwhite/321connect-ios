@@ -16,7 +16,8 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
         print("ITEMS: ",childuser)
     }
     
-    var ChildProfile = [String]()
+    var ChildProfilefirst = [String]()
+    var ChildProfilelast = [String]()
     var ChildProfileDate = [Date]()
     var ChildProfileImage = [UIImage]()
     var ChildArray = [Child]()
@@ -42,6 +43,9 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
     var childuser = [String]()
     var childname = ""
     var child = ""
+    var seguechild = ""
+    var receivedChild = ""
+    var segueChild = ""
     
     // extension button to return to home screen
     @IBAction func extentionButton(_ sender: Any) {
@@ -64,30 +68,73 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
         print("Array of SleepDates",SleepyDate)
         print("Array of Sleep:", Sleepy)
 //        reloadInputViews()
-        let lastElement = childuser.last
-        if lastElement != nil{
+//        if ChildProfilefirst.count >= 1{
+            let lastElement = childuser.last
+            if lastElement != nil{
+                let date = Date()
+                
+                // Create Date Formatter
+                let dateFormatter = DateFormatter()
+                let calendar = Calendar.current
+                
+                let year = calendar.component(.year, from: date)
+                
+                // Set Date Format
+                dateFormatter.dateFormat = "YYYY/MM/dd"
+                
+                // Convert Date to String
+                dateFormatter.dateFormat = "YYYY/MM/dd"
+                print("CHILD passed:", lastElement!)
+                var firstname = String(ChildProfilefirst.last!)
+                var lastname = String(ChildProfilelast.last!)
+                let strfnln = firstname + " " + lastname
+                var Dates = ChildProfileDate.first!
+                var stringdate = dateFormatter.string(from: Dates)
+                let components = stringdate.components(separatedBy: "/")
+                var childyear = components.first!
+                
+                var intchidyear = Int(childyear)
+                print("CHILD YEAR",intchidyear)
+                var currentyear = Int(year)
+                print("CURRENT YEAR",currentyear)
+                var diffyear = currentyear - intchidyear!
+                var age = String(diffyear)
+                self.labelISO.text = strfnln
+                self.Agelabel.text = "Age: " + age
+                
+                print("Image Size:", ChildProfileImage.first?.size)
+                print("Image Data: ", ChildProfileImage.first?.pngData())
+                if ChildProfileImage.first != nil {
+                    childImage.setBackgroundImage(ChildProfileImage.last, for: .normal)
+                } else {
+                    print("ChildProfileImage is nil.")
+                }
+                
+//            }
+        }
+        else{
             let date = Date()
-
+            
             // Create Date Formatter
             let dateFormatter = DateFormatter()
             let calendar = Calendar.current
-
+            
             let year = calendar.component(.year, from: date)
-
+            
             // Set Date Format
             dateFormatter.dateFormat = "YYYY/MM/dd"
-
+            
             // Convert Date to String
             dateFormatter.dateFormat = "YYYY/MM/dd"
-            print("CHILD passed:", lastElement!)
-            var firstname = String(ChildProfile.first!)
-            var lastname = String(ChildProfile.last!)
+//            print("CHILD passed:", lastElement!)
+            var firstname = String(ChildProfilefirst.last!)
+            var lastname = String(ChildProfilelast.last!)
             let strfnln = firstname + " " + lastname
             var Dates = ChildProfileDate.first!
             var stringdate = dateFormatter.string(from: Dates)
             let components = stringdate.components(separatedBy: "/")
             var childyear = components.first!
-          
+            
             var intchidyear = Int(childyear)
             print("CHILD YEAR",intchidyear)
             var currentyear = Int(year)
@@ -96,6 +143,16 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
             var age = String(diffyear)
             self.labelISO.text = strfnln
             self.Agelabel.text = "Age: " + age
+            
+            print("Image Size:", ChildProfileImage.first?.size)
+            print("Image Data: ", ChildProfileImage.first?.pngData())
+            if ChildProfileImage.first != nil {
+                childImage.setBackgroundImage(ChildProfileImage.last, for: .normal)
+            } else {
+                print("ChildProfileImage is nil.")
+            }
+            
+            
         }
     }
     
@@ -111,6 +168,7 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
         childImage.layer.cornerRadius = childImage.frame.size.width/2
         childImage.clipsToBounds = true
         receivedString = user
+        receivedChild = segueChild
         print("HOME SCREEN Passed", receivedString)
 
         // table view styling
@@ -242,21 +300,20 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
             request.predicate = NSPredicate(format: "(username MATCHES [cd] %@) && (firstName MATCHES [cd] %@)", receivedString, String(lastElement!))
             Sleeprequest.predicate = NSPredicate(format: "username MATCHES [cd] %@", receivedString)
             let SleepReq = (try? context.fetch(Sleeprequest))!
-            
-            
             let childrequest = (try? context.fetch(request))!
             
-//            for sleep in SleepReq{
-//                Sleepy.append(sleep.currentdate!)
-//                SleepyDate.append(sleep.sleepTime!)
-//                print(Sleepy)
-//            }
+
                     
                     
             for names in childrequest {
-                ChildProfile.append(names.firstName!)
-                ChildProfile.append(names.lastName!)
+                ChildProfilefirst.append(names.firstName!)
+                ChildProfilelast.append(names.lastName!)
                 ChildProfileDate.append(names.birthday!)
+                let image = UIImage(data: names.image!)
+                    // set the image to your UIImageView
+                ChildProfileImage.append(image!)
+               
+                
                 print("Child Match name,", names.firstName!, childuser)
                 
             }
@@ -266,6 +323,28 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
             } catch{
                 print("Error fetching data \(error)")
             }
+        }
+        else{
+            request.predicate = NSPredicate(format: "(username MATCHES [cd] %@)", receivedString)
+            let childrequest2 = (try? context.fetch(request))!
+            for names in childrequest2 {
+                ChildProfilefirst.append(names.firstName!)
+                ChildProfilelast.append(names.lastName!)
+                ChildProfileDate.append(names.birthday!)
+                let image = UIImage(data: names.image!)
+                    // set the image to your UIImageView
+                ChildProfileImage.append(image!)
+               
+                
+                print("Child Match name,", names.firstName!)
+                
+            }
+            do{
+                ChildArray = try context.fetch(request)
+            } catch{
+                print("Error fetching data \(error)")
+            }
+            
         }
     }
     

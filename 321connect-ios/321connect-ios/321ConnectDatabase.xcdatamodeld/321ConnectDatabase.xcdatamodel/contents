@@ -57,7 +57,7 @@
         <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="firstName" optional="YES" attributeType="String"/>
         <attribute name="gender" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="image" optional="YES" attributeType="Transformable"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="medication" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
