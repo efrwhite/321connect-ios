@@ -1397,20 +1397,20 @@
         <scene sceneID="aaJ-al-Sr2">
             <objects>
                 <viewController storyboardIdentifier="ProvidersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zgO-O4-KqN" customClass="ProvidersViewController" customModule="_21connect_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mIL-m2-K0o">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="mIL-m2-K0o">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 101" translatesAutoresizingMaskIntoConstraints="NO" id="H5E-N6-duc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Rectangle 101" translatesAutoresizingMaskIntoConstraints="NO" id="H5E-N6-duc">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="896" id="pAu-co-bcS"/>
                                 </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AXW-ta-p4T">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXW-ta-p4T">
                                 <rect key="frame" x="0.0" y="92" width="414" height="720"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v05-4U-AGR" userLabel="Sub View">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v05-4U-AGR" userLabel="Sub View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="906.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oG1-Z0-VIa">
@@ -1441,10 +1441,10 @@
                                                     </textField>
                                                 </subviews>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQ3-fQ-SiA" userLabel="Provider Address">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cQ3-fQ-SiA" userLabel="Provider Address">
                                                 <rect key="frame" x="0.0" y="459" width="414" height="447.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNa-Zy-HQq">
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNa-Zy-HQq">
                                                         <rect key="frame" x="127" y="369.5" width="160" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="160" id="2jS-63-xWU"/>
@@ -7733,7 +7733,7 @@
                                                     <constraint firstItem="s4G-sW-bIn" firstAttribute="top" secondItem="Kms-GA-rfc" secondAttribute="top" id="rTk-Z1-fNx"/>
                                                 </constraints>
                                             </view>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Szu-bx-Ebm">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Szu-bx-Ebm">
                                                 <rect key="frame" x="0.0" y="580" width="414" height="800"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="800" id="NRx-Hu-Tq4"/>
@@ -7763,7 +7763,7 @@
                                                             </subviews>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuestionCell" rowHeight="150" id="6g1-DL-2zk" customClass="FormQuestionTableViewCell" customModule="_21connect_ios" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuestionCell" rowHeight="150" id="6g1-DL-2zk">
                                                         <rect key="frame" x="0.0" y="141" width="414" height="150"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6g1-DL-2zk" id="fBz-C6-7po" customClass="FormQuestionTableViewCell" customModule="_21connect_ios" customModuleProvider="target">
@@ -7817,10 +7817,6 @@
                                                                 <constraint firstItem="asl-KK-B5N" firstAttribute="leading" secondItem="fBz-C6-7po" secondAttribute="leadingMargin" id="fnF-b0-D9W"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
-                                                        <connections>
-                                                            <outlet property="questionLabel" destination="aAE-al-UCO" id="Cyt-7D-h0p"/>
-                                                            <outlet property="questionSwitch" destination="nup-eP-O5D" id="IXb-RW-Vza"/>
-                                                        </connections>
                                                     </tableViewCell>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ApptCell" rowHeight="65" id="dnW-Dh-kUf" customClass="FormAppointmentTableViewCell" customModule="_21connect_ios" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="291" width="414" height="65"/>
@@ -7979,6 +7975,30 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuestCell" textLabel="VNK-HP-2N1" rowHeight="76" style="IBUITableViewCellStyleDefault" id="uqH-ld-8Ht" customClass="FormQuestionTableViewCell" customModule="_21connect_ios" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="721" width="414" height="76"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uqH-ld-8Ht" id="Zlf-CO-EsB">
+                                                            <rect key="frame" x="0.0" y="0.0" width="370" height="76"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VNK-HP-2N1">
+                                                                    <rect key="frame" x="20" y="0.0" width="342" height="76"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <attributedString key="attributedText">
+                                                                        <fragment content="This is just sample text representing a question. Does this work?">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="17" name="Lato-Regular"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </tableViewCellContentView>
+                                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                                    </tableViewCell>
                                                 </prototypes>
                                                 <connections>
                                                     <outlet property="dataSource" destination="q9O-Ug-cIn" id="xKu-ek-eib"/>
@@ -8105,7 +8125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T0A-DJ-isn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7640.579710144928" y="537.72321428571422"/>
+            <point key="canvasLocation" x="7640.579710144928" y="537.05357142857144"/>
         </scene>
         <!--History Table View Controller-->
         <scene sceneID="hWI-g7-ptp">
@@ -8260,6 +8280,9 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
