@@ -127,7 +127,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             displayVC.user = usernameTextField.text!
             displayVC.isFirstTimeSignUp = true
         }
+//        if segue.identifier == "childtohome"{
+//            let navController = segue.destination as! UINavigationController
+//            let displayVC = navController.topViewController as! HomeScreenViewController
+//
+//            // pass data to HomeScreenViewController if necessary
+//            // possible name or user (database)
+//            displayVC.user = usernameTextField.text!
+//            displayVC.
+//            displayVC.isFirstTimeSignUp = true
+//        }
     }
+  
     
     // Enter dismisses keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

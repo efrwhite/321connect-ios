@@ -1,9 +1,9 @@
-// My Version Of Profiles
+// March 1 push
 //  ProfilesViewController.swift
 //  321connect-ios
 //
 //  Created by Edward Ladia on 6/2/22.
-//
+//  Edited by Brianna Boston in March 2023
 
 import Foundation
 import UIKit
@@ -11,7 +11,6 @@ import CoreData
 
 class ProfileType {
     var profile: String?
-//    var name: [String]?
     var name: [String]?
     
     init(profile: String, name: [String]){
@@ -53,12 +52,7 @@ class ProfilesViewController: UIViewController {
         profilesTableView.delegate = self
          profilesTableView.dataSource = self
         loadItems()
-        // ******************************** hard code for debug ********************************
-//            profileType.append(ProfileType.init(profile: "Children", name: ChildName))
-//            profileType.append(ProfileType.init(profile: "Parents/Caregivers", name: ParentName))
-//            profileType.append(ProfileType.init(profile: "Providers", name: ProviderName))
-        // ******************************** hard code for debug ********************************
-        
+     
         let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(tableViewEditButtonTapped))
         navigationItem.rightBarButtonItem = editButton
         
@@ -75,24 +69,8 @@ class ProfilesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         profilesTableView.reloadData()
-//        DispatchQueue.main.async {
-//            // Update your table view or cells here
-//            self.profilesTableView.reloadData()
-//            self.profilesTableView.reloadInputViews()
-//        }
         loadItems()
-       
-        
-//
-//        DispatchQueue.main.async {
-//            // Update your table view or cells here
-//            self.profilesTableView.reloadData()
-//        }
-        
-   
-//        context.refreshAllObjects()
-//
-
+ 
         // Make the navigation bar background clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -157,11 +135,21 @@ class ProfilesViewController: UIViewController {
         if let childNames = childNames, !childNames.isEmpty {
             profileTypes.append(ProfileType(profile: "Children", name: childNames))
         }
+        else {
+            // Create an empty section for "Providers"
+            profileTypes.append(ProfileType(profile: "Children", name: []))
+        }
         if let parentNames = parentNames, !parentNames.isEmpty {
             profileTypes.append(ProfileType(profile: "Parents/Caregivers", name: parentNames))
+        }else {
+            // Create an empty section for "Providers"
+            profileTypes.append(ProfileType(profile: "Parents/Caregivers", name: []))
         }
         if let providerNames = providerNames, !providerNames.isEmpty {
             profileTypes.append(ProfileType(profile: "Providers", name: providerNames))
+        } else {
+            // Create an empty section for "Providers"
+            profileTypes.append(ProfileType(profile: "Providers", name: []))
         }
         
         // Set the profileType array to the created ProfileType objects
@@ -187,30 +175,9 @@ class ProfilesViewController: UIViewController {
       }
     
    
-//    @IBAction func editTapped(_ sender: Any, indexPath: IndexPath) {
-//        // Get the index path of the cell that contains the button
-//        let button = sender as! UIButton
-//        let section = indexPath.section
-//
-//        // Use a switch statement to determine the corresponding view controller based on the section of the index path
-//        switch section {
-//            case 0:
-//                self.performSegue(withIdentifier: "showChildVC", sender: button)
-//            case 1:
-//                self.performSegue(withIdentifier: "showParentsVC", sender: button)
-//            case 2:
-//                self.performSegue(withIdentifier: "showProvidersVC", sender: button)
-//            default:
-//                break
-//        }
-//    }
-    
+
 }
-//extension ProfilesViewController: UINavigationControllerDelegate {
-//    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-//        (viewController as? HomeScreenViewController)?.childuser = childss// Here you pass the to your original view controller
-//    }
-//}
+
 
 extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     
@@ -220,30 +187,21 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     }
    //index out of range error here
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //bri added this
-        tableView.rowHeight = 45;
-        return profileType[section].name?.count ?? 0
+   
+        return self.profileType[section].name?.count ?? 0
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            // changed feb 27 trying to get defualt child working with last row working
-            //Access the array that you have used to fill the tableViewCell
-            if indexPath.section == 0 {
-                if indexPath.row <= 1{
-                    selected_Child2 = ChildName[indexPath.row]
-                }else{
-       
-                    selected_Child.append(ChildName[indexPath.row])
-                    selected_Child2 = selected_Child.last!
-                    print("CHILD SELECTED:",selected_Child2)
-                    
-                    let alert = UIAlertController(title: "Child Selected", message: "\(selected_Child2) is now the current child", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    alert.addAction(okAction)
-                    self.present(alert, animated: true, completion: nil)
-                }
-            }
+      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedRow = indexPath.row
+        let selectedsection = indexPath.section
+        print("Selected row: \(selectedRow)")
+        let selectedProfileType = profileType[selectedsection].name
+        let selected_child = selectedProfileType![selectedRow]
+          //array
+        selected_Child.append(selected_child)
+        print("Selected Row Child: \(selected_Child)")
+
         }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -318,13 +276,7 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
             alert.addAction(noAction)
             present(alert, animated: true, completion: nil)
         }
-        
-        
-        
-     
-        
-       
-        
+
     }
 
 
@@ -420,4 +372,3 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     
 }
     
-
