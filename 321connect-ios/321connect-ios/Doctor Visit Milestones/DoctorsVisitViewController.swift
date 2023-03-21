@@ -15,7 +15,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
     // tableview height constraint constant set (arbitrary)
     @IBOutlet weak var FormTableHeight: NSLayoutConstraint!
     
-    // -----> Need auto layout/ constraints for dynamically changing cell heights
+    // -----> Need auto layout/ constraints for dynamically changing cell heights ~
     // -----> Need visit picker to select corresponding table view section <conditional> ~
     // -----> Need dynamically changing tableview height (disable scroll) ~
     
@@ -441,11 +441,6 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         formsTableView.dataSource = self
         formsTableView.delegate = self
         
-        
-        //        formsTableView.estimatedRowHeight = 500
-        //        formsTableView.rowHeight = UITableView.automaticDimension
-        
-        
         // Gesture to collapse/dismiss keyboard on click outside
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
@@ -494,7 +489,6 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
             print("picker, ",ProviderNames)
             
         }
-        
     }
 
     /*
@@ -522,7 +516,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         //Height
         HeightUnits.menu = UIMenu(children : [
             UIAction(title:"Centimeters (cm)",state: .on, handler: optional),
-            UIAction(title:"Feet (ft)", handler: optional)])
+            UIAction(title:"Inches (in)", handler: optional)])
         
         HeightUnits.showsMenuAsPrimaryAction = true
         HeightUnits.changesSelectionAsPrimaryAction = true
@@ -555,15 +549,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
     /*
      // MARK: - TableView * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      */
-    
-    //    private func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //        return UITableView.automaticDimension
-    //    }
-    //
-    //    private func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //        return UITableView.automaticDimension
-    //    }
-    
+
     /* * * * * * * * * * * * * * SECTION * * * * * * * * * * * * * * * * * * * * */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -648,37 +634,31 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
             if(indexPath.row == 0) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
                 cell.textLabel!.text = newbornForm[indexPath.row]
-//                cell.selectionStyle = .none
+                cell.selectionStyle = .none
                 
                 return cell
             }
             // this is appointment dates
             else if(indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15 || indexPath.row == 19) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ApptCell", for: indexPath) as! FormAppointmentTableViewCell
-//                cell.selectionStyle = .none
+                cell.selectionStyle = .none
                 return cell
             }
             // providers area
             else if(indexPath.row == 4 || indexPath.row == 8 || indexPath.row == 12 || indexPath.row == 16 || indexPath.row == 20) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath) as! FormProviderTableViewCell
-//                cell.selectionStyle = .none
+                cell.selectionStyle = .none
                 return cell
             }
             else {
                 //Questions Cell Slider
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
-                    cell.textLabel!.text = newbornForm[indexPath.row]
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = newbornForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
                     
-                    // Customize checkmark accessory type for selected and unselected cells
-                    if cell.isSelected {
-                        cell.accessoryType = .checkmark
-                        cell.tintColor = UIColor.green
-                    } else {
-                        cell.accessoryType = .checkmark
-                        cell.tintColor = UIColor.gray
-                    }
-                    
-                return cell
+                return qcell
             }
         }
         
@@ -701,18 +681,25 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = twoMonthForm[indexPath.row]
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = twoMonthForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
         // FOUR-MONTH FORM
         if pickerIdentifier == "Four months" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-            cell.questionLabel.text = fourMonthForm[indexPath.row]
-            cell.selectionStyle = .none
-            return cell
+            let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                qcell.textLabel!.text = fourMonthForm[indexPath.row]
+                qcell.selectionStyle = .default
+                qcell.accessoryType = .checkmark
+                qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                
+            return qcell
         }
         
         // SIX-MONTH FORM
@@ -734,19 +721,25 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = sixMonthForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = sixMonthForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
         // NINE-MONTH FORM
         if pickerIdentifier == "Nine months" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-            cell.questionLabel.text = nineMonthForm[indexPath.row]
-            cell.selectionStyle = .none
-            return cell
+            let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                qcell.textLabel!.text = nineMonthForm[indexPath.row]
+                qcell.selectionStyle = .default
+                qcell.accessoryType = .checkmark
+                qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                
+            return qcell
         }
         
         // TWELVE-MONTH FORM
@@ -768,19 +761,25 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = twelveMonthForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = twelveMonthForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
         // FIFTEEN-MONTH FORM
         if pickerIdentifier == "Fifteen months" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-            cell.questionLabel.text = fifteenMonthForm[indexPath.row]
-            cell.selectionStyle = .none
-            return cell
+            let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                qcell.textLabel!.text = fifteenMonthForm[indexPath.row]
+                qcell.selectionStyle = .default
+                qcell.accessoryType = .checkmark
+                qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                
+            return qcell
         }
         
         // EIGHTEEN-MONTH FORM
@@ -802,10 +801,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = eighteenMonthForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = eighteenMonthForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
@@ -828,10 +830,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = twoYearForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = twoYearForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
@@ -854,10 +859,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = thirtyMonthForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = thirtyMonthForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
@@ -880,10 +888,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = threeYearForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = threeYearForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
@@ -906,10 +917,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = fourYearForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = fourYearForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
@@ -932,10 +946,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = fiveYearForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = fiveYearForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
@@ -943,7 +960,7 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
         if pickerIdentifier == "Six years" {
             if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 6 || indexPath.row == 20) {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! FormTextTableViewCell
-                cell.textLabel!.text = fiveYearForm[indexPath.row]
+                cell.textLabel!.text = sixYearForm[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
@@ -958,10 +975,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = fiveYearForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = sixYearForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
@@ -984,10 +1004,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = sevenYearForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = sevenYearForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         // EIGHT-YEAR FORM
@@ -1009,10 +1032,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = eightYearForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = eightYearForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
@@ -1035,10 +1061,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = nineYearForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = nineYearForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
@@ -1061,10 +1090,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = tenYearForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = tenYearForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
@@ -1087,10 +1119,13 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = elevenYearForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = elevenYearForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
@@ -1113,38 +1148,51 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
                 return cell
             }
             else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! FormQuestionTableViewCell
-                cell.questionLabel.text = twelveYearForm[indexPath.row]
-                cell.selectionStyle = .none
-                return cell
+                let qcell = tableView.dequeueReusableCell(withIdentifier: "QuestCell", for: indexPath) as! FormQuestionTableViewCell
+                    qcell.textLabel!.text = twelveYearForm[indexPath.row]
+                    qcell.selectionStyle = .default
+                    qcell.accessoryType = .checkmark
+                    qcell.tintColor = UIColor(white: 0.9, alpha: 0.9)
+                    
+                return qcell
             }
         }
         
         // NO-AGE FORM
-        if pickerIdentifier == "Not an age-scheduled" {
+        else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotesCell", for: indexPath) as! FormNotesTableViewCell
             cell.selectionStyle = .none
             return cell
         }
-        
-        
-        // temporary default until finish ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.selectionStyle = .none
-        return cell
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = .checkmark
-        cell?.tintColor = UIColor.green
+        // Deselect row
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        // Get the selected cell
+        guard let cell = tableView.cellForRow(at: indexPath) as? FormQuestionTableViewCell else {
+            return
+        }
+
+        // Update the cell's checkmark and tint color
+        cell.accessoryType = .checkmark
+        cell.tintColor = .green
     }
 
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = .checkmark
-        cell?.tintColor = UIColor.gray
-    }
+
+    
+//    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+//        let cell = tableView.cellForRow(at: indexPath) as? FormQuestionTableViewCell
+//        if cell != nil {
+//            // Toggle the isSelected property of the question cell to change its tint color
+//            cell!.isSelected = !cell!.isSelected
+//            return indexPath
+//        } else {
+//            return nil
+//        }
+//    }
     
     // MARK: - Button functions * * * * * * * * * * * * * * * * * * * * * * * * * * *
     

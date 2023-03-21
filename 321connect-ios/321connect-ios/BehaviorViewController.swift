@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class BehaviorViewController: UIViewController {
+class BehaviorViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var DateBehaviour: UIDatePicker!
     @IBOutlet weak var notesTextView: UITextView!
@@ -51,6 +51,10 @@ class BehaviorViewController: UIViewController {
         notesTextView.layer.borderColor = UIColor.black.cgColor
         receivedString = user
         print("Behavior Passed Data:", receivedString,"and Child: ", userchild)
+        
+        // Gesture to collapse/dismiss keyboard on click outside
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func didReceiveMemoryWarning() {
@@ -120,6 +124,21 @@ class BehaviorViewController: UIViewController {
             historyVC.title = "Behavior History"
             historyVC.segueType = segue.identifier 
         }
+    }
+    
+    // Enter dismisses keyboard
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            // dismiss the keyboard
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func SaveItems(){
