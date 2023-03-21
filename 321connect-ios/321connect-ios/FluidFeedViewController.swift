@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class FluidFeedViewController: UIViewController, UITextFieldDelegate {
+class FluidFeedViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var fluidTypeTextField: UITextField!
     @IBOutlet weak var fluidAmountTextField: UITextField!
@@ -77,6 +77,16 @@ class FluidFeedViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            // dismiss the keyboard
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+
     
     // dismiss Keyboard
     @objc func dismissKeyboard() {
