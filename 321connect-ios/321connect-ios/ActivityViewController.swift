@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 import CoreData
-class ActivityViewController: UIViewController {
+class ActivityViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var activityselection: UIButton!
     @IBOutlet weak var ActivityDuration: UIDatePicker!
     @IBOutlet weak var Note: UITextView!
@@ -32,6 +32,10 @@ class ActivityViewController: UIViewController {
         Note.layer.borderWidth = 1
         Note.layer.borderColor = UIColor.black.cgColor
         print("Activity Passed:", receivedString, "and Child: ", userchild)
+        
+        // Gesture to collapse/dismiss keyboard on click outside
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
         
     }
     @IBAction func SaveButton(_ sender: Any) {
@@ -81,6 +85,23 @@ class ActivityViewController: UIViewController {
         activityselection.changesSelectionAsPrimaryAction = true
         
     }
+    
+    // Enter dismisses keyboard
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            // dismiss the keyboard
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     func SaveItems(){
        
         do {
