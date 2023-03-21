@@ -820,7 +820,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HJ578KXY67;
+				DEVELOPMENT_TEAM = AJ84Q69AHZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "321connect-ios/Info.plist";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please Allow Image to Profiles";
@@ -853,7 +853,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HJ578KXY67;
+				DEVELOPMENT_TEAM = AJ84Q69AHZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "321connect-ios/Info.plist";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please Allow Image to Profiles";
