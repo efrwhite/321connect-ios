@@ -118,6 +118,8 @@ class BehaviorViewController: UIViewController {
             
             // Pass data to the history view controller here
             historyVC.title = "Behavior History"
+            historyVC.user = receivedString
+            historyVC.userchild = userchild
             historyVC.segueType = segue.identifier 
         }
     }

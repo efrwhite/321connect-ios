@@ -24,7 +24,11 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
     var Sleepy = [String]()
     var SleepyDate = [Date]()
     var sleeparray = [Sleep]()
-    
+    var BehaviorArray = [Behavior]()
+    var JournalArray = [Journal]()
+//    var History_Date = [String]()
+//    var History_text = [String]()
+//
     // homescreen(ext) vc local variables
     @IBOutlet weak var feedButton: UIButton!
     @IBOutlet weak var activityButton: UIButton!
@@ -87,6 +91,7 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
                 print("CHILD passed:", lastElement!)
                 var firstname = String(ChildProfilefirst.last!)
                 var lastname = String(ChildProfilelast.last!)
+               
                 let strfnln = firstname + " " + lastname
                 var Dates = ChildProfileDate.first!
                 var stringdate = dateFormatter.string(from: Dates)
@@ -127,29 +132,39 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
             // Convert Date to String
             dateFormatter.dateFormat = "YYYY/MM/dd"
 //            print("CHILD passed:", lastElement!)
+            
             var firstname = String(ChildProfilefirst.last!)
             var lastname = String(ChildProfilelast.last!)
-            let strfnln = firstname + " " + lastname
-            var Dates = ChildProfileDate.first!
-            var stringdate = dateFormatter.string(from: Dates)
-            let components = stringdate.components(separatedBy: "/")
-            var childyear = components.first!
-            
-            var intchidyear = Int(childyear)
-            print("CHILD YEAR",intchidyear)
-            var currentyear = Int(year)
-            print("CURRENT YEAR",currentyear)
-            var diffyear = currentyear - intchidyear!
-            var age = String(diffyear)
-            self.labelISO.text = strfnln
-            self.Agelabel.text = "Age: " + age
-            
-            print("Image Size:", ChildProfileImage.first?.size)
-            print("Image Data: ", ChildProfileImage.first?.pngData())
-            if ChildProfileImage.first != nil {
-                childImage.setBackgroundImage(ChildProfileImage.last, for: .normal)
-            } else {
-                print("ChildProfileImage is nil.")
+            if firstname != nil && lastname != nil{
+                
+                let strfnln = firstname + " " + lastname
+                var Dates = ChildProfileDate.first!
+                var stringdate = dateFormatter.string(from: Dates)
+                let components = stringdate.components(separatedBy: "/")
+                var childyear = components.first!
+                
+                var intchidyear = Int(childyear)
+                print("CHILD YEAR",intchidyear)
+                var currentyear = Int(year)
+                print("CURRENT YEAR",currentyear)
+                var diffyear = currentyear - intchidyear!
+                var age = String(diffyear)
+                self.labelISO.text = strfnln
+                self.Agelabel.text = "Age: " + age
+                
+                print("Image Size:", ChildProfileImage.first?.size)
+                print("Image Data: ", ChildProfileImage.first?.pngData())
+                if ChildProfileImage.first != nil {
+                    childImage.setBackgroundImage(ChildProfileImage.last, for: .normal)
+                } else {
+                    print("ChildProfileImage is nil.")
+                }
+            }
+            else{
+                firstname = "Isoceles"
+                lastname = "Lab"
+                let strfnln = firstname + " " + lastname
+                self.labelISO.text = strfnln
             }
             
             
@@ -230,32 +245,32 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
         {
             let destViewController = segue.destination as! UINavigationController
             let secondViewcontroller = destViewController.viewControllers.first as! HomeScreenViewControllerExt
-//            secondViewcontroller.userchild = child
+            secondViewcontroller.userchild = ChildProfilefirst.last!
             secondViewcontroller.user = receivedString
         }
         if(segue.identifier == "ResourcesView"){
             let displayVC = segue.destination as! ResourcesTableViewController
-//            displayVC.userchild = child
+            displayVC.userchild = ChildProfilefirst.last!
             displayVC.user = receivedString
         }
         if(segue.identifier == "FoodSegueHomeScreen1"){
             let displayVC = segue.destination as! FeedViewController
-//            displayVC.userchild = child
+            displayVC.userchild = ChildProfilefirst.last!
             displayVC.user = receivedString
         }
         if (segue.identifier == "BehaviorSegue1"){
             let displayVC = segue.destination as! BehaviorViewController
-//            displayVC.userchild = child
+            displayVC.userchild = ChildProfilefirst.last!
             displayVC.user = receivedString
         }
         if (segue.identifier == "SleepViewSegue"){
             let displayVC = segue.destination as! SleepViewController
-//            displayVC.userchild = child
+            displayVC.userchild = ChildProfilefirst.last!
             displayVC.user = receivedString
         }
         if (segue.identifier == "ActivityViewSegue"){
             let displayVC = segue.destination as! ActivityViewController
-//            displayVC.userchild = child
+            displayVC.userchild = ChildProfilefirst.last!
             displayVC.user = receivedString
         }
         if (segue.identifier == "ProfilesViewSegue"){
@@ -266,7 +281,7 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
         }
         if (segue.identifier == "HomeDV"){
             let displayVC = segue.destination as! MedicalViewController
-//            displayVC.userchild = child
+            displayVC.userchild = ChildProfilefirst.last!
             displayVC.user = receivedString
         }
         
@@ -302,17 +317,14 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
             let SleepReq = (try? context.fetch(Sleeprequest))!
             let childrequest = (try? context.fetch(request))!
             
-
-                    
-                    
             for names in childrequest {
                 ChildProfilefirst.append(names.firstName!)
                 ChildProfilelast.append(names.lastName!)
                 ChildProfileDate.append(names.birthday!)
                 let image = UIImage(data: names.image!)
-                    // set the image to your UIImageView
+                // set the image to your UIImageView
                 ChildProfileImage.append(image!)
-               
+                
                 
                 print("Child Match name,", names.firstName!, childuser)
                 
@@ -332,9 +344,9 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
                 ChildProfilelast.append(names.lastName!)
                 ChildProfileDate.append(names.birthday!)
                 let image = UIImage(data: names.image!)
-                    // set the image to your UIImageView
+                // set the image to your UIImageView
                 ChildProfileImage.append(image!)
-               
+                
                 
                 print("Child Match name,", names.firstName!)
                 
@@ -346,6 +358,47 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
             }
             
         }
+        let journalrequest : NSFetchRequest<Journal> = Journal.fetchRequest()
+        do{
+            JournalArray = try context.fetch(journalrequest)
+            journalrequest.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND childName MATCHES [cd] %@) ", receivedString, child)
+            let journalhistory = (try? context.fetch(journalrequest))!
+            for j in journalhistory {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // set the date format
+                let date = j.currentdate! // replace this with your own date object
+                let dateString = dateFormatter.string(from: date) // convert the date to a string
+                
+                //                History_Date.append(dateString)
+                //                History_text.append(j.notes!)
+                
+                print("History values:", j.currentdate!,"AND",j.notes!)
+                
+            }
+        }
+        catch{
+            print("Error fetching data \(error)")
+        }
+        let behaviorrequest : NSFetchRequest<Behavior> = Behavior.fetchRequest()
+        do{
+            BehaviorArray = try context.fetch(behaviorrequest)
+            request.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND childName MATCHES [cd] %@) ", receivedString, child )
+            let behaviourhistory = (try? context.fetch(behaviorrequest))!
+            for b in behaviourhistory {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // set the date format
+                let date = b.currentdate! // replace this with your own date object
+                let dateString = dateFormatter.string(from: date) // convert the date to a string
+                
+//                History_Date.append(dateString) //array called History_date  appends the date from database
+//                History_text.append(b.notes!)
+                print("History values:", b.currentdate!,"AND",b.notes!)
+            }
+        } catch{
+            print("Error fetching data \(error)")
+        }
+    
+        
     }
     
     func SaveItems(){

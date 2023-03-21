@@ -118,6 +118,8 @@ class JournalViewController: UIViewController {
             
             // Pass data to the history view controller here
             historyVC.title = "Journal History"
+            historyVC.user = receivedString
+            historyVC.userchild = userchild
             historyVC.segueType = segue.identifier 
         }
     }
