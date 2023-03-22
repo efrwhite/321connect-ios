@@ -5,12 +5,18 @@
 //  Created by Edward Ladia on 2/11/22.
 //
 
-
 import Foundation
 import UIKit
 import CoreData
+
 class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDataSource, UITableViewDelegate{
 
+    // Recent Entry struct
+    struct Entry {
+        var date: Date
+        var message: String
+    }
+    
     func getItems(_ items: [String]) {
         childuser = items
         print("ITEMS: ",childuser)
@@ -26,9 +32,8 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
     var sleeparray = [Sleep]()
     var BehaviorArray = [Behavior]()
     var JournalArray = [Journal]()
-//    var History_Date = [String]()
-//    var History_text = [String]()
-//
+    var entries = [Entry]()
+
     // homescreen(ext) vc local variables
     @IBOutlet weak var feedButton: UIButton!
     @IBOutlet weak var activityButton: UIButton!
@@ -59,15 +64,12 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
     @IBAction func unwindToHomeScreenExtVC(segue: UIStoryboardSegue) {
         
     }
-    
-    // automatic segue
-    /* possible change to 'segmented control' */
-  
-    
+
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadInputViews()
+        entries.removeAll()
         loadItems()
         print("Array of SleepDates",SleepyDate)
         print("Array of Sleep:", Sleepy)
@@ -169,12 +171,21 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
             
             
         }
+//        let newlyAddedItems = Array(entries[lastIndex..<entries.count])
+//        lastIndex = entries.count
+//
+//        // Append newly added items to the table view
+//        let indexPaths = newlyAddedItems.enumerated().map { (index, _) in
+//            IndexPath(row: lastIndex - newlyAddedItems.count + index, section: 0)
+//        }
+//        tableView.insertRows(at: indexPaths, with: .automatic)
+        // reload table view with new data
+        RecentEntryTableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadItems()
-        
             
         // profile image mask and style
         childImage.layer.borderWidth = 1.0
@@ -288,19 +299,30 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
     }
 }
     
-    
-    // MARK: - UITableView * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ *
+    // MARK: - UITableView * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let count = min(/*results*/.count, 10)   // line of code takes entries from database and gets the minimum of amount of entries and 10 (limit table to 10)
-        return 1                                   // return count
+        let count = min(entries.count, 10)          /* line of code takes entries from database and gets the
+                                                     minimum of amount of entries and 10 (limit table to 10) */
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        // THIS IS HARD CODED FOR TESTING. you can use this to populate table
-        cell.textLabel?.text = "02/06/23 2:30PM"
-        cell.detailTextLabel?.text = "Edward went to class"
+        // Sort the entries array by date
+        entries = entries.sorted(by: {
+            $0.date.compare($1.date) == .orderedDescending
+        })
+ 
+        // Convert the date string to a formatted string for row field assignment...
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+        let date = dateFormatter.string(from: entries[indexPath.row].date)
+        
+        // Populate tableview with date(String) and message
+        cell.textLabel?.text = date
+        cell.detailTextLabel?.text = entries[indexPath.row].message
+        
         return cell
     }
     
@@ -358,6 +380,7 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
             }
             
         }
+//        -------------------------------------------------------------------------------------------
         let journalrequest : NSFetchRequest<Journal> = Journal.fetchRequest()
         do{
             JournalArray = try context.fetch(journalrequest)
@@ -365,20 +388,20 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
             let journalhistory = (try? context.fetch(journalrequest))!
             for j in journalhistory {
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // set the date format
+                dateFormatter.dateFormat = "MM-dd-yyyy HH:mm" // set the date format
                 let date = j.currentdate! // replace this with your own date object
-                let dateString = dateFormatter.string(from: date) // convert the date to a string
-                
-                //                History_Date.append(dateString)
-                //                History_text.append(j.notes!)
+                let entry = Entry(date: date, message: j.notes!)
+                entries.append(entry)
                 
                 print("History values:", j.currentdate!,"AND",j.notes!)
-                
             }
         }
         catch{
             print("Error fetching data \(error)")
         }
+
+        
+//        -------------------------------------------------------------------------------------------
         let behaviorrequest : NSFetchRequest<Behavior> = Behavior.fetchRequest()
         do{
             BehaviorArray = try context.fetch(behaviorrequest)
@@ -386,19 +409,16 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
             let behaviourhistory = (try? context.fetch(behaviorrequest))!
             for b in behaviourhistory {
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // set the date format
+                dateFormatter.dateFormat = "MM-dd-yy HH:mm" // set the date format
                 let date = b.currentdate! // replace this with your own date object
-                let dateString = dateFormatter.string(from: date) // convert the date to a string
+                let entry = Entry(date: date, message: b.notes!)
+                entries.append(entry)
                 
-//                History_Date.append(dateString) //array called History_date  appends the date from database
-//                History_text.append(b.notes!)
                 print("History values:", b.currentdate!,"AND",b.notes!)
             }
         } catch{
             print("Error fetching data \(error)")
         }
-    
-        
     }
     
     func SaveItems(){
