@@ -33,6 +33,10 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
     var BehaviorArray = [Behavior]()
     var JournalArray = [Journal]()
     var entries = [Entry]()
+    var journalentries = [Entry]()
+    var login_child = ""
+    var signup_child = ""
+    var defualt_child = ""
 
     // homescreen(ext) vc local variables
     @IBOutlet weak var feedButton: UIButton!
@@ -71,10 +75,11 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
         reloadInputViews()
         entries.removeAll()
         loadItems()
+        
         print("Array of SleepDates",SleepyDate)
         print("Array of Sleep:", Sleepy)
-//        reloadInputViews()
-//        if ChildProfilefirst.count >= 1{
+        
+
             let lastElement = childuser.last
             if lastElement != nil{
                 let date = Date()
@@ -111,6 +116,7 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
                 
                 print("Image Size:", ChildProfileImage.first?.size)
                 print("Image Data: ", ChildProfileImage.first?.pngData())
+
                 if ChildProfileImage.first != nil {
                     childImage.setBackgroundImage(ChildProfileImage.last, for: .normal)
                 } else {
@@ -135,8 +141,8 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
             dateFormatter.dateFormat = "YYYY/MM/dd"
 //            print("CHILD passed:", lastElement!)
             
-            var firstname = String(ChildProfilefirst.last!)
-            var lastname = String(ChildProfilelast.last!)
+            var firstname = String(ChildProfilefirst.first!)
+            var lastname = String(ChildProfilelast.first!)
             if firstname != nil && lastname != nil{
                 
                 let strfnln = firstname + " " + lastname
@@ -156,6 +162,8 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
                 
                 print("Image Size:", ChildProfileImage.first?.size)
                 print("Image Data: ", ChildProfileImage.first?.pngData())
+               
+                
                 if ChildProfileImage.first != nil {
                     childImage.setBackgroundImage(ChildProfileImage.last, for: .normal)
                 } else {
@@ -168,7 +176,7 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
                 let strfnln = firstname + " " + lastname
                 self.labelISO.text = strfnln
             }
-            
+            RecentEntryTableView.reloadData()
             
         }
 //        let newlyAddedItems = Array(entries[lastIndex..<entries.count])
@@ -186,7 +194,7 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         loadItems()
-            
+        print("Home Screen Received Child:", child)
         // profile image mask and style
         childImage.layer.borderWidth = 1.0
         childImage.layer.masksToBounds = false
@@ -196,7 +204,10 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
         receivedString = user
         receivedChild = segueChild
         print("HOME SCREEN Passed", receivedString)
-
+        print("Home Screen Received Child:", child)
+        print("CHILD PASSED TO HOME:", childuser)
+        print("LOGIN CHILD: ", login_child)
+       
         // table view styling
         RecentEntryTableView.layer.cornerRadius = 10
         RecentEntryTableView.clipsToBounds = true
@@ -348,9 +359,10 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
                 ChildProfileImage.append(image!)
                 
                 
-                print("Child Match name,", names.firstName!, childuser)
+                print("Child Match Selected User:,", names.firstName!, childuser)
                 
             }
+          
             do{
                 sleeparray = try context.fetch(Sleeprequest)
                 ChildArray = try context.fetch(request)
@@ -370,7 +382,7 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
                 ChildProfileImage.append(image!)
                 
                 
-                print("Child Match name,", names.firstName!)
+                print("Child Match Defualt User:", names.firstName!)
                 
             }
             do{
@@ -378,46 +390,108 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
             } catch{
                 print("Error fetching data \(error)")
             }
-            
         }
 //        -------------------------------------------------------------------------------------------
+        
+        if (login_child != nil && !login_child.isEmpty) {
+            //set defualt child for system
+            defualt_child = login_child
+            print("Default Child is Login in ", defualt_child)
+        }
+        else{
+            // defualt child they first signed up
+            defualt_child = signup_child
+            print("Default Child is Sign up", defualt_child)
+            
+        }
+        if childuser.last != nil{
+            defualt_child = ""
+        }
+        print("Defualt CHild", defualt_child)
         let journalrequest : NSFetchRequest<Journal> = Journal.fetchRequest()
-        do{
-            JournalArray = try context.fetch(journalrequest)
-            journalrequest.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND childName MATCHES [cd] %@) ", receivedString, child)
-            let journalhistory = (try? context.fetch(journalrequest))!
-            for j in journalhistory {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MM-dd-yyyy HH:mm" // set the date format
-                let date = j.currentdate! // replace this with your own date object
-                let entry = Entry(date: date, message: j.notes!)
-                entries.append(entry)
-                
-                print("History values:", j.currentdate!,"AND",j.notes!)
+        if (childuser.last != nil && !childuser.last!.isEmpty) {
+           
+            print("This is Childuser Journal: ", childuser.last!)
+            do{
+                JournalArray = try context.fetch(journalrequest)
+                journalrequest.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND childName MATCHES [cd] %@) ", receivedString, childuser.last!)
+                let journalhistory = (try? context.fetch(journalrequest))!
+                for j in journalhistory {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM-dd-yyyy HH:mm" // set the date format
+                    let date = j.currentdate! // replace this with your own date object
+                    let entry = Entry(date: date, message: j.notes!)
+                    entries.append(entry)
+                    
+                    print("Journal values:", j.currentdate!,"AND",j.notes!)
+                }
+            }
+            catch{
+                print("Error fetching data \(error)")
             }
         }
-        catch{
-            print("Error fetching data \(error)")
+        else if (childuser.last == nil){
+           
+            do{
+                JournalArray = try context.fetch(journalrequest)
+                journalrequest.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND childName MATCHES [cd] %@) ", receivedString, defualt_child)
+                let journalhistory = (try? context.fetch(journalrequest))!
+                for j in journalhistory {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM-dd-yyyy HH:mm" // set the date format
+                    let date = j.currentdate! // replace this with your own date object
+                    let entry = Entry(date: date, message: j.notes!)
+                    entries.append(entry)
+
+                    print("Journal values:", j.currentdate!,"AND",j.notes!)
+                }
+            }
+            catch{
+                print("Error fetching data \(error)")
+            }
         }
 
         
 //        -------------------------------------------------------------------------------------------
         let behaviorrequest : NSFetchRequest<Behavior> = Behavior.fetchRequest()
-        do{
-            BehaviorArray = try context.fetch(behaviorrequest)
-            request.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND childName MATCHES [cd] %@) ", receivedString, child )
-            let behaviourhistory = (try? context.fetch(behaviorrequest))!
-            for b in behaviourhistory {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MM-dd-yy HH:mm" // set the date format
-                let date = b.currentdate! // replace this with your own date object
-                let entry = Entry(date: date, message: b.notes!)
-                entries.append(entry)
-                
-                print("History values:", b.currentdate!,"AND",b.notes!)
+        let behaviorrequest2 : NSFetchRequest<Behavior> = Behavior.fetchRequest()
+        if (childuser.last != nil && !childuser.isEmpty) {
+            
+            print("This is Childuser Behaviour: ", childuser.last!)
+            do{
+                BehaviorArray = try context.fetch(behaviorrequest)
+                behaviorrequest.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND childName MATCHES [cd] %@) ", receivedString, childuser.last! )
+                let behaviourhistory = (try? context.fetch(behaviorrequest))!
+                for b in behaviourhistory {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM-dd-yy HH:mm" // set the date format
+                    let date = b.currentdate! // replace this with your own date object
+                    let entry = Entry(date: date, message: b.notes!)
+                    entries.append(entry)
+                    
+                    print("Behaviour values:", b.currentdate!,"AND",b.notes!)
+                }
+            } catch{
+                print("Error fetching data \(error)")
             }
-        } catch{
-            print("Error fetching data \(error)")
+        }
+        else if (childuser.last == nil && childuser.isEmpty) {
+            do{
+                BehaviorArray = try context.fetch(behaviorrequest2)
+                behaviorrequest2.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND childName MATCHES [cd] %@) ", receivedString, defualt_child)
+                let behaviourhistory = (try? context.fetch(behaviorrequest2))!
+                for b in behaviourhistory {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM-dd-yy HH:mm" // set the date format
+                    let date = b.currentdate! // replace this with your own date object
+                    let entry = Entry(date: date, message: b.notes!)
+                    entries.append(entry)
+
+                    print("Behaviour values:", b.currentdate!,"AND",b.notes!)
+                }
+            } catch{
+                print("Error fetching data \(error)")
+            }
         }
     }
     

@@ -200,7 +200,12 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
         let selected_child = selectedProfileType![selectedRow]
           //array
         selected_Child.append(selected_child)
-        print("Selected Row Child: \(selected_Child)")
+//        print("Selected Row Child: \(selected_Child)")
+          let selectChild = selected_Child.last!
+          let alert = UIAlertController(title: "Child Selected", message: "\(selectChild) is now the current child", preferredStyle: .alert)
+          let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                          alert.addAction(okAction)
+          self.present(alert, animated: true, completion: nil)
 
         }
 

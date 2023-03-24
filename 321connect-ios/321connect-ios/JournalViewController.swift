@@ -97,6 +97,7 @@ class JournalViewController: UIViewController {
             new_journalEntry.childName = userchild
             new_journalEntry.title = titleTextField.text!
             new_journalEntry.notes = notesTextView.text!
+            new_journalEntry.currentdate = Date()
             
             self.journalArray.append(new_journalEntry)
             
