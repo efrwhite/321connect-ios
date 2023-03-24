@@ -126,6 +126,11 @@ class BehaviorViewController: UIViewController, UITextViewDelegate {
             historyVC.userchild = userchild
             historyVC.segueType = segue.identifier 
         }
+        if segue.identifier == "BehaviorSegue1"{
+            let homeVC = segue.destination as! HomeScreenViewController
+            homeVC.child = userchild
+            
+        }
     }
     
     // Enter dismisses keyboard

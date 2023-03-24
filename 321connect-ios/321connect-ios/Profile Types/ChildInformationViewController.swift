@@ -118,11 +118,12 @@ class ChildView: UIViewController, UITextFieldDelegate {
               let navController = segue.destination as! UINavigationController
               let homeScreenVC = navController.topViewController as! HomeScreenViewController
               homeScreenVC.user = receivedString
-              homeScreenVC.childname = FirstName.text!
+              homeScreenVC.signup_child = FirstName.text!
               
               // pass data to HomeScreenViewController if necessary
               // possible name or user (database)
           }
+        
        }
 
    /* This code prepares the childToHome segue which is the first signin after creating

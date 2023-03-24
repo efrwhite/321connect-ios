@@ -21,6 +21,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // accounts //** not coredata entity
     var accountArray = [Account]()
+    var ChildArray = [Child]()
+    var Childs = [String]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
  
@@ -71,6 +73,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }else{
             let request: NSFetchRequest<Account> = Account.fetchRequest()
             request.predicate = NSPredicate(format: "(userName MATCHES [cd] %@) AND passWord MATCHES [cd] %@", username, password )
+                
             request.fetchLimit = 1
             let user = (try? context.fetch(request))?.first
             let userinfo = user?.userName
@@ -92,7 +95,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 // Present Alert to
                 self.present(dialogMessage, animated: true, completion: nil)
+                
             }
+                let Childrequest : NSFetchRequest<Child> = Child.fetchRequest()
+                Childrequest.predicate = NSPredicate(format: "(username MATCHES [cd] %@)", username)
+                let children = (try? context.fetch(Childrequest))!
+                for c in children {
+                    Childs.append(c.firstName!)
+                }
          }
         }
     }
@@ -114,6 +124,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let destViewController = segue.destination as! UINavigationController
             let secondViewcontroller = destViewController.viewControllers.first as! HomeScreenViewController
             secondViewcontroller.user = UsernameTextField.text!
+            if Childs.first != nil{
+                secondViewcontroller.login_child = Childs.first!
+            }
         }
         
     }
@@ -135,11 +148,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     func loadItems(){
         let request : NSFetchRequest<Account> = Account.fetchRequest()
+        let Childrequest : NSFetchRequest<Child> = Child.fetchRequest()
      // if the username and password is not found in the database than deny access else allow them into the app
-    // Sign up if not found
-        
+       
         do{
-        accountArray = try context.fetch(request)
+            accountArray = try context.fetch(request)
+            ChildArray = try context.fetch(Childrequest)
         } catch{
             print("Error fetching data \(error)")
         }
