@@ -32,8 +32,10 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
     var sleeparray = [Sleep]()
     var BehaviorArray = [Behavior]()
     var JournalArray = [Journal]()
+    var ActivityArray = [Activity]()
+    var BathroomArray = [Bathroom]()
     var entries = [Entry]()
-    var journalentries = [Entry]()
+//    var journalentries = [Entry]()
     var login_child = ""
     var signup_child = ""
     var defualt_child = ""
@@ -420,10 +422,11 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "MM-dd-yyyy HH:mm" // set the date format
                     let date = j.currentdate! // replace this with your own date object
-                    let entry = Entry(date: date, message: j.notes!)
+                    let message = ("Saved a journal entry for " + j.childName!)
+                    let entry = Entry(date: date, message: message)
                     entries.append(entry)
                     
-                    print("Journal values:", j.currentdate!,"AND",j.notes!)
+                    print("Journal values:", j.currentdate!)
                 }
             }
             catch{
@@ -440,21 +443,162 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "MM-dd-yyyy HH:mm" // set the date format
                     let date = j.currentdate! // replace this with your own date object
-                    let entry = Entry(date: date, message: j.notes!)
+                    let message = ("Saved a journal entry for " + j.childName!)
+                    
+                    let entry = Entry(date: date, message: message)
                     entries.append(entry)
 
-                    print("Journal values:", j.currentdate!,"AND",j.notes!)
+                    print("Journal values:", j.currentdate!)
                 }
             }
             catch{
                 print("Error fetching data \(error)")
             }
         }
-
+        
+//        -------------------------------------------------------------------------------------------
+//        let activityrequest : NSFetchRequest<Activity> = Activity.fetchRequest()
+//
+//        if (childuser.last != nil && !childuser.last!.isEmpty) {
+//            print("This is Childuser Activity: ", childuser.last!)
+//            do{
+//                ActivityArray = try context.fetch(activityrequest)
+//                activityrequest.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND childName MATCHES [cd] %@) ", receivedString, childuser.last!)
+//                let activityhistory = (try? context.fetch(activityrequest))!
+//                for a in activityhistory {
+//                    let dateFormatter = DateFormatter()
+//                    dateFormatter.dateFormat = "MM-dd-yyyy HH:mm" // set the desired date format
+//                    let date = dateFormatter.date(from: a.currentdate!)! // convert currentdate to a date object using the formatter
+//                    let minutes = Int((a.duration.truncatingRemainder(dividingBy: 3600)) / 60)
+//                    let message = "\(a.childName!) was \(a.activityType!.lowercased()) for \(minutes) minutes"
+//                    let entry = Entry(date: date, message: message)
+//                    entries.append(entry)
+//                    print("Journal values:", a.currentdate!)
+//                }
+//            }
+//            catch{
+//                print("Error fetching data \(error)")
+//            }
+//        }
+//        else if (childuser.last == nil){
+//
+//            do{
+//                ActivityArray = try context.fetch(activityrequest)
+//                activityrequest.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND childName MATCHES [cd] %@) ", receivedString, childuser.last!)
+//                let activityhistory = (try? context.fetch(activityrequest))!
+//                for a in activityhistory {
+//                    let dateFormatter = DateFormatter()
+//                    dateFormatter.dateFormat = "MM-dd-yyyy HH:mm" // set the desired date format
+//                    let date = dateFormatter.date(from: a.currentdate!)! // convert currentdate to a date object using the formatter
+//                    let minutes = Int((a.duration.truncatingRemainder(dividingBy: 3600)) / 60)
+//                    let message = "\(a.childName!) was \(a.activityType!.lowercased()) for \(minutes) minutes"
+//                    let entry = Entry(date: date, message: message)
+//                    entries.append(entry)
+//                    print("Journal values:", a.currentdate!)
+//                }
+//            }
+//            catch{
+//                print("Error fetching data \(error)")
+//            }
+//        }
+        
+//        -------------------------------------------------------------------------------------------
+//        let bathroomrequest : NSFetchRequest<Bathroom> = Bathroom.fetchRequest()
+//
+//        if (childuser.last != nil && !childuser.last!.isEmpty) {
+//            print("This is Childuser Bathroom: ", childuser.last!)
+//            do{
+//                BathroomArray = try context.fetch(bathroomrequeset)
+//                bathroomrequeset.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND childName MATCHES [cd] %@) ", receivedString, childuser.last!)
+//                let bathroomhistory = (try? context.fetch(bathroomrequeset))!
+//                for b in bathroomhistory {
+//                    let dateFormatter = DateFormatter()
+//                    dateFormatter.dateFormat = "MM-dd-yyyy HH:mm" // set the desired date format
+//                    let date = dateFormatter.date(from: b.currentdate!)! // convert currentdate to a date object using the formatter
+//                    let minutes = Int((a.duration.truncatingRemainder(dividingBy: 3600)) / 60)
+//                    let message = "\(a.childName!) was \(a.activityType!.lowercased()) for \(minutes) minutes"
+//                    let entry = Entry(date: date, message: message)
+//                    entries.append(entry)
+//                    print("Journal values:", a.currentdate!)
+//                }
+//            }
+//            catch{
+//                print("Error fetching data \(error)")
+//            }
+//        }
+//        else if (childuser.last == nil){
+//
+//            do{
+//                ActivityArray = try context.fetch(activityrequest)
+//                activityrequest.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND childName MATCHES [cd] %@) ", receivedString, childuser.last!)
+//                let activityhistory = (try? context.fetch(activityrequest))!
+//                for a in activityhistory {
+//                    let dateFormatter = DateFormatter()
+//                    dateFormatter.dateFormat = "MM-dd-yyyy HH:mm" // set the desired date format
+//                    let date = dateFormatter.date(from: a.currentdate!)! // convert currentdate to a date object using the formatter
+//                    let minutes = Int((a.duration.truncatingRemainder(dividingBy: 3600)) / 60)
+//                    let message = "\(a.childName!) was \(a.activityType!.lowercased()) for \(minutes) minutes"
+//                    let entry = Entry(date: date, message: message)
+//                    entries.append(entry)
+//                    print("Journal values:", a.currentdate!)
+//                }
+//            }
+//            catch{
+//                print("Error fetching data \(error)")
+//            }
+//        }
+        
+//        -------------------------------------------------------------------------------------------
+          // entry format: "<child name> slept for <duration> <units>"
+//        let sleeprequest : NSFetchRequest<Sleep> = Sleep.fetchRequest()
+//
+//        if (childuser.last != nil && !childuser.last!.isEmpty) {
+//            print("This is Childuser Bathroom: ", childuser.last!)
+//            do{
+//                BathroomArray = try context.fetch(bathroomrequeset)
+//                bathroomrequeset.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND childName MATCHES [cd] %@) ", receivedString, childuser.last!)
+//                let bathroomhistory = (try? context.fetch(bathroomrequeset))!
+//                for b in bathroomhistory {
+//                    let dateFormatter = DateFormatter()
+//                    dateFormatter.dateFormat = "MM-dd-yyyy HH:mm" // set the desired date format
+//                    let date = dateFormatter.date(from: b.currentdate!)! // convert currentdate to a date object using the formatter
+//                    let minutes = Int((a.duration.truncatingRemainder(dividingBy: 3600)) / 60)
+//                    let message = "\(a.childName!) was \(a.activityType!.lowercased()) for \(minutes) minutes"
+//                    let entry = Entry(date: date, message: message)
+//                    entries.append(entry)
+//                    print("Journal values:", a.currentdate!)
+//                }
+//            }
+//            catch{
+//                print("Error fetching data \(error)")
+//            }
+//        }
+//        else if (childuser.last == nil){
+//
+//            do{
+//                ActivityArray = try context.fetch(activityrequest)
+//                activityrequest.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND childName MATCHES [cd] %@) ", receivedString, childuser.last!)
+//                let activityhistory = (try? context.fetch(activityrequest))!
+//                for a in activityhistory {
+//                    let dateFormatter = DateFormatter()
+//                    dateFormatter.dateFormat = "MM-dd-yyyy HH:mm" // set the desired date format
+//                    let date = dateFormatter.date(from: a.currentdate!)! // convert currentdate to a date object using the formatter
+//                    let minutes = Int((a.duration.truncatingRemainder(dividingBy: 3600)) / 60)
+//                    let message = "\(a.childName!) was \(a.activityType!.lowercased()) for \(minutes) minutes"
+//                    let entry = Entry(date: date, message: message)
+//                    entries.append(entry)
+//                    print("Journal values:", a.currentdate!)
+//                }
+//            }
+//            catch{
+//                print("Error fetching data \(error)")
+//            }
+//        }
         
 //        -------------------------------------------------------------------------------------------
         let behaviorrequest : NSFetchRequest<Behavior> = Behavior.fetchRequest()
         let behaviorrequest2 : NSFetchRequest<Behavior> = Behavior.fetchRequest()
+
         if (childuser.last != nil && !childuser.isEmpty) {
             
             print("This is Childuser Behaviour: ", childuser.last!)
@@ -466,7 +610,9 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "MM-dd-yy HH:mm" // set the date format
                     let date = b.currentdate! // replace this with your own date object
-                    let entry = Entry(date: date, message: b.notes!)
+                    let minutes = Int(b.time / 60)
+                    let message = "\(b.childName!) was \(b.moodType!.lowercased()) for \(minutes) minutes"
+                    let entry = Entry(date: date, message: message)
                     entries.append(entry)
                     
                     print("Behaviour values:", b.currentdate!,"AND",b.notes!)
@@ -484,7 +630,9 @@ class HomeScreenViewController: UIViewController,getItemsDelegate, UITableViewDa
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "MM-dd-yy HH:mm" // set the date format
                     let date = b.currentdate! // replace this with your own date object
-                    let entry = Entry(date: date, message: b.notes!)
+                    let minutes = Int(b.time / 60)
+                    let message = "\(b.childName!) was \(b.moodType!.lowercased()) for \(minutes) minutes"
+                    let entry = Entry(date: date, message: message)
                     entries.append(entry)
 
                     print("Behaviour values:", b.currentdate!,"AND",b.notes!)

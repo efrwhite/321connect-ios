@@ -551,7 +551,6 @@ class DoctorsVisitViewController: UIViewController, UITableViewDelegate, UITable
      */
 
     /* * * * * * * * * * * * * * SECTION * * * * * * * * * * * * * * * * * * * * */
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if pickerIdentifier == "Newborn"{
