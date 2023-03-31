@@ -16,6 +16,7 @@ class ProvidersViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var PracticeName: UITextField!
     var receivedString = ""
     var user = ""
+    var edit = ""
     // added
     @IBOutlet weak var specialtyType: UIPickerView!
     
@@ -45,14 +46,17 @@ class ProvidersViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        print("EDIT Passed: ", edit)
         specialtyType.delegate = self
         specialtyType.dataSource = self
         receivedString = user
-        
+        let edit = edit
         // Gesture to collapse/dismiss keyboard on click outside
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
+        if edit != nil{
+            loadItems()
+        }
         
     }
     
@@ -61,7 +65,7 @@ class ProvidersViewController: UIViewController, UIPickerViewDelegate, UIPickerV
        @IBAction func SaveButton(_ sender: UIButton) {
            
            // here are alerts for success or errors on view at save tapped
-           if ProviderName.text!.isEmpty || PracticeName.text!.isEmpty || PhoneNumber.text!.isEmpty || Fax.text!.isEmpty || Email.text!.isEmpty || WebSite.text!.isEmpty || Address1.text!.isEmpty || Address2.text!.isEmpty || City.text!.isEmpty || State.text!.isEmpty || ZipCode.text!.isEmpty{
+           if ProviderName.text!.isEmpty || PracticeName.text!.isEmpty || PhoneNumber.text!.isEmpty || Fax.text!.isEmpty || Email.text!.isEmpty || WebSite.text!.isEmpty || Address1.text!.isEmpty ||  City.text!.isEmpty || State.text!.isEmpty || ZipCode.text!.isEmpty{
                let alert = UIAlertController(title: "Error", message: "Please complete all fields", preferredStyle: .alert)
                let OKAction = UIAlertAction(title: "OK", style: .default)
                alert.addAction(OKAction)
@@ -115,13 +119,40 @@ class ProvidersViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         
     }
+    
+
 
     func loadItems(){
         let request : NSFetchRequest<ProviderE> = ProviderE.fetchRequest()
-        do{
-            ProviderArray = try context.fetch(request)
-        } catch{
-            print("Error fetching data \(error)")
+        if edit != nil {
+            do{
+                ProviderArray = try context.fetch(request)
+                request.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND providerName MATCHES [cd] %@) ", receivedString, edit)
+                let providerhistory = (try? context.fetch(request))!
+                for providers in providerhistory{
+                    ProviderName.text = providers.providerName
+                    PracticeName.text = providers.practiceName
+                    PhoneNumber.text = providers.phoneNumber
+                    Fax.text = providers.fax
+                    Email.text = providers.email
+                    WebSite.text = providers.website
+                    Address1.text = providers.address1
+                    Address2.text = providers.address2
+                    State.text = providers.state
+                    City.text = providers.city
+                    ZipCode.text = providers.zipCode
+                }
+                
+            } catch{
+                print("Error fetching data \(error)")
+            }
+        } else{
+            do {
+                ProviderArray = try context.fetch(request)
+            }
+            catch{
+                print("Error fetching data \(error)")
+            }
         }
     }
     

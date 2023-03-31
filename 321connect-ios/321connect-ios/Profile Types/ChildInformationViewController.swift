@@ -24,8 +24,12 @@ class ChildView: UIViewController, UITextFieldDelegate {
     private var datePicker: UIDatePicker?
     private var datePicker2: UIDatePicker?
     @IBOutlet weak var BloodType: UIButton!
+    var String_Values = [String]()
+    var Date_Values = [Date]()
+    var Bool_Values = [Bool]()
     var receivedString = ""
     var user = ""
+    var edit = ""
     // var bloodTypes = ["A+","A-","B+","B-","AB+","AB-","O+","O-"]
     //where ever U have your print statements make a object to store the information into child
     var ChildArray = [Child]()
@@ -35,6 +39,9 @@ class ChildView: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
      super.viewDidLoad()
         setPopupButton()
+        //loadItems()
+        print("EDIT Passed: ", edit)
+        let edit = edit
         
         // profile image mask and style
         ChildImage.layer.borderWidth = 1.0
@@ -53,7 +60,10 @@ class ChildView: UIViewController, UITextFieldDelegate {
           if isFirstTimeSignUp{
               navigationItem.hidesBackButton = true
           }
-
+        if edit != nil {
+                loadItems()
+            }
+      
       /* Needed in Child's viewdidload() to prevent the back button for showing up and allowing the user to go
          back to the parent view which could cause issues! */
     }
@@ -195,6 +205,7 @@ class ChildView: UIViewController, UITextFieldDelegate {
                     
                 }
             }
+        
         }
     }
 
@@ -218,12 +229,45 @@ extension ChildView: UIImagePickerControllerDelegate, UINavigationControllerDele
         
     }
 
+
     func loadItems(){
         let request : NSFetchRequest<Child> = Child.fetchRequest()
-        do{
-            ChildArray = try context.fetch(request)
-        } catch{
-            print("Error fetching data \(error)")
+        if edit != nil{
+            do{
+                ChildArray = try context.fetch(request)
+                request.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND firstName MATCHES [cd] %@) ", receivedString, edit)
+                let childhistory = (try? context.fetch(request))!
+                for info in childhistory{
+                    FirstName.text = info.firstName!
+                    LastName.text = info.lastName!
+                    OnOff.isEnabled = info.gender
+                    BloodType.setTitle(info.bloodType, for: .normal)
+                    Duedate.date = info.dueDate!
+                    birthday.date = info.birthday!
+                    Allergies.text = info.allergies!
+                    Medications.text = info.medication!
+                    
+                    
+//                    String_Values.append(info.firstName!)
+//                    String_Values.append(info.lastName!)
+//                    String_Values.append(info.bloodType!)
+//                    String_Values.append(info.allergies!)
+//                    String_Values.append(info.medication!)
+//                    Date_Values.append(info.birthday!)
+//                    Date_Values.append(info.dueDate!)
+//                    Bool_Values.append(info.gender)
+                    
+                }
+            } catch{
+                print("Error fetching data \(error)")
+            }
+        }
+        else{
+            do{
+                ChildArray = try context.fetch(request)
+            } catch{
+                print("Error fetching data \(error)")
+            }
         }
     }
 }

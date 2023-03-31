@@ -86,7 +86,7 @@ class SleepReportsViewController: UIViewController {
         new_sleep.other = otherToggle.isEnabled
         new_sleep.otherNote = indicateTextField.text
         new_sleep.study = sleepStudySwitch.isOn
-        
+        new_sleep.currentdate = Date()
         self.SleepArray.append(new_sleep)
         self.SaveItems()
         print("THIS IS SLEEP ARRAY", SleepArray)

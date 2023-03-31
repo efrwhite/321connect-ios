@@ -164,6 +164,7 @@ class SolidFeedViewController: UIViewController, UITextFieldDelegate, UITextView
         feeding.multivitamin = multiVitaminRadio.isEnabled
         feeding.other = otherRadio.isEnabled
         feeding.otherNotes = indicateTextField.text
+        feeding.currentdate = Date()
         
         self.feedArray.append(feeding)
         

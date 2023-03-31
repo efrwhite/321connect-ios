@@ -66,7 +66,7 @@ class MessageViewController: UIViewController {
             
             let new_message = Message(context: self.context)
             new_message.message_Block = NotesField.text
-            
+            new_message.currentdate = Date()
             self.messageArray.append(new_message)
             self.SaveItems()
             

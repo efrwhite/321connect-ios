@@ -21,6 +21,7 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var Password: UITextField!
     var receivedString = ""
     var user = ""
+    var edit = ""
     //@IBOutlet weak var SaveButton: UIButton!
     var pickerData: [String] = [String]()
     var ParentArray = [Parent]()
@@ -30,7 +31,7 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         receivedString = user
-        
+        print("EDIT Passed: ", edit)
         print("Parent Passed:", receivedString)
         loadItems()
         print("String Array ", StringArray)
@@ -40,7 +41,9 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
         ParentPicture.layer.borderColor = UIColor.white.cgColor
         ParentPicture.layer.cornerRadius = ParentPicture.frame.size.width/2
         ParentPicture.clipsToBounds = true
-        
+        if edit != nil{
+            loadItems()
+        }
        
         // Gesture to collapse/dismiss keyboard on click outside
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -189,7 +192,25 @@ extension Parent_Caregiver_ViewController: UIImagePickerControllerDelegate, UINa
             StringArray.append(re.passWord!)
         
         }
-        
+        if edit != nil{
+            do{
+                ParentArray = try context.fetch(request)
+                request.predicate = NSPredicate(format: "(userName MATCHES [cd] %@ AND firstName MATCHES [cd] %@) ", receivedString, edit)
+                let parenthistory = (try? context.fetch(request))!
+                for parent in parenthistory{
+                    FirstName.text = parent.firstName
+                    LastName.text = parent.lastName
+                    PhoneNumber.text = parent.phoneNumber
+                    Username.text = parent.userName
+                    Password.text = parent.password
+                  
+                    
+                }
+                
+            } catch{
+                print("Error fetching data \(error)")
+            }
+        }
         
         do{
             ParentArray = try context.fetch(request)

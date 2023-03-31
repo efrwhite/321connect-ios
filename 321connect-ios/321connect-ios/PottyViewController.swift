@@ -74,6 +74,7 @@ class PottyViewController: UIViewController, UITextFieldDelegate, UITextViewDele
         new_potty.bathroomNotes = PottyNotes.text
         new_potty.pottyAccident = Accident.isOn // made it a boolean value since it is on or off
         new_potty.duration = PottyDuration.countDownDuration
+        new_potty.currentdate = Date()
         new_potty.units = "seconds"
         self.PottyArray.append(new_potty)
     
