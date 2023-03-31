@@ -151,7 +151,7 @@ class SleepViewController: UIViewController,UITextViewDelegate,UITextFieldDelega
             new_sleep.other = otherToggle.isEnabled
             new_sleep.otherNote = indicateTextField.text
             new_sleep.study = sleepStudySwitch.isOn
-//            new_sleep.currentdate = calendar
+            new_sleep.currentdate = Date()
             print("THIS IS SLEEP ARRAY", SleepArray)
             
             let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)

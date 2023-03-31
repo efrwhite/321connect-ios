@@ -64,6 +64,7 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         new_Diaper.openAirAccident = Accident.isOn
         new_Diaper.quantity = QuantityField.text
         new_Diaper.units = QuantityUnits.currentTitle
+        new_Diaper.currentdate = Date()
         
         
         self.DiaperArray.append(new_Diaper)

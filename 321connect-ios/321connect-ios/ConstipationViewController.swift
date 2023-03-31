@@ -62,6 +62,7 @@ class ConstipationViewController: UIViewController, UITextFieldDelegate, UITextV
         new_constipation.dateOfLastStool = DoLSConsti.date
         new_constipation.bathroomNotes = ConstiNotes.text
         new_constipation.treatment = TreatPlan.text
+        new_constipation.currentdate = Date()
         
         self.ConstipationArray.append(new_constipation)
         self.SaveItems()

@@ -27,6 +27,8 @@ class ProfilesViewController: UIViewController {
     var receivedString = ""
     var user = ""
     var selected_Child2 = ""
+    var selected_Edit : String? = ""
+    var isEditButtonPressed = false
     var profileType = [ProfileType]()
     var ChildName = [String]()
     var ParentName = [String]()
@@ -79,26 +81,45 @@ class ProfilesViewController: UIViewController {
         
     }
  //#######################################
-    //PASSING DATA
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "showChildVC"){
-            let displayVC = segue.destination as! ChildView
-            displayVC.user = receivedString
+        if isEditButtonPressed {
+            if (segue.identifier == "showChildVC"){
+                let displayVC = segue.destination as! ChildView
+                displayVC.user = receivedString
+                if selected_Edit != nil{
+                    displayVC.edit = selected_Edit!
+                }
+            }
+            if(segue.identifier == "showParentsVC"){
+                let displayVC = segue.destination as! Parent_Caregiver_ViewController
+                displayVC.user = receivedString
+                if selected_Edit != nil{
+                    displayVC.edit = selected_Edit!
+                }
+            }
+            if(segue.identifier == "showProvidersVC"){
+                let displayVC = segue.destination as! ProvidersViewController
+                displayVC.user = receivedString
+                if selected_Edit != nil{
+                    displayVC.edit = selected_Edit!
+                }
+            }
+        } else {
+            if (segue.identifier == "showChildVC"){
+                let displayVC = segue.destination as! ChildView
+                displayVC.user = receivedString
+            }
+            if(segue.identifier == "showParentsVC"){
+                let displayVC = segue.destination as! Parent_Caregiver_ViewController
+                displayVC.user = receivedString
+            }
+            if(segue.identifier == "showProvidersVC"){
+                let displayVC = segue.destination as! ProvidersViewController
+                displayVC.user = receivedString
+            }
         }
-        if(segue.identifier == "showParentsVC"){
-            let displayVC = segue.destination as! Parent_Caregiver_ViewController
-            displayVC.user = receivedString
-        }
-        if(segue.identifier == "showProvidersVC"){
-            let displayVC = segue.destination as! ProvidersViewController
-            displayVC.user = receivedString
-        }
-        
-        
     }
-   
     
-   
 //#######################################
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -192,22 +213,27 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
         
     }
     
-      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedRow = indexPath.row
-        let selectedsection = indexPath.section
-        print("Selected row: \(selectedRow)")
-        let selectedProfileType = profileType[selectedsection].name
-        let selected_child = selectedProfileType![selectedRow]
-          //array
-        selected_Child.append(selected_child)
-//        print("Selected Row Child: \(selected_Child)")
-          let selectChild = selected_Child.last!
-          let alert = UIAlertController(title: "Child Selected", message: "\(selectChild) is now the current child", preferredStyle: .alert)
-          let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                          alert.addAction(okAction)
-          self.present(alert, animated: true, completion: nil)
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let selectedRow = indexPath.row
+            let selectedsection = indexPath.section
+            print("Selected row: \(selectedRow)")
+            let selectedProfileType = profileType[selectedsection].name
+            let selected_child = selectedProfileType![selectedRow]
+            selected_Child.append(selected_child)
+            let selectChild = selected_Child.last!
+            let alert = UIAlertController(title: "Child Selected", message: "\(selectChild) is now the current child", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            // Optional: display an alert to notify the user that only the first section can be selected
+            let alert = UIAlertController(title: "Invalid Selection", message: "Please select a child from the list", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
         }
+    }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -308,26 +334,40 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
 
             return cell
         }
-  
     
-    @objc
-    func editButtonPressed(sender:UIButton) {
-        print("add button pressed")
+    @objc func editButtonPressed(sender: UIButton) {
+        print("edit button pressed")
+        isEditButtonPressed = true
+        // Get the index path of the button that was pressed
+          let buttonPosition = sender.convert(CGPoint.zero, to: self.profilesTableView)
+          guard let indexPath = self.profilesTableView.indexPathForRow(at: buttonPosition) else { return }
+        let sectionIndex = indexPath.section
+        let rowIndex = indexPath.row
+        print("Selected Section: \(indexPath)")
+        print("Selected Sender Tag: \(sectionIndex)")
+        
+        if let selectedProfileType = profileType[sectionIndex].name {
+               let selectedString = selectedProfileType[rowIndex]
+               print("Selected ProfileType: \(selectedProfileType)")
+               print("Selected string: \(selectedString)")
+               selected_Edit = selectedString
 
-        let sectionIndex:Int = sender.tag
-        switch sectionIndex {
-        case 0:
-            self.performSegue(withIdentifier: "showChildVC", sender: editButtonItem)
-        case 1:
-            self.performSegue(withIdentifier: "showParentsVC", sender: editButtonItem)
-        case 2:
-            self.performSegue(withIdentifier: "showProvidersVC", sender: editButtonItem)
-        default:
-            break
+            switch sectionIndex {
+            case 0:
+                self.performSegue(withIdentifier: "showChildVC", sender: editButtonItem)
+            case 1:
+                self.performSegue(withIdentifier: "showParentsVC", sender: editButtonItem)
+            case 2:
+                self.performSegue(withIdentifier: "showProvidersVC", sender: editButtonItem)
+            default:
+                break
+            }
         }
-
+        isEditButtonPressed = true
     }
 
+
+    
     /* HEADER VIEWS AND TITLES */
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
@@ -352,6 +392,7 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     func profileAddButtonPressed(sender:UIButton) {
     
         let sectionIndex:Int = sender.tag
+        selected_Edit = nil
         switch sectionIndex {
         case 0:
             self.performSegue(withIdentifier: "showChildVC", sender: nil)
@@ -367,9 +408,55 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     
     
     
-    @objc func tableViewEditButtonTapped(_ sender: Any) {
-        profilesTableView.isEditing = !profilesTableView.isEditing
+    @objc func tableViewEditButtonTapped(_ sender: UIButton) {
+//        profilesTableView.isEditing = !profilesTableView.isEditing
+
+        // Get the section of the pressed button
+        let section = sender.tag
+
+        // Get the row of the pressed button by finding the cell that contains the button
+        if let cell = sender.superview?.superview as? CustomTableViewCell,
+           let indexPath = profilesTableView.indexPath(for: cell) {
+
+            // Check if the selected section is the first section
+            if section == 0 {
+                let selectedProfileType = profileType[section].name
+                let selectedChild = selectedProfileType?[indexPath.row]
+                print("Edit button pressed for: \(selectedChild ?? "")")
+            }
+        }
+
     }
+//    @objc func tableViewEditButtonTapped(_ sender: UIButton) {
+//        // Check if the sender button is in the header view
+//        if let headerView = sender.superview as? ProfileHeaderView {
+//            // Perform segue without sending any data
+//            switch headerView.profileTitle.text {
+//            case "Children":
+//                self.performSegue(withIdentifier: "showChildVC", sender: nil)
+//            case "Parents":
+//                self.performSegue(withIdentifier: "showParentsVC", sender: nil)
+//            case "Providers":
+//                self.performSegue(withIdentifier: "showProvidersVC", sender: nil)
+//            default:
+//                break
+//            }
+//        } else {
+//            // Get the section and row of the pressed button
+//            if let cell = sender.superview?.superview as? CustomTableViewCell,
+//               let indexPath = profilesTableView.indexPath(for: cell),
+//               let selectedProfileType = profileType[indexPath.section].name {
+//                let selectedData = selectedProfileType[indexPath.row]
+//                // Perform segue while passing the selected data to the next view controller
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                if let editProfileVC = storyboard.instantiateViewController(withIdentifier: "EditProfileViewController") as? EditProfileViewController {
+//                    editProfileVC.selectedData = selectedData
+//                    self.navigationController?.pushViewController(editProfileVC, animated: true)
+//                }
+//            }
+//        }
+//    }
+
 
     
     // MARK: - Navigation

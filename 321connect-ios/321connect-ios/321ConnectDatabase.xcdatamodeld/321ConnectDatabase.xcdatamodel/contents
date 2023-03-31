@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Account" representedClassName="Account" syncable="YES" codeGenerationType="class">
+        <attribute name="defualtChild" optional="YES" attributeType="String"/>
         <attribute name="firstName" optional="YES" attributeType="String"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="passWord" optional="YES" attributeType="String"/>
@@ -27,6 +28,7 @@
         <attribute name="bathroomNotes" optional="YES" attributeType="String" defaultValueString="N/A"/>
         <attribute name="bathroomType" optional="YES" attributeType="String" defaultValueString="N/A"/>
         <attribute name="childName" optional="YES" attributeType="String"/>
+        <attribute name="currentdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateOfLastStool" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="diaperCream" optional="YES" attributeType="Boolean" defaultValueString="N/A" usesScalarValueType="YES"/>
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -134,6 +136,7 @@
         <attribute name="amount" optional="YES" attributeType="String"/>
         <attribute name="childName" optional="YES" attributeType="String"/>
         <attribute name="consumption" optional="YES" attributeType="String"/>
+        <attribute name="currentdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="eatType" optional="YES" attributeType="String"/>
         <attribute name="iron" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="modeOfEating" optional="YES" attributeType="String"/>
@@ -164,6 +167,7 @@
     </entity>
     <entity name="Message" representedClassName=".Message" syncable="YES" codeGenerationType="class">
         <attribute name="childName" optional="YES" attributeType="String"/>
+        <attribute name="currentdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="message_Block" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="childId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child"/>
@@ -204,7 +208,7 @@
     <entity name="Sleep" representedClassName=".Sleep" syncable="YES" codeGenerationType="class">
         <attribute name="childName" optional="YES" attributeType="String"/>
         <attribute name="cPAP" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="currentdate" optional="YES" attributeType="String"/>
+        <attribute name="currentdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="medication" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
