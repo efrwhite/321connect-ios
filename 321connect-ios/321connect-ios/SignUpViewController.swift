@@ -85,7 +85,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             let new_account = Account(context: self.context)
             new_account.firstName = firstNameTextField.text
             new_account.lastName = lastNameTextField.text
-            new_account.userName = usernameTextField.text
+            new_account.userName = usernameTextField.text //this is passed
             new_account.phone = phoneNumberTextField.text
             new_account.passWord = passwordTextField.text
             
