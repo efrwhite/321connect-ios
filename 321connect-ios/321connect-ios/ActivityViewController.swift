@@ -48,7 +48,7 @@ class ActivityViewController: UIViewController, UITextViewDelegate {
         
         let new_activity = Activity(context: self.context)
         new_activity.username = receivedString
-        new_activity.childName = userchild
+        new_activity.childName = userchild //defualt child
         new_activity.currentdate = stringsleepDate
         new_activity.duration = ActivityDuration.countDownDuration
         new_activity.notes = Note.text

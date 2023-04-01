@@ -163,6 +163,21 @@ class ChildView: UIViewController, UITextFieldDelegate {
                     new_child.allergies = Allergies.text
                     new_child.medication = Medications.text
                     new_child.image = imageData as? NSData as Data?
+                   // Fetch from account to set defualt child
+                   
+                    let fetchRequest: NSFetchRequest<Account> = Account.fetchRequest()
+                    fetchRequest.predicate = NSPredicate(format: "userName == %@", receivedString)
+
+                    do {
+                        let accounts = try context.fetch(fetchRequest)
+                        if let account = accounts.first {
+                            account.defualtChild =  FirstName.text!
+                            try context.save()
+                        }
+                    } catch let error as NSError {
+                        print("Could not fetch. \(error), \(error.userInfo)")
+                    }
+            
                     self.ChildArray.append(new_child)
                     self.SaveItems()
                     
@@ -177,8 +192,6 @@ class ChildView: UIViewController, UITextFieldDelegate {
                 } else {
 //                   // Convert UIImage to Data
                     let imageData = ChildImage.image?.jpegData(compressionQuality: 1.0)
-
-
                     let new_child = Child(context: self.context)
                     new_child.username = receivedString
                     new_child.firstName = FirstName.text
@@ -219,13 +232,13 @@ extension ChildView: UIImagePickerControllerDelegate, UINavigationControllerDele
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
+   //saves into database
     func SaveItems(){
         do {
             try context.save()
         } catch {
             print("Error Saving context \(error)")
         }
-        
         
     }
 
@@ -246,17 +259,7 @@ extension ChildView: UIImagePickerControllerDelegate, UINavigationControllerDele
                     birthday.date = info.birthday!
                     Allergies.text = info.allergies!
                     Medications.text = info.medication!
-                    
-                    
-//                    String_Values.append(info.firstName!)
-//                    String_Values.append(info.lastName!)
-//                    String_Values.append(info.bloodType!)
-//                    String_Values.append(info.allergies!)
-//                    String_Values.append(info.medication!)
-//                    Date_Values.append(info.birthday!)
-//                    Date_Values.append(info.dueDate!)
-//                    Bool_Values.append(info.gender)
-                    
+ 
                 }
             } catch{
                 print("Error fetching data \(error)")

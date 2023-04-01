@@ -72,8 +72,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
             }else{
             let request: NSFetchRequest<Account> = Account.fetchRequest()
-            request.predicate = NSPredicate(format: "(userName MATCHES [cd] %@) AND passWord MATCHES [cd] %@", username, password )
-                
+            request.predicate = NSPredicate(format: "(userName MATCHES [cd] %@) AND passWord MATCHES [cd] %@", username, password)
             request.fetchLimit = 1
             let user = (try? context.fetch(request))?.first
             let userinfo = user?.userName
@@ -124,9 +123,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let destViewController = segue.destination as! UINavigationController
             let secondViewcontroller = destViewController.viewControllers.first as! HomeScreenViewController
             secondViewcontroller.user = UsernameTextField.text!
-            if Childs.first != nil{
-                secondViewcontroller.login_child = Childs.first!
-            }
+
         }
         
     }

@@ -113,7 +113,7 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
             new_parent.firstName = FirstName.text
             new_parent.lastName = LastName.text
             new_parent.phoneNumber = PhoneNumber.text
-            new_parent.userName = receivedString
+            new_parent.userName = receivedString //this is pushed to child
             new_parent.password = Password.text
             // new_parent.accountId = //Delegate of Account
             //Dont forget the Parent Image

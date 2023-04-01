@@ -37,7 +37,7 @@ class ProfilesViewController: UIViewController {
     var ParentArray = [Parent]()
     var providerarray = [ProviderE]()
     var selected_Child = [String]()
-    var childss = "Shippo"
+    var selectChild = ""
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
  
@@ -128,7 +128,7 @@ class ProfilesViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
         
-        delegate?.getItems(selected_Child)
+//        delegate?.getItems(selected_Child)
         profilesTableView.reloadInputViews()
     }
 //#######################################
@@ -180,6 +180,9 @@ class ProfilesViewController: UIViewController {
         DispatchQueue.main.async {
             self.profilesTableView.reloadData()
         }
+        
+        //Account Fetch Request
+        
     }
 
       func SaveItems(){
@@ -221,7 +224,23 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
             let selectedProfileType = profileType[selectedsection].name
             let selected_child = selectedProfileType![selectedRow]
             selected_Child.append(selected_child)
-            let selectChild = selected_Child.last!
+            selectChild = selected_Child.last!
+            //##########################################################
+            let fetchRequest: NSFetchRequest<Account> = Account.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "userName == %@", receivedString)
+
+            do {
+                let accounts = try context.fetch(fetchRequest)
+                if let account = accounts.first {
+                    account.defualtChild =  selectChild
+                    try context.save()
+                }
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+            
+            //##########################################################
+            
             let alert = UIAlertController(title: "Child Selected", message: "\(selectChild) is now the current child", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(okAction)
@@ -242,70 +261,80 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     /* Deletion editing style w/ alert */
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == .delete {
-           
-            // alert user for deletion confirmation
-            let alert = UIAlertController(title: "Delete profile?", message: "This profile will be deleted from this account. This action cannot be undone. ", preferredStyle: .alert)
+            let selectedProfileType = profileType[0].name
+            let selectedChild = selectedProfileType?[indexPath.row] // george
+            print("Selected Child of Section 0 : \(selectedChild ?? "")")
+        
+        if selectedChild != selectChild {
             
-            // confirm delete
-            let yesAction = UIAlertAction(title: "Delete", style: .default) { [self] _ in
+            
+            if editingStyle == .delete {
                 
-                // Delete item from data source
-                self.profilesTableView.beginUpdates()
+                // alert user for deletion confirmation
+                let alert = UIAlertController(title: "Delete profile?", message: "This profile will be deleted from this account. This action cannot be undone. ", preferredStyle: .alert)
                 
-                let childsname = profileType[indexPath.section].name?.remove(at: indexPath.row)
-                print("Area choosen for deletion:",childsname!)
-                //CORE DATA DELETION SECTION
-                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Child")
-                let parent_request = NSFetchRequest<NSFetchRequestResult>(entityName: "Parent")
-                let provider_request = NSFetchRequest<NSFetchRequestResult>(entityName: "ProviderE")
-                
-                 request.predicate = NSPredicate(format:"username = %@ AND firstName = %@", receivedString,childsname!)
-                parent_request.predicate = NSPredicate(format:"userName = %@ AND firstName = %@", receivedString,childsname!)
-                provider_request.predicate = NSPredicate(format:"username = %@ AND providerName = %@", receivedString,childsname!)
+                // confirm delete
+                let yesAction = UIAlertAction(title: "Delete", style: .default) { [self] _ in
+                    
+                    // Delete item from data source
+                    self.profilesTableView.beginUpdates()
+                    
+                    let childsname = profileType[indexPath.section].name?.remove(at: indexPath.row)
+                    print("Area choosen for deletion:",childsname!)
+                    //CORE DATA DELETION SECTION
+                    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Child")
+                    let parent_request = NSFetchRequest<NSFetchRequestResult>(entityName: "Parent")
+                    let provider_request = NSFetchRequest<NSFetchRequestResult>(entityName: "ProviderE")
+                    
+                    request.predicate = NSPredicate(format:"username = %@ AND firstName = %@", receivedString,childsname!)
+                    parent_request.predicate = NSPredicate(format:"userName = %@ AND firstName = %@", receivedString,childsname!)
+                    provider_request.predicate = NSPredicate(format:"username = %@ AND providerName = %@", receivedString,childsname!)
                     request.fetchLimit = 1
                     parent_request.fetchLimit = 1
                     provider_request.fetchLimit = 1
-                
-               
-
-                
-//                self.profileType[indexPath.section].name?.remove(at: indexPath.row)
-                // Remove row from table view
-                self.profilesTableView.deleteRows(at: [indexPath], with: .automatic)
-                
-                // Reload table view contents after update
-                self.profilesTableView.reloadData()
-                self.profilesTableView.endUpdates()
-                let link = (try? context.fetch(request))?.first
-                let link2 = (try? context.fetch(parent_request))?.first
-                let link3 = (try? context.fetch(provider_request))?.first
-//                print("LINK 1:", link!, " Link 2:", link2!, "Link 3:", link3!)
-
-                
-                
-                if (link != nil){
-                    context.delete(link as! NSManagedObject)
+                    
+                    
+                    
+                    
+                    //                self.profileType[indexPath.section].name?.remove(at: indexPath.row)
+                    // Remove row from table view
+                    self.profilesTableView.deleteRows(at: [indexPath], with: .automatic)
+                    
+                    // Reload table view contents after update
+                    self.profilesTableView.reloadData()
+                    self.profilesTableView.endUpdates()
+                    let link = (try? context.fetch(request))?.first
+                    let link2 = (try? context.fetch(parent_request))?.first
+                    let link3 = (try? context.fetch(provider_request))?.first
+                    //                print("LINK 1:", link!, " Link 2:", link2!, "Link 3:", link3!)
+                    
+                    
+                    
+                    if (link != nil){
+                        context.delete(link as! NSManagedObject)
+                        
+                    }
+                    if(link2 != nil){
+                        context.delete(link2 as! NSManagedObject)
+                        
+                    }
+                    if (link3 != nil) {
+                        context.delete(link3 as! NSManagedObject)
+                        
+                    }
+                    
+                    SaveItems()
+                    
                     
                 }
-                if(link2 != nil){
-                    context.delete(link2 as! NSManagedObject)
-                    
-                }
-                if (link3 != nil) {
-                    context.delete(link3 as! NSManagedObject)
-                
-                }
-               
-                SaveItems()
-
-                
+                // dismiss deletion
+                let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                alert.addAction(yesAction)
+                alert.addAction(noAction)
+                present(alert, animated: true, completion: nil)
             }
-            // dismiss deletion
-            let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            alert.addAction(yesAction)
-            alert.addAction(noAction)
-            present(alert, animated: true, completion: nil)
+        } else{
+            print("Cant delete", selectedChild)
         }
 
     }
