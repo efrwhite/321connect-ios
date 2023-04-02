@@ -52,11 +52,11 @@ class ProfilesViewController: UIViewController {
         print("PRofiles Passed:",receivedString)
         // Do any additional setup after loading the view, typically from a nib.
         profilesTableView.delegate = self
-         profilesTableView.dataSource = self
+        profilesTableView.dataSource = self
         loadItems()
      
-        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(tableViewEditButtonTapped))
-        navigationItem.rightBarButtonItem = editButton
+//        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(tableViewEditButtonTapped))
+//        self.navigationItem.rightBarButtonItem = editbutton
         
        
         DispatchQueue.main.async {
@@ -195,11 +195,7 @@ class ProfilesViewController: UIViewController {
           } catch {
               print("Error Saving context \(error)")
           }
-          
       }
-    
-   
-
 }
 
 
@@ -260,16 +256,14 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     
     /* Deletion editing style w/ alert */
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-            let selectedProfileType = profileType[0].name
-            let selectedChild = selectedProfileType?[indexPath.row] // george
-            print("Selected Child of Section 0 : \(selectedChild ?? "")")
+        let selectedProfileType = profileType[0].name
+        let selectedChild = selectedProfileType?[indexPath.row] // george
+        print("Selected Child of Section 0 : \(selectedChild ?? "")")
         
         if selectedChild != selectChild {
             
-            
             if editingStyle == .delete {
-                
+
                 // alert user for deletion confirmation
                 let alert = UIAlertController(title: "Delete profile?", message: "This profile will be deleted from this account. This action cannot be undone. ", preferredStyle: .alert)
                 
@@ -335,6 +329,11 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
             }
         } else{
             print("Cant delete", selectedChild)
+            
+            let alert = UIAlertController(title: "Invalid Deletion", message: "This profile is currently active. Please switch profiles to delete this profile", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
         }
 
     }
@@ -358,7 +357,7 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
             
             // edit button (need passed data from db)
             cell.editButton.tag = indexPath.section
-           cell.editButton.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
+            cell.editButton.addTarget(self, action: #selector(editButtonPressed(sender:)), for: .touchUpInside)
        
 
             return cell

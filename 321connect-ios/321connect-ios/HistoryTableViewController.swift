@@ -109,19 +109,14 @@ class HistoryTableViewController: UITableViewController {
     */
     
     func SaveItems(){
-       
         do {
             try context.save()
         } catch {
             print("Error Saving context \(error)")
         }
-        
-        
     }
 
     func loadItems(){
-        
-        
         if segueType == "journalHistorySegue"{
             let request : NSFetchRequest<Journal> = Journal.fetchRequest()
             do{

@@ -21,7 +21,6 @@ class ActivityViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var CurrentDates: UIDatePicker!
     let dateFormatter = DateFormatter()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,14 +41,14 @@ class ActivityViewController: UIViewController, UITextViewDelegate {
 //        let notes = Note.text
 //        let activity = activityselection.currentTitle
 //        let ActivityDuration = ActivityDuration.countDownDuration
-        let sleepDate = CurrentDates.date
-        dateFormatter.dateFormat = "MM/dd/YY"
-        let stringsleepDate = dateFormatter.string(from:sleepDate)
+//        let sleepDate = CurrentDates.date
+//        dateFormatter.dateFormat = "MM/dd/YY"
+//        let stringsleepDate = dateFormatter.string(from:sleepDate)
         
         let new_activity = Activity(context: self.context)
         new_activity.username = receivedString
         new_activity.childName = userchild //defualt child
-        new_activity.currentdate = stringsleepDate
+        new_activity.currentdate = CurrentDates.date
         new_activity.duration = ActivityDuration.countDownDuration
         new_activity.notes = Note.text
         new_activity.activityType = activityselection.currentTitle
