@@ -150,7 +150,7 @@ class ChildView: UIViewController, UITextFieldDelegate {
             } else {
                 if isFirstTimeSignUp {
 //                    // Convert UIImage to Data
-                    let imageData = ChildImage.image?.jpegData(compressionQuality: 1.0)
+//                    let imageData = ChildImage.image?.jpegData(compressionQuality: 1.0)
 
                     let new_child = Child(context: self.context)
                     new_child.username = receivedString
@@ -162,7 +162,8 @@ class ChildView: UIViewController, UITextFieldDelegate {
                     new_child.birthday = birthday.date
                     new_child.allergies = Allergies.text
                     new_child.medication = Medications.text
-                    new_child.image = imageData as? NSData as Data?
+                    let imageData = ChildImage.image?.pngData()
+                    new_child.image = imageData
                    // Fetch from account to set defualt child
                    
                     let fetchRequest: NSFetchRequest<Account> = Account.fetchRequest()
@@ -191,7 +192,7 @@ class ChildView: UIViewController, UITextFieldDelegate {
                     
                 } else {
 //                   // Convert UIImage to Data
-                    let imageData = ChildImage.image?.jpegData(compressionQuality: 1.0)
+//                    let imageData = ChildImage.image?.jpegData(compressionQuality: 1.0)
                     let new_child = Child(context: self.context)
                     new_child.username = receivedString
                     new_child.firstName = FirstName.text
@@ -202,7 +203,9 @@ class ChildView: UIViewController, UITextFieldDelegate {
                     new_child.birthday = birthday.date
                     new_child.allergies = Allergies.text
                     new_child.medication = Medications.text
-                    new_child.image = imageData as? NSData as Data?
+//                    new_child.image = imageData as? NSData as Data?
+                    let imageData = ChildImage.image?.pngData()
+                    new_child.image = imageData
                     self.ChildArray.append(new_child)
                     self.SaveItems()
                     
@@ -259,6 +262,11 @@ extension ChildView: UIImagePickerControllerDelegate, UINavigationControllerDele
                     birthday.date = info.birthday!
                     Allergies.text = info.allergies!
                     Medications.text = info.medication!
+                    if let imageData = info.image, let image = UIImage(data: imageData){
+                        ChildImage.image = image
+                    }else{
+                        ChildImage.image = nil
+                    }
  
                 }
             } catch{

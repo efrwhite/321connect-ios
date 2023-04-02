@@ -249,7 +249,6 @@ class ResourcesTableViewController: UITableViewController {
             print("Error Saving context \(error)")
         }
         self.tableView.reloadData()
-        
     }
     
     func loadItems(){
@@ -270,5 +269,4 @@ class ResourcesTableViewController: UITableViewController {
             print("Error fetching data \(error)")
         }
     }
-
 }

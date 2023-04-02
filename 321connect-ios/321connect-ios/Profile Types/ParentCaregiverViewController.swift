@@ -27,7 +27,6 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
     var ParentArray = [Parent]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         receivedString = user
@@ -35,12 +34,14 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
         print("Parent Passed:", receivedString)
         loadItems()
         print("String Array ", StringArray)
+        
         // profile image mask and style
         ParentPicture.layer.borderWidth = 1.0
         ParentPicture.layer.masksToBounds = false
         ParentPicture.layer.borderColor = UIColor.white.cgColor
         ParentPicture.layer.cornerRadius = ParentPicture.frame.size.width/2
         ParentPicture.clipsToBounds = true
+        
         if edit != nil{
             loadItems()
         }
@@ -65,13 +66,8 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
         present(vc, animated: true)
     }
     
-    // Enter dismisses keyboard
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
     override func viewWillAppear(_ animated: Bool) {
-        if  isFirstTimeSignUp {
+        if isFirstTimeSignUp {
             FirstName.text = StringArray[0]
             LastName.text = StringArray[1]
             PhoneNumber.text = StringArray[2]
@@ -83,42 +79,53 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
             Username.isEnabled = false
             Password.isEnabled = false
         }
-        
-        
     }
     
-    // dismiss Keyboard
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "parentToChild")
-        {
+        if (segue.identifier == "parentToChild"){
             let displayVC = segue.destination as! ChildView
             displayVC.user = receivedString
             displayVC.isFirstTimeSignUp = true
         }
     }
     
+    // Enter dismisses keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // dismiss Keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     @IBAction func Save_Button(_ sender: Any) {
         
         // first time sign up -> show child VC
         if isFirstTimeSignUp {
-//            viewWillAppear(true)
+            
+            /* array passed from signup [firstname, lastname, phone, pw]*/
             FirstName.text = StringArray[0]
             LastName.text = StringArray[1]
             PhoneNumber.text = StringArray[2]
             Password.text = StringArray[3]
+            
+            /* creates new parent */
             let new_parent = Parent(context: self.context)
             new_parent.firstName = FirstName.text
             new_parent.lastName = LastName.text
             new_parent.phoneNumber = PhoneNumber.text
             new_parent.userName = receivedString //this is pushed to child
             new_parent.password = Password.text
-            // new_parent.accountId = //Delegate of Account
-            //Dont forget the Parent Image
-            new_parent.parentImage = ParentPicture.image
+
+            let imageData = ParentPicture.image?.pngData()
+            new_parent.parentImage = imageData
+            
+            /* append to new parent to parent array */
             self.ParentArray.append(new_parent)
+            
+            /* save parent in database */
             self.SaveItems()
             
             // Perform segue to different screen -> child
@@ -130,18 +137,23 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(OKAction)
             present(alert, animated: true)
             
-            // else pop view -> back to profiles
-        } else {
+        
+        } else { // else pop view -> back to profiles
+            
+            /* creates new parent */
             let new_parent = Parent(context: self.context)
             new_parent.firstName = FirstName.text
             new_parent.lastName = LastName.text
             new_parent.phoneNumber = PhoneNumber.text
             new_parent.userName = receivedString
             new_parent.password = Password.text
-            // new_parent.accountId = //Delegate of Account
-            //Dont forget the Parent Image
-            new_parent.parentImage = ParentPicture.image
+            let imageData = ParentPicture.image?.pngData()
+            new_parent.parentImage = imageData
+            
+            /* append to new parent to parent array */
             self.ParentArray.append(new_parent)
+            
+            /* save parent in database */
             self.SaveItems()
             
             let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
@@ -155,6 +167,7 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
+// MARK: - PICKERVIEW FUNCTIONS
 extension Parent_Caregiver_ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
@@ -162,6 +175,7 @@ extension Parent_Caregiver_ViewController: UIImagePickerControllerDelegate, UINa
         }
         picker.dismiss(animated: true)
     }
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
@@ -175,8 +189,6 @@ extension Parent_Caregiver_ViewController: UIImagePickerControllerDelegate, UINa
         } catch {
             print("Error Saving context \(error)")
         }
-        
-        
     }
 
     func loadItems(){
@@ -203,10 +215,12 @@ extension Parent_Caregiver_ViewController: UIImagePickerControllerDelegate, UINa
                     PhoneNumber.text = parent.phoneNumber
                     Username.text = parent.userName
                     Password.text = parent.password
-                  
-                    
+                    if let imageData = parent.parentImage, let image = UIImage(data: imageData){
+                        ParentPicture.image = image
+                    }else{
+                        ParentPicture.image = nil
+                    }
                 }
-                
             } catch{
                 print("Error fetching data \(error)")
             }
