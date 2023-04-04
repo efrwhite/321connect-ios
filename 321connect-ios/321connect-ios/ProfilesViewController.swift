@@ -78,7 +78,6 @@ class ProfilesViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
 
-        
     }
  //#######################################
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,6 +87,9 @@ class ProfilesViewController: UIViewController {
                 displayVC.user = receivedString
                 if selected_Edit != nil{
                     displayVC.edit = selected_Edit!
+                    
+                    /* pass isEditButtonPressed flag (true) to child */
+                    displayVC.isEditButtonPressed = isEditButtonPressed
                 }
             }
             if(segue.identifier == "showParentsVC"){
@@ -95,6 +97,9 @@ class ProfilesViewController: UIViewController {
                 displayVC.user = receivedString
                 if selected_Edit != nil{
                     displayVC.edit = selected_Edit!
+                    
+                    /* pass isEditButtonPressed flag (true) to parent */
+                    displayVC.isEditButtonPressed = isEditButtonPressed
                 }
             }
             if(segue.identifier == "showProvidersVC"){
@@ -133,6 +138,15 @@ class ProfilesViewController: UIViewController {
     }
 //#######################################
     func loadItems(){
+        /* Edward: i added this fetch request to assign selected (defaultChild) at load up
+            this corrects the ability to delete the child if not clicked first */
+        let accountRequest : NSFetchRequest<Account> = Account.fetchRequest()
+        accountRequest.predicate = NSPredicate(format: "(userName MATCHES [cd] %@) ", receivedString)
+        let account = (try? context.fetch(accountRequest))!
+        for user in account {
+            selectChild = user.defualtChild!
+        }
+        
         // Fetch child data
         let childRequest : NSFetchRequest<Child> = Child.fetchRequest()
         childRequest.predicate = NSPredicate(format: "(username MATCHES [cd] %@)", receivedString )
@@ -241,12 +255,6 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
-        } else {
-            // Optional: display an alert to notify the user that only the first section can be selected
-            let alert = UIAlertController(title: "Invalid Selection", message: "Please select a child from the list", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
         }
     }
 
@@ -330,7 +338,7 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
         } else{
             print("Cant delete", selectedChild)
             
-            let alert = UIAlertController(title: "Invalid Deletion", message: "This profile is currently active. Please switch profiles to delete this profile", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Invalid Deletion", message: "This profile is currently active. Please switch profiles to delete this selection", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
@@ -398,7 +406,6 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     
     /* HEADER VIEWS AND TITLES */
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         return profileType[section].profile
     }
     
@@ -411,8 +418,11 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
         
         headerView.profileAddButton.addTarget(self, action: #selector(profileAddButtonPressed(sender:)), for: .touchUpInside)
         
-        headerView.profileTitle.text = profileType[section].profile
-        
+        if section == 0{
+            headerView.profileTitle.text = "Children (tap to select)"
+        } else {
+            headerView.profileTitle.text = profileType[section].profile
+        }
         return headerView
     }
     

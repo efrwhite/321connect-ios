@@ -10,7 +10,15 @@ import UIKit
 import CoreData
 
 class HomeScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
-
+    let request : NSFetchRequest<Child> = Child.fetchRequest()
+    let accountrequest : NSFetchRequest<Account> = Account.fetchRequest()
+    let journalrequest : NSFetchRequest<Journal> = Journal.fetchRequest()
+    let behaviorrequest : NSFetchRequest<Behavior> = Behavior.fetchRequest()
+    let sleeprequest : NSFetchRequest<Sleep> = Sleep.fetchRequest()
+    let activityrequest : NSFetchRequest<Activity> = Activity.fetchRequest()
+//        let bathroomrequest : NSFetchRequest<Bathroom> = Bathroom.fetchRequest()
+//        let feedrequest : NSFetchRequest<Feed> = Feed.fetchRequest()
+    
     // Recent Entry struct
     struct Entry {
         var date: Date
@@ -53,7 +61,7 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var medicalButton: UIButton!
     @IBOutlet weak var profilesButton: UIButton!
     @IBOutlet weak var RecentEntryTableView: UITableView!
-    @IBOutlet weak var childImage: UIButton!
+    @IBOutlet weak var childImage: UIImageView!
     @IBOutlet weak var labelISO: UILabel!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var receivedString = ""
@@ -213,14 +221,6 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: - Database functions * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ * ~ *
     
     func loadItems(){
-        let request : NSFetchRequest<Child> = Child.fetchRequest()
-        let accountrequest : NSFetchRequest<Account> = Account.fetchRequest()
-        let journalrequest : NSFetchRequest<Journal> = Journal.fetchRequest()
-        let behaviorrequest : NSFetchRequest<Behavior> = Behavior.fetchRequest()
-        let sleeprequest : NSFetchRequest<Sleep> = Sleep.fetchRequest()
-        let activityrequest : NSFetchRequest<Activity> = Activity.fetchRequest()
-//        let bathroomrequest : NSFetchRequest<Bathroom> = Bathroom.fetchRequest()
-//        let feedrequest : NSFetchRequest<Feed> = Feed.fetchRequest()
         
         do{
             AccountArray = try context.fetch(accountrequest)
@@ -245,11 +245,13 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
                 birthdaydate = dateFormatter.string(from: child.birthday!)
                 //do image later
                 if let imageData = child.image, let image = UIImage(data: imageData){
-                    childImage.setImage(image, for: .normal)
-                } else {
-                    childImage.setImage(nil, for: .normal)
+                    childImage.image = image
+                }else {
+                    let personImage = UIImage(systemName: "person.fill")?.withTintColor(UIColor.lightGray)
+                    childImage.image = personImage
                 }
             }
+            childImage.contentMode = .scaleAspectFill
         }
         catch{
             print("Error fetching data \(error)")

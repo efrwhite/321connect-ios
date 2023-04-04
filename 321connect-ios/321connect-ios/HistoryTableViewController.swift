@@ -130,8 +130,8 @@ class HistoryTableViewController: UITableViewController {
                     let dateString = dateFormatter.string(from: date) // convert the date to a string
                     
                     History_Date.append(dateString)
-                    History_text.append(j.notes!)
-                    print("History values:", j.currentdate!,"AND",j.notes!)
+                    History_text.append(j.title!)
+                    print("History values:", j.currentdate!,"AND",j.title!)
                 }
             }
             catch{
@@ -168,12 +168,19 @@ class HistoryTableViewController: UITableViewController {
                 let behaviourhistory = (try? context.fetch(request))!
                 for b in behaviourhistory {
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // set the date format
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" // set the date format
                     let date = b.currentdate! // replace this with your own date object
                     let dateString = dateFormatter.string(from: date) // convert the date to a string
-                    
+                    let hours = Int(b.time / 3600)
+                    let minutes = Int((b.time / 60).truncatingRemainder(dividingBy: 60))
+                    var message: String
+                    if hours > 0 {
+                        message = "\(b.childName!) was \(b.moodType!.lowercased()) for \(hours) hours and \(minutes) minutes"
+                    } else {
+                        message = "\(b.childName!) was \(b.moodType!.lowercased()) for \(minutes) minutes"
+                    }
                     History_Date.append(dateString) //array called History_date  appends the date from database
-                    History_text.append(b.notes!)
+                    History_text.append(message)
                     print("History values:", b.currentdate!,"AND",b.notes!)
                 }
             } catch{
