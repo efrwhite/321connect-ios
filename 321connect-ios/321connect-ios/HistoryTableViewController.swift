@@ -130,8 +130,8 @@ class HistoryTableViewController: UITableViewController {
                     let dateString = dateFormatter.string(from: date) // convert the date to a string
                     
                     History_Date.append(dateString)
-                    History_text.append(j.notes!)
-                    print("History values:", j.currentdate!,"AND",j.notes!)
+                    History_text.append(j.title!)
+                    print("History values:", j.currentdate!,"AND",j.title!)
                 }
             }
             catch{

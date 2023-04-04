@@ -10,8 +10,10 @@ import Foundation
 import UIKit
  
 class ChildView: UIViewController, UITextFieldDelegate {
-    
+    let request : NSFetchRequest<Child> = Child.fetchRequest()
+    let accountrequest : NSFetchRequest<Account> = Account.fetchRequest()
     var isFirstTimeSignUp = false
+    var isEditButtonPressed = false
     
     @IBOutlet weak var ChildImage: UIImageView!
     @IBOutlet weak var birthday: UIDatePicker!
@@ -30,6 +32,7 @@ class ChildView: UIViewController, UITextFieldDelegate {
     var receivedString = ""
     var user = ""
     var edit = ""
+    var selectChild = ""
     // var bloodTypes = ["A+","A-","B+","B-","AB+","AB-","O+","O-"]
     //where ever U have your print statements make a object to store the information into child
     var ChildArray = [Child]()
@@ -57,12 +60,12 @@ class ChildView: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tapGesture)
         
         // hide navigation item back button on first sign up
-          if isFirstTimeSignUp{
-              navigationItem.hidesBackButton = true
-          }
+        if isFirstTimeSignUp{
+            navigationItem.hidesBackButton = true
+        }
         if edit != nil {
-                loadItems()
-            }
+            loadItems()
+        }
       
       /* Needed in Child's viewdidload() to prevent the back button for showing up and allowing the user to go
          back to the parent view which could cause issues! */
@@ -148,10 +151,9 @@ class ChildView: UIViewController, UITextFieldDelegate {
                 present(alert, animated: true)
                 
             } else {
+                
+                /* parent showed this view (first sign up): add new child and initialize default child */
                 if isFirstTimeSignUp {
-//                    // Convert UIImage to Data
-//                    let imageData = ChildImage.image?.jpegData(compressionQuality: 1.0)
-
                     let new_child = Child(context: self.context)
                     new_child.username = receivedString
                     new_child.firstName = FirstName.text
@@ -164,8 +166,8 @@ class ChildView: UIViewController, UITextFieldDelegate {
                     new_child.medication = Medications.text
                     let imageData = ChildImage.image?.pngData()
                     new_child.image = imageData
-                   // Fetch from account to set defualt child
-                   
+
+                    /* set new child as the default child */
                     let fetchRequest: NSFetchRequest<Account> = Account.fetchRequest()
                     fetchRequest.predicate = NSPredicate(format: "userName == %@", receivedString)
 
@@ -190,9 +192,57 @@ class ChildView: UIViewController, UITextFieldDelegate {
                     alert.addAction(OKAction)
                     present(alert, animated: true)
                     
+                } else if isEditButtonPressed {
+                    /* edit showed this view: edit child instead*/
+                    do {
+                        guard let editChild = try context.fetch(request).first else {
+                            let alert = UIAlertController(title: "Error", message: "Failed to edit child", preferredStyle: .alert)
+                            let OKAction = UIAlertAction(title: "OK", style: .default)
+                            alert.addAction(OKAction)
+                            present(alert, animated: true)
+                            return
+                        }
+                        
+                        editChild.username = receivedString
+                        editChild.firstName = FirstName.text
+                        editChild.lastName = LastName.text
+                        editChild.gender = OnOff.isEnabled
+                        editChild.bloodType = BloodType.currentTitle
+                        editChild.dueDate = Duedate.date
+                        editChild.birthday = birthday.date
+                        editChild.allergies = Allergies.text
+                        editChild.medication = Medications.text
+                        let imageData = ChildImage.image?.pngData()
+                        editChild.image = imageData
+                        
+                        if selectChild == edit {
+                            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                                return
+                            }
+                            let context = appDelegate.persistentContainer.viewContext
+                            accountrequest.predicate = NSPredicate(format: "userName == %@", receivedString)
+                            do {
+                                let account = try context.fetch(accountrequest).first
+                                account?.defualtChild = FirstName.text
+                                try context.save()
+                            } catch {
+                                print("Error updating default child: \(error.localizedDescription)")
+                            }
+                        }
+                        
+                        try context.save()
+    
+                        let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                        alert.addAction(OKAction)
+                        present(alert, animated: true)
+                    } catch let error as NSError {
+                        print("Could not fetch. \(error), \(error.userInfo)")
+                    }
                 } else {
-//                   // Convert UIImage to Data
-//                    let imageData = ChildImage.image?.jpegData(compressionQuality: 1.0)
+                    /* profile add showed this view: add new child */
                     let new_child = Child(context: self.context)
                     new_child.username = receivedString
                     new_child.firstName = FirstName.text
@@ -203,7 +253,6 @@ class ChildView: UIViewController, UITextFieldDelegate {
                     new_child.birthday = birthday.date
                     new_child.allergies = Allergies.text
                     new_child.medication = Medications.text
-//                    new_child.image = imageData as? NSData as Data?
                     let imageData = ChildImage.image?.pngData()
                     new_child.image = imageData
                     self.ChildArray.append(new_child)
@@ -211,17 +260,12 @@ class ChildView: UIViewController, UITextFieldDelegate {
                     
                     let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
                     let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
-                  
                         self.navigationController?.popViewController(animated: true)
                     }
-                    
-                    
                     alert.addAction(OKAction)
                     present(alert, animated: true)
-                    
                 }
             }
-        
         }
     }
 
@@ -235,21 +279,27 @@ extension ChildView: UIImagePickerControllerDelegate, UINavigationControllerDele
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
-   //saves into database
+    
+   
     func SaveItems(){
         do {
             try context.save()
         } catch {
             print("Error Saving context \(error)")
         }
-        
     }
 
-
     func loadItems(){
-        let request : NSFetchRequest<Child> = Child.fetchRequest()
         if edit != nil{
             do{
+                if(!isFirstTimeSignUp){
+                    accountrequest.predicate = NSPredicate(format: "(userName MATCHES [cd] %@) ", receivedString)
+                    let account = (try? context.fetch(accountrequest))!
+                    for user in account {
+                        selectChild = user.defualtChild!
+                    }
+                }
+                
                 ChildArray = try context.fetch(request)
                 request.predicate = NSPredicate(format: "(username MATCHES [cd] %@ AND firstName MATCHES [cd] %@) ", receivedString, edit)
                 let childhistory = (try? context.fetch(request))!
@@ -265,15 +315,15 @@ extension ChildView: UIImagePickerControllerDelegate, UINavigationControllerDele
                     if let imageData = info.image, let image = UIImage(data: imageData){
                         ChildImage.image = image
                     }else{
-                        ChildImage.image = nil
+                        let personImage = UIImage(systemName: "person.fill")?.withTintColor(UIColor.lightGray)
+
+                        ChildImage.image = personImage
                     }
- 
                 }
             } catch{
                 print("Error fetching data \(error)")
             }
-        }
-        else{
+        }else{
             do{
                 ChildArray = try context.fetch(request)
             } catch{

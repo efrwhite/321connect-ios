@@ -11,8 +11,12 @@ import UIKit
 import CoreData
 
 class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
+    let request : NSFetchRequest<Parent> = Parent.fetchRequest()
+    let account_request: NSFetchRequest<Account> = Account.fetchRequest()
     var StringArray = [String]()
     var isFirstTimeSignUp = false
+    var isEditButtonPressed = false
+    
     @IBOutlet weak var ParentPicture: UIImageView!
     @IBOutlet weak var FirstName: UITextField!
     @IBOutlet weak var LastName: UITextField!
@@ -118,7 +122,7 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
             new_parent.phoneNumber = PhoneNumber.text
             new_parent.userName = receivedString //this is pushed to child
             new_parent.password = Password.text
-
+            
             let imageData = ParentPicture.image?.pngData()
             new_parent.parentImage = imageData
             
@@ -137,7 +141,39 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(OKAction)
             present(alert, animated: true)
             
-        
+            
+        } else if isEditButtonPressed {
+            /* edit showed this view: edit child instead*/
+            do {
+                guard let editParent = try context.fetch(request).first else {
+                    let alert = UIAlertController(title: "Error", message: "Failed to edit child", preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .default)
+                    alert.addAction(OKAction)
+                    present(alert, animated: true)
+                    return
+                }
+
+                editParent.firstName = FirstName.text
+                editParent.lastName = LastName.text
+                editParent.phoneNumber = PhoneNumber.text
+                editParent.userName = Username.text
+                editParent.password = Password.text
+
+                let imageData = ParentPicture.image?.pngData()
+                editParent.parentImage = imageData
+
+                try context.save()
+
+                let alert = UIAlertController(title: "Success", message: "Data was successfully saved!", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                alert.addAction(OKAction)
+                present(alert, animated: true)
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+
         } else { // else pop view -> back to profiles
             
             /* creates new parent */
@@ -192,8 +228,6 @@ extension Parent_Caregiver_ViewController: UIImagePickerControllerDelegate, UINa
     }
 
     func loadItems(){
-        let request : NSFetchRequest<Parent> = Parent.fetchRequest()
-        let account_request: NSFetchRequest<Account> = Account.fetchRequest()
         account_request.predicate = NSPredicate(format:"userName = %@", receivedString)
         account_request.fetchLimit = 1
         let link = (try? context.fetch(account_request))!

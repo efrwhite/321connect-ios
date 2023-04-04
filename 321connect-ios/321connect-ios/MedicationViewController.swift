@@ -20,7 +20,7 @@ class MedicationViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         MedicationList.delegate = self
         MedicationList.dataSource = self
-        labelMeds.text = "Medication Added:\(medication)"
+//        labelMeds.text = "Medication Added:\(medication)"
         medicationlist.append(medication)
 
     }
