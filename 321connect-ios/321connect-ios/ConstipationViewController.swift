@@ -14,6 +14,10 @@ class ConstipationViewController: UIViewController, UITextFieldDelegate, UITextV
     @IBOutlet weak var DoLSConsti: UIDatePicker!
     @IBOutlet weak var TreatPlan: UITextField!
     var ConstipationArray = [Bathroom]()
+    var user = ""
+    var userchild = ""
+    var username = ""
+    var childname = ""
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
 
@@ -30,7 +34,10 @@ class ConstipationViewController: UIViewController, UITextFieldDelegate, UITextV
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        let username = user
+        let childname = userchild
+    }
     // textview keyboard collapse on enter char
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
@@ -58,6 +65,8 @@ class ConstipationViewController: UIViewController, UITextFieldDelegate, UITextV
 //        let TreatmentPlan = TreatPlan.text
 //        print("Notes: \(notes),Consipation Date:\(ConstipationDate)  Treatment\(TreatmentPlan)")
         let new_constipation = Bathroom(context: self.context)
+        new_constipation.username = user
+        new_constipation.childName = userchild
         new_constipation.bathroomType = "Constipation"
         new_constipation.dateOfLastStool = DoLSConsti.date
         new_constipation.bathroomNotes = ConstiNotes.text

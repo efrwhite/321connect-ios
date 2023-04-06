@@ -19,6 +19,10 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var Accident: UISwitch!
     @IBOutlet weak var QuantityUnits: UIButton!
     var DiaperArray = [Bathroom]()
+    var user = ""
+    var userchild = ""
+    var username = ""
+    var childname = ""
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var pickerData: [String] = [String]()
@@ -35,6 +39,10 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     view.addGestureRecognizer(tapGesture)
 
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        let username = user
+        let childname = userchild
     }
 
     @IBAction func SwitchCheck(_ sender: UISwitch) {
@@ -57,6 +65,8 @@ class DiaperViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 //        print("This is Diaper Notes: \(diaperNotes)")
 //        print("This is Quantity: \(quantity)")
         let new_Diaper = Bathroom(context: self.context)
+        new_Diaper.childName = userchild
+        new_Diaper.username = user
         new_Diaper.bathroomType = "Diaper"
         new_Diaper.bathroomNotes = DiaperNotes.text
         new_Diaper.diaperCream = DiaperCream.isOn

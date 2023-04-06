@@ -178,6 +178,7 @@ class HomeScreenViewControllerExt: UIViewController {
                 print("Error fetching data \(error)")
             }
         }
+        
         /*
          // MARK: - Navigation
          
@@ -188,5 +189,14 @@ class HomeScreenViewControllerExt: UIViewController {
          }
          */
         
+    }
+    @IBAction func signOutButtonTapped(_ sender: Any) {
+        // Remove user's credentials or access token from app storage
+        // ...
+        
+        // Navigate to the login screen
+        let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        loginVC.modalPresentationStyle = .fullScreen 
+        self.present(loginVC, animated: true, completion: nil)
     }
 }

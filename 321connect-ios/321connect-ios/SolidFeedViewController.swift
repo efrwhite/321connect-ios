@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 class SolidFeedViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
-
+    var user: String?
     @IBOutlet weak var notesTextField: UITextView!
     @IBOutlet weak var solidAmountTextField: UITextField!
     @IBOutlet weak var foodConsumedButton: UIButton!
@@ -21,7 +21,7 @@ class SolidFeedViewController: UIViewController, UITextFieldDelegate, UITextView
     @IBOutlet weak var otherRadio: UIButton!
     @IBOutlet weak var indicateTextField: UITextField!
     var receivedString = ""
-    var user = ""
+    var username = ""
     var myStr = ""
     var userchild = ""
     var feedArray = [Feed]()
@@ -30,8 +30,8 @@ class SolidFeedViewController: UIViewController, UITextFieldDelegate, UITextView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        receivedString = user
-        print("This is my Username Passed over to SOLID!",receivedString,"and Child: ", userchild)
+//        receivedString = user ?? "nil"
+//        print("This is my Username Passed over to SOLID!",receivedString,"and Child: ", userchild)
         
         // assign numeric key pad for amount text field
         solidAmountTextField.keyboardType = UIKeyboardType.numberPad
@@ -58,7 +58,11 @@ class SolidFeedViewController: UIViewController, UITextFieldDelegate, UITextView
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Solid Feed Passed: ", user!, "User Child", userchild)
+        
+        let username = user!
+    }
     // Enter dismisses keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -154,7 +158,8 @@ class SolidFeedViewController: UIViewController, UITextFieldDelegate, UITextView
         // need to capture and print supplements
         let feeding = Feed(context: self.context)
         feeding.eatType = "Solid Eating Type"
-        feeding.username = receivedString
+        feeding.username = user
+        feeding.childName = userchild
         feeding.notes = notesTextField.text
         feeding.consumption = foodConsumedButton.title(for: .normal)
         feeding.amount = solidAmountTextField.text

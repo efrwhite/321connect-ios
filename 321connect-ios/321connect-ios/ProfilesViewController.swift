@@ -38,6 +38,7 @@ class ProfilesViewController: UIViewController {
     var providerarray = [ProviderE]()
     var selected_Child = [String]()
     var selectChild = ""
+    var accountParent = ""
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
  
@@ -145,6 +146,7 @@ class ProfilesViewController: UIViewController {
         let account = (try? context.fetch(accountRequest))!
         for user in account {
             selectChild = user.defualtChild!
+            let accountParent = user.firstName!
         }
         
         // Fetch child data
@@ -264,12 +266,14 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
     
     /* Deletion editing style w/ alert */
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let selectedProfileType = profileType[0].name
-        let selectedChild = selectedProfileType?[indexPath.row] // george
-        print("Selected Child of Section 0 : \(selectedChild ?? "")")
-        
-        if selectedChild != selectChild {
-            
+        let selectedProfileType = profileType[indexPath.section].name
+               let selectedProfile = selectedProfileType?[indexPath.row]
+
+               print("Selected profile is : \(selectedProfile ?? "")")
+               
+               if (selectedProfile != selectChild && selectedProfile != accountParent) {
+                   
+
             if editingStyle == .delete {
 
                 // alert user for deletion confirmation
@@ -303,7 +307,7 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
                     self.profilesTableView.deleteRows(at: [indexPath], with: .automatic)
                     
                     // Reload table view contents after update
-                    self.profilesTableView.reloadData()
+//                    self.profilesTableView.reloadData()
                     self.profilesTableView.endUpdates()
                     let link = (try? context.fetch(request))?.first
                     let link2 = (try? context.fetch(parent_request))?.first
@@ -314,15 +318,12 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
                     
                     if (link != nil){
                         context.delete(link as! NSManagedObject)
-                        
                     }
                     if(link2 != nil){
                         context.delete(link2 as! NSManagedObject)
-                        
                     }
                     if (link3 != nil) {
                         context.delete(link3 as! NSManagedObject)
-                        
                     }
                     
                     SaveItems()
@@ -335,16 +336,18 @@ extension ProfilesViewController: UITableViewDataSource, UITableViewDelegate{
                 alert.addAction(noAction)
                 present(alert, animated: true, completion: nil)
             }
-        } else{
-            print("Cant delete", selectedChild)
+            // end if statement
+        }
+        else{
+//            print("Cant delete", selectedChild!)
             
             let alert = UIAlertController(title: "Invalid Deletion", message: "This profile is currently active. Please switch profiles to delete this selection", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
-        }
+        }//end else
 
-    }
+    }//end method
 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
