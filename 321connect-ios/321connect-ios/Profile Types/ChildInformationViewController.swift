@@ -62,6 +62,8 @@ class ChildView: UIViewController, UITextFieldDelegate {
         // hide navigation item back button on first sign up
         if isFirstTimeSignUp{
             navigationItem.hidesBackButton = true
+        } else if isEditButtonPressed {
+            FirstName.isEnabled = false
         }
         if edit != nil {
             loadItems()
@@ -204,9 +206,13 @@ class ChildView: UIViewController, UITextFieldDelegate {
                         }
                         
                         editChild.username = receivedString
-                        editChild.firstName = FirstName.text
+//                        editChild.firstName = FirstName.text
                         editChild.lastName = LastName.text
-                        editChild.gender = OnOff.isEnabled
+                        if OnOff.selectedSegmentIndex == 0 {
+                            editChild.gender = false
+                        } else{
+                            editChild.gender = true
+                        }
                         editChild.bloodType = BloodType.currentTitle
                         editChild.dueDate = Duedate.date
                         editChild.birthday = birthday.date
@@ -222,6 +228,7 @@ class ChildView: UIViewController, UITextFieldDelegate {
                             let context = appDelegate.persistentContainer.viewContext
                             accountrequest.predicate = NSPredicate(format: "userName == %@", receivedString)
                             do {
+                                
                                 let account = try context.fetch(accountrequest).first
                                 account?.defualtChild = FirstName.text
                                 try context.save()
@@ -247,7 +254,11 @@ class ChildView: UIViewController, UITextFieldDelegate {
                     new_child.username = receivedString
                     new_child.firstName = FirstName.text
                     new_child.lastName = LastName.text
-                    new_child.gender = OnOff.isEnabled
+                    if OnOff.selectedSegmentIndex == 0 {
+                        new_child.gender = (OnOff.selectedSegmentIndex == 0)
+                    } else{
+                        new_child.gender = (OnOff.selectedSegmentIndex == 1)
+                    }
                     new_child.bloodType = BloodType.currentTitle
                     new_child.dueDate = Duedate.date
                     new_child.birthday = birthday.date
@@ -306,7 +317,14 @@ extension ChildView: UIImagePickerControllerDelegate, UINavigationControllerDele
                 for info in childhistory{
                     FirstName.text = info.firstName!
                     LastName.text = info.lastName!
-                    OnOff.isEnabled = info.gender
+                    // Set the UISwitch based on the gender value
+//                    OnOff.selectedSegmentIndex = info.gender ? 1 : 0
+                    if info.gender == true{
+                        OnOff.selectedSegmentIndex = 1
+                    }
+                    else{
+                        OnOff.selectedSegmentIndex = 0
+                    }
                     BloodType.setTitle(info.bloodType, for: .normal)
                     Duedate.date = info.dueDate!
                     birthday.date = info.birthday!

@@ -16,10 +16,26 @@ class BathroomViewController: UIViewController {
     var receivedString = ""
     var user = ""
     var userchild = ""
+    var DiaperViewController: DiaperViewController?
+    var PottyViewController: PottyViewController?
+    var ConstipationViewController: ConstipationViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        receivedString = user
+//        receivedString = user
+        // Get reference to child view controllers
+        DiaperViewController = children.first(where: { $0 is DiaperViewController }) as? DiaperViewController
+        PottyViewController = children.first(where: { $0 is PottyViewController }) as? PottyViewController
+        ConstipationViewController = children.first(where: { $0 is ConstipationViewController }) as? ConstipationViewController
         
+        
+        // Pass user information to child view controllers
+        DiaperViewController?.user = user
+        PottyViewController?.user = user
+        ConstipationViewController?.user = user
+        DiaperViewController?.userchild = userchild
+        PottyViewController?.userchild = userchild
+        ConstipationViewController?.userchild = userchild
         //load initial: view 1
         view1.alpha = 1
         view2.alpha = 0

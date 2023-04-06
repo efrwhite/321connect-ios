@@ -20,11 +20,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var phoneNumberTextField: UITextField!   // formatter for phone number
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-
+    var accountUser = [String]()
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
+        loadItems()
         // Gesture to collapse/dismiss keyboard on click outside
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
@@ -70,7 +70,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
         }
 
         // password match alert
-        if(password != confirmPassword){
+     
+        print("AccountUser: ", accountUser, "Usertextfield: ",user)
+        if(password != confirmPassword ){
 
             let pwAlert = UIAlertController(title: "Error", message: "Passwords do not match!", preferredStyle: .alert)
 
@@ -80,7 +82,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             pwAlert.addAction(passwordAction)
 
             present(pwAlert, animated: true, completion: nil)
-        } //else add everthing to the database for passwords
+        }
+        // Check if username is already in use
+            if let account = accountArray.first(where: { $0.userName == username }) {
+                let userAlert = UIAlertController(title: "Error", message: "Username already in use!", preferredStyle: .alert)
+                let userAction = UIAlertAction(title: "OK", style: .cancel, handler: {(_ action: UIAlertAction) -> Void in
+                    print("cancel alert")
+                })
+                userAlert.addAction(userAction)
+                present(userAlert, animated: true, completion: nil)
+                return
+            }//else add everthing to the database for passwords
         else{
             let new_account = Account(context: self.context)
             new_account.firstName = firstNameTextField.text
@@ -165,7 +177,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
     func loadItems(){
         let request : NSFetchRequest<Account> = Account.fetchRequest()
         do{
-        accountArray = try context.fetch(request)
+            accountArray = try context.fetch(request)
+            for account in accountArray {
+                       if let username = account.userName {
+                           accountUser.append(username)
+                       }
+                   }
         } catch{
             print("Error fetching data \(error)")
         }

@@ -38,7 +38,7 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
         print("Parent Passed:", receivedString)
         loadItems()
         print("String Array ", StringArray)
-        
+       
         // profile image mask and style
         ParentPicture.layer.borderWidth = 1.0
         ParentPicture.layer.masksToBounds = false
@@ -82,6 +82,10 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
             PhoneNumber.isEnabled = false
             Username.isEnabled = false
             Password.isEnabled = false
+        }
+        else if isEditButtonPressed{
+            FirstName.isEnabled = false
+            Username.isEnabled = false
         }
     }
     
@@ -153,10 +157,10 @@ class Parent_Caregiver_ViewController: UIViewController, UITextFieldDelegate {
                     return
                 }
 
-                editParent.firstName = FirstName.text
+//                editParent.firstName = FirstName.text
                 editParent.lastName = LastName.text
                 editParent.phoneNumber = PhoneNumber.text
-                editParent.userName = Username.text
+//                editParent.userName = Username.text
                 editParent.password = Password.text
 
                 let imageData = ParentPicture.image?.pngData()

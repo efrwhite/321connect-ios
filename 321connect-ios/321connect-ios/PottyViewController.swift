@@ -15,6 +15,10 @@ class PottyViewController: UIViewController, UITextFieldDelegate, UITextViewDele
     @IBOutlet weak var Accident: UISwitch!
     @IBOutlet weak var PottyDuration: UIDatePicker!
     var PottyArray = [Bathroom]()
+    var user = ""
+    var userchild = ""
+    var username = ""
+    var childname = ""
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -30,7 +34,11 @@ class PottyViewController: UIViewController, UITextFieldDelegate, UITextViewDele
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        let username = user
+        let childname = userchild
+        
+    }
     // textview keyboard collapse on enter char
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
@@ -69,6 +77,8 @@ class PottyViewController: UIViewController, UITextFieldDelegate, UITextViewDele
 //
 //        print("Duration:\(duration_potty), Notes: \(Notes_Potty)")
         let new_potty = Bathroom(context: self.context)
+        new_potty.username = user
+        new_potty.childName = userchild
         new_potty.bathroomType = "Potty"
         new_potty.duration = PottyDuration.countDownDuration
         new_potty.bathroomNotes = PottyNotes.text
