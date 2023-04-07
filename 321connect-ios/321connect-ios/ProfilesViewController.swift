@@ -146,7 +146,7 @@ class ProfilesViewController: UIViewController {
         let account = (try? context.fetch(accountRequest))!
         for user in account {
             selectChild = user.defualtChild!
-            let accountParent = user.firstName!
+            accountParent = user.firstName!
         }
         
         // Fetch child data
