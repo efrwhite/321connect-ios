@@ -88,38 +88,37 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
         entries.removeAll()
         loadItems()
         
-        print("Array of SleepDates",SleepyDate)
-        print("Array of Sleep:", Sleepy)
-        let date = Date()
-
-        let dateFormatter = DateFormatter()
-        let calendar = Calendar.current
-
-        let year = calendar.component(.year, from: date)
-
-        // Set Date Format
-        dateFormatter.dateFormat = "YYYY/MM/dd"
-           
-        // Convert Date to String
-        dateFormatter.dateFormat = "YYYY/MM/dd"
-            
-        // setting the labels and calculating age
-        let strfnln = firstname + " " + lastname
-        print("This is the defualt Child name: ",strfnln)
-        print("This is their birthday: ", birthdaydate)
-        let components = birthdaydate.components(separatedBy: "/")
-        var childyear = components.first!
-        var intchidyear = Int(childyear)
-        print("CHILD YEAR",intchidyear!)
-        var currentyear = Int(year)
-        print("CURRENT YEAR",currentyear)
-        var diffyear = currentyear - intchidyear!
-        var age = String(diffyear)
-        self.labelISO.text = strfnln
-        self.Agelabel.text = "Age: " + age
-        // something else later
+//        print("Array of SleepDates",SleepyDate)
+//        print("Array of Sleep:", Sleepy)
         
-        RecentEntryTableView.reloadData()
+            let date = Date()
+            
+            let dateFormatter = DateFormatter()
+            let calendar = Calendar.current
+            
+            let year = calendar.component(.year, from: date)
+            
+            // Set Date Format
+            dateFormatter.dateFormat = "YYYY/MM/dd"
+            
+            // Convert Date to String
+            dateFormatter.dateFormat = "YYYY/MM/dd"
+            
+            // setting the labels and calculating age
+            let strfnln = firstname + " " + lastname
+            print("This is the defualt Child name: ",strfnln)
+            print("This is their birthday: ", birthdaydate)
+            let components = birthdaydate.components(separatedBy: "/")
+            var childyear = components.first!
+            var intchidyear = Int(childyear)
+        print("Int Child Year", intchidyear ?? 0)
+            var currentyear = Int(year)
+            print("CURRENT YEAR",currentyear)
+        var diffyear = currentyear - (intchidyear ?? 0)
+            var age = String(diffyear)
+            self.labelISO.text = strfnln
+            self.Agelabel.text = "Age: " + age
+            RecentEntryTableView.reloadData()
         
     }
     
@@ -227,7 +226,9 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
             accountrequest.predicate = NSPredicate(format: "(userName MATCHES [cd] %@) ", receivedString)
             let accounthistory = (try? context.fetch(accountrequest))!
             for defualtchild in accounthistory {
-                defualt_child = defualtchild.defualtChild!
+                if defualtchild.defualtChild != nil {
+                    defualt_child = defualtchild.defualtChild!
+                }
             }
 
             ChildArray = try context.fetch(request)

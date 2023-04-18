@@ -69,6 +69,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 // Successful login
                 // code here to segue to home screen
+                // Create a new child for Username and Password
+                let new_account = Account(context: self.context)
+                new_account.firstName = "Test Parent"
+                new_account.lastName = "testing"
+                new_account.userName = defaultUsername//this is passed
+                new_account.phone = "8048281765"
+                new_account.passWord = defaultPassword
+                new_account.defualtChild = "testing"
+                self.accountArray.append(new_account)
+                self.SaveItems()
                 
             }else{
             let request: NSFetchRequest<Account> = Account.fetchRequest()

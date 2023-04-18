@@ -145,8 +145,10 @@ class ProfilesViewController: UIViewController {
         accountRequest.predicate = NSPredicate(format: "(userName MATCHES [cd] %@) ", receivedString)
         let account = (try? context.fetch(accountRequest))!
         for user in account {
-            selectChild = user.defualtChild!
-            accountParent = user.firstName!
+            if user.defualtChild != nil{
+                selectChild = user.defualtChild!
+                accountParent = user.firstName!
+            }
         }
         
         // Fetch child data
